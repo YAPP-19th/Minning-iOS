@@ -6,6 +6,9 @@ target 'OurApp' do
   use_frameworks!
 
   # Pods for OurApp
+  pod 'SnapKit'
+  pod 'Alamofire'
+  pod 'SDWebImage'
 
   target 'OurAppTests' do
     inherit! :search_paths
