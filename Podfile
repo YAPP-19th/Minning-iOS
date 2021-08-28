@@ -9,6 +9,16 @@ target 'OurApp' do
   pod 'SnapKit'
   pod 'Alamofire'
   pod 'SDWebImage'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  pod 'SwiftyJSON'
+  pod 'SwiftLint'
+  pod 'Promises'
+  pod 'Pageboy'
+  pod 'lottie-ios'
+  pod 'KakaoSDK'
 
   target 'OurAppTests' do
     inherit! :search_paths
