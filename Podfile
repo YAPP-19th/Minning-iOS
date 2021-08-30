@@ -1,8 +1,16 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
+workspace 'OurApp'
+
+project 'OurApp/CommonSystem'
+project 'OurApp/DesignSystem.xcodeproj'
+project 'OurApp/SharedAssets.xcodeproj'
+
+project 'OurApp'
+
 target 'OurApp' do
-  # Comment the next line if you don't want to use dynamic frameworks
+  inhibit_all_warnings!
   use_frameworks!
 
   # Pods for OurApp
@@ -29,4 +37,20 @@ target 'OurApp' do
     # Pods for testing
   end
 
+end
+
+target 'DesignSystem' do
+  project 'DesignSystem/DesignSystem'
+  pod 'SnapKit'
+  pod 'SwiftLint'
+end
+
+target 'CommonSystem' do
+  project 'CommonSystem/CommonSystem'
+  pod 'SwiftLint'
+end
+
+target 'SharedAssets' do
+  project 'SharedAssets/SharedAssets'
+  pod 'SwiftLint'
 end
