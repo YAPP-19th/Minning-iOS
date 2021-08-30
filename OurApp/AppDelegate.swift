@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  OurApp
 //
-//  Created by denny on 2021/08/28.
+//  Copyright © 2021 YappiOS1. All rights reserved.
 //
 
 import UIKit
@@ -65,4 +65,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
-

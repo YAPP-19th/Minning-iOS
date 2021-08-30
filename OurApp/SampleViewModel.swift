@@ -2,7 +2,6 @@
 //  SampleViewModel.swift
 //  OurApp
 //
-//  Created by denny on 2021/08/30.
 //  Copyright © 2021 YappiOS1. All rights reserved.
 //
 

@@ -2,11 +2,11 @@
 //  SampleViewController.swift
 //  OurApp
 //
-//  Created by denny on 2021/08/28.
+//  Copyright © 2021 YappiOS1. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class SampleViewController: UIViewController {
     private let titleLabel: UILabel = {
@@ -35,6 +35,4 @@ class SampleViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
-    
-    
 }
