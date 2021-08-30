@@ -5,12 +5,14 @@
 //  Copyright © 2021 YappiOS1. All rights reserved.
 //
 
+import CommonSystem
+import DesignSystem
+import SharedAssets
 import SnapKit
-import UIKit
 
 class SampleViewController: UIViewController {
     private let titleLabel: UILabel = {
-        $0.text = "Hello World"
+        $0.text = "Localized.HelloWorld".sharedLocalized
         $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         return $0
     }(UILabel())

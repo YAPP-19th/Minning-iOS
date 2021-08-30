@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  SharedAssets
+
+  Copyright © 2021 YappiOS1. All rights reserved.
+*/
+
+"Localized.HelloWorld" = "Hello World-KR";
+"Localized.Common.OK" = "확인";

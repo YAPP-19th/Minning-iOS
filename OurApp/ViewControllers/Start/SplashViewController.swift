@@ -5,9 +5,11 @@
 //  Copyright © 2021 YappiOS1. All rights reserved.
 //
 
+import CommonSystem
+import DesignSystem
 import Foundation
+import SharedAssets
 import SnapKit
-import UIKit
 
 class SplashViewController: UIViewController {
     private let titleLabel: UILabel = {

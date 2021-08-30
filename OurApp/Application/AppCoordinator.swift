@@ -5,8 +5,8 @@
 //  Copyright © 2021 YappiOS1. All rights reserved.
 //
 
+import DesignSystem
 import Foundation
-import UIKit
 
 protocol AppRoute {
     func gotoSplash()

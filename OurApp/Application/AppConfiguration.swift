@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     var asDefaultKey: String {
-        #if PRODUCTION
+        #if REAL
         return self
         #else
         return "dev." + self
