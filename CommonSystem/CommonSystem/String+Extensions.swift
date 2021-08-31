@@ -17,7 +17,7 @@ public extension String {
         let date: Date = dateFormatter.date(from: self) ?? Date()
         return date
     }
-    
+
     func convertToSmallDate() -> Date {
         let dateFormatter = DateFormatter()
 

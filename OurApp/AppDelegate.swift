@@ -5,8 +5,8 @@
 //  Copyright © 2021 YappiOS1. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
