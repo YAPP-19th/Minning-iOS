@@ -25,7 +25,23 @@ class SampleViewController: UIViewController {
     private let sampleButton: PlainButton = {
         $0.isActive = true
         $0.buttonContent = "계속하기"
-        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
+        return $0
+    }(PlainButton())
+    
+    private let sampleKakaoButton: PlainButton = {
+        $0.isActive = true
+        $0.buttonContent = "카카오로 계속하기"
+        $0.plainButtonType = .kakao
+//        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
+        return $0
+    }(PlainButton())
+    
+    private let sampleAppleButton: PlainButton = {
+        $0.isActive = true
+        $0.buttonContent = "Apple로 계속하기"
+        $0.plainButtonType = .apple
+//        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
         return $0
     }(PlainButton())
     
@@ -50,7 +66,7 @@ class SampleViewController: UIViewController {
         
         view.backgroundColor = .primaryLightGray
         
-        [titleLabel, sampleButton, sampleTextField].forEach {
+        [titleLabel, sampleButton, sampleTextField, sampleKakaoButton, sampleAppleButton].forEach {
             view.addSubview($0)
         }
         
@@ -64,8 +80,20 @@ class SampleViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
         }
         
-        sampleTextField.snp.makeConstraints { make in
+        sampleKakaoButton.snp.makeConstraints { make in
             make.top.equalTo(sampleButton.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
+        sampleAppleButton.snp.makeConstraints { make in
+            make.top.equalTo(sampleKakaoButton.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
+        sampleTextField.snp.makeConstraints { make in
+            make.top.equalTo(sampleAppleButton.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
         }
