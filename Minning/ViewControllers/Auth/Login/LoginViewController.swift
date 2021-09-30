@@ -12,8 +12,9 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: BaseViewController {
     private let scrollView: UIScrollView = {
+        $0.keyboardDismissMode = .interactive
         return $0
     }(UIScrollView())
     
@@ -125,6 +126,10 @@ final class LoginViewController: UIViewController {
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.addSubview(contentView)
         
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tapGesture)
+        
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.equalToSuperview().priority(250)
@@ -169,6 +174,11 @@ final class LoginViewController: UIViewController {
                 make.leading.trailing.equalToSuperview()
             }
         }
+    }
+    
+    @objc
+    private func hideKeyboard() {
+        loginTextField.resignFirstResponder()
     }
 }
 

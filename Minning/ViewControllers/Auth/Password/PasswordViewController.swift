@@ -12,7 +12,7 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class PasswordViewController: UIViewController {
+final class PasswordViewController: BaseViewController {
     private let titleLabel: UILabel = {
         $0.text = "비밀번호를 입력해주세요"
         $0.textColor = .black
