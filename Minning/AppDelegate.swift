@@ -2,10 +2,11 @@
 //  AppDelegate.swift
 //  OurApp
 //
-//  Copyright © 2021 YappiOS1. All rights reserved.
+//  Copyright © 2021 Minning. All rights reserved.
 //
 
 import CoreData
+import DesignSystem
 import UIKit
 
 @main
@@ -16,9 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let appDIContainer = AppDIContainer()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navigationController = UINavigationController()
+        let navigationController = UINavigationController(navigationBarClass: PlainUINavigationBar.self,
+                                                          toolbarClass: nil)
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        window?.tintColor = .black
         window?.rootViewController = navigationController
         
         appCoordinator = AppCoordinator(navigationController: navigationController,

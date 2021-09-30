@@ -35,6 +35,11 @@ class AuthCoordinator {
             navigationController.pushViewController(loginVC, animated: false)
         }
     }
+    
+    func goToPassword(animated: Bool = false) {
+        let passwordVC = dependencies.createPassword(self)
+        navigationController.pushViewController(passwordVC, animated: animated)
+    }
 }
 
 extension AuthCoordinator: AuthRoute {
