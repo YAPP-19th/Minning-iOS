@@ -20,6 +20,7 @@ public extension UIColor {
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var hex = hex.deletingPrefix("#")
         hex = hex.deletingPrefix("0x")
+        
         if hex.count != 6 {
             DebugLog("hex count is not length 6")
         }
@@ -43,9 +44,11 @@ public extension UIColor {
         return light
     }
 
+    static var primaryRed: UIColor { fetchColor(#function) }
     static var primaryBlue: UIColor { fetchColor(#function) }
     static var primaryWhite: UIColor { fetchColor(#function) }
     static var primaryGray: UIColor { fetchColor(#function) }
+    static var primaryTextGray: UIColor { fetchColor(#function) }
     static var primaryLightGray: UIColor { fetchColor(#function) }
     
     static var kakaoYellow: UIColor { fetchColor(#function) }

@@ -57,7 +57,6 @@ class SplashViewController: UIViewController {
         appTextLogoView.snp.makeConstraints { make in
             make.top.equalTo(appLogoView.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
-//            make.height.equalTo(50)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -66,7 +65,7 @@ class SplashViewController: UIViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.viewModel.goToMain()
+            self.viewModel.goToLogin()
         })
     }
 }

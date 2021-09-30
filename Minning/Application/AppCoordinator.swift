@@ -47,4 +47,12 @@ extension AppCoordinator: AppRoute {
                                           coordinator: self)
         coordinator.start()
     }
+    
+    func gotoLogin(asRoot: Bool = false) {
+        let loginID = AuthDIContainer()
+        let coordinator = AuthCoordinator(navigationController: navigationController,
+                                          dependencies: loginID,
+                                          coordinator: self)
+        coordinator.start(asRoot: asRoot)
+    }
 }
