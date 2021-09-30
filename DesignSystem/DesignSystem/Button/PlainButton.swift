@@ -58,9 +58,11 @@ public class PlainButton: UIButton {
     
     public var isActive: Bool = true {
         didSet {
-            isEnabled = isActive
-            isUserInteractionEnabled = isActive
-            updateButtonColor()
+            if plainButtonType == .normal {
+                isEnabled = isActive
+                isUserInteractionEnabled = isActive
+                updateButtonColor()
+            }
         }
     }
 
