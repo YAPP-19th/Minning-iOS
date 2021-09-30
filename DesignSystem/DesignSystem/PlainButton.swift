@@ -1,5 +1,5 @@
 //
-//  BlueButton.swift
+//  PlainButton.swift
 //  DesignSystem
 //
 //  Created by denny on 2021/09/30.
@@ -11,7 +11,7 @@ import SharedAssets
 import SnapKit
 import UIKit
 
-public class BlueButton: UIButton {
+public class PlainButton: UIButton {
     public var isActive: Bool = true {
         didSet {
             isEnabled = isActive
@@ -36,10 +36,14 @@ public class BlueButton: UIButton {
     }
 
     private func setupViewLayout() {
-        layer.cornerRadius = 10
+        layer.cornerRadius = Constant.Rounding.rad10
         layer.masksToBounds = true
         backgroundColor = .primaryBlue
         setTitleColor(.primaryWhite, for: .normal)
         titleLabel?.font = .font16PBold
+
+        self.snp.makeConstraints {
+            $0.height.equalTo(Constant.Height.textButton)
+        }
     }
 }

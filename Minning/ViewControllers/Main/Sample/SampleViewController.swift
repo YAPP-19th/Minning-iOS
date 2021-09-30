@@ -17,12 +17,17 @@ class SampleViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private let sampleButton: BlueButton = {
+    private let sampleTextField: PlainTextField = {
+        $0.placeholder = "샘플 텍스트입니다."
+        return $0
+    }(PlainTextField())
+    
+    private let sampleButton: PlainButton = {
         $0.isActive = true
         $0.buttonContent = "계속하기"
         $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
         return $0
-    }(BlueButton())
+    }(PlainButton())
     
     private let viewModel: SampleViewModel
     
@@ -36,16 +41,16 @@ class SampleViewController: UIViewController {
     }
     
     @objc
-    private func toggleButtonStatus(_ sender: BlueButton) {
+    private func toggleButtonStatus(_ sender: PlainButton) {
         sender.isActive = !sender.isActive
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .primaryWhite
+        view.backgroundColor = .primaryLightGray
         
-        [titleLabel, sampleButton].forEach {
+        [titleLabel, sampleButton, sampleTextField].forEach {
             view.addSubview($0)
         }
         
@@ -57,7 +62,12 @@ class SampleViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(44)
+        }
+        
+        sampleTextField.snp.makeConstraints { make in
+            make.top.equalTo(sampleButton.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
 }
