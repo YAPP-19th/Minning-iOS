@@ -40,13 +40,14 @@ final class LoginViewController: UIViewController {
     
     private let loginTextField: PlainTextField = {
         $0.placeholder = "이메일을 입력해주세요"
+        $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return $0
     }(PlainTextField())
     
     private let loginButton: PlainButton = {
-        $0.isActive = true
+        $0.isActive = false
         $0.buttonContent = "계속하기"
-//        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(onClickLoginButon(_:)), for: .touchUpInside)
         return $0
     }(PlainButton())
     
@@ -92,9 +93,24 @@ final class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewLayout()
+    }
+    
+    @objc
+    private func onClickLoginButon(_ sender: PlainButton) {
+        viewModel.goToPassword()
+    }
+    
+    @objc
+    private func textFieldDidChange(_ sender: PlainTextField) {
+        loginButton.isActive = sender.text?.count ?? 0 > 0
     }
     
     private func setupViewLayout() {
@@ -102,7 +118,8 @@ final class LoginViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.delegate = self
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.bottom.equalToSuperview()
         }
         
         scrollView.contentInsetAdjustmentBehavior = .never

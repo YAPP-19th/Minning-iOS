@@ -15,6 +15,7 @@
 		B0180F9126DCCDBE008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0180F9226DCCDBE008C6F3C /* SharedAssets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; };
 		B0180F9326DCCDBE008C6F3C /* SharedAssets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */; };
 		B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEED9270552B100011FC4 /* PlainButton.swift */; };
 		B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */; };
 		B0FDEEDE270559CC00011FC4 /* PlainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEEDD270559CC00011FC4 /* PlainTextField.swift */; };
@@ -47,6 +48,7 @@
 		B0180F8B26DCCD22008C6F3C /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedAssets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainUINavigationBar.swift; sourceTree = "<group>"; };
 		B0FDEED9270552B100011FC4 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
 		B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		B0FDEEDD270559CC00011FC4 /* PlainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextField.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */,
 				B0FDEEDD270559CC00011FC4 /* PlainTextField.swift */,
 				B0FDEEDF27055C1000011FC4 /* Constant.swift */,
+				B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				B0180F8C26DCCD22008C6F3C /* Bundle+Extensions.swift in Sources */,
 				B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */,
 				B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */,
+				B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */,
 				B0FDEEE227055DEC00011FC4 /* ImageButton.swift in Sources */,
 				B0FDEEDE270559CC00011FC4 /* PlainTextField.swift in Sources */,
 				B0FDEEE027055C1000011FC4 /* Constant.swift in Sources */,

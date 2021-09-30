@@ -15,4 +15,10 @@ final class AuthDIContainer {
         let vc = LoginViewController(viewModel: viewModel)
         return vc
     }
+    
+    func createPassword(_ coordinator: AuthCoordinator) -> PasswordViewController {
+        let viewModel = PasswordViewModel(coordinator: coordinator)
+        let vc = PasswordViewController(viewModel: viewModel)
+        return vc
+    }
 }

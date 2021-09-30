@@ -26,9 +26,13 @@ class MainCoordinator {
         self.coordinator = coordinator
     }
     
-    func start() {
-        let sampleVC = dependencies.createSample(self)
-        navigationController.pushViewController(sampleVC, animated: false)
+    func start(asRoot: Bool = false) {
+        let mainTabVC = dependencies.createMainTab(self)
+        if asRoot {
+            navigationController.setViewControllers([mainTabVC], animated: false)
+        } else {
+            navigationController.pushViewController(mainTabVC, animated: false)
+        }
     }
 }
 

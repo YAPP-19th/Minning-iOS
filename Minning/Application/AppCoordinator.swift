@@ -10,7 +10,8 @@ import Foundation
 
 protocol AppRoute {
     func gotoSplash()
-    func gotoMain()
+    func gotoMain(asRoot: Bool)
+    func gotoLogin(asRoot: Bool)
     func start()
 }
 
@@ -40,12 +41,12 @@ extension AppCoordinator: AppRoute {
         navigationController.pushViewController(splash, animated: false)
     }
     
-    func gotoMain() {
+    func gotoMain(asRoot: Bool = false) {
         let mainID = MainDIContainer()
         let coordinator = MainCoordinator(navigationController: navigationController,
                                           dependencies: mainID,
                                           coordinator: self)
-        coordinator.start()
+        coordinator.start(asRoot: asRoot)
     }
     
     func gotoLogin(asRoot: Bool = false) {
