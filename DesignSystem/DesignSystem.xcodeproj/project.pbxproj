@@ -15,6 +15,8 @@
 		B0180F9126DCCDBE008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0180F9226DCCDBE008C6F3C /* SharedAssets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; };
 		B0180F9326DCCDBE008C6F3C /* SharedAssets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0FDEEDA270552B100011FC4 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEED9270552B100011FC4 /* BlueButton.swift */; };
+		B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +44,8 @@
 		B0180F8B26DCCD22008C6F3C /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedAssets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0FDEED9270552B100011FC4 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
+		B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		B977CB876626B62D7FACD022 /* libPods-DesignSystem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesignSystem.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +88,8 @@
 				B0180F2E26DCCB58008C6F3C /* Info.plist */,
 				B0180F8926DCCCE7008C6F3C /* UIColor+Extensions.swift */,
 				B0180F8B26DCCD22008C6F3C /* Bundle+Extensions.swift */,
+				B0FDEED9270552B100011FC4 /* BlueButton.swift */,
+				B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -150,7 +156,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1250;
-				ORGANIZATIONNAME = YappiOS1;
+				ORGANIZATIONNAME = Minning;
 				TargetAttributes = {
 					B0180F2926DCCB57008C6F3C = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -235,6 +241,8 @@
 			files = (
 				B0180F8A26DCCCE7008C6F3C /* UIColor+Extensions.swift in Sources */,
 				B0180F8C26DCCD22008C6F3C /* Bundle+Extensions.swift in Sources */,
+				B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */,
+				B0FDEEDA270552B100011FC4 /* BlueButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,14 +43,16 @@ public extension UIColor {
         return light
     }
 
-    static var sampleBlue: UIColor { fetchColor(#function) }
+    static var primaryBlue: UIColor { fetchColor(#function) }
+    static var primaryWhite: UIColor { fetchColor(#function) }
+    static var primaryGray: UIColor { fetchColor(#function) }
 
     private static func fetchColor(_ name: String) -> UIColor {
         //            let name = name.replacingOccurrences(of: "", with: "")
         let assetName = name
 
         guard let color = UIColor(named: assetName,
-                                  in: Bundle.designSystem, compatibleWith: nil) else {
+                                  in: Bundle.sharedAssets, compatibleWith: nil) else {
             //            assertionFailure()
             return .darkGray
         }

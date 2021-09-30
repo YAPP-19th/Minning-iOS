@@ -178,7 +178,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1250;
-				ORGANIZATIONNAME = YappiOS1;
+				ORGANIZATIONNAME = Minning;
 				TargetAttributes = {
 					B0180F4A26DCCBA0008C6F3C = {
 						CreatedOnToolsVersion = 12.5.1;
