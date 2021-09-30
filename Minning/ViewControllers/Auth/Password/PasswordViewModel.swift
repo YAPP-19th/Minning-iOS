@@ -14,4 +14,8 @@ final class PasswordViewModel {
     public init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
     }
+    
+    public func goToMain() {
+        coordinator.goToMain(asRoot: true)
+    }
 }

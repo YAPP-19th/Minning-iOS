@@ -28,6 +28,7 @@ public class PlainUINavigationBar: UINavigationBar {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .primaryWhite
+        barTintColor = .primaryWhite
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in

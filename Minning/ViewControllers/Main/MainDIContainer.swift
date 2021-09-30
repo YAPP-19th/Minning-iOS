@@ -9,9 +9,8 @@ import DesignSystem
 import Foundation
 
 final class MainDIContainer {
-    func createSample(_ coordinator: MainCoordinator) -> SampleViewController {
-        let viewModel = SampleViewModel(coordinator: coordinator)
-        let vc = SampleViewController(viewModel: viewModel)
-        return vc
+    func createMainTab(_ coordinator: MainCoordinator) -> MainTabBarViewController {
+        let tabBarController = MainTabBarViewController(coordinator: coordinator)
+        return tabBarController
     }
 }

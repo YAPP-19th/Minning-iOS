@@ -68,7 +68,7 @@ final class PasswordViewController: UIViewController {
     
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
-//        viewModel.goToPassword()
+        viewModel.goToMain()
     }
     
     @objc
