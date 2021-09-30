@@ -12,9 +12,20 @@ import SharedAssets
 import SnapKit
 
 class SplashViewController: UIViewController {
+    private let appLogoView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "AppIcon80")
+        return $0
+    }(UIImageView())
+    
+    private let appTextLogoView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "LogoText")
+        return $0
+    }(UIImageView())
+    
     private let titleLabel: UILabel = {
-        $0.text = "Splash VC"
-        $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        $0.text = "나만을 위한 의미있는 아침"
+        $0.font = .font16P
+        $0.textColor = .primaryWhite
         return $0
     }(UILabel())
     
@@ -32,10 +43,26 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        view.addSubview(titleLabel)
+        view.backgroundColor = .primaryBlue
+        [appLogoView, appTextLogoView, titleLabel].forEach {
+            view.addSubview($0)
+        }
+        
+        appLogoView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(132)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(80)
+        }
+        
+        appTextLogoView.snp.makeConstraints { make in
+            make.top.equalTo(appLogoView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+//            make.height.equalTo(50)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.top.equalTo(appTextLogoView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
