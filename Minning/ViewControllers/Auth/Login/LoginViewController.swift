@@ -118,7 +118,8 @@ final class LoginViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.delegate = self
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.bottom.equalToSuperview()
         }
         
         scrollView.contentInsetAdjustmentBehavior = .never
