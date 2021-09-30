@@ -1,19 +1,19 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-workspace 'OurApp'
+workspace 'Minning'
 
-project 'OurApp/CommonSystem'
-project 'OurApp/DesignSystem.xcodeproj'
-project 'OurApp/SharedAssets.xcodeproj'
+project 'Minning/CommonSystem'
+project 'Minning/DesignSystem.xcodeproj'
+project 'Minning/SharedAssets.xcodeproj'
 
-project 'OurApp'
+project 'Minning'
 
-target 'OurApp' do
+target 'Minning' do
   inhibit_all_warnings!
   use_frameworks!
 
-  # Pods for OurApp
+  # Pods for Minning
   pod 'SnapKit'
   pod 'Alamofire'
   pod 'SDWebImage'
@@ -28,12 +28,12 @@ target 'OurApp' do
   pod 'lottie-ios'
   pod 'KakaoSDK'
 
-  target 'OurAppTests' do
+  target 'MinningTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'OurAppUITests' do
+  target 'MinningUITests' do
     # Pods for testing
   end
 

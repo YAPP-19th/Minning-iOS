@@ -20,6 +20,7 @@ public extension UIColor {
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var hex = hex.deletingPrefix("#")
         hex = hex.deletingPrefix("0x")
+        
         if hex.count != 6 {
             DebugLog("hex count is not length 6")
         }
@@ -43,14 +44,22 @@ public extension UIColor {
         return light
     }
 
-    static var sampleBlue: UIColor { fetchColor(#function) }
+    static var primaryRed: UIColor { fetchColor(#function) }
+    static var primaryBlue: UIColor { fetchColor(#function) }
+    static var primaryWhite: UIColor { fetchColor(#function) }
+    static var primaryGray: UIColor { fetchColor(#function) }
+    static var primaryTextGray: UIColor { fetchColor(#function) }
+    static var primaryLightGray: UIColor { fetchColor(#function) }
+    
+    static var kakaoYellow: UIColor { fetchColor(#function) }
+    static var kakaoBlack85: UIColor { fetchColor(#function) }
 
     private static func fetchColor(_ name: String) -> UIColor {
         //            let name = name.replacingOccurrences(of: "", with: "")
         let assetName = name
 
         guard let color = UIColor(named: assetName,
-                                  in: Bundle.designSystem, compatibleWith: nil) else {
+                                  in: Bundle.sharedAssets, compatibleWith: nil) else {
             //            assertionFailure()
             return .darkGray
         }
