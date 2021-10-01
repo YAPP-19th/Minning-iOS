@@ -29,4 +29,8 @@ public class DataBinding<T> {
     public init(_ val: T) {
         value = val
     }
+    
+    public func accept(_ val: T) {
+        value = val
+    }
 }

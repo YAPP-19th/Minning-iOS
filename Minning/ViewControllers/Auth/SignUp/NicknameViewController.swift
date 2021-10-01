@@ -1,8 +1,8 @@
 //
-//  PasswordViewController.swift
+//  NicknameViewController.swift
 //  Minning
 //
-//  Created by denny on 2021/09/30.
+//  Created by denny on 2021/10/01.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class PasswordViewController: BaseViewController {
+final class NicknameViewController: BaseViewController {
     private let titleLabel: UILabel = {
-        $0.text = "비밀번호를 입력해주세요"
+        $0.text = "닉네임을 입력해주세요"
         $0.textColor = .black
         $0.font = .font20PBold
         return $0
@@ -33,29 +33,23 @@ final class PasswordViewController: BaseViewController {
         return $0
     }(UILabel())
     
-    private let loginTextField: PlainTextField = {
-        $0.isSecureTextEntry = true
+    private let nicknameTextField: PlainTextField = {
+        $0.placeholder = "2글자 이상의 닉네임이 필요합니다"
+        $0.isSecureTextEntry = false
         $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return $0
     }(PlainTextField())
     
-    private let loginButton: PlainButton = {
+    private let signUpButton: PlainButton = {
         $0.isActive = false
-        $0.addTarget(self, action: #selector(onClickLoginButon(_:)), for: .touchUpInside)
+        $0.buttonContent = "회원가입 완료"
+        $0.addTarget(self, action: #selector(onClickSignUpButon(_:)), for: .touchUpInside)
         return $0
     }(PlainButton())
     
-    private let findPasswordButton: UIButton = {
-        $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = .font16PMedium
-        $0.contentHorizontalAlignment = .left
-        return $0
-    }(UIButton())
+    private let viewModel: NicknameViewModel
     
-    private let viewModel: PasswordViewModel
-    
-    public init(viewModel: PasswordViewModel) {
+    public init(viewModel: NicknameViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -65,24 +59,23 @@ final class PasswordViewController: BaseViewController {
     }
     
     @objc
-    private func onClickLoginButon(_ sender: PlainButton) {
-        if viewModel.passwordViewType.value == .login {
-            viewModel.goToMain()
-        } else {
-            viewModel.goToNickname()
-        }
+    private func onClickSignUpButon(_ sender: PlainButton) {
+        viewModel.goToMain()
     }
     
     @objc
     private func textFieldDidChange(_ sender: PlainTextField) {
-        loginButton.isActive = sender.text?.count ?? 0 > 0
+        signUpButton.isActive = sender.text?.count ?? 0 > 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
         
-        updateViewContent()
+        if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
+            navBar.titleContent = "회원가입"
+            navBar.removeDefaultShadowImage()
+        }
         
         navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
     }
@@ -90,18 +83,6 @@ final class PasswordViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewLayout()
-        bindViewModel()
-    }
-    
-    private func updateViewContent() {
-        if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
-            navBar.titleContent = viewModel.passwordViewType.value.title
-            navBar.removeDefaultShadowImage()
-        }
-        
-        loginButton.buttonContent = viewModel.passwordViewType.value.buttonContent
-        loginTextField.placeholder = viewModel.passwordViewType.value.textFieldHint
-        findPasswordButton.isHidden = !(viewModel.passwordViewType.value == .login)
     }
     
     private func setupViewLayout() {
@@ -109,7 +90,7 @@ final class PasswordViewController: BaseViewController {
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)
         
-        [hintLabel, loginTextField, loginButton, findPasswordButton].forEach {
+        [hintLabel, nicknameTextField, signUpButton].forEach {
             loginStackView.addArrangedSubview($0)
         }
         
@@ -123,13 +104,6 @@ final class PasswordViewController: BaseViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(32)
             make.leading.equalTo(16)
             make.trailing.equalTo(-16)
-        }
-    }
-    
-    private func bindViewModel() {
-        viewModel.passwordViewType.bind { [weak self] _ in
-            guard let `self` = self else { return }
-            self.updateViewContent()
         }
     }
     

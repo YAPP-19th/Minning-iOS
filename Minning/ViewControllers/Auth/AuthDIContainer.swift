@@ -16,9 +16,15 @@ final class AuthDIContainer {
         return vc
     }
     
-    func createPassword(_ coordinator: AuthCoordinator) -> PasswordViewController {
-        let viewModel = PasswordViewModel(coordinator: coordinator)
+    func createPassword(_ coordinator: AuthCoordinator, isLogin: Bool) -> PasswordViewController {
+        let viewModel = PasswordViewModel(coordinator: coordinator, passwordViewType: isLogin ? .login : .signUp)
         let vc = PasswordViewController(viewModel: viewModel)
+        return vc
+    }
+    
+    func createNickname(_ coordinator: AuthCoordinator) -> NicknameViewController {
+        let viewModel = NicknameViewModel(coordinator: coordinator)
+        let vc = NicknameViewController(viewModel: viewModel)
         return vc
     }
 }

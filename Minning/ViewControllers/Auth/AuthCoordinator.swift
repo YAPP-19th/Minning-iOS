@@ -10,8 +10,10 @@ import DesignSystem
 import Foundation
 
 protocol AuthRoute {
-    func goToPassword(animated: Bool)
+    func goToPassword(animated: Bool, isLogin: Bool)
     func goToMain(asRoot: Bool)
+    func goToNickname(animated: Bool)
+    func goToBack()
 }
 
 class AuthCoordinator {
@@ -39,12 +41,21 @@ class AuthCoordinator {
 }
 
 extension AuthCoordinator: AuthRoute {
-    func goToPassword(animated: Bool = false) {
-        let passwordVC = dependencies.createPassword(self)
+    func goToPassword(animated: Bool = false, isLogin: Bool) {
+        let passwordVC = dependencies.createPassword(self, isLogin: isLogin)
         navigationController.pushViewController(passwordVC, animated: animated)
     }
     
     func goToMain(asRoot: Bool = false) {
         coordinator.gotoMain(asRoot: asRoot)
+    }
+    
+    func goToNickname(animated: Bool = false) {
+        let nicknameVC = dependencies.createNickname(self)
+        navigationController.pushViewController(nicknameVC, animated: animated)
+    }
+    
+    func goToBack() {
+        navigationController.popViewController(animated: true)
     }
 }

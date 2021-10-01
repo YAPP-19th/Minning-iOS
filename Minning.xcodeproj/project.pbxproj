@@ -42,6 +42,10 @@
 		B0180F7C26DCCC27008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0180F7D26DCCC2C008C6F3C /* CommonSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; };
 		B0180F7E26DCCC2C008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B02803832706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
+		B02803842706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
+		B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803852706A7A8009D642A /* NicknameViewModel.swift */; };
+		B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803852706A7A8009D642A /* NicknameViewModel.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -171,6 +175,8 @@
 		B0180F5626DCCBA0008C6F3C /* SharedAssets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SharedAssets.xcodeproj; path = SharedAssets/SharedAssets.xcodeproj; sourceTree = "<group>"; };
 		B0180F7526DCCC1E008C6F3C /* CommonSystem.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonSystem.xcodeproj; path = CommonSystem/CommonSystem.xcodeproj; sourceTree = "<group>"; };
 		B0180FB026DCD010008C6F3C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B02803822706A784009D642A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		B02803852706A7A8009D642A /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -365,9 +371,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B028037E2706A772009D642A /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				B02803822706A784009D642A /* NicknameViewController.swift */,
+				B02803852706A7A8009D642A /* NicknameViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		B08E74712705BAC000854190 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				B028037E2706A772009D642A /* SignUp */,
 				B08E749E2705C82B00854190 /* Password */,
 				B08E747E2705BC8600854190 /* Login */,
 				B08E74782705BBA300854190 /* AuthCoordinator.swift */,
@@ -826,8 +842,10 @@
 			files = (
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
+				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08E747A2705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B0180EF026DCC551008C6F3C /* AppDIContainer.swift in Sources */,
+				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A752705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				B0AD5A5C2705D66400CC07B0 /* BaseViewController.swift in Sources */,
@@ -856,8 +874,10 @@
 			files = (
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
+				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
+				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */,
