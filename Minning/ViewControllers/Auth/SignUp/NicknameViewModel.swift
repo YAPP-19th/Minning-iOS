@@ -1,21 +1,25 @@
 //
-//  LoginViewModel.swift
+//  NicknameViewModel.swift
 //  Minning
 //
-//  Created by denny on 2021/09/30.
+//  Created by denny on 2021/10/01.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
 import Foundation
 
-final class LoginViewModel {
+final class NicknameViewModel {
     private let coordinator: AuthCoordinator
     
     public init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
     }
     
-    public func goToPassword(isLogin: Bool) {
-        coordinator.goToPassword(animated: true, isLogin: isLogin)
+    public func goToMain() {
+        coordinator.goToMain(asRoot: true)
+    }
+    
+    public func goToBack() {
+        coordinator.goToBack()
     }
 }

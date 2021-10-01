@@ -106,7 +106,7 @@ final class LoginViewController: BaseViewController {
     
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
-        viewModel.goToPassword()
+        viewModel.goToPassword(isLogin: false)
     }
     
     @objc
