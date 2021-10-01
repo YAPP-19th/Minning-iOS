@@ -1,11 +1,11 @@
-# YAPP iOS 1팀
+# Minning  
 
 Yapp 19기 iOS 1팀 개발 프로젝트입니다.
 
 ## Project Info
 
 - Deployment Target: iOS 12.0
-- Design Pattern: MVVM
+- Design Pattern: MVVM, Coordinator
 - Dependencies: [**Alamofire**](https://github.com/Alamofire/Alamofire), [**SnapKit**](https://github.com/SnapKit/SnapKit)
 
 </br>
