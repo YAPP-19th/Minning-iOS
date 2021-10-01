@@ -15,6 +15,7 @@
 		B0180F9126DCCDBE008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0180F9226DCCDBE008C6F3C /* SharedAssets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; };
 		B0180F9326DCCDBE008C6F3C /* SharedAssets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B02803D72706FFB3009D642A /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803D62706FFB3009D642A /* CircleProgressView.swift */; };
 		B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */; };
 		B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEED9270552B100011FC4 /* PlainButton.swift */; };
 		B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */; };
@@ -48,6 +49,7 @@
 		B0180F8B26DCCD22008C6F3C /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedAssets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B02803D62706FFB3009D642A /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainUINavigationBar.swift; sourceTree = "<group>"; };
 		B0FDEED9270552B100011FC4 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
 		B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				B0FDEEDD270559CC00011FC4 /* PlainTextField.swift */,
 				B0FDEEDF27055C1000011FC4 /* Constant.swift */,
 				B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */,
+				B02803D62706FFB3009D642A /* CircleProgressView.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				B0180F8A26DCCCE7008C6F3C /* UIColor+Extensions.swift in Sources */,
 				B0180F8C26DCCD22008C6F3C /* Bundle+Extensions.swift in Sources */,
+				B02803D72706FFB3009D642A /* CircleProgressView.swift in Sources */,
 				B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */,
 				B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */,
 				B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */,

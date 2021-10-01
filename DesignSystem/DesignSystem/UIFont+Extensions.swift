@@ -22,6 +22,10 @@ public extension UIFont {
         UIFont.systemFont(ofSize: 12, weight: .regular)
     }
     
+    class var font12PBold: UIFont {
+        UIFont.systemFont(ofSize: 12, weight: .bold)
+    }
+    
     class var font13P: UIFont {
         UIFont.systemFont(ofSize: 13, weight: .regular)
     }
@@ -116,6 +120,10 @@ public extension UIFont {
     
     class var font20PMedium: UIFont {
         UIFont.systemFont(ofSize: 20, weight: .medium)
+    }
+    
+    class var font20PExBold: UIFont {
+        UIFont.systemFont(ofSize: 20, weight: .heavy)
     }
     
     class var font23PBold: UIFont {

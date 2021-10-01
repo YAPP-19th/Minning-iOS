@@ -62,6 +62,10 @@
 		B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803A72706DD6E009D642A /* GroupDIContainer.swift */; };
 		B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803AA2706DD75009D642A /* GroupCoordinator.swift */; };
 		B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803AA2706DD75009D642A /* GroupCoordinator.swift */; };
+		B02803B82706F92C009D642A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803B72706F92C009D642A /* ProfileView.swift */; };
+		B02803B92706F92C009D642A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803B72706F92C009D642A /* ProfileView.swift */; };
+		B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803BA2706FF45009D642A /* WeeklyView.swift */; };
+		B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803BA2706FF45009D642A /* WeeklyView.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -201,6 +205,8 @@
 		B02803A42706DCBF009D642A /* ReportCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCoordinator.swift; sourceTree = "<group>"; };
 		B02803A72706DD6E009D642A /* GroupDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDIContainer.swift; sourceTree = "<group>"; };
 		B02803AA2706DD75009D642A /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
+		B02803B72706F92C009D642A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B02803BA2706FF45009D642A /* WeeklyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyView.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -413,6 +419,15 @@
 			path = Phrase;
 			sourceTree = "<group>";
 		};
+		B02803B32706F91E009D642A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B02803B72706F92C009D642A /* ProfileView.swift */,
+				B02803BA2706FF45009D642A /* WeeklyView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		B08E74712705BAC000854190 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +461,7 @@
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B02803B32706F91E009D642A /* Profile */,
 				B02803972706D7DA009D642A /* Phrase */,
 				B0AD5A682705D74000CC07B0 /* HomeViewController.swift */,
 				B0AD5A732705DBCC00CC07B0 /* HomeViewModel.swift */,
@@ -897,6 +913,7 @@
 				B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
+				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803A62706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				B0180EFF26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
@@ -906,6 +923,7 @@
 				B0AD5A6A2705D74000CC07B0 /* HomeViewController.swift in Sources */,
 				B02803962706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
+				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
@@ -937,6 +955,7 @@
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
+				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
@@ -946,6 +965,7 @@
 				B0AD5A692705D74000CC07B0 /* HomeViewController.swift in Sources */,
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
+				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
