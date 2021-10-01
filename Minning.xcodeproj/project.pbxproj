@@ -54,6 +54,14 @@
 		B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803982706D7E5009D642A /* PhraseViewController.swift */; };
 		B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028039E2706D809009D642A /* PhraseViewModel.swift */; };
 		B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028039E2706D809009D642A /* PhraseViewModel.swift */; };
+		B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803A12706DCB5009D642A /* ReportDIContainer.swift */; };
+		B02803A32706DCB5009D642A /* ReportDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803A12706DCB5009D642A /* ReportDIContainer.swift */; };
+		B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803A42706DCBF009D642A /* ReportCoordinator.swift */; };
+		B02803A62706DCBF009D642A /* ReportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803A42706DCBF009D642A /* ReportCoordinator.swift */; };
+		B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803A72706DD6E009D642A /* GroupDIContainer.swift */; };
+		B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803A72706DD6E009D642A /* GroupDIContainer.swift */; };
+		B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803AA2706DD75009D642A /* GroupCoordinator.swift */; };
+		B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803AA2706DD75009D642A /* GroupCoordinator.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -189,6 +197,10 @@
 		B02803942706D78D009D642A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B02803982706D7E5009D642A /* PhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseViewController.swift; sourceTree = "<group>"; };
 		B028039E2706D809009D642A /* PhraseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseViewModel.swift; sourceTree = "<group>"; };
+		B02803A12706DCB5009D642A /* ReportDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDIContainer.swift; sourceTree = "<group>"; };
+		B02803A42706DCBF009D642A /* ReportCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCoordinator.swift; sourceTree = "<group>"; };
+		B02803A72706DD6E009D642A /* GroupDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDIContainer.swift; sourceTree = "<group>"; };
+		B02803AA2706DD75009D642A /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -448,6 +460,8 @@
 			children = (
 				B0AD5A6D2705D78100CC07B0 /* ReportViewController.swift */,
 				B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */,
+				B02803A12706DCB5009D642A /* ReportDIContainer.swift */,
+				B02803A42706DCBF009D642A /* ReportCoordinator.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -457,6 +471,8 @@
 			children = (
 				B0AD5A702705D79300CC07B0 /* GroupViewController.swift */,
 				B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */,
+				B02803A72706DD6E009D642A /* GroupDIContainer.swift */,
+				B02803AA2706DD75009D642A /* GroupCoordinator.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -868,6 +884,7 @@
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
 				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08E747A2705BBA300854190 /* AuthCoordinator.swift in Sources */,
+				B02803A32706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EF026DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
@@ -877,9 +894,11 @@
 				B0180EFC26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B0180ED626DCC307008C6F3C /* MainCoordinator.swift in Sources */,
 				B08E74812705BC9D00854190 /* LoginViewModel.swift in Sources */,
+				B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
+				B02803A62706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				B0180EFF26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B0180ED726DCC307008C6F3C /* AppDelegate.swift in Sources */,
 				B0AD5A722705D79300CC07B0 /* GroupViewController.swift in Sources */,
@@ -888,6 +907,7 @@
 				B02803962706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
+				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
@@ -904,6 +924,7 @@
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
+				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
@@ -913,9 +934,11 @@
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
+				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
+				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */,
 				B0AD5A712705D79300CC07B0 /* GroupViewController.swift in Sources */,
@@ -924,6 +947,7 @@
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
+				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,

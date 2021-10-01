@@ -70,28 +70,25 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
             homeCoordinator.start()
         }
         
-//        if let reportNC = createNavController(for: nil,
-//                                              normalImage: UIImage(sharedNamed: "tab_report_un.png"),
-//                                              selectedImage: UIImage(sharedNamed: "tab_report.png")) as? UINavigationController {
-//
-//        }
+        if let reportNC = createNavController(for: nil,
+                                              normalImage: UIImage(sharedNamed: "tab_report_un.png"),
+                                              selectedImage: UIImage(sharedNamed: "tab_report.png")) as? UINavigationController {
+            tabViewControllers.append(reportNC)
+            
+            let reportDIContainer = ReportDIContainer()
+            let reportCoordinator = ReportCoordinator(navigationController: reportNC, dependencies: reportDIContainer, coordinator: coordinator)
+            reportCoordinator.start()
+        }
         
-        let reportViewModel = ReportViewModel(coordinator: coordinator)
-        let reportVC = ReportViewController(viewModel: reportViewModel)
-        
-        let groupViewModel = GroupViewModel(coordinator: coordinator)
-        let groupVC = GroupViewController(viewModel: groupViewModel)
-        
-        let reportNC = createNavController(for: reportVC,
-                                           normalImage: UIImage(sharedNamed: "tab_report_un.png"),
-                                           selectedImage: UIImage(sharedNamed: "tab_report.png"))
-        
-        let groupNC = createNavController(for: groupVC,
-                                          normalImage: UIImage(sharedNamed: "tab_group_un.png"),
-                                          selectedImage: UIImage(sharedNamed: "tab_group.png"))
-        
-        tabViewControllers.append(reportNC)
-        tabViewControllers.append(groupNC)
+        if let groupNC = createNavController(for: nil,
+                                             normalImage: UIImage(sharedNamed: "tab_group_un.png"),
+                                             selectedImage: UIImage(sharedNamed: "tab_group.png")) as? UINavigationController {
+            tabViewControllers.append(groupNC)
+            
+            let groupDIContainer = GroupDIContainer()
+            let groupCoordinator = GroupCoordinator(navigationController: groupNC, dependencies: groupDIContainer, coordinator: coordinator)
+            groupCoordinator.start()
+        }
         
         tabBar.barTintColor = .primaryWhite
         tabBar.tintColor = .primaryBlue
