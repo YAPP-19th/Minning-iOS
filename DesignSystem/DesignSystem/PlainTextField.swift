@@ -25,7 +25,7 @@ public class PlainTextField: UITextField {
             if let text = placeholder {
                 attributedPlaceholder = NSAttributedString(
                     string: text,
-                    attributes: [NSAttributedString.Key.foregroundColor : UIColor.primaryGray]
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.primaryGray]
                 )
             }
         }

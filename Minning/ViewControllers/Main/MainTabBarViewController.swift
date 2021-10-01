@@ -58,21 +58,29 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
     }
 
     private func setupTabBarItems() {
-        let homeViewModel = HomeViewModel(coordinator: coordinator)
-        let homeVC = HomeViewController(viewModel: homeViewModel)
-        homeVC.tabBarDelegate = self
+        tabViewControllers.removeAll()
+        
+        if let homeNC = createNavController(for: nil,
+                                            normalImage: UIImage(sharedNamed: "tab_home_un.png"),
+                                            selectedImage: UIImage(sharedNamed: "tab_home.png")) as? UINavigationController {
+            tabViewControllers.append(homeNC)
+            
+            let homeDIContainer = HomeDIContainer()
+            let homeCoordinator = HomeCoordinator(navigationController: homeNC, dependencies: homeDIContainer, coordinator: coordinator)
+            homeCoordinator.start()
+        }
+        
+//        if let reportNC = createNavController(for: nil,
+//                                              normalImage: UIImage(sharedNamed: "tab_report_un.png"),
+//                                              selectedImage: UIImage(sharedNamed: "tab_report.png")) as? UINavigationController {
+//
+//        }
         
         let reportViewModel = ReportViewModel(coordinator: coordinator)
         let reportVC = ReportViewController(viewModel: reportViewModel)
-        reportVC.tabBarDelegate = self
         
         let groupViewModel = GroupViewModel(coordinator: coordinator)
         let groupVC = GroupViewController(viewModel: groupViewModel)
-        groupVC.tabBarDelegate = self
-        
-        let homeNC = createNavController(for: homeVC,
-                                         normalImage: UIImage(sharedNamed: "tab_home_un.png"),
-                                         selectedImage: UIImage(sharedNamed: "tab_home.png"))
         
         let reportNC = createNavController(for: reportVC,
                                            normalImage: UIImage(sharedNamed: "tab_report_un.png"),
@@ -82,8 +90,6 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
                                           normalImage: UIImage(sharedNamed: "tab_group_un.png"),
                                           selectedImage: UIImage(sharedNamed: "tab_group.png"))
         
-        tabViewControllers.removeAll()
-        tabViewControllers.append(homeNC)
         tabViewControllers.append(reportNC)
         tabViewControllers.append(groupNC)
         
@@ -108,25 +114,16 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
         DebugLog("tabBarController didSelect update Navigation Title")
     }
     
-    fileprivate func createNavController(for rootViewController: BaseViewController,
+    fileprivate func createNavController(for rootViewController: BaseViewController?,
                                          normalImage: UIImage?,
                                          selectedImage: UIImage?) -> UIViewController {
-        rootViewController.tabBarDelegate = self
         let navController = UINavigationController(navigationBarClass: PlainUINavigationBar.self, toolbarClass: nil)
         navController.tabBarItem = UITabBarItem(title: "", image: normalImage, selectedImage: selectedImage)
-        navController.viewControllers = [rootViewController]
+        
+        if let rootVC = rootViewController {
+            navController.viewControllers = [rootVC]
+        }
+        
         return navController
-    }
-}
-
-extension MainTabBarViewController: MainTabBarDelegate {
-    func hideTabBar() {
-        tabBarBorderView.isHidden = true
-        self.tabBar.isHidden = true
-    }
-    
-    func showTabBar() {
-        tabBarBorderView.isHidden = false
-        self.tabBar.isHidden = false
     }
 }

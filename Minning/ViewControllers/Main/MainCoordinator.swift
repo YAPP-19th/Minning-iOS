@@ -37,5 +37,5 @@ class MainCoordinator {
 }
 
 extension MainCoordinator: MainRoute {
-    
+
 }
