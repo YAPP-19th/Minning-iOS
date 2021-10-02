@@ -11,6 +11,14 @@ import Foundation
 
 protocol HomeRoute {
     func goToPhrase()
+    
+    func goToRecommend()
+    
+    func goToAdd()
+    
+    func goToReview()
+    
+    func goToEditOrder()
 }
 
 class HomeCoordinator {
@@ -37,5 +45,24 @@ class HomeCoordinator {
 extension HomeCoordinator: HomeRoute {
     func goToPhrase() {
         let _ = dependencies.createPhrase(self)
+    }
+    
+    func goToRecommend() {
+        let _ = dependencies.createRecommend(self)
+    }
+    
+    func goToAdd() {
+        let addVC = dependencies.createAdd(self)
+        navigationController.pushViewController(addVC, animated: true)
+    }
+    
+    func goToReview() {
+        let reviewVC = dependencies.createReview(self)
+        navigationController.pushViewController(reviewVC, animated: true)
+    }
+    
+    func goToEditOrder() {
+        let editVC = dependencies.createEditOrder(self)
+        navigationController.pushViewController(editVC, animated: true)
     }
 }

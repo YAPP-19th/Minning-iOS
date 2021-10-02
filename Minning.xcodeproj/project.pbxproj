@@ -66,6 +66,22 @@
 		B02803B92706F92C009D642A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803B72706F92C009D642A /* ProfileView.swift */; };
 		B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803BA2706FF45009D642A /* WeeklyView.swift */; };
 		B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803BA2706FF45009D642A /* WeeklyView.swift */; };
+		B02803E127085131009D642A /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E027085131009D642A /* ReviewViewController.swift */; };
+		B02803E227085131009D642A /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E027085131009D642A /* ReviewViewController.swift */; };
+		B02803E427085139009D642A /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E327085139009D642A /* ReviewViewModel.swift */; };
+		B02803E527085139009D642A /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E327085139009D642A /* ReviewViewModel.swift */; };
+		B02803E727085141009D642A /* EditOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E627085141009D642A /* EditOrderViewController.swift */; };
+		B02803E827085141009D642A /* EditOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E627085141009D642A /* EditOrderViewController.swift */; };
+		B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E927085149009D642A /* EditOrderViewModel.swift */; };
+		B02803EB27085149009D642A /* EditOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803E927085149009D642A /* EditOrderViewModel.swift */; };
+		B02803EE270851A7009D642A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803ED270851A7009D642A /* AddViewController.swift */; };
+		B02803EF270851A7009D642A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803ED270851A7009D642A /* AddViewController.swift */; };
+		B02803F1270851AD009D642A /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F0270851AD009D642A /* AddViewModel.swift */; };
+		B02803F2270851AD009D642A /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F0270851AD009D642A /* AddViewModel.swift */; };
+		B02803F527085447009D642A /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F427085447009D642A /* RecommendViewController.swift */; };
+		B02803F627085447009D642A /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F427085447009D642A /* RecommendViewController.swift */; };
+		B02803F82708544F009D642A /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F72708544F009D642A /* RecommendViewModel.swift */; };
+		B02803F92708544F009D642A /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F72708544F009D642A /* RecommendViewModel.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -207,6 +223,14 @@
 		B02803AA2706DD75009D642A /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
 		B02803B72706F92C009D642A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B02803BA2706FF45009D642A /* WeeklyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyView.swift; sourceTree = "<group>"; };
+		B02803E027085131009D642A /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		B02803E327085139009D642A /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		B02803E627085141009D642A /* EditOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderViewController.swift; sourceTree = "<group>"; };
+		B02803E927085149009D642A /* EditOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderViewModel.swift; sourceTree = "<group>"; };
+		B02803ED270851A7009D642A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		B02803F0270851AD009D642A /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
+		B02803F427085447009D642A /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		B02803F72708544F009D642A /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -428,6 +452,43 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		B02803DE270850F2009D642A /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				B02803E027085131009D642A /* ReviewViewController.swift */,
+				B02803E327085139009D642A /* ReviewViewModel.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		B02803DF270850F9009D642A /* EditOrder */ = {
+			isa = PBXGroup;
+			children = (
+				B02803E627085141009D642A /* EditOrderViewController.swift */,
+				B02803E927085149009D642A /* EditOrderViewModel.swift */,
+			);
+			path = EditOrder;
+			sourceTree = "<group>";
+		};
+		B02803EC27085197009D642A /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				B02803F32708543D009D642A /* Recommend */,
+				B02803ED270851A7009D642A /* AddViewController.swift */,
+				B02803F0270851AD009D642A /* AddViewModel.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		B02803F32708543D009D642A /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				B02803F427085447009D642A /* RecommendViewController.swift */,
+				B02803F72708544F009D642A /* RecommendViewModel.swift */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
 		B08E74712705BAC000854190 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +522,9 @@
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B02803EC27085197009D642A /* Add */,
+				B02803DF270850F9009D642A /* EditOrder */,
+				B02803DE270850F2009D642A /* Review */,
 				B02803B32706F91E009D642A /* Profile */,
 				B02803972706D7DA009D642A /* Phrase */,
 				B0AD5A682705D74000CC07B0 /* HomeViewController.swift */,
@@ -896,6 +960,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02803F2270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
 				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
@@ -905,8 +970,11 @@
 				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A752705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
+				B02803E827085141009D642A /* EditOrderViewController.swift in Sources */,
+				B02803EF270851A7009D642A /* AddViewController.swift in Sources */,
 				B0AD5A5C2705D66400CC07B0 /* BaseViewController.swift in Sources */,
 				B0180F0326DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
+				B02803EB27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B0180EFC26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B0180ED626DCC307008C6F3C /* MainCoordinator.swift in Sources */,
 				B08E74812705BC9D00854190 /* LoginViewModel.swift in Sources */,
@@ -915,6 +983,7 @@
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
+				B02803F627085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A62706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				B0180EFF26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B0180ED726DCC307008C6F3C /* AppDelegate.swift in Sources */,
@@ -922,6 +991,7 @@
 				B0180ED826DCC307008C6F3C /* OurApp.xcdatamodeld in Sources */,
 				B0AD5A6A2705D74000CC07B0 /* HomeViewController.swift in Sources */,
 				B02803962706D78D009D642A /* HomeCoordinator.swift in Sources */,
+				B02803E227085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
@@ -929,8 +999,10 @@
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
+				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
 				B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B02803902706D785009D642A /* HomeDIContainer.swift in Sources */,
+				B02803F92708544F009D642A /* RecommendViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,6 +1010,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
@@ -947,8 +1020,11 @@
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
+				B02803E727085141009D642A /* EditOrderViewController.swift in Sources */,
+				B02803EE270851A7009D642A /* AddViewController.swift in Sources */,
 				B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */,
 				B0180F0226DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
+				B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
@@ -957,6 +1033,7 @@
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
+				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */,
@@ -964,6 +1041,7 @@
 				B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */,
 				B0AD5A692705D74000CC07B0 /* HomeViewController.swift in Sources */,
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
+				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
@@ -971,8 +1049,10 @@
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
+				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
 				B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B028038F2706D785009D642A /* HomeDIContainer.swift in Sources */,
+				B02803F82708544F009D642A /* RecommendViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
