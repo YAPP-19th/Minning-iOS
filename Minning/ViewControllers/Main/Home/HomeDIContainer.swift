@@ -39,4 +39,10 @@ final class HomeDIContainer {
         let recommendVC = RecommendViewController(viewModel: viewModel)
         return recommendVC
     }
+    
+    func createNotification(_ coordinator: HomeCoordinator) -> NotificationViewController {
+        let viewModel = NotificationViewModel(coordinator: coordinator)
+        let notificationVC = NotificationViewController(viewModel: viewModel)
+        return notificationVC
+    }
 }

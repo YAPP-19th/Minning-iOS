@@ -10,9 +10,21 @@ import CommonSystem
 import Foundation
 
 final class HomeViewModel {
-    private let coordinator: MainCoordinator
+    private let coordinator: HomeCoordinator
     
-    public init(coordinator: MainCoordinator) {
+    public init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
+    }
+    
+    public func goToAdd() {
+        coordinator.goToAdd()
+    }
+    
+    public func goToNotification() {
+        coordinator.goToNotification()
+    }
+    
+    public func showPhraseModally() {
+        coordinator.goToPhrase()
     }
 }

@@ -19,6 +19,8 @@ protocol HomeRoute {
     func goToReview()
     
     func goToEditOrder()
+    
+    func goToNotification()
 }
 
 class HomeCoordinator {
@@ -36,7 +38,7 @@ class HomeCoordinator {
     }
     
     func start() {
-        let viewModel = HomeViewModel(coordinator: coordinator)
+        let viewModel = HomeViewModel(coordinator: self)
         let homeVC = HomeViewController(viewModel: viewModel)
         navigationController.setViewControllers([homeVC], animated: false)
     }
@@ -64,5 +66,10 @@ extension HomeCoordinator: HomeRoute {
     func goToEditOrder() {
         let editVC = dependencies.createEditOrder(self)
         navigationController.pushViewController(editVC, animated: true)
+    }
+    
+    func goToNotification() {
+        let notificationVC = dependencies.createNotification(self)
+        navigationController.pushViewController(notificationVC, animated: true)
     }
 }

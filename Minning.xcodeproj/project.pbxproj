@@ -82,6 +82,10 @@
 		B02803F627085447009D642A /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F427085447009D642A /* RecommendViewController.swift */; };
 		B02803F82708544F009D642A /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F72708544F009D642A /* RecommendViewModel.swift */; };
 		B02803F92708544F009D642A /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803F72708544F009D642A /* RecommendViewModel.swift */; };
+		B02803FC27085604009D642A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803FB27085604009D642A /* NotificationViewController.swift */; };
+		B02803FD27085604009D642A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803FB27085604009D642A /* NotificationViewController.swift */; };
+		B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803FE2708561C009D642A /* NotificationViewModel.swift */; };
+		B02804002708561C009D642A /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803FE2708561C009D642A /* NotificationViewModel.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -231,6 +235,8 @@
 		B02803F0270851AD009D642A /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
 		B02803F427085447009D642A /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		B02803F72708544F009D642A /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
+		B02803FB27085604009D642A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		B02803FE2708561C009D642A /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -489,6 +495,15 @@
 			path = Recommend;
 			sourceTree = "<group>";
 		};
+		B02803FA270855F9009D642A /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B02803FB27085604009D642A /* NotificationViewController.swift */,
+				B02803FE2708561C009D642A /* NotificationViewModel.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		B08E74712705BAC000854190 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +537,7 @@
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B02803FA270855F9009D642A /* Notification */,
 				B02803EC27085197009D642A /* Add */,
 				B02803DF270850F9009D642A /* EditOrder */,
 				B02803DE270850F2009D642A /* Review */,
@@ -994,12 +1010,14 @@
 				B02803E227085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
+				B02803FD27085604009D642A /* NotificationViewController.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
+				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
 				B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B02803902706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B02803F92708544F009D642A /* RecommendViewModel.swift in Sources */,
@@ -1044,12 +1062,14 @@
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
+				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
+				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
 				B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B028038F2706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B02803F82708544F009D642A /* RecommendViewModel.swift in Sources */,
