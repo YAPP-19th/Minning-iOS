@@ -29,8 +29,14 @@ final class ReviewViewController: BaseViewController {
         $0.text = viewModel.feedbackPlaceholder
         $0.font = .font16P
         $0.isScrollEnabled = false
+        $0.textContainer.lineFragmentPadding = 0
         return $0
     }(UITextView())
+    
+    private let photoSelectButton: PhotoSelectButton = {
+        $0.addTarget(self, action: #selector(onClickSelectPhotoFromLibrary(_:)), for: .touchUpInside)
+        return $0
+    }(PhotoSelectButton())
     
     init(viewModel: ReviewViewModel) {
         self.viewModel = viewModel
@@ -69,7 +75,7 @@ final class ReviewViewController: BaseViewController {
     }
     
     private func setupViewLayout() {
-        [navigationBar, titleLabel, feedbackTextView].forEach {
+        [navigationBar, titleLabel, feedbackTextView, photoSelectButton].forEach {
             view.addSubview($0)
         }
         
@@ -90,6 +96,12 @@ final class ReviewViewController: BaseViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(35.5)
         }
+        
+        photoSelectButton.snp.makeConstraints { make in
+            make.top.equalTo(feedbackTextView.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(16)
+            make.width.height.equalTo(100)
+        }
     }
     
     @objc
@@ -100,6 +112,11 @@ final class ReviewViewController: BaseViewController {
     @objc
     private func onClickPostButton(_ sender: Any?) {
         DebugLog("Did Click Post Button")
+    }
+    
+    @objc
+    private func onClickSelectPhotoFromLibrary(_ sender: Any?) {
+        DebugLog("Did Click Select Photo Button")
     }
 }
 

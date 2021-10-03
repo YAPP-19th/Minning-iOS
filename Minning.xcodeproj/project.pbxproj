@@ -88,6 +88,8 @@
 		B02804002708561C009D642A /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803FE2708561C009D642A /* NotificationViewModel.swift */; };
 		B028043D270972B5009D642A /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028043C270972B5009D642A /* RoutineModel.swift */; };
 		B028043E270972B5009D642A /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028043C270972B5009D642A /* RoutineModel.swift */; };
+		B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028043F270975F4009D642A /* PhotoSelectView.swift */; };
+		B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028043F270975F4009D642A /* PhotoSelectView.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -240,6 +242,7 @@
 		B02803FB27085604009D642A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B02803FE2708561C009D642A /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		B028043C270972B5009D642A /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
+		B028043F270975F4009D642A /* PhotoSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectView.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -466,6 +469,7 @@
 			children = (
 				B02803E027085131009D642A /* ReviewViewController.swift */,
 				B02803E327085139009D642A /* ReviewViewModel.swift */,
+				B028043F270975F4009D642A /* PhotoSelectView.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -1028,6 +1032,7 @@
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
+				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
 				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
@@ -1081,6 +1086,7 @@
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
+				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
