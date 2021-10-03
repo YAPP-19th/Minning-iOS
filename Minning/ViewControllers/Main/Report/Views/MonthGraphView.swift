@@ -47,6 +47,7 @@ final class MonthGraphView: UIView {
         result.append(PointEntry(value: 80, label: "3주차"))
         result.append(PointEntry(value: 30, label: "4주차"))
         result.append(PointEntry(value: 60, label: "5주차"))
+//        result.append(PointEntry(value: 10, label: "6주차"))
         return result
     }
 }

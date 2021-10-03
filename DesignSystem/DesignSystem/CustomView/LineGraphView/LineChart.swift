@@ -234,11 +234,11 @@ public class LineChart: UIView {
     private func drawDots() {
         var dotLayers: [DotCALayer] = []
         if let dataPoints = dataPoints {
-            let lineGap = entireLineGap / CGFloat(dataPoints.count - 1)
+//            let lineGap = entireLineGap / CGFloat(dataPoints.count - 1)
             
             for dataPoint in dataPoints {
                 let xValue = dataPoint.x - outerRadius / 2
-                let yValue = (dataPoint.y + lineGap) - (outerRadius * 2) - 29
+                let yValue = (dataPoint.y + 75) - (outerRadius * 2) - 29
                 let dotLayer = DotCALayer()
                 dotLayer.dotInnerColor = UIColor.primaryBlue
                 dotLayer.innerRadius = innerRadius
