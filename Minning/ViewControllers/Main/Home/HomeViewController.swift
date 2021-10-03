@@ -13,12 +13,12 @@ import SharedAssets
 import SnapKit
 
 final class HomeViewController: BaseViewController {
-    private let profileView: ProfileView = {
+    lazy var profileView: ProfileView = {
+        $0.delegate = self
         return $0
     }(ProfileView())
     
     private let contentView: UIView = UIView()
-    
     private let viewModel: HomeViewModel
     
     public init(viewModel: HomeViewModel) {
@@ -34,10 +34,6 @@ final class HomeViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            self.viewModel.showPhraseModally()
-        })
     }
     
     private func setupViewLayout() {
@@ -57,5 +53,15 @@ final class HomeViewController: BaseViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
         }
+    }
+}
+
+extension HomeViewController: ProfileViewDelegate {
+    func didSelectAdd() {
+        viewModel.goToAdd()
+    }
+    
+    func didSelectNoti() {
+        viewModel.goToNotification()
     }
 }

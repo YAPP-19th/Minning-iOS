@@ -15,4 +15,8 @@ final class NotificationViewModel {
     init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
     }
+    
+    public func goToBack() {
+        coordinator.goToBack()
+    }
 }
