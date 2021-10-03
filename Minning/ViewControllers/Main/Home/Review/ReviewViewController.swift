@@ -94,7 +94,7 @@ final class ReviewViewController: BaseViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(35.5)
+            make.height.greaterThanOrEqualTo(35.5)
         }
         
         photoSelectButton.snp.makeConstraints { make in
@@ -122,14 +122,7 @@ final class ReviewViewController: BaseViewController {
 
 extension ReviewViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        let size = CGSize(width: view.frame.width, height: .infinity)
-        let estimatedSize = textView.sizeThatFits(size)
-        
         viewModel.feedbackContent.accept(textView.text)
-        
-        textView.snp.updateConstraints { make in
-            make.height.equalTo(estimatedSize.height)
-        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
