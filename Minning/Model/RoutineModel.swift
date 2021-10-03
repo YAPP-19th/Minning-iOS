@@ -10,25 +10,25 @@ import DesignSystem
 import Foundation
 
 public enum RoutineCategory {
-    // 운동, 생활, 학습, 미라클모닝, 기타
+    // 운동, 생활, 자기개발, 미라클모닝
     case exercise
     case life
-    case study
+    case selfDev
     case miracle
     case other
     
     var color: UIColor {
         switch self {
         case .exercise:
-            return .routineBlue
+            return .routineGreen
         case .life:
-            return .routineGreen
-        case .study:
-            return .routinePurple
-        case .miracle:
-            return .routineGreen
-        case .other:
             return .routineYellow
+        case .selfDev:
+            return .routineRed
+        case .miracle:
+            return .routineBlue
+        case .other:
+            return .routinePurple
         }
     }
 }

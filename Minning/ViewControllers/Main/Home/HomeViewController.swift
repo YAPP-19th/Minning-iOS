@@ -33,9 +33,6 @@ final class HomeViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            self.viewModel.showPhraseModally()
-        })
     }
     
     override func setupViewLayout() {

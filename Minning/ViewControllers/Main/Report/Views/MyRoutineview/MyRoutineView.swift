@@ -47,20 +47,23 @@ final class MyRoutineView: UIView {
     }
     
     private func createSampleData() {
-        let sampleCategory: [RoutineCategory] = [.exercise, .life, .miracle, .study, .other]
+        let sampleCategory: [RoutineCategory] = [.exercise, .life, .miracle, .selfDev]
         let sampleResult: [RoutineResult] = [.done, .tried, .relax, .failure]
         var sampleDataList: [Routine] = []
         
-        for index in 0..<35 {
+        for index in 0..<28 {
             if index > 0, index % 7 == 0 {
                 sampleRoutineData.append(sampleDataList)
                 sampleDataList.removeAll()
             }
+            
+            let randomIndex = Int.random(in: 0..<4)
+            
             sampleDataList.append(Routine(title: "샘플\(index)",
                                           category: sampleCategory[index / 7],
-                                          result: sampleResult[index % 4]))
+                                          result: sampleResult[randomIndex]))
             
-            if index == 34 {
+            if index == 27 {
                 sampleRoutineData.append(sampleDataList)
                 sampleDataList.removeAll()
             }
@@ -90,7 +93,7 @@ final class MyRoutineView: UIView {
 
 extension MyRoutineView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
