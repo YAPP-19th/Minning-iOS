@@ -33,7 +33,39 @@ public enum RoutineCategory {
     }
 }
 
+public enum RoutineResult {
+    case done // 다했어요
+    case tried // 시도했어요
+    case relax // 쉬었어요
+    case failure // 못했어요
+    
+    var symbolOpacity: Float {
+        switch self {
+        case .done, .failure:
+            return 1.0
+        case .tried:
+            return 0.5
+        case .relax:
+            return 0
+        }
+    }
+    
+    var symbolImage: UIImage? {
+        switch self {
+        case .done:
+            return UIImage(sharedNamed: "routine_done")
+        case .failure:
+            return UIImage(sharedNamed: "routine_failure")
+        case .tried:
+            return UIImage(sharedNamed: "routine_tried")
+        case .relax:
+            return nil
+        }
+    }
+}
+
 public struct Routine {
     let title: String
     let category: RoutineCategory
+    let result: RoutineResult
 }

@@ -81,6 +81,8 @@ final class ReportViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
+        view.backgroundColor = .grayE5E5E5
+        
         [weekTabButton, monthTabButton,
          dataComboButton, scrollView].forEach {
             view.addSubview($0)
@@ -108,7 +110,8 @@ final class ReportViewController: BaseViewController {
         scrollView.delegate = self
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(dataComboButton.snp.bottom).offset(20)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
         scrollView.contentInsetAdjustmentBehavior = .never
