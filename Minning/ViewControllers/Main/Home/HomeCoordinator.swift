@@ -46,7 +46,8 @@ class HomeCoordinator {
 
 extension HomeCoordinator: HomeRoute {
     func goToPhrase() {
-        let _ = dependencies.createPhrase(self)
+        let phraseVC = dependencies.createPhrase(self)
+        navigationController.topViewController?.present(phraseVC, animated: true, completion: nil)
     }
     
     func goToRecommend() {
