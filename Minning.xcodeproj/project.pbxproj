@@ -90,6 +90,14 @@
 		B028043E270972B5009D642A /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028043C270972B5009D642A /* RoutineModel.swift */; };
 		B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028043F270975F4009D642A /* PhotoSelectView.swift */; };
 		B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028043F270975F4009D642A /* PhotoSelectView.swift */; };
+		B0280453270986B5009D642A /* WeeklyPercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280452270986B5009D642A /* WeeklyPercentView.swift */; };
+		B0280454270986B5009D642A /* WeeklyPercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280452270986B5009D642A /* WeeklyPercentView.swift */; };
+		B0280456270986D8009D642A /* MyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280455270986D8009D642A /* MyRoutineView.swift */; };
+		B0280457270986D8009D642A /* MyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280455270986D8009D642A /* MyRoutineView.swift */; };
+		B0280459270986FB009D642A /* MonthGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280458270986FB009D642A /* MonthGraphView.swift */; };
+		B028045A270986FB009D642A /* MonthGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280458270986FB009D642A /* MonthGraphView.swift */; };
+		B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareView.swift */; };
+		B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareView.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -243,6 +251,10 @@
 		B02803FE2708561C009D642A /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		B028043C270972B5009D642A /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
 		B028043F270975F4009D642A /* PhotoSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectView.swift; sourceTree = "<group>"; };
+		B0280452270986B5009D642A /* WeeklyPercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPercentView.swift; sourceTree = "<group>"; };
+		B0280455270986D8009D642A /* MyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineView.swift; sourceTree = "<group>"; };
+		B0280458270986FB009D642A /* MonthGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGraphView.swift; sourceTree = "<group>"; };
+		B028045B2709871D009D642A /* RoutineCompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCompareView.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -519,6 +531,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B028044E270986A2009D642A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B0280452270986B5009D642A /* WeeklyPercentView.swift */,
+				B0280455270986D8009D642A /* MyRoutineView.swift */,
+				B0280458270986FB009D642A /* MonthGraphView.swift */,
+				B028045B2709871D009D642A /* RoutineCompareView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B08E74712705BAC000854190 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +592,7 @@
 		B0AD5A6B2705D76A00CC07B0 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				B028044E270986A2009D642A /* Views */,
 				B0AD5A6D2705D78100CC07B0 /* ReportViewController.swift */,
 				B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */,
 				B02803A12706DCB5009D642A /* ReportDIContainer.swift */,
@@ -1002,6 +1026,7 @@
 				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A752705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
+				B0280457270986D8009D642A /* MyRoutineView.swift in Sources */,
 				B02803E827085141009D642A /* EditOrderViewController.swift in Sources */,
 				B02803EF270851A7009D642A /* AddViewController.swift in Sources */,
 				B0AD5A5C2705D66400CC07B0 /* BaseViewController.swift in Sources */,
@@ -1011,6 +1036,7 @@
 				B0180ED626DCC307008C6F3C /* MainCoordinator.swift in Sources */,
 				B08E74812705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */,
+				B028045A270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
@@ -1023,6 +1049,7 @@
 				B0AD5A722705D79300CC07B0 /* GroupViewController.swift in Sources */,
 				B0180ED826DCC307008C6F3C /* OurApp.xcdatamodeld in Sources */,
 				B0AD5A6A2705D74000CC07B0 /* HomeViewController.swift in Sources */,
+				B0280454270986B5009D642A /* WeeklyPercentView.swift in Sources */,
 				B02803962706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E227085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
@@ -1033,6 +1060,7 @@
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
+				B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
 				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
@@ -1056,6 +1084,7 @@
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
+				B0280456270986D8009D642A /* MyRoutineView.swift in Sources */,
 				B02803E727085141009D642A /* EditOrderViewController.swift in Sources */,
 				B02803EE270851A7009D642A /* AddViewController.swift in Sources */,
 				B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */,
@@ -1065,6 +1094,7 @@
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
+				B0280459270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
@@ -1077,6 +1107,7 @@
 				B0AD5A712705D79300CC07B0 /* GroupViewController.swift in Sources */,
 				B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */,
 				B0AD5A692705D74000CC07B0 /* HomeViewController.swift in Sources */,
+				B0280453270986B5009D642A /* WeeklyPercentView.swift in Sources */,
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
@@ -1087,6 +1118,7 @@
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
+				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
