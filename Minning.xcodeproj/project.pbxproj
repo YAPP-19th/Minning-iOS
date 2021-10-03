@@ -132,6 +132,12 @@
 		B0D16E0226DA57F400A8E52B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0D16E0026DA57F400A8E52B /* LaunchScreen.storyboard */; };
 		B0D16E0D26DA57F400A8E52B /* OurAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16E0C26DA57F400A8E52B /* OurAppTests.swift */; };
 		B0D16E1826DA57F400A8E52B /* OurAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16E1726DA57F400A8E52B /* OurAppUITests.swift */; };
+		B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */; };
+		B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */; };
+		B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */; };
+		B0ECF87F2709932E0088C96E /* MyRoutineContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */; };
+		B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */; };
+		B0ECF8822709960D0088C96E /* MyRoutineContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,6 +287,9 @@
 		B0D16E1326DA57F400A8E52B /* MinningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinningUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D16E1726DA57F400A8E52B /* OurAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurAppUITests.swift; sourceTree = "<group>"; };
 		B0D16E1926DA57F400A8E52B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineTitleCell.swift; sourceTree = "<group>"; };
+		B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentCell.swift; sourceTree = "<group>"; };
+		B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentItemView.swift; sourceTree = "<group>"; };
 		B6A5A7CC6938E672B3DF7DA0 /* Pods-Minning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning.release.xcconfig"; path = "Target Support Files/Pods-Minning/Pods-Minning.release.xcconfig"; sourceTree = "<group>"; };
 		C96E0F345A504DC74CA4CCDE /* Pods-OurApp-OurAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp-OurAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-OurApp-OurAppUITests/Pods-OurApp-OurAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -534,8 +543,8 @@
 		B028044E270986A2009D642A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B0ECF8762709930F0088C96E /* MyRoutineview */,
 				B0280452270986B5009D642A /* WeeklyPercentView.swift */,
-				B0280455270986D8009D642A /* MyRoutineView.swift */,
 				B0280458270986FB009D642A /* MonthGraphView.swift */,
 				B028045B2709871D009D642A /* RoutineCompareView.swift */,
 			);
@@ -670,6 +679,17 @@
 				B0D16E1926DA57F400A8E52B /* Info.plist */,
 			);
 			path = MinningUITests;
+			sourceTree = "<group>";
+		};
+		B0ECF8762709930F0088C96E /* MyRoutineview */ = {
+			isa = PBXGroup;
+			children = (
+				B0280455270986D8009D642A /* MyRoutineView.swift */,
+				B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */,
+				B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */,
+				B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */,
+			);
+			path = MyRoutineview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1023,6 +1043,7 @@
 				B08E747A2705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A32706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EF026DCC551008C6F3C /* AppDIContainer.swift in Sources */,
+				B0ECF87F2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
 				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A752705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
@@ -1053,6 +1074,8 @@
 				B02803962706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E227085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
+				B0ECF8822709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
+				B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FD27085604009D642A /* NotificationViewController.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
@@ -1081,6 +1104,7 @@
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
+				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
@@ -1111,6 +1135,8 @@
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
+				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
+				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
