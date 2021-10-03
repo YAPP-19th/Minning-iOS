@@ -24,7 +24,6 @@ final class HomeViewController: BaseViewController {
     public init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        setupViewLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -36,7 +35,7 @@ final class HomeViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func setupViewLayout() {
+    override func setupViewLayout() {
         view.backgroundColor = .primaryWhite
         [contentView, profileView].forEach {
             view.addSubview($0)
@@ -53,6 +52,10 @@ final class HomeViewController: BaseViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
         }
+    }
+    
+    override func bindViewModel() {
+        
     }
 }
 

@@ -56,6 +56,7 @@ public extension UIColor {
     static var kakaoBlack85: UIColor { fetchColor(#function) }
     static var grayE5E5E5: UIColor { fetchColor(#function) }
     static var grayEEF1F5: UIColor { fetchColor(#function) }
+    static var gray787C84: UIColor { fetchColor(#function) }
 
     private static func fetchColor(_ name: String) -> UIColor {
         //            let name = name.replacingOccurrences(of: "", with: "")

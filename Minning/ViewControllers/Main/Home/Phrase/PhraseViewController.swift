@@ -68,11 +68,9 @@ final class PhraseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewLayout()
-        bindViewModel()
     }
     
-    private func setupViewLayout() {
+    override func setupViewLayout() {
         phraseTextView.delegate = self
         
         [deleteButton, postButton,
@@ -124,7 +122,7 @@ final class PhraseViewController: BaseViewController {
         }
     }
     
-    private func bindViewModel() {
+    override func bindViewModel() {
         viewModel.isContentValid.bindAndFire { [weak self] isValid in
             guard let `self` = self else { return }
             self.postButton.isEnabled = isValid

@@ -99,11 +99,6 @@ final class LoginViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViewLayout()
-    }
-    
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
         viewModel.goToPassword(isLogin: false)
@@ -114,7 +109,7 @@ final class LoginViewController: BaseViewController {
         loginButton.isActive = sender.text?.count ?? 0 > 0
     }
     
-    private func setupViewLayout() {
+    override func setupViewLayout() {
         view.backgroundColor = .primaryLightGray
         view.addSubview(scrollView)
         scrollView.delegate = self

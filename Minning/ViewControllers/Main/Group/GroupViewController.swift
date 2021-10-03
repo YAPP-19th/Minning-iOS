@@ -28,4 +28,12 @@ final class GroupViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    override func bindViewModel() {
+        
+    }
+    
+    override func setupViewLayout() {
+        
+    }
 }

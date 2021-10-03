@@ -33,6 +33,9 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         if registerKeyboardObservers {
             registerKeyboardNotifications()
         }
+        
+        setupViewLayout()
+        bindViewModel()
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -106,4 +109,7 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         observers.forEach { NotificationCenter.default.removeObserver($0) }
         observers = []
     }
+    
+    public func bindViewModel() { }
+    public func setupViewLayout() { }
 }

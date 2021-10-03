@@ -80,12 +80,11 @@ final class NicknameViewController: BaseViewController {
         navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViewLayout()
+    override func bindViewModel() {
+        
     }
     
-    private func setupViewLayout() {
+    override func setupViewLayout() {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)

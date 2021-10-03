@@ -19,6 +19,7 @@
 		B028040227095BF3009D642A /* TopTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028040127095BF3009D642A /* TopTextButton.swift */; };
 		B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02804032709621F009D642A /* UILabel+Extensions.swift */; };
 		B028042127096C24009D642A /* MUIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028042027096C24009D642A /* MUIBarButtonItem.swift */; };
+		B028046227098803009D642A /* ComboButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028046127098803009D642A /* ComboButton.swift */; };
 		B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */; };
 		B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEED9270552B100011FC4 /* PlainButton.swift */; };
 		B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */; };
@@ -56,6 +57,7 @@
 		B028040127095BF3009D642A /* TopTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTextButton.swift; sourceTree = "<group>"; };
 		B02804032709621F009D642A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		B028042027096C24009D642A /* MUIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUIBarButtonItem.swift; sourceTree = "<group>"; };
+		B028046127098803009D642A /* ComboButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboButton.swift; sourceTree = "<group>"; };
 		B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainUINavigationBar.swift; sourceTree = "<group>"; };
 		B0FDEED9270552B100011FC4 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
 		B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				B0FDEED9270552B100011FC4 /* PlainButton.swift */,
 				B0FDEEE127055DEC00011FC4 /* ImageButton.swift */,
 				B028040127095BF3009D642A /* TopTextButton.swift */,
+				B028046127098803009D642A /* ComboButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B028046227098803009D642A /* ComboButton.swift in Sources */,
 				B0180F8A26DCCCE7008C6F3C /* UIColor+Extensions.swift in Sources */,
 				B0180F8C26DCCD22008C6F3C /* Bundle+Extensions.swift in Sources */,
 				B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */,
