@@ -27,4 +27,8 @@ final class HomeViewModel {
     public func showPhraseModally() {
         coordinator.goToPhrase()
     }
+    
+    public func showReviewFullModally() {
+        coordinator.goToReview()
+    }
 }

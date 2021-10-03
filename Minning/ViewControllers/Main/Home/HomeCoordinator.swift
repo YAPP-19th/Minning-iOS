@@ -63,7 +63,8 @@ extension HomeCoordinator: HomeRoute {
     
     func goToReview() {
         let reviewVC = dependencies.createReview(self)
-        navigationController.pushViewController(reviewVC, animated: true)
+        reviewVC.modalPresentationStyle = .fullScreen
+        navigationController.topViewController?.present(reviewVC, animated: true, completion: nil)
     }
     
     func goToEditOrder() {
