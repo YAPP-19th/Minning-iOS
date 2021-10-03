@@ -58,6 +58,12 @@ public extension UIColor {
     static var grayEEF1F5: UIColor { fetchColor(#function) }
     static var gray787C84: UIColor { fetchColor(#function) }
 
+    static var routineRed: UIColor { fetchColor(#function) }
+    static var routineBlue: UIColor { fetchColor(#function) }
+    static var routineGreen: UIColor { fetchColor(#function) }
+    static var routinePurple: UIColor { fetchColor(#function) }
+    static var routineYellow: UIColor { fetchColor(#function) }
+    
     private static func fetchColor(_ name: String) -> UIColor {
         //            let name = name.replacingOccurrences(of: "", with: "")
         let assetName = name
