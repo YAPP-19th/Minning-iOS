@@ -20,6 +20,6 @@ final class ReviewViewModel {
         self.coordinator = coordinator
         
         // SAMPLE
-        routimeItem.accept(Routine(title: "아침에 신문읽기"))
+        routimeItem.accept(Routine(title: "아침에 신문읽기", category: .life))
     }
 }
