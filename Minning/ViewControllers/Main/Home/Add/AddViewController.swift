@@ -44,4 +44,12 @@ final class AddViewController: BaseViewController {
     private func onClickBackButton(_ sender: Any?) {
         viewModel.goToBack()
     }
+    
+    override func bindViewModel() {
+        
+    }
+    
+    override func setupViewLayout() {
+        
+    }
 }

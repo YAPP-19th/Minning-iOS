@@ -10,6 +10,7 @@ import DesignSystem
 import Foundation
 
 protocol ReportRoute {
+    func goToBack()
 }
 
 class ReportCoordinator {
@@ -34,5 +35,7 @@ class ReportCoordinator {
 }
 
 extension ReportCoordinator: ReportRoute {
-    
+    func goToBack() {
+        navigationController.popViewController(animated: true)
+    }
 }

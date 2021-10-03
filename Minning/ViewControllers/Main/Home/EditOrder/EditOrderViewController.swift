@@ -27,4 +27,12 @@ final class EditOrderViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func bindViewModel() {
+        
+    }
+    
+    override func setupViewLayout() {
+        
+    }
 }

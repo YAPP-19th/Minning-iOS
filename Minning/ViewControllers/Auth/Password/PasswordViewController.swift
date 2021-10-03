@@ -87,12 +87,6 @@ final class PasswordViewController: BaseViewController {
         navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViewLayout()
-        bindViewModel()
-    }
-    
     private func updateViewContent() {
         if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
             navBar.titleContent = viewModel.passwordViewType.value.title
@@ -104,7 +98,7 @@ final class PasswordViewController: BaseViewController {
         findPasswordButton.isHidden = !(viewModel.passwordViewType.value == .login)
     }
     
-    private func setupViewLayout() {
+    override func setupViewLayout() {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)
@@ -126,7 +120,7 @@ final class PasswordViewController: BaseViewController {
         }
     }
     
-    private func bindViewModel() {
+    override func bindViewModel() {
         viewModel.passwordViewType.bind { [weak self] _ in
             guard let `self` = self else { return }
             self.updateViewContent()

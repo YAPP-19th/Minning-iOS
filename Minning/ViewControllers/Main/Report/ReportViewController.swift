@@ -13,6 +13,18 @@ import SharedAssets
 import SnapKit
 
 final class ReportViewController: BaseViewController {
+    private let weekTabButton: UIButton = {
+        $0.setTitle("주", for: .normal)
+        $0.titleLabel?.font = .font20PExBold
+        return $0
+    }(UIButton())
+    
+    private let monthTabButton: UIButton = {
+        $0.setTitle("월", for: .normal)
+        $0.titleLabel?.font = .font20PExBold
+        return $0
+    }(UIButton())
+    
     private let viewModel: ReportViewModel
     
     public init(viewModel: ReportViewModel) {
@@ -27,5 +39,20 @@ final class ReportViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func setupViewLayout() {
+        
+    }
+    
+    override func bindViewModel() {
+        viewModel.tabType.bindAndFire { [weak self] type in
+            guard let `self` = self else { return }
+            self.weekTabButton.isEnabled = type == .week
+            self.weekTabButton.setTitleColor(type == .week ? .primaryBlack : .primaryGray, for: .normal)
+            
+            self.monthTabButton.isEnabled = type == .month
+            self.monthTabButton.setTitleColor(type == .month ? .primaryBlack : .primaryGray, for: .normal)
+        }
     }
 }

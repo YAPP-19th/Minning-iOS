@@ -10,6 +10,12 @@ import CommonSystem
 import Foundation
 
 final class ReportViewModel {
+    enum ReportTabType {
+        case week
+        case month
+    }
+    
+    var tabType: DataBinding<ReportTabType> = DataBinding(.week)
     private let coordinator: MainCoordinator
     
     public init(coordinator: MainCoordinator) {

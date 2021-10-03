@@ -11,7 +11,7 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-class SplashViewController: UIViewController {
+class SplashViewController: BaseViewController {
     private let appLogoView: UIImageView = {
         $0.image = UIImage(sharedNamed: "AppIcon80")
         return $0
@@ -43,6 +43,16 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            self.viewModel.goToLogin()
+        })
+    }
+    
+    override func bindViewModel() {
+        
+    }
+    
+    override func setupViewLayout() {
         view.backgroundColor = .primaryBlue
         [appLogoView, appTextLogoView, titleLabel].forEach {
             view.addSubview($0)
@@ -63,9 +73,5 @@ class SplashViewController: UIViewController {
             make.top.equalTo(appTextLogoView.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.viewModel.goToLogin()
-        })
     }
 }

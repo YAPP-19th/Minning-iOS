@@ -49,12 +49,10 @@ final class ReviewViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewLayout()
         setupNavigationBar()
-        bindViewModel()
     }
     
-    private func bindViewModel() {
+    override func bindViewModel() {
         viewModel.routimeItem.bindAndFire { [weak self] routine in
             guard let `self` = self else { return }
             self.titleLabel.text = routine?.title
@@ -74,7 +72,7 @@ final class ReviewViewController: BaseViewController {
         navigationBar.setItems([navigationItem], animated: false)
     }
     
-    private func setupViewLayout() {
+    override func setupViewLayout() {
         [navigationBar, titleLabel, feedbackTextView, photoSelectButton].forEach {
             view.addSubview($0)
         }
