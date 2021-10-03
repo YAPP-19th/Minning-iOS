@@ -21,6 +21,8 @@ protocol HomeRoute {
     func goToEditOrder()
     
     func goToNotification()
+    
+    func goToBack()
 }
 
 class HomeCoordinator {
@@ -46,7 +48,8 @@ class HomeCoordinator {
 
 extension HomeCoordinator: HomeRoute {
     func goToPhrase() {
-        let _ = dependencies.createPhrase(self)
+        let phraseVC = dependencies.createPhrase(self)
+        navigationController.topViewController?.present(phraseVC, animated: true, completion: nil)
     }
     
     func goToRecommend() {
@@ -71,5 +74,9 @@ extension HomeCoordinator: HomeRoute {
     func goToNotification() {
         let notificationVC = dependencies.createNotification(self)
         navigationController.pushViewController(notificationVC, animated: true)
+    }
+    
+    func goToBack() {
+        navigationController.popViewController(animated: true)
     }
 }

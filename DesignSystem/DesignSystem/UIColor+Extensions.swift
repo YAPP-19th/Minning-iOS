@@ -48,12 +48,14 @@ public extension UIColor {
     static var primaryBlue: UIColor { fetchColor(#function) }
     static var primaryWhite: UIColor { fetchColor(#function) }
     static var primaryGray: UIColor { fetchColor(#function) }
+    static var primaryBlack: UIColor { fetchColor(#function) }
     static var primaryTextGray: UIColor { fetchColor(#function) }
     static var primaryLightGray: UIColor { fetchColor(#function) }
     
     static var kakaoYellow: UIColor { fetchColor(#function) }
     static var kakaoBlack85: UIColor { fetchColor(#function) }
     static var grayE5E5E5: UIColor { fetchColor(#function) }
+    static var grayEEF1F5: UIColor { fetchColor(#function) }
 
     private static func fetchColor(_ name: String) -> UIColor {
         //            let name = name.replacingOccurrences(of: "", with: "")

@@ -12,7 +12,15 @@ import Foundation
 import SharedAssets
 import SnapKit
 
+protocol ProfileViewDelegate: AnyObject {
+    func didSelectAdd()
+    
+    func didSelectNoti()
+}
+
 final class ProfileView: UIView {
+    weak var delegate: ProfileViewDelegate?
+    
     private let profileImageView: UIImageView = {
         $0.backgroundColor = .primaryLightGray
         $0.layer.cornerRadius = 22
@@ -36,11 +44,13 @@ final class ProfileView: UIView {
     
     private let notiButton: ImageButton = {
         $0.setImage(UIImage(sharedNamed: "bell"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickOptionButton(_:)), for: .touchUpInside)
         return $0
     }(ImageButton())
     
     private let addButton: ImageButton = {
         $0.setImage(UIImage(sharedNamed: "add"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickOptionButton(_:)), for: .touchUpInside)
         return $0
     }(ImageButton())
     
@@ -61,6 +71,18 @@ final class ProfileView: UIView {
         $0.setImage(UIImage(sharedNamed: "arrow_right"), for: .normal)
         return $0
     }(ImageButton())
+    
+    @objc
+    private func onClickOptionButton(_ sender: ImageButton) {
+        switch sender {
+        case addButton:
+            delegate?.didSelectAdd()
+        case notiButton:
+            delegate?.didSelectNoti()
+        default:
+            break
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

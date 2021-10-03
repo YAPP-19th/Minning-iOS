@@ -27,4 +27,21 @@ final class NotificationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
+            navBar.titleContent = "알림"
+            navBar.removeDefaultShadowImage()
+        }
+        
+        navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
+    }
+    
+    @objc
+    private func onClickBackButton(_ sender: Any?) {
+        viewModel.goToBack()
+    }
 }
