@@ -12,6 +12,7 @@ import Foundation
 final class PhraseViewModel {
     var isContentValid: DataBinding<Bool> = DataBinding(false)
     var phraseContent: DataBinding<String> = DataBinding("새로운 일을 시작하는 용기속에 당신의 천재성, 능력과 기적이 모두 숨어 있다.")
+    var userInputContent: DataBinding<String> = DataBinding("")
     
     let coordinator: HomeCoordinator
     
@@ -19,7 +20,12 @@ final class PhraseViewModel {
         self.coordinator = coordinator
     }
     
-    func updateValidation(content: String) {
-        isContentValid.accept(phraseContent.value == content)
+    func updateValidation() {
+        isContentValid.accept(phraseContent.value == userInputContent.value)
+    }
+    
+    func setUserContent(content: String) {
+        userInputContent.accept(content)
+        updateValidation()
     }
 }

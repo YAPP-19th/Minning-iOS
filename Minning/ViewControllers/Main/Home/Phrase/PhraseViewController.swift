@@ -13,10 +13,11 @@ import SharedAssets
 import SnapKit
 
 final class PhraseViewController: BaseViewController {
-    private let deleteButton: TopTextButton = {
-        $0.setTitle("삭제", for: .normal)
+    private let deleteButton: ImageButton = {
+        $0.setImage(UIImage(sharedNamed: "close"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickCloseButton(_:)), for: .touchUpInside)
         return $0
-    }(TopTextButton())
+    }(ImageButton())
     
     private let postButton: TopTextButton = {
         $0.setTitle("저장", for: .normal)
@@ -80,8 +81,9 @@ final class PhraseViewController: BaseViewController {
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(26)
-            make.leading.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(14)
+            make.leading.equalToSuperview().offset(4)
+            make.width.height.equalTo(44)
         }
         
         postButton.snp.makeConstraints { make in
@@ -135,6 +137,17 @@ final class PhraseViewController: BaseViewController {
             self.phraseTextView.textColor = .primaryGray
         }
     }
+    
+    @objc
+    private func onClickCloseButton(_ sender: ImageButton) {
+        if viewModel.userInputContent.value.count > 0 {
+            showAlert(title: "삭제 타이틀", message: "화면을 벗어나면 작성중인 글이 전부 삭제됩니다. 그래도 나가시겠습니까?", handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            })
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
 }
 
 extension PhraseViewController: UITextViewDelegate {
@@ -146,7 +159,7 @@ extension PhraseViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        viewModel.updateValidation(content: textView.text)
+        viewModel.setUserContent(content: textView.text)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
