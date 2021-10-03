@@ -13,6 +13,8 @@ import SharedAssets
 import SnapKit
 
 final class MonthGraphView: UIView {
+    private let curvedLineChart: LineChart = LineChart()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -23,10 +25,28 @@ final class MonthGraphView: UIView {
     }
     
     private func setupView() {
-        // SAMPLE
-        backgroundColor = .systemTeal
+        backgroundColor = .primaryWhite
         self.snp.makeConstraints { make in
-            make.height.equalTo(300)
+            make.height.equalTo(216)
         }
+        
+        addSubview(curvedLineChart)
+        curvedLineChart.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        curvedLineChart.dataEntries = generateRandomEntries()
+        curvedLineChart.showDots = true
+        curvedLineChart.isCurved = true
+    }
+    
+    private func generateRandomEntries() -> [PointEntry] {
+        var result: [PointEntry] = []
+        result.append(PointEntry(value: 70, label: "1주차"))
+        result.append(PointEntry(value: 20, label: "2주차"))
+        result.append(PointEntry(value: 80, label: "3주차"))
+        result.append(PointEntry(value: 30, label: "4주차"))
+        result.append(PointEntry(value: 60, label: "5주차"))
+        return result
     }
 }

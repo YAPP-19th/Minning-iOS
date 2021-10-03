@@ -81,7 +81,7 @@ final class ReportViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .grayE5E5E5
+        view.backgroundColor = .grayF6F7F9
         
         [weekTabButton, monthTabButton,
          dataComboButton, scrollView].forEach {
