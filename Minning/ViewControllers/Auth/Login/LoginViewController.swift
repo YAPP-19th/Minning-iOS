@@ -52,13 +52,13 @@ final class LoginViewController: BaseViewController {
         return $0
     }(PlainButton())
     
-    private let simpleLoginButton: UIButton = {
-        $0.setTitle("간편하게 로그인하기", for: .normal)
-        $0.setTitleColor(.primaryTextGray, for: .normal)
-        $0.titleLabel?.textAlignment = .center
-        $0.titleLabel?.font = .font16PMedium
+    private let socialLoginLabel: UILabel = {
+        $0.text = "간편하게 로그인하기"
+        $0.textColor = .primaryTextGray
+        $0.textAlignment = .center
+        $0.font = .font16PMedium
         return $0
-    }(UIButton())
+    }(UILabel())
     
     private let kakaoLoginutton: PlainButton = {
         $0.isActive = true
@@ -163,7 +163,7 @@ final class LoginViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        [simpleLoginButton, kakaoLoginutton, appleLoginButton].forEach {
+        [socialLoginLabel, kakaoLoginutton, appleLoginButton].forEach {
             footerLoginStackView.addArrangedSubview($0)
             $0.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview()
