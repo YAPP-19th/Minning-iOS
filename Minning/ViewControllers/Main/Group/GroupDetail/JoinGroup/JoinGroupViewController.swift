@@ -34,6 +34,8 @@ final class JoinGroupViewController: BaseViewController {
         return $0
     }(PlainButton())
     
+    public var completion: (() -> Void)?
+    
     private let viewModel: JoinGroupViewModel
     
     public init(viewModel: JoinGroupViewModel) {
@@ -54,7 +56,8 @@ final class JoinGroupViewController: BaseViewController {
         [backgroundView, contentView].forEach {
             view.addSubview($0)
         }
-        backgroundView.backgroundColor = .primaryBlack040
+//        backgroundView.backgroundColor = .primaryBlack040
+        backgroundView.backgroundColor = .clear
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         backgroundView.addGestureRecognizer(tapGesture)
@@ -86,6 +89,7 @@ final class JoinGroupViewController: BaseViewController {
     
     @objc
     private func handleTap(sender: UITapGestureRecognizer) {
+        completion?()
         dismiss(animated: true, completion: nil)
     }
 }

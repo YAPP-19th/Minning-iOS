@@ -76,7 +76,7 @@ final class WeeklyView: UIView {
                 let dayValue = data.date.get(.day)
                 dateLabel.text = "\(dayValue > 9 ? "" : "0")\(dayValue) \(WeeklyText(rawValue: data.date.get(.weekday))?.title ?? "-")"
 //                progressView.setProgress(data.progress)
-                progressView.animateProgressView(duration: 0.5, progress: data.progress)
+                progressView.animateProgressView(duration: 0.3, progress: data.progress)
             } else {
                 dateLabel.text = "00 월"
             }

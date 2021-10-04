@@ -17,8 +17,8 @@ final class GroupDetailViewModel {
         self.coordinator = coordinator
     }
     
-    func showJoinGroup() {
-        coordinator.showJoinGroup()
+    func showJoinGroup(completion: (() -> Void)?) {
+        coordinator.showJoinGroup(completion: completion)
     }
     
     func dismissVC() {

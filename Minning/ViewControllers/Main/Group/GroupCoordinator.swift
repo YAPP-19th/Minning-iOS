@@ -11,7 +11,7 @@ import Foundation
 
 protocol GroupRoute {
     func showDetail()
-    func showJoinGroup()
+    func showJoinGroup(completion: (() -> Void)?)
     func goToNewGroup()
     
     func goToBack()
@@ -46,9 +46,10 @@ extension GroupCoordinator: GroupRoute {
         navigationController.topViewController?.present(detailVC, animated: true, completion: nil)
     }
     
-    func showJoinGroup() {
+    func showJoinGroup(completion: (() -> Void)?) {
         let joinGroupVC = dependencies.createJoinGroup(self)
         joinGroupVC.modalPresentationStyle = .overCurrentContext
+        joinGroupVC.completion = completion
         navigationController.topViewController?.presentedViewController?.present(joinGroupVC, animated: true, completion: nil)
     }
     
