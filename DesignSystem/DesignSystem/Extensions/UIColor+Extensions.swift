@@ -50,6 +50,7 @@ public extension UIColor {
     static var primaryWhite: UIColor { fetchColor(#function) }
     static var primaryGray: UIColor { fetchColor(#function) }
     static var primaryBlack: UIColor { fetchColor(#function) }
+    static var primaryBlack040: UIColor { fetchColor(#function) }
     static var primaryTextGray: UIColor { fetchColor(#function) }
     static var primaryLightGray: UIColor { fetchColor(#function) }
     

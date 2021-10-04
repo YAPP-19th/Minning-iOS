@@ -138,6 +138,20 @@
 		B0ECF87F2709932E0088C96E /* MyRoutineContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */; };
 		B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */; };
 		B0ECF8822709960D0088C96E /* MyRoutineContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */; };
+		B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */; };
+		B0ECF88F270AD8350088C96E /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */; };
+		B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */; };
+		B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */; };
+		B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF893270AD8CC0088C96E /* GroupModel.swift */; };
+		B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF893270AD8CC0088C96E /* GroupModel.swift */; };
+		B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */; };
+		B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */; };
+		B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */; };
+		B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */; };
+		B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */; };
+		B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */; };
+		B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */; };
+		B0ECF8A3270AE0600088C96E /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -290,6 +304,13 @@
 		B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineTitleCell.swift; sourceTree = "<group>"; };
 		B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentCell.swift; sourceTree = "<group>"; };
 		B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentItemView.swift; sourceTree = "<group>"; };
+		B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
+		B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModel.swift; sourceTree = "<group>"; };
+		B0ECF893270AD8CC0088C96E /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
+		B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModel.swift; sourceTree = "<group>"; };
+		B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
+		B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewModel.swift; sourceTree = "<group>"; };
 		B6A5A7CC6938E672B3DF7DA0 /* Pods-Minning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning.release.xcconfig"; path = "Target Support Files/Pods-Minning/Pods-Minning.release.xcconfig"; sourceTree = "<group>"; };
 		C96E0F345A504DC74CA4CCDE /* Pods-OurApp-OurAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp-OurAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-OurApp-OurAppUITests/Pods-OurApp-OurAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -536,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				B028043C270972B5009D642A /* RoutineModel.swift */,
+				B0ECF893270AD8CC0088C96E /* GroupModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -613,6 +635,8 @@
 		B0AD5A6C2705D77700CC07B0 /* Group */ = {
 			isa = PBXGroup;
 			children = (
+				B0ECF896270AD9EE0088C96E /* NewGroup */,
+				B0ECF889270AD8200088C96E /* GroupDetail */,
 				B0AD5A702705D79300CC07B0 /* GroupViewController.swift */,
 				B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */,
 				B02803A72706DD6E009D642A /* GroupDIContainer.swift */,
@@ -690,6 +714,34 @@
 				B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */,
 			);
 			path = MyRoutineview;
+			sourceTree = "<group>";
+		};
+		B0ECF889270AD8200088C96E /* GroupDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B0ECF89D270AE0440088C96E /* JoinGroup */,
+				B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */,
+				B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */,
+			);
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		B0ECF896270AD9EE0088C96E /* NewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */,
+				B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */,
+			);
+			path = NewGroup;
+			sourceTree = "<group>";
+		};
+		B0ECF89D270AE0440088C96E /* JoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */,
+				B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */,
+			);
+			path = JoinGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1039,11 +1091,13 @@
 				B02803F2270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
+				B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08E747A2705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A32706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EF026DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0ECF87F2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
+				B0ECF8A3270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
 				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A752705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
@@ -1055,12 +1109,15 @@
 				B02803EB27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B0180EFC26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B0180ED626DCC307008C6F3C /* MainCoordinator.swift in Sources */,
+				B0ECF88F270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74812705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B028045A270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
+				B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */,
+				B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F627085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A62706DCBF009D642A /* ReportCoordinator.swift in Sources */,
@@ -1078,12 +1135,14 @@
 				B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FD27085604009D642A /* NotificationViewController.swift in Sources */,
+				B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */,
+				B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
 				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
@@ -1100,11 +1159,13 @@
 				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
+				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
+				B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
@@ -1116,12 +1177,15 @@
 				B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
+				B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B0280459270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
+				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
+				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
@@ -1139,12 +1203,14 @@
 				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
+				B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
+				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
