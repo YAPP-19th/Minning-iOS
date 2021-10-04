@@ -62,7 +62,7 @@ final class LoginViewController: BaseViewController {
     
     private let kakaoLoginutton: PlainButton = {
         $0.isActive = true
-        $0.buttonContent = "카카오로 계속하기"
+        $0.buttonContent = "카카오로 로그인"
         $0.plainButtonType = .kakao
 //        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
         return $0
@@ -70,7 +70,7 @@ final class LoginViewController: BaseViewController {
     
     private let appleLoginButton: PlainButton = {
         $0.isActive = true
-        $0.buttonContent = "Apple로 계속하기"
+        $0.buttonContent = "Apple로 로그인"
         $0.plainButtonType = .apple
 //        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
         return $0
@@ -163,7 +163,7 @@ final class LoginViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        [socialLoginLabel, kakaoLoginutton, appleLoginButton].forEach {
+        [socialLoginLabel, appleLoginButton, kakaoLoginutton].forEach {
             footerLoginStackView.addArrangedSubview($0)
             $0.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview()
