@@ -93,4 +93,17 @@ public class CircleProgressView: UIView {
     public func setProgressWithPercentage(_ percentage: Int) {
         setProgress(CGFloat(percentage) * 0.01)
     }
+    
+    public func animateProgressView(duration: TimeInterval, progress: CGFloat) {
+        let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
+        animation.duration = duration
+
+        animation.fromValue = 0
+        animation.toValue = progress
+
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        progressLayer.strokeEnd = progress
+        // Do the actual animation
+        progressLayer.add(animation, forKey: "animateProgressView")
+    }
 }
