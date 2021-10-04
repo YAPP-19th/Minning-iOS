@@ -10,6 +10,12 @@ import DesignSystem
 import Foundation
 
 protocol GroupRoute {
+    func showDetail()
+    func showJoinGroup()
+    func goToNewGroup()
+    
+    func goToBack()
+    func dismissVC()
 }
 
 class GroupCoordinator {
@@ -27,12 +33,36 @@ class GroupCoordinator {
     }
     
     func start() {
-        let viewModel = GroupViewModel(coordinator: coordinator)
+        let viewModel = GroupViewModel(coordinator: self)
         let reportVC = GroupViewController(viewModel: viewModel)
         navigationController.setViewControllers([reportVC], animated: false)
     }
 }
 
 extension GroupCoordinator: GroupRoute {
+    func showDetail() {
+        let detailVC = dependencies.createDetail(self)
+        detailVC.modalPresentationStyle = .fullScreen
+        navigationController.topViewController?.present(detailVC, animated: true, completion: nil)
+    }
     
+    func showJoinGroup() {
+        let joinGroupVC = dependencies.createJoinGroup(self)
+        joinGroupVC.modalPresentationStyle = .overCurrentContext
+        navigationController.topViewController?.presentedViewController?.present(joinGroupVC, animated: true, completion: nil)
+    }
+    
+    func goToNewGroup() {
+        let newGroupVC = dependencies.createNewGroup(self)
+        newGroupVC.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(newGroupVC, animated: true)
+    }
+    
+    func goToBack() {
+        navigationController.popViewController(animated: true)
+    }
+    
+    func dismissVC() {
+        navigationController.topViewController?.dismiss(animated: true, completion: nil)
+    }
 }

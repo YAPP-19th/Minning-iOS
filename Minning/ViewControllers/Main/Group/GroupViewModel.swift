@@ -10,9 +10,23 @@ import CommonSystem
 import Foundation
 
 final class GroupViewModel {
-    private let coordinator: MainCoordinator
+    enum GroupTabType {
+        case myGroup
+        case groupList
+    }
     
-    public init(coordinator: MainCoordinator) {
+    var tabType: DataBinding<GroupTabType> = DataBinding(.myGroup)
+    private let coordinator: GroupCoordinator
+    
+    public init(coordinator: GroupCoordinator) {
         self.coordinator = coordinator
+    }
+    
+    func showDetail() {
+        coordinator.showDetail()
+    }
+    
+    func goToNewGroup() {
+        coordinator.goToNewGroup()
     }
 }

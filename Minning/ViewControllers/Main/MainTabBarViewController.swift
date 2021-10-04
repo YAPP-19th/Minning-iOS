@@ -18,11 +18,6 @@ protocol MainTabBarDelegate: AnyObject {
 }
 
 public class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
-    private let tabBarBorderView: UIView = {
-        $0.backgroundColor = .grayE5E5E5
-        return $0
-    }(UIView())
-    
     private var tabViewControllers: [UIViewController] = [UIViewController]()
     private let coordinator: MainCoordinator
     
@@ -37,8 +32,6 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        tabBarBorderView.frame = CGRect(x: self.tabBar.frame.origin.x, y: self.tabBar.frame.origin.y, width: self.tabBar.frame.width, height: 1.5)
     }
     
     public override func didReceiveMemoryWarning() {
@@ -49,7 +42,6 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
         super.viewDidLoad()
         delegate = self
         setupTabBarItems()
-        self.view.insertSubview(tabBarBorderView, aboveSubview: self.tabBar)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -96,11 +88,11 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
         if #available(iOS 13, *) {
             let appearance = tabBar.standardAppearance
             appearance.configureWithOpaqueBackground()
-            appearance.shadowImage = nil
+            appearance.shadowImage = UIImage(color: .grayE5E5E5)
             appearance.shadowColor = nil
             tabBar.standardAppearance = appearance
         } else {
-            tabBar.shadowImage = UIImage()
+            tabBar.shadowImage = UIImage(color: .grayE5E5E5)
             tabBar.backgroundImage = UIImage()
         }
 

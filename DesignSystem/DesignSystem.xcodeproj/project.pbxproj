@@ -25,6 +25,7 @@
 		B08F0F302709F11800C1EBA5 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0F2F2709F11800C1EBA5 /* LineChart.swift */; };
 		B08F0F322709F13500C1EBA5 /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0F312709F13500C1EBA5 /* DotCALayer.swift */; };
 		B0ECF875270992630088C96E /* NonScrollTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF874270992630088C96E /* NonScrollTableView.swift */; };
+		B0ECF8A5270AE3010088C96E /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8A4270AE3010088C96E /* UIImage+Extensions.swift */; };
 		B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEED9270552B100011FC4 /* PlainButton.swift */; };
 		B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */; };
 		B0FDEEDE270559CC00011FC4 /* PlainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEEDD270559CC00011FC4 /* PlainTextField.swift */; };
@@ -67,6 +68,7 @@
 		B08F0F2F2709F11800C1EBA5 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		B08F0F312709F13500C1EBA5 /* DotCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
 		B0ECF874270992630088C96E /* NonScrollTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonScrollTableView.swift; sourceTree = "<group>"; };
+		B0ECF8A4270AE3010088C96E /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		B0FDEED9270552B100011FC4 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
 		B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		B0FDEEDD270559CC00011FC4 /* PlainTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextField.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				B0180F8B26DCCD22008C6F3C /* Bundle+Extensions.swift */,
 				B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */,
 				B02804032709621F009D642A /* UILabel+Extensions.swift */,
+				B0ECF8A4270AE3010088C96E /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				B0ECF875270992630088C96E /* NonScrollTableView.swift in Sources */,
 				B0FDEEE227055DEC00011FC4 /* ImageButton.swift in Sources */,
 				B0FDEEDE270559CC00011FC4 /* PlainTextField.swift in Sources */,
+				B0ECF8A5270AE3010088C96E /* UIImage+Extensions.swift in Sources */,
 				B0FDEEE027055C1000011FC4 /* Constant.swift in Sources */,
 				B08F0F2E2709F0BB00C1EBA5 /* CurveAlgorithm.swift in Sources */,
 			);
