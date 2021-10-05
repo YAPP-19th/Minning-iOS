@@ -49,6 +49,14 @@ public extension Date {
         return dateString
     }
     
+    func convertToSmallKoreanString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM월 dd일"
+        
+        let dateString = dateFormatter.string(from: self)
+        return dateString
+    }
+    
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
         return calendar.dateComponents(Set(components), from: self)
     }

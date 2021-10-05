@@ -132,6 +132,10 @@
 		B0D16E0226DA57F400A8E52B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0D16E0026DA57F400A8E52B /* LaunchScreen.storyboard */; };
 		B0D16E0D26DA57F400A8E52B /* OurAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16E0C26DA57F400A8E52B /* OurAppTests.swift */; };
 		B0D16E1826DA57F400A8E52B /* OurAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16E1726DA57F400A8E52B /* OurAppUITests.swift */; };
+		B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1D256270BE8CB006995C5 /* NotificationItemCell.swift */; };
+		B0E1D258270BE8CB006995C5 /* NotificationItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1D256270BE8CB006995C5 /* NotificationItemCell.swift */; };
+		B0E1D25D270BEB5A006995C5 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1D25C270BEB5A006995C5 /* NotificationModel.swift */; };
+		B0E1D25E270BEB5A006995C5 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E1D25C270BEB5A006995C5 /* NotificationModel.swift */; };
 		B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */; };
 		B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */; };
 		B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */; };
@@ -301,6 +305,8 @@
 		B0D16E1326DA57F400A8E52B /* MinningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinningUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D16E1726DA57F400A8E52B /* OurAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurAppUITests.swift; sourceTree = "<group>"; };
 		B0D16E1926DA57F400A8E52B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0E1D256270BE8CB006995C5 /* NotificationItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItemCell.swift; sourceTree = "<group>"; };
+		B0E1D25C270BEB5A006995C5 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineTitleCell.swift; sourceTree = "<group>"; };
 		B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentCell.swift; sourceTree = "<group>"; };
 		B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentItemView.swift; sourceTree = "<group>"; };
@@ -549,6 +555,7 @@
 			children = (
 				B02803FB27085604009D642A /* NotificationViewController.swift */,
 				B02803FE2708561C009D642A /* NotificationViewModel.swift */,
+				B0E1D256270BE8CB006995C5 /* NotificationItemCell.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -558,6 +565,7 @@
 			children = (
 				B028043C270972B5009D642A /* RoutineModel.swift */,
 				B0ECF893270AD8CC0088C96E /* GroupModel.swift */,
+				B0E1D25C270BEB5A006995C5 /* NotificationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1088,6 +1096,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E1D25E270BEB5A006995C5 /* NotificationModel.swift in Sources */,
 				B02803F2270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
@@ -1145,6 +1154,7 @@
 				B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
+				B0E1D258270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
 				B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B02803902706D785009D642A /* HomeDIContainer.swift in Sources */,
@@ -1156,6 +1166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E1D25D270BEB5A006995C5 /* NotificationModel.swift in Sources */,
 				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
@@ -1213,6 +1224,7 @@
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
+				B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
 				B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B028038F2706D785009D642A /* HomeDIContainer.swift in Sources */,
