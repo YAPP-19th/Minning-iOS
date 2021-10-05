@@ -122,7 +122,7 @@ final class LoginViewController: BaseViewController {
         scrollView.addSubview(contentView)
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tapGesture.cancelsTouchesInView = false
+//        tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
         
         contentView.snp.makeConstraints { make in

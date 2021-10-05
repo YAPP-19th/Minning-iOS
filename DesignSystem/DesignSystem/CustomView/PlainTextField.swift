@@ -33,6 +33,7 @@ public class PlainTextField: UITextField {
     
     private let clearButton: ImageButton = {
         $0.setImage(UIImage(sharedNamed: "ClearButton"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickClearButton(_:)), for: .touchUpInside)
         return $0
     }(ImageButton())
     
@@ -43,6 +44,12 @@ public class PlainTextField: UITextField {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    private func onClickClearButton(_ sender: ImageButton?) {
+        text = ""
+        sendActions(for: .editingChanged)
     }
     
     private func setupView() {
