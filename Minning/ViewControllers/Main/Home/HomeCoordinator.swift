@@ -74,6 +74,7 @@ extension HomeCoordinator: HomeRoute {
     
     func goToNotification() {
         let notificationVC = dependencies.createNotification(self)
+        notificationVC.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(notificationVC, animated: true)
     }
     
