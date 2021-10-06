@@ -23,13 +23,13 @@ final class NotificationItemCell: UITableViewCell {
     
     private let descriptionLabel: UILabel = {
         $0.font = .font12PMedium
-        $0.textColor = .gray787C84
+        $0.textColor = .minningDarkGray100
         return $0
     }(UILabel())
     
     private let dateLabel: UILabel = {
         $0.font = .font12P
-        $0.textColor = .gray787C84
+        $0.textColor = .minningDarkGray100
         return $0
     }(UILabel())
     
@@ -40,9 +40,9 @@ final class NotificationItemCell: UITableViewCell {
     
     var isRead: Bool = false {
         didSet {
-            titleLabel.textColor = isRead ? .primaryBlack : .primaryGray
-            descriptionLabel.textColor = isRead ? .gray787C84 : .primaryGray
-            dateLabel.textColor = isRead ? .gray787C84 : .primaryGray
+            titleLabel.textColor = isRead ? .primaryBlack : .minningGray100
+            descriptionLabel.textColor = isRead ? .minningDarkGray100 : .minningGray100
+            dateLabel.textColor = isRead ? .minningDarkGray100 : .minningGray100
         }
     }
     

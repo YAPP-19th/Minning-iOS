@@ -29,7 +29,7 @@ final class NewGroupViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         
         if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
-            navBar.titleContent = "루틴 추가하기"
+            navBar.titleContent = "그룹 추가하기"
             navBar.removeDefaultShadowImage()
         }
         

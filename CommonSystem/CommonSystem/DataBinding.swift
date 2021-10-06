@@ -20,7 +20,7 @@ public class DataBinding<T> {
         listener?(value)
     }
 
-    public var value: T {
+    public private(set) var value: T {
         didSet {
             listener?(value)
         }

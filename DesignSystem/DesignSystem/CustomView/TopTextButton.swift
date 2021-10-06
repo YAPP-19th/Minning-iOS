@@ -14,7 +14,7 @@ import UIKit
 public class TopTextButton: UIButton {
     public override var isEnabled: Bool {
         didSet {
-            setTitleColor(isEnabled ? .primaryBlack : .primaryGray, for: .normal)
+            setTitleColor(isEnabled ? .primaryBlack : .minningGray100, for: .normal)
         }
     }
     

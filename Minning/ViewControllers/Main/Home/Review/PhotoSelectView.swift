@@ -55,6 +55,6 @@ final class PhotoSelectButton: UIButton {
         
         layer.cornerRadius = 10
         layer.masksToBounds = true
-        backgroundColor = .primaryGray
+        backgroundColor = .minningGray100
     }
 }

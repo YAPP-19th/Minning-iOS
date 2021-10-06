@@ -46,8 +46,8 @@ final class GroupViewController: BaseViewController {
     override func bindViewModel() {
         viewModel.tabType.bindAndFire { [weak self] type in
             guard let `self` = self else { return }
-            self.myGroupTabButton.setTitleColor(type == .myGroup ? .primaryBlack : .primaryGray, for: .normal)
-            self.groupListTabButton.setTitleColor(type == .groupList ? .primaryBlack : .primaryGray, for: .normal)
+            self.myGroupTabButton.setTitleColor(type == .myGroup ? .primaryBlack : .minningGray100, for: .normal)
+            self.groupListTabButton.setTitleColor(type == .groupList ? .primaryBlack : .minningGray100, for: .normal)
             
             // SAMPLE
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
@@ -61,7 +61,7 @@ final class GroupViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .grayF6F7F9
+        view.backgroundColor = .minningLightGray100
         
         [myGroupTabButton, groupListTabButton].forEach {
             view.addSubview($0)

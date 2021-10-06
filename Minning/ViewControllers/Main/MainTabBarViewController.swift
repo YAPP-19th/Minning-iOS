@@ -83,7 +83,7 @@ public class MainTabBarViewController: UITabBarController, UITabBarControllerDel
         }
         
         tabBar.barTintColor = .primaryWhite
-        tabBar.tintColor = .primaryBlue
+        tabBar.tintColor = .minningBlue100
         
         if #available(iOS 13, *) {
             let appearance = tabBar.standardAppearance

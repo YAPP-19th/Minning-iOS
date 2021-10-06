@@ -153,7 +153,7 @@ public class LineChart: UIView {
             let lineLayer = CAShapeLayer()
             lineLayer.path = path.cgPath
             lineLayer.lineWidth = 2
-            lineLayer.strokeColor = UIColor.primaryBlue.cgColor
+            lineLayer.strokeColor = UIColor.minningBlue100.cgColor
             lineLayer.fillColor = UIColor.clear.cgColor
             dataLayer.addSublayer(lineLayer)
         }
@@ -194,7 +194,7 @@ public class LineChart: UIView {
             let lineLayer = CAShapeLayer()
             lineLayer.path = path.cgPath
             lineLayer.fillColor = UIColor.clear.cgColor
-            lineLayer.strokeColor = UIColor.primaryGray.cgColor
+            lineLayer.strokeColor = UIColor.minningGray100.cgColor
             lineLayer.lineDashPattern = [2, 2]
             lineLayer.lineWidth = 0.5
             
@@ -210,7 +210,7 @@ public class LineChart: UIView {
             
             let textLayer = CATextLayer()
             textLayer.frame = CGRect(x: 16, y: height - 8, width: 50, height: 16)
-            textLayer.foregroundColor = UIColor.primaryGray.cgColor
+            textLayer.foregroundColor = UIColor.minningGray100.cgColor
             textLayer.backgroundColor = UIColor.clear.cgColor
             textLayer.contentsScale = UIScreen.main.scale
             textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
@@ -240,7 +240,7 @@ public class LineChart: UIView {
                 let xValue = dataPoint.x - outerRadius / 2
                 let yValue = (dataPoint.y + 75) - (outerRadius * 2) - 29
                 let dotLayer = DotCALayer()
-                dotLayer.dotInnerColor = UIColor.primaryBlue
+                dotLayer.dotInnerColor = UIColor.minningBlue100
                 dotLayer.innerRadius = innerRadius
                 dotLayer.backgroundColor = UIColor.primaryBlue030.cgColor
                 dotLayer.cornerRadius = outerRadius / 2

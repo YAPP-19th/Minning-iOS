@@ -126,14 +126,14 @@ extension ReviewViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == viewModel.feedbackPlaceholder {
             textView.text = nil
-            textView.textColor = .primaryBlue
+            textView.textColor = .minningBlue100
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = viewModel.feedbackPlaceholder
-            textView.textColor = .primaryGray
+            textView.textColor = .minningGray100
         }
     }
 }

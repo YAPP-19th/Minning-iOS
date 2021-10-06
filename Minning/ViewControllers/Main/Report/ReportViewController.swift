@@ -81,7 +81,7 @@ final class ReportViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .grayF6F7F9
+        view.backgroundColor = .minningLightGray100
         
         [weekTabButton, monthTabButton,
          dataComboButton, scrollView].forEach {
@@ -137,8 +137,8 @@ final class ReportViewController: BaseViewController {
     override func bindViewModel() {
         viewModel.tabType.bindAndFire { [weak self] type in
             guard let `self` = self else { return }
-            self.weekTabButton.setTitleColor(type == .week ? .primaryBlack : .primaryGray, for: .normal)
-            self.monthTabButton.setTitleColor(type == .month ? .primaryBlack : .primaryGray, for: .normal)
+            self.weekTabButton.setTitleColor(type == .week ? .primaryBlack : .minningGray100, for: .normal)
+            self.monthTabButton.setTitleColor(type == .month ? .primaryBlack : .minningGray100, for: .normal)
             
             self.weeklyPercentView.isHidden = !(type == .week)
             self.myRoutineView.isHidden = !(type == .week)

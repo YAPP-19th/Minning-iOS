@@ -59,7 +59,7 @@ final class WeeklyView: UIView {
         $0.lineCap = .round
         $0.lineWidth = 3
         $0.pathBackgroundColor = .primaryLightGray
-        $0.progressColor = .primaryBlue
+        $0.progressColor = .minningBlue100
         return $0
     }(CircleProgressView())
     

@@ -134,7 +134,7 @@ final class PhraseViewController: BaseViewController {
             guard let `self` = self else { return }
             self.phraseLabel.setText(text: content, lineHeight: 24)
             self.phraseTextView.text = content
-            self.phraseTextView.textColor = .primaryGray
+            self.phraseTextView.textColor = .minningGray100
         }
     }
     
@@ -154,7 +154,7 @@ extension PhraseViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == viewModel.phraseContent.value {
             textView.text = nil
-            textView.textColor = .primaryBlue
+            textView.textColor = .minningBlue100
         }
     }
     
@@ -165,7 +165,7 @@ extension PhraseViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = viewModel.phraseContent.value
-            textView.textColor = .primaryGray
+            textView.textColor = .minningGray100
         }
     }
 }

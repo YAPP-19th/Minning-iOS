@@ -21,7 +21,7 @@ final class MyRoutineContentItemView: UIView {
         didSet {
             symbolImageView.image = routineItem?.result.symbolImage?.withRenderingMode(.alwaysTemplate)
             symbolImageView.layer.opacity = routineItem?.result.symbolOpacity ?? 0
-            symbolImageView.tintColor = routineItem?.result == .failure ? .primaryGray : routineItem?.category.color
+            symbolImageView.tintColor = routineItem?.result == .failure ? .minningGray100 : routineItem?.category.color
         }
     }
     
@@ -39,7 +39,7 @@ final class MyRoutineContentItemView: UIView {
             make.width.height.equalTo(30)
         }
         
-        backgroundColor = .grayF6F7F9
+        backgroundColor = .minningLightGray100
         layer.cornerRadius = 5
         layer.masksToBounds = true
         

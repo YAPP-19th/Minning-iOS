@@ -17,7 +17,7 @@ final class MyRoutineView: UIView {
     
     private let sectionTitle: UILabel = {
         $0.font = .font12PBold
-        $0.textColor = .gray787C84
+        $0.textColor = .minningDarkGray100
         $0.text = "내 루틴"
         return $0
     }(UILabel())

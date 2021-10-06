@@ -61,7 +61,7 @@ final class GroupDetailViewController: BaseViewController {
         dimmedView.backgroundColor = .primaryBlack040
         dimmedView.layer.opacity = 0
         dimmedView.isHidden = true
-        contentView.backgroundColor = .grayF6F7F9
+        contentView.backgroundColor = .minningLightGray100
         
         [navigationBar, contentView, dimmedView].forEach {
             view.addSubview($0)

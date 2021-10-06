@@ -20,15 +20,15 @@ public enum RoutineCategory {
     var color: UIColor {
         switch self {
         case .exercise:
-            return .routineGreen
+            return .cateGreen100
         case .life:
-            return .routineYellow
+            return .cateYellow100
         case .selfDev:
-            return .routineRed
+            return .cateRed100
         case .miracle:
-            return .routineBlue
+            return .cateSky100
         case .other:
-            return .routinePurple
+            return .catePurple100
         }
     }
 }

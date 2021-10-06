@@ -20,7 +20,7 @@ public class PlainButton: UIButton {
         var backgroundColor: UIColor {
             switch self {
             case .normal:
-                return .primaryBlue
+                return .minningBlue100
             case .kakao:
                 return .kakaoYellow
             case .apple:
@@ -80,7 +80,7 @@ public class PlainButton: UIButton {
     }
     
     private func updateButtonColor() {
-        backgroundColor = isActive ? plainButtonType.backgroundColor : .primaryGray
+        backgroundColor = isActive ? plainButtonType.backgroundColor : .minningGray100
         setTitleColor(plainButtonType.foregroundColor, for: .normal)
     }
     
@@ -95,7 +95,7 @@ public class PlainButton: UIButton {
     private func setupViewLayout() {
         layer.cornerRadius = Constant.Rounding.rad10
         layer.masksToBounds = true
-        backgroundColor = .primaryBlue
+        backgroundColor = .minningBlue100
         titleLabel?.font = .font16PBold
         
         addSubview(iconImageView)

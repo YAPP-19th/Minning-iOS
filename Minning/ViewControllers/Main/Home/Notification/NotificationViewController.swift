@@ -63,7 +63,7 @@ final class NotificationViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .grayF6F7F9
+        view.backgroundColor = .minningLightGray100
         view.addSubview(notificationTableView)
         notificationTableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)

@@ -21,7 +21,7 @@ final class LoginViewController: BaseViewController {
     private let contentView: UIView = UIView()
     private let titleLabel: UILabel = {
         $0.text = "의미있는 아침을 시작해볼까요?"
-        $0.textColor = .primaryBlue
+        $0.textColor = .minningBlue100
         $0.font = .font20PBold
         return $0
     }(UILabel())

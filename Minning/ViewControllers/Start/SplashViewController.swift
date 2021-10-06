@@ -53,7 +53,7 @@ class SplashViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .primaryBlue
+        view.backgroundColor = .minningBlue100
         [appLogoView, appTextLogoView, titleLabel].forEach {
             view.addSubview($0)
         }

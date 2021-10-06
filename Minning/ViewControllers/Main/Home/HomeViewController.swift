@@ -41,7 +41,7 @@ final class HomeViewController: BaseViewController {
             view.addSubview($0)
         }
         
-        contentView.backgroundColor = .grayF6F7F9
+        contentView.backgroundColor = .minningLightGray100
         contentView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)

@@ -17,7 +17,7 @@ final class MyRoutineTitleCell: UITableViewCell {
     
     private let titleStackView: UIStackView = {
         $0.axis = .horizontal
-        $0.backgroundColor = .grayF6F7F9
+        $0.backgroundColor = .minningLightGray100
         $0.distribution = .equalSpacing
         $0.layer.cornerRadius = 10
         $0.spacing = 6
@@ -48,7 +48,7 @@ final class MyRoutineTitleCell: UITableViewCell {
         for (idx, view) in [monLabel, tueLabel, wedLabel, thuLabel,
                             friLabel, satLabel, sunLabel].enumerated() {
             view.text = daySymbols[idx]
-            view.textColor = .gray787C84
+            view.textColor = .minningDarkGray100
             view.font = .font12P
             view.textAlignment = .center
             

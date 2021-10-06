@@ -13,7 +13,7 @@ import SnapKit
 public class ComboButton: UIButton {
     private let contentLabel: UILabel = {
         $0.font = .font16PMedium
-        $0.textColor = .gray787C84
+        $0.textColor = .minningDarkGray100
         return $0
     }(UILabel())
     

@@ -26,7 +26,7 @@ public class CircleProgressView: UIView {
         }
     }
     
-    public var pathBackgroundColor: UIColor = UIColor.primaryGray {
+    public var pathBackgroundColor: UIColor = UIColor.minningGray100 {
         didSet {
             bgLayer.strokeColor = pathBackgroundColor.cgColor
         }
@@ -38,7 +38,7 @@ public class CircleProgressView: UIView {
         }
     }
     
-    public var progressColor: UIColor = UIColor.primaryGray {
+    public var progressColor: UIColor = UIColor.minningGray100 {
         didSet {
             progressLayer.strokeColor = progressColor.cgColor
         }
