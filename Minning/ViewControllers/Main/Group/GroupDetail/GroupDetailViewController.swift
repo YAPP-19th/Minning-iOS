@@ -83,13 +83,15 @@ final class GroupDetailViewController: BaseViewController {
         contentView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
         joinButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-16)
+//            make.bottom.equalToSuperview().offset(-16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
         }
     }
     
