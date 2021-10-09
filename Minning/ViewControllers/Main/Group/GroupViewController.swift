@@ -27,6 +27,14 @@ final class GroupViewController: BaseViewController {
         return $0
     }(UIButton())
     
+    private let filterStackView: UIStackView = {
+        $0.axis = .vertical
+        return $0
+    }(UIStackView())
+    
+    private var filterCollectionView: UICollectionView!
+    private var groupListCollectionView: UICollectionView!
+    
     private let viewModel: GroupViewModel
     
     public init(viewModel: GroupViewModel) {
@@ -52,7 +60,7 @@ final class GroupViewController: BaseViewController {
             // SAMPLE
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 if type == .myGroup {
-                    self.viewModel.goToNewGroup()
+//                    self.viewModel.goToNewGroup()
                 } else {
                     self.viewModel.showDetail()
                 }
@@ -61,11 +69,15 @@ final class GroupViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
+        setupFilterCollectionView()
+        setupGroupListCollectionView()
+        
         view.backgroundColor = .minningLightGray100
         
-        [myGroupTabButton, groupListTabButton].forEach {
+        [myGroupTabButton, groupListTabButton, filterStackView, groupListCollectionView].forEach {
             view.addSubview($0)
         }
+        filterStackView.addArrangedSubview(filterCollectionView)
         
         myGroupTabButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(19)
@@ -80,6 +92,34 @@ final class GroupViewController: BaseViewController {
             make.height.equalTo(44)
             make.width.greaterThanOrEqualTo(44)
         }
+        
+        filterStackView.snp.makeConstraints { make in
+            make.top.equalTo(myGroupTabButton.snp.bottom).offset(23)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
+        filterCollectionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(53)
+        }
+        
+        groupListCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(filterStackView.snp.bottom)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+    
+    private func setupFilterCollectionView() {
+        filterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        filterCollectionView.backgroundColor = .systemGreen
+    }
+    
+    private func setupGroupListCollectionView() {
+        groupListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        filterCollectionView.backgroundColor = .systemOrange
     }
     
     @objc
