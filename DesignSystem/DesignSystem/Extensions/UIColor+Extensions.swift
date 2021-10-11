@@ -56,6 +56,7 @@ public extension UIColor {
     
     static var kakaoYellow: UIColor { fetchColor(#function) }
     static var kakaoBlack85: UIColor { fetchColor(#function) }
+    static var grayB5B8BE: UIColor { fetchColor(#function) }
     static var grayE5E5E5: UIColor { fetchColor(#function) }
     static var grayEEF1F5: UIColor { fetchColor(#function) }
     static var grayEDEDED: UIColor { fetchColor(#function) }
