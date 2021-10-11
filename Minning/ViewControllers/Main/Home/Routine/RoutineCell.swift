@@ -1,5 +1,5 @@
 //
-//  RoutineCollectionViewCell.swift
+//  RoutineCell.swift
 //  Minning
 //
 //  Created by 고세림 on 2021/10/11.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class RoutineCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier = "RoutineCollectionViewCell"
+final class RoutineCell: UICollectionViewCell {
+    static let identifier = "RoutineCell"
     
     private let categoryBarView = UIView()
     private let titleLabel = UILabel()

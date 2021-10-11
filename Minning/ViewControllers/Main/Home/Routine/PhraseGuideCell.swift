@@ -8,8 +8,7 @@
 
 import UIKit
 
-class PhraseGuideCell: UICollectionViewCell {
-    
+final class PhraseGuideCell: UICollectionViewCell {
     static let identifier = "PhraseGuideCell"
     
     private let titleLabel: UILabel = {
@@ -52,5 +51,4 @@ class PhraseGuideCell: UICollectionViewCell {
             make.centerY.trailing.equalToSuperview()
         }
     }
-    
 }

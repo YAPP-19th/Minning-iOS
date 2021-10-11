@@ -8,8 +8,7 @@
 
 import SnapKit
 
-class RoutineHeaderView: UICollectionReusableView {
-    
+final class RoutineHeaderView: UICollectionReusableView {
     static let identifier = "RoutineHeaderView"
     
     private let routineButton: UIButton = {

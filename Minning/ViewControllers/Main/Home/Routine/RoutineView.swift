@@ -12,8 +12,7 @@ protocol RoutineViewDelegate: AnyObject {
     func didSelectPhraseGuide()
 }
 
-class RoutineView: UIView {
-    
+final class RoutineView: UIView {
     enum CollectionViewSection: Int, CaseIterable {
         case header
         case phraseGuide
@@ -23,13 +22,18 @@ class RoutineView: UIView {
     
     weak var delegate: RoutineViewDelegate?
 
-    lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    lazy var mainCollectionView: UICollectionView = {
+        $0.delegate = self
+        $0.dataSource = self
+        $0.register(RoutineHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RoutineHeaderView.identifier)
+        $0.register(PhraseGuideCell.self, forCellWithReuseIdentifier: PhraseGuideCell.identifier)
+        $0.register(RoutineCell.self, forCellWithReuseIdentifier: RoutineCell.identifier)
+        return $0
+    }(UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewLayout()
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -46,12 +50,7 @@ class RoutineView: UIView {
         mainCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        mainCollectionView.register(RoutineHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RoutineHeaderView.identifier)
-        mainCollectionView.register(PhraseGuideCell.self, forCellWithReuseIdentifier: PhraseGuideCell.identifier)
-        mainCollectionView.register(RoutineCollectionViewCell.self, forCellWithReuseIdentifier: RoutineCollectionViewCell.identifier)
     }
-
 }
 
 extension RoutineView: UICollectionViewDataSource {
@@ -78,7 +77,7 @@ extension RoutineView: UICollectionViewDataSource {
 extension RoutineView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = mainCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RoutineHeaderView.identifier, for: indexPath) as? RoutineHeaderView else {
-            return UICollectionReusableView()
+            return .init()
         }
         return header
     }
@@ -89,12 +88,12 @@ extension RoutineView: UICollectionViewDelegate {
             return .init()
         case .phraseGuide:
             guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: PhraseGuideCell.identifier, for: indexPath) as? PhraseGuideCell else {
-                return UICollectionViewCell()
+                return .init()
             }
             return cell
         case .routine:
-            guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: RoutineCollectionViewCell.identifier, for: indexPath) as? RoutineCollectionViewCell else {
-                return UICollectionViewCell()
+            guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: RoutineCell.identifier, for: indexPath) as? RoutineCell else {
+                return .init()
             }
             cell.configure()
             return cell
