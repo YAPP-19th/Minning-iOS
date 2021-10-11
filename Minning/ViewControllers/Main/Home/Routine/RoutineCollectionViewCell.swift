@@ -33,7 +33,6 @@ class RoutineCollectionViewCell: UICollectionViewCell {
     }
     
     func configure() {
-        setCategoryBarView()
         setTempData()
     }
     
@@ -82,10 +81,6 @@ class RoutineCollectionViewCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(18)
             make.trailing.equalToSuperview().offset(-16)
         }
-    }
-
-    private func setCategoryBarView() {
-        categoryBarView.backgroundColor = .minningBlue100
     }
     
     private func setTempData() {

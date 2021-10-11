@@ -17,7 +17,11 @@ final class HomeViewController: BaseViewController {
         $0.delegate = self
         return $0
     }(ProfileView())
-    lazy var routineCollectionView = RoutineView()
+    
+    lazy var routineCollectionView: RoutineView = {
+        $0.delegate = self
+        return $0
+    }(RoutineView())
     
     private let contentView: UIView = UIView()
     private let viewModel: HomeViewModel
@@ -75,5 +79,11 @@ extension HomeViewController: ProfileViewDelegate {
     
     func didSelectNoti() {
         viewModel.goToNotification()
+    }
+}
+
+extension HomeViewController: RoutineViewDelegate {
+    func didSelectPhraseGuide() {
+        viewModel.showPhraseModally()
     }
 }

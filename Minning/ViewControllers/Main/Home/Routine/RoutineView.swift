@@ -8,7 +8,12 @@
 
 import SnapKit
 
+protocol RoutineViewDelegate: AnyObject {
+    func didSelectPhraseGuide()
+}
+
 class RoutineView: UIView {
+    weak var delegate: RoutineViewDelegate?
 
     lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
@@ -35,6 +40,7 @@ class RoutineView: UIView {
         }
         
         mainCollectionView.register(RoutineHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RoutineHeaderView.identifier)
+        mainCollectionView.register(PhraseGuideCell.self, forCellWithReuseIdentifier: PhraseGuideCell.identifier)
         mainCollectionView.register(RoutineCollectionViewCell.self, forCellWithReuseIdentifier: RoutineCollectionViewCell.identifier)
     }
 
@@ -42,11 +48,18 @@ class RoutineView: UIView {
 
 extension RoutineView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 3
+        default:
+            return 0
+        }
     }
         
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
 }
 
@@ -59,21 +72,56 @@ extension RoutineView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: RoutineCollectionViewCell.identifier, for: indexPath) as? RoutineCollectionViewCell else {
+        switch indexPath.section {
+        case 0:
+            guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: PhraseGuideCell.identifier, for: indexPath) as? PhraseGuideCell else {
+                return UICollectionViewCell()
+            }
+            return cell
+        case 1:
+            guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: RoutineCollectionViewCell.identifier, for: indexPath) as? RoutineCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.configure()
+            return cell
+        default:
             return UICollectionViewCell()
         }
-        cell.configure()
-        return cell
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            delegate?.didSelectPhraseGuide()
+        case 1:
+            break
+        default:
+            break
+        }
     }
 }
 
 extension RoutineView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: frame.width - 32, height: 50)
+        switch section {
+        case 0:
+            return .init(width: frame.width - 32, height: 50)
+        case 1:
+            return .zero
+        default:
+            return .zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: frame.width - 32, height: 70)
+        switch indexPath.section {
+        case 0:
+            return .init(width: frame.width - 32, height: 50)
+        case 1:
+            return .init(width: frame.width - 32, height: 70)
+        default:
+            return .zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
