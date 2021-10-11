@@ -17,6 +17,7 @@ final class HomeViewController: BaseViewController {
         $0.delegate = self
         return $0
     }(ProfileView())
+    lazy var routineCollectionView = RoutineView()
     
     private let contentView: UIView = UIView()
     private let viewModel: HomeViewModel
@@ -40,6 +41,9 @@ final class HomeViewController: BaseViewController {
         [contentView, profileView].forEach {
             view.addSubview($0)
         }
+        [routineCollectionView].forEach {
+            contentView.addSubview($0)
+        }
         
         contentView.backgroundColor = .minningLightGray100
         contentView.snp.makeConstraints { make in
@@ -51,6 +55,11 @@ final class HomeViewController: BaseViewController {
         profileView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
+        }
+        
+        routineCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(profileView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
+		83D8553F27135C83005DC0FD /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8553E27135C83005DC0FD /* RoutineView.swift */; };
+		83D85541271360EB005DC0FD /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D85540271360EB005DC0FD /* RoutineCollectionViewCell.swift */; };
+		83D8554627142DED005DC0FD /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8554527142DED005DC0FD /* RoutineHeaderView.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
 		B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0180ECC26DCC103008C6F3C /* AppConfiguration.swift */; };
@@ -235,6 +238,9 @@
 		691B4B28941CA43A46A62C49 /* Pods-OurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp.release.xcconfig"; path = "Target Support Files/Pods-OurApp/Pods-OurApp.release.xcconfig"; sourceTree = "<group>"; };
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		83D8553E27135C83005DC0FD /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		83D85540271360EB005DC0FD /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		83D8554527142DED005DC0FD /* RoutineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineHeaderView.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B014273026DCBA9800DE11E0 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -372,6 +378,16 @@
 				33C9243593633CFA06F61563 /* Pods_MinningTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83D8553D27135C42005DC0FD /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				83D8553E27135C83005DC0FD /* RoutineView.swift */,
+				83D85540271360EB005DC0FD /* RoutineCollectionViewCell.swift */,
+				83D8554527142DED005DC0FD /* RoutineHeaderView.swift */,
+			);
+			path = Routine;
 			sourceTree = "<group>";
 		};
 		A8CEA31FF1A9DB2BC92C9FE2 /* Pods */ = {
@@ -614,6 +630,7 @@
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				83D8553D27135C42005DC0FD /* Routine */,
 				B02803FA270855F9009D642A /* Notification */,
 				B02803EC27085197009D642A /* Add */,
 				B02803DF270850F9009D642A /* EditOrder */,
@@ -1168,6 +1185,7 @@
 			files = (
 				B0E1D25D270BEB5A006995C5 /* NotificationModel.swift in Sources */,
 				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
+				83D8554627142DED005DC0FD /* RoutineHeaderView.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
 				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
@@ -1198,6 +1216,7 @@
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
+				83D85541271360EB005DC0FD /* RoutineCollectionViewCell.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
@@ -1211,6 +1230,7 @@
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
+				83D8553F27135C83005DC0FD /* RoutineView.swift in Sources */,
 				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
