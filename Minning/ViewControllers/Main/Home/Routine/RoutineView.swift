@@ -14,7 +14,7 @@ protocol RoutineViewDelegate: AnyObject {
 }
 
 final class RoutineView: UIView {
-    enum CollectionViewSection: Int, CaseIterable {
+    enum TableViewSection: Int, CaseIterable {
         case header
         case phraseGuide
         case routine
@@ -22,15 +22,15 @@ final class RoutineView: UIView {
     }
     
     weak var delegate: RoutineViewDelegate?
-
-    lazy var mainCollectionView: UICollectionView = {
+    
+    lazy var mainTableView: UITableView = {
+        $0.separatorStyle = .none
         $0.delegate = self
         $0.dataSource = self
-        $0.register(RoutineHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RoutineHeaderView.identifier)
-        $0.register(PhraseGuideCell.self, forCellWithReuseIdentifier: PhraseGuideCell.identifier)
-        $0.register(RoutineCell.self, forCellWithReuseIdentifier: RoutineCell.identifier)
+        $0.register(PhraseGuideCell.self, forCellReuseIdentifier: PhraseGuideCell.identifier)
+        $0.register(RoutineCell.self, forCellReuseIdentifier: RoutineCell.identifier)
         return $0
-    }(UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()))
+    }(UITableView())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,71 +42,31 @@ final class RoutineView: UIView {
     }
     
     private func setupViewLayout() {
-        mainCollectionView.backgroundColor = .clear
+        mainTableView.backgroundColor = .clear
         
-        [mainCollectionView].forEach {
+        [mainTableView].forEach {
             addSubview($0)
         }
         
-        mainCollectionView.snp.makeConstraints { make in
+        mainTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
 }
 
-extension RoutineView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch CollectionViewSection(rawValue: section) {
+extension RoutineView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch TableViewSection(rawValue: section) {
         case .header:
-            return 0
-        case .phraseGuide:
-            return 1
-        case .routine:
-            return 3
-        case .review:
-            return 0
+            let header = RoutineHeaderView()
+            return header
         default:
-            return 0
+            return nil
         }
-    }
-        
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return CollectionViewSection.allCases.count
-    }
-}
-
-extension RoutineView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = mainCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RoutineHeaderView.identifier, for: indexPath) as? RoutineHeaderView else {
-            return .init()
-        }
-        return header
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch CollectionViewSection(rawValue: indexPath.section) {
-        case .header:
-            return .init()
-        case .phraseGuide:
-            guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: PhraseGuideCell.identifier, for: indexPath) as? PhraseGuideCell else {
-                return .init()
-            }
-            return cell
-        case .routine:
-            guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: RoutineCell.identifier, for: indexPath) as? RoutineCell else {
-                return .init()
-            }
-            cell.configure()
-            return cell
-        case .review:
-            return .init()
-        default:
-            return .init()
-        }
-    }
-        
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch CollectionViewSection(rawValue: indexPath.section) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch TableViewSection(rawValue: indexPath.section) {
         case .header:
             break
         case .phraseGuide:
@@ -121,58 +81,83 @@ extension RoutineView: UICollectionViewDelegate {
     }
 }
 
-extension RoutineView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        switch CollectionViewSection(rawValue: section) {
+extension RoutineView: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        TableViewSection.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch TableViewSection(rawValue: section) {
         case .header:
-            return .init(width: frame.width - 32, height: 56)
+            return 0
+        case .phraseGuide:
+            return 1
+        case .routine:
+            return 3
+        case .review:
+            return 0
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch TableViewSection(rawValue: indexPath.section) {
+        case .header:
+            return .init()
+        case .phraseGuide:
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: PhraseGuideCell.identifier, for: indexPath) as? PhraseGuideCell else {
+                return .init()
+            }
+            return cell
+        case .routine:
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: RoutineCell.identifier, for: indexPath) as? RoutineCell else {
+                return .init()
+            }
+            cell.configure()
+            return cell
+        case .review:
+            return .init()
+        default:
+            return .init()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch TableViewSection(rawValue: indexPath.section) {
+        case .phraseGuide:
+            return 58
+        case .routine:
+            return 78
+        default:
+            return .zero
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch TableViewSection(rawValue: section) {
+        case .header:
+            return 70
         default:
             return .zero
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch CollectionViewSection(rawValue: indexPath.section) {
-        case .header:
-            return .zero
-        case .phraseGuide:
-            return .init(width: frame.width - 32, height: 50)
-        case .routine:
-            return .init(width: frame.width - 32, height: 70)
-        case .review:
-            return .zero
-        default:
-            return .zero
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        return nil
+        
+        let completeAction = UIContextualAction(style: .normal, title: "완료") { (_, _, completion) in
+            print("complete")
+            completion(true)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch CollectionViewSection(rawValue: section) {
-        case .header:
-            return .zero
-        case .phraseGuide:
-            return .init(top: 14, left: 16, bottom: .zero, right: 16)
-        case .routine:
-            return .init(top: 14, left: 16, bottom: .zero, right: 16)
-        case .review:
-            return .zero
-        default:
-            return .zero
+        completeAction.backgroundColor = .minningBlue100
+        
+        let halfAction = UIContextualAction(style: .normal, title: "부분완료") { (_, _, completion) in
+            print("half")
+            completion(true)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        switch CollectionViewSection(rawValue: section) {
-        case .header:
-            return .zero
-        case .phraseGuide:
-            return .zero
-        case .routine:
-            return 8
-        case .review:
-            return .zero
-        default:
-            return .zero
-        }
+        halfAction.backgroundColor = .minningGray100
+        
+        return .init(actions: [completeAction, halfAction])
     }
 }

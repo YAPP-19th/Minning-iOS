@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class PhraseGuideCell: UICollectionViewCell {
+final class PhraseGuideCell: UITableViewCell {
     static let identifier = "PhraseGuideCell"
-    
+
     private let titleLabel: UILabel = {
         $0.text = "글을 따라쓰고 오늘 루틴을 시작해봐요"
         $0.font = .font14PBold
@@ -23,22 +23,33 @@ final class PhraseGuideCell: UICollectionViewCell {
         return $0
     }(UIImageView())
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setupViewLayout() {
-        layer.cornerRadius = 10
+        selectionStyle = .none
+        backgroundColor = .clear
+        contentView.backgroundColor = .minningBlue100
+        contentView.layer.cornerRadius = 10
         
-        backgroundColor = .minningBlue100
-        
-        [titleLabel, pencilImageView].forEach {
+        [contentView].forEach {
             addSubview($0)
+        }
+        [titleLabel, pencilImageView].forEach {
+            contentView.addSubview($0)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+            make.bottom.equalTo(-8)
+            make.top.bottom.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in

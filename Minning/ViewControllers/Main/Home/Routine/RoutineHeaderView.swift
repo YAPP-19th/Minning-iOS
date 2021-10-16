@@ -8,7 +8,7 @@
 
 import SnapKit
 
-final class RoutineHeaderView: UICollectionReusableView {
+final class RoutineHeaderView: UIView {
     static let identifier = "RoutineHeaderView"
     
     private let routineButton: UIButton = {
@@ -41,11 +41,11 @@ final class RoutineHeaderView: UICollectionReusableView {
         
         routineButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
 
         reviewButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.leading.equalTo(routineButton.snp.trailing).offset(21)
         }
     }

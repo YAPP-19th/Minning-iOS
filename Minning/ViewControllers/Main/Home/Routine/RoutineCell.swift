@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RoutineCell: UICollectionViewCell {
+final class RoutineCell: UITableViewCell {
     static let identifier = "RoutineCell"
     
     private let categoryBarView = UIView()
@@ -23,8 +23,8 @@ final class RoutineCell: UICollectionViewCell {
         return $0
     }(UIStackView())
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewLayout()
     }
     
@@ -38,8 +38,10 @@ final class RoutineCell: UICollectionViewCell {
     }
     
     private func setupViewLayout() {
+        selectionStyle = .none
+        backgroundColor = .clear
+        
         contentView.backgroundColor = .primaryWhite
-
         contentView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
@@ -50,7 +52,7 @@ final class RoutineCell: UICollectionViewCell {
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05).cgColor
         
         [categoryBarView, titleLabel, descriptionLabel, lockImageView, alarmStackView].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
         [alarmImageView, alarmLabel].forEach {
             alarmStackView.addArrangedSubview($0)
@@ -63,6 +65,12 @@ final class RoutineCell: UICollectionViewCell {
         alarmImageView.image = UIImage(sharedNamed: "alarm_enable.png")
         alarmLabel.font = .font12P
         
+        contentView.snp.makeConstraints { make in
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+            make.top.equalTo(4)
+            make.bottom.equalTo(-4)
+        }
         categoryBarView.snp.makeConstraints { make in
             make.top.bottom.leading.equalToSuperview()
             make.width.equalTo(3)
@@ -102,7 +110,5 @@ final class RoutineCell: UICollectionViewCell {
         descriptionLabel.textColor = .grayB5B8BE
         alarmImageView.image = UIImage(sharedNamed: "alarm_disable.png")
         alarmLabel.textColor = .grayB5B8BE
-        
-//        isUserInteractionEnabled = false
     }
 }
