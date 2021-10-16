@@ -24,8 +24,33 @@ final class EditOrderViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        setupNavigationBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    private func setupNavigationBar() {
+        if let navigationBar = navigationController?.navigationBar as? PlainUINavigationBar {
+            navigationBar.titleContent = "순서 편집"
+            navigationBar.removeDefaultShadowImage()
+            
+            navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
+        }
+    }
+    
+    @objc
+    private func onClickBackButton(_ sender: Any?) {
+        viewModel.goToBack()
+    }
+    
+    @objc
+    private func onClickSaveButton(_ sender: Any?) {
+        print("save")
     }
     
     override func bindViewModel() {
@@ -33,6 +58,6 @@ final class EditOrderViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        
+        view.backgroundColor = .minningLightGray100
     }
 }
