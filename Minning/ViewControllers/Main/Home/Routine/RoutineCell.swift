@@ -103,6 +103,6 @@ final class RoutineCell: UICollectionViewCell {
         alarmImageView.image = UIImage(sharedNamed: "alarm_disable.png")
         alarmLabel.textColor = .grayB5B8BE
         
-        isUserInteractionEnabled = false
+//        isUserInteractionEnabled = false
     }
 }

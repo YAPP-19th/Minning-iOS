@@ -10,6 +10,7 @@ import SnapKit
 
 protocol RoutineViewDelegate: AnyObject {
     func didSelectPhraseGuide()
+    func didSelectRoutineCell()
 }
 
 final class RoutineView: UIView {
@@ -111,7 +112,7 @@ extension RoutineView: UICollectionViewDelegate {
         case .phraseGuide:
             delegate?.didSelectPhraseGuide()
         case .routine:
-            break
+            delegate?.didSelectRoutineCell()
         case .review:
             break
         default:

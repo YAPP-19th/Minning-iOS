@@ -86,4 +86,11 @@ extension HomeViewController: RoutineViewDelegate {
     func didSelectPhraseGuide() {
         viewModel.showPhraseModally()
     }
+    
+    func didSelectRoutineCell() {
+        showAlert(title: "알림", message: "명언 입력부터 ~~ 어쩌구") { _ in
+            self.viewModel.showPhraseModally()
+            return
+        }
+    }
 }
