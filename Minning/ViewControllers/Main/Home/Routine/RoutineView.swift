@@ -11,6 +11,7 @@ import SnapKit
 protocol RoutineViewDelegate: AnyObject {
     func didSelectPhraseGuide()
     func didSelectRoutineCell()
+    func didSelectEditOrder()
 }
 
 final class RoutineView: UIView {
@@ -60,6 +61,17 @@ extension RoutineView: UITableViewDelegate {
         case .header:
             let header = RoutineHeaderView()
             return header
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch TableViewSection(rawValue: section) {
+        case .routine:
+            let footer = RoutineFooterView()
+            footer.delegate = self
+            return footer
         default:
             return nil
         }
@@ -143,6 +155,15 @@ extension RoutineView: UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch TableViewSection(rawValue: section) {
+        case .routine:
+            return 37
+        default:
+            return .zero
+        }
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 //        return nil
         
@@ -159,5 +180,11 @@ extension RoutineView: UITableViewDataSource {
         halfAction.backgroundColor = .minningGray100
         
         return .init(actions: [completeAction, halfAction])
+    }
+}
+
+extension RoutineView: RoutineFooterViewDelegate {
+    func didSelectEditOrder() {
+        delegate?.didSelectEditOrder()
     }
 }

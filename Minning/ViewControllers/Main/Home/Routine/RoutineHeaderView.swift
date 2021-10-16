@@ -8,9 +8,7 @@
 
 import SnapKit
 
-final class RoutineHeaderView: UIView {
-    static let identifier = "RoutineHeaderView"
-    
+final class RoutineHeaderView: UIView {    
     private let routineButton: UIButton = {
         $0.setTitle("루틴", for: .normal)
         $0.setTitleColor(.primaryBlack, for: .normal)

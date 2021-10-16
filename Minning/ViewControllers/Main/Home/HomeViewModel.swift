@@ -31,4 +31,8 @@ final class HomeViewModel {
     public func showReviewFullModally() {
         coordinator.goToReview()
     }
+    
+    public func goToEditOrder() {
+        coordinator.goToEditOrder()
+    }
 }

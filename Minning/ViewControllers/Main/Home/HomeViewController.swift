@@ -93,4 +93,8 @@ extension HomeViewController: RoutineViewDelegate {
             return
         }
     }
+    
+    func didSelectEditOrder() {
+        viewModel.goToEditOrder()
+    }
 }
