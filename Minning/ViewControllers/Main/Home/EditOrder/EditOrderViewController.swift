@@ -60,12 +60,18 @@ final class EditOrderViewController: BaseViewController {
     
     @objc
     private func onClickBackButton(_ sender: Any?) {
-        viewModel.goToBack()
+        showDismissAlert()
     }
     
     @objc
     private func onClickSaveButton(_ sender: Any?) {
         print("save")
+    }
+    
+    private func showDismissAlert() {
+        showAlert(title: "순서 편집", message: "변경된 순서가 저장되지 않았습니다.\n화면을 벗어나면 순서가 초기화됩니다.") { [weak self] _ in
+            self?.viewModel.goToBack()
+        }
     }
     
     override func bindViewModel() {
