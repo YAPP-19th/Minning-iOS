@@ -178,21 +178,32 @@ extension RoutineView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard indexPath.section == TableViewSection.routine.rawValue else { return nil }
-//        return nil
+        return nil
         
-        let completeAction = UIContextualAction(style: .normal, title: "완료") { (_, _, completion) in
-            print("complete")
-            completion(true)
-        }
-        completeAction.backgroundColor = .minningBlue100
+//        let completeAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
+//            print("complete")
+//            completion(true)
+//        }
+//        completeAction.backgroundColor = .minningLightGray100
+//        completeAction.image = UIImage(sharedNamed: "complete_action.png")
+//
+//        let halfAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
+//            print("half")
+//            completion(true)
+//        }
+//        halfAction.backgroundColor = .minningLightGray100
+//        halfAction.image = UIImage(sharedNamed: "half_action.png")
+//
+//        let dismissAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
+//            print("dismiss")
+//            completion(true)
+//        }
+//        dismissAction.backgroundColor = .minningLightGray100
+//        dismissAction.image = UIImage(sharedNamed: "dismiss_action.png")
+//
+//        return .init(actions: [halfAction, completeAction])
         
-        let halfAction = UIContextualAction(style: .normal, title: "부분완료") { (_, _, completion) in
-            print("half")
-            completion(true)
-        }
-        halfAction.backgroundColor = .minningGray100
-        
-        return .init(actions: [completeAction, halfAction])
+//        return .init(actions: [dismissAction])
     }
 }
 
