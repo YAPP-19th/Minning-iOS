@@ -35,4 +35,8 @@ final class HomeViewModel {
     public func goToEditOrder() {
         coordinator.goToEditOrder()
     }
+    
+    public func goToReview() {
+        coordinator.goToReview()
+    }
 }

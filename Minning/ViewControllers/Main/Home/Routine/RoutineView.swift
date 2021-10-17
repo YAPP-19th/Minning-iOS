@@ -12,6 +12,7 @@ protocol RoutineViewDelegate: AnyObject {
     func didSelectPhraseGuide()
     func didSelectRoutineCell()
     func didSelectEditOrder()
+    func didSelectReviewCell()
 }
 
 final class RoutineView: UIView {
@@ -30,6 +31,7 @@ final class RoutineView: UIView {
         $0.dataSource = self
         $0.register(PhraseGuideCell.self, forCellReuseIdentifier: PhraseGuideCell.identifier)
         $0.register(RoutineCell.self, forCellReuseIdentifier: RoutineCell.identifier)
+        $0.register(ReviewCell.self, forCellReuseIdentifier: ReviewCell.identifier)
         return $0
     }(UITableView())
     
@@ -90,7 +92,7 @@ extension RoutineView: UITableViewDelegate {
         case .routine:
             delegate?.didSelectRoutineCell()
         case .review:
-            break
+            delegate?.didSelectReviewCell()
         default:
             break
         }
@@ -107,11 +109,11 @@ extension RoutineView: UITableViewDataSource {
         case .header:
             return 0
         case .phraseGuide:
-            return 1
+            return viewModel.tabType == .routine ? 1 : .zero
         case .routine:
-            return 3
+            return viewModel.tabType == .routine ? 3 : .zero
         case .review:
-            return 0
+            return viewModel.tabType == .routine ? .zero : 2
         default:
             return 0
         }
@@ -133,7 +135,11 @@ extension RoutineView: UITableViewDataSource {
             cell.configure()
             return cell
         case .review:
-            return .init()
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as? ReviewCell else {
+                return .init()
+            }
+            cell.configure()
+            return cell
         default:
             return .init()
         }
@@ -144,6 +150,8 @@ extension RoutineView: UITableViewDataSource {
         case .phraseGuide:
             return 58
         case .routine:
+            return 78
+        case .review:
             return 78
         default:
             return .zero
@@ -162,13 +170,14 @@ extension RoutineView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch TableViewSection(rawValue: section) {
         case .routine:
-            return 37
+            return viewModel.tabType == .routine ? 37 : .zero
         default:
             return .zero
         }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard indexPath.section == TableViewSection.routine.rawValue else { return nil }
 //        return nil
         
         let completeAction = UIContextualAction(style: .normal, title: "완료") { (_, _, completion) in

@@ -97,4 +97,8 @@ extension HomeViewController: RoutineViewDelegate {
     func didSelectEditOrder() {
         viewModel.goToEditOrder()
     }
+    
+    func didSelectReviewCell() {
+        viewModel.goToReview()
+    }
 }
