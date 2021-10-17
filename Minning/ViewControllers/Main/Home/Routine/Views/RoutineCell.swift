@@ -14,6 +14,7 @@ final class RoutineCell: UITableViewCell {
     private let categoryBarView = UIView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
+    private let completeLabel = UILabel()
     private let lockImageView = UIImageView()
     private let alarmImageView = UIImageView()
     private let alarmLabel = UILabel()
@@ -51,7 +52,7 @@ final class RoutineCell: UITableViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05).cgColor
         
-        [categoryBarView, titleLabel, descriptionLabel, lockImageView, alarmStackView].forEach {
+        [categoryBarView, titleLabel, descriptionLabel, completeLabel, lockImageView, alarmStackView].forEach {
             contentView.addSubview($0)
         }
         [alarmImageView, alarmLabel].forEach {
@@ -61,6 +62,8 @@ final class RoutineCell: UITableViewCell {
         titleLabel.font = .font16PBold
         descriptionLabel.font = .font12P
         descriptionLabel.textColor = .minningDarkGray100
+        completeLabel.font = .font12P
+        completeLabel.textColor = .minningBlue100
         lockImageView.image = UIImage(sharedNamed: "lock.png")
         alarmImageView.image = UIImage(sharedNamed: "alarm_enable.png")
         alarmLabel.font = .font12P
@@ -76,12 +79,16 @@ final class RoutineCell: UITableViewCell {
             make.width.equalTo(3)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalTo(16)
             make.leading.equalTo(categoryBarView.snp.trailing).offset(12)
         }
         descriptionLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-14)
+            make.bottom.equalTo(-14)
             make.leading.equalTo(titleLabel.snp.leading)
+        }
+        completeLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(-16)
+            make.bottom.equalTo(-14)
         }
         lockImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -92,7 +99,7 @@ final class RoutineCell: UITableViewCell {
             make.height.equalTo(11)
         }
         alarmStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18)
+            make.top.equalTo(18)
             make.trailing.equalToSuperview().offset(-16)
         }
     }
