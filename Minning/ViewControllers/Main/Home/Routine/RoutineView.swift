@@ -32,6 +32,8 @@ final class RoutineView: UIView {
         $0.register(RoutineCell.self, forCellReuseIdentifier: RoutineCell.identifier)
         return $0
     }(UITableView())
+    
+    private let viewModel = RoutineViewModel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,6 +62,8 @@ extension RoutineView: UITableViewDelegate {
         switch TableViewSection(rawValue: section) {
         case .header:
             let header = RoutineHeaderView()
+            header.delegate = self
+            header.configure(tabType: viewModel.tabType)
             return header
         default:
             return nil
@@ -180,6 +184,18 @@ extension RoutineView: UITableViewDataSource {
         halfAction.backgroundColor = .minningGray100
         
         return .init(actions: [completeAction, halfAction])
+    }
+}
+
+extension RoutineView: RoutineHeaderViewDelegate {
+    func didSelectRoutineTab() {
+        viewModel.tabType = .routine
+        mainTableView.reloadData()
+    }
+    
+    func didSelectReviewTab() {
+        viewModel.tabType = .review
+        mainTableView.reloadData()
     }
 }
 
