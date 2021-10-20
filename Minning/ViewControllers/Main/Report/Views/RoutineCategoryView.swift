@@ -9,24 +9,15 @@
 import CommonSystem
 import DesignSystem
 
-final class PieLegendView: UIView {
-    public var category: RoutineCategory = .miracle {
+final class FilterButton: UIButton {
+    public var category: RoutineCategory = .miracle
+    
+    public override var isSelected: Bool {
         didSet {
-            circleView.backgroundColor = category.color
-            titleLabel.text = category.title
+            backgroundColor = isSelected ? .blue67A4FF : .primaryWhite
+            setTitleColor(isSelected ? .primaryWhite : .gray787C84, for: .normal)
         }
     }
-    
-    private let circleView: UIView = {
-        $0.layer.cornerRadius = 7
-        return $0
-    }(UIView())
-    
-    private let titleLabel: UILabel = {
-        $0.font = .font12P
-        $0.textColor = .gray787C84
-        return $0
-    }(UILabel())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,19 +29,9 @@ final class PieLegendView: UIView {
     }
     
     private func setupView() {
-        [circleView, titleLabel].forEach {
-            addSubview($0)
-        }
-        
-        circleView.snp.makeConstraints { make in
-            make.top.leading.bottom.equalToSuperview()
-            make.width.height.equalTo(14)
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview()
-            make.leading.equalTo(circleView.snp.trailing).offset(4)
-        }
+        layer.cornerRadius = 5
+        contentEdgeInsets = UIEdgeInsets(top: 7, left: 12, bottom: 7, right: 12)
+        titleLabel?.font = .font16P
     }
 }
 
@@ -63,10 +44,14 @@ final class RoutineCategoryView: UIView {
             }
             
             halfPieChart.dataSet = pieChartData
-            
-            if let data = routineData.first {
-                updateCategoryDataView(reportRoutine: data)
-            }
+            currentCategory = .miracle
+        }
+    }
+    
+    private var currentCategory: RoutineCategory = .miracle {
+        didSet {
+            updateFilterView()
+            updateCategoryDataView(reportRoutine: routineData[currentCategory.rawValue])
         }
     }
     
@@ -87,7 +72,8 @@ final class RoutineCategoryView: UIView {
         $0.backgroundColor = .clear
         $0.pieTouchHandler = { index in
             DebugLog("Selected Index: \(RoutineCategory(rawValue: index)?.title ?? "nil")")
-            self.updateCategoryDataView(reportRoutine: self.routineData[index])
+            self.currentCategory = RoutineCategory(rawValue: index) ?? .miracle
+//            self.updateCategoryDataView(reportRoutine: self.routineData[index])
         }
         return $0
     }(HalfPieChart())
@@ -119,6 +105,23 @@ final class RoutineCategoryView: UIView {
         return $0
     }(UIView())
     
+    private let filterScrollView: UIScrollView = {
+        $0.bounces = false
+        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
+        $0.contentInsetAdjustmentBehavior = .never
+        return $0
+    }(UIScrollView())
+    
+    private let filterContainerView: UIView = UIView()
+    private let tableFilterStackView: UIStackView = {
+        $0.axis = .horizontal
+        $0.spacing = 4
+        $0.alignment = .leading
+        $0.setContentHuggingPriority(.required, for: .horizontal)
+        return $0
+    }(UIStackView())
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -131,19 +134,20 @@ final class RoutineCategoryView: UIView {
     
     private func setupView() {
         backgroundColor = .primaryWhite
-        [sectionTitle, categoryLegendStackView, halfPieChart, separator, dataContainerView].forEach {
+        [sectionTitle, categoryLegendStackView,
+         halfPieChart, dataContainerView, separator,
+         filterScrollView].forEach {
             addSubview($0)
         }
+        
+        filterScrollView.addSubview(filterContainerView)
+        filterContainerView.addSubview(tableFilterStackView)
         
         [categoryTitleLabel, categoryValueLabel].forEach {
             dataContainerView.addSubview($0)
         }
         
-        RoutineCategory.allCases.forEach { category in
-            let legendView = PieLegendView()
-            legendView.category = category
-            categoryLegendStackView.addArrangedSubview(legendView)
-        }
+        setupFilterview()
         
         sectionTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
@@ -186,7 +190,23 @@ final class RoutineCategoryView: UIView {
             make.leading.equalToSuperview().offset(18)
             make.trailing.equalToSuperview().offset(-18)
             make.height.equalTo(1)
+        }
+        
+        filterScrollView.snp.makeConstraints { make in
+            make.top.equalTo(separator.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(33)
             make.bottom.equalToSuperview().offset(-20)
+        }
+        
+        filterContainerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalToSuperview()
+            make.width.equalToSuperview().priority(250)
+        }
+        
+        tableFilterStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -202,6 +222,37 @@ final class RoutineCategoryView: UIView {
         routineData = sampleRoutineReportData
     }
     
+    private func setupFilterview() {
+        let leadingSpacer = UIView()
+        let trailingSpacer = UIView()
+        [leadingSpacer, trailingSpacer].forEach {
+            $0.snp.makeConstraints { make in
+                make.width.equalTo(16)
+            }
+        }
+        
+        tableFilterStackView.addArrangedSubview(leadingSpacer)
+        tableFilterStackView.setCustomSpacing(0, after: leadingSpacer)
+        RoutineCategory.allCases.enumerated().forEach { index, category in
+            let legendView = PieLegendView()
+            legendView.title = category.title
+            legendView.circleColor = category.color
+            categoryLegendStackView.addArrangedSubview(legendView)
+            
+            let filterButton = FilterButton()
+            filterButton.isSelected = currentCategory == category
+            filterButton.category = category
+            filterButton.setTitle(category.title, for: .normal)
+            filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
+            tableFilterStackView.addArrangedSubview(filterButton)
+            
+            if index == RoutineCategory.allCases.count - 1 {
+                tableFilterStackView.addArrangedSubview(trailingSpacer)
+                tableFilterStackView.setCustomSpacing(0, after: filterButton)
+            }
+        }
+    }
+    
     private func updateCategoryDataView(reportRoutine: ReportRoutine) {
         categoryTitleLabel.text = reportRoutine.category.title
         
@@ -214,5 +265,19 @@ final class RoutineCategoryView: UIView {
                                        .foregroundColor: UIColor.blue67A4FF,
                                        .baselineOffset: -1.5], range: range)
         categoryValueLabel.attributedText = valueAttrString
+    }
+    
+    private func updateFilterView() {
+        tableFilterStackView.arrangedSubviews.enumerated().forEach { index, subView in
+            if let filterButton = subView as? FilterButton {
+                filterButton.isSelected = (currentCategory == routineData[index - 1].category)
+            }
+        }
+    }
+    
+    @objc
+    private func onClickFilterButton(_ sender: FilterButton) {
+        currentCategory = sender.category
+        updateFilterView()
     }
 }
