@@ -44,15 +44,23 @@ public class HalfPieChart: UIView {
     }
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        DebugLog("Touch Began")
         guard let touch = touches.first, let subLayers = layer.sublayers as? [CAShapeLayer] else { return }
         let point = touch.location(in: self)
 
+        var currentSelectedIndex: Int = 0
+        var isSelectedWhiteArea: Bool = false
+        
         subLayers.enumerated().forEach { index, layer in
-            if let path = layer.path, path.contains(point), index < dataSet.count {
-                DebugLog("Index: \(index), Layer : \(layer)")
-                pieTouchHandler?(index)
+            if let path = layer.path, path.contains(point) {
+                if index < dataSet.count {
+                    currentSelectedIndex = index
+                }
+                isSelectedWhiteArea = !(index < dataSet.count)
             }
+        }
+        
+        if !isSelectedWhiteArea {
+            pieTouchHandler?(currentSelectedIndex)
         }
     }
     
@@ -61,8 +69,9 @@ public class HalfPieChart: UIView {
         let radius = min(rect.width, rect.height) - 20
         let center = CGPoint(x: rect.origin.x + rect.width / 2, y: rect.origin.y + rect.height)
         let centerCirclePath = UIBezierPath()
+        
         centerCirclePath.move(to: center)
-        centerCirclePath.addArc(withCenter: center, radius: radius, startAngle: 0, endAngle: 180, clockwise: true)
+        centerCirclePath.addArc(withCenter: center, radius: radius, startAngle: -CGFloat.pi, endAngle: 0, clockwise: true)
         centerCirclePath.close()
         
         maskLayer.path = centerCirclePath.cgPath
