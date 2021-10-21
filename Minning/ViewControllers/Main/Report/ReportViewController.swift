@@ -47,11 +47,10 @@ final class ReportViewController: BaseViewController {
     }(UIStackView())
     
     // MARK: Report Content View
+    private let weeklyPercentView: WeeklyPercentView = WeeklyPercentView()
     private let myRoutineView: MyRoutineView = MyRoutineView()
     private let monthGraphView: MonthGraphView = MonthGraphView()
-    private let weeklyPercentView: WeeklyPercentView = WeeklyPercentView()
     private let routineCompareView: RoutineCompareView = RoutineCompareView()
-    private let routineCategoryView: RoutineCategoryView = RoutineCategoryView()
     
     private let viewModel: ReportViewModel
     
@@ -130,8 +129,7 @@ final class ReportViewController: BaseViewController {
         }
         
         [weeklyPercentView, myRoutineView,
-         monthGraphView, routineCategoryView,
-         routineCompareView].forEach {
+         monthGraphView, routineCompareView].forEach {
             contentStackView.addArrangedSubview($0)
         }
     }
@@ -142,11 +140,10 @@ final class ReportViewController: BaseViewController {
             self.weekTabButton.setTitleColor(type == .week ? .primaryBlack : .minningGray100, for: .normal)
             self.monthTabButton.setTitleColor(type == .month ? .primaryBlack : .minningGray100, for: .normal)
             
+            self.weeklyPercentView.isHidden = !(type == .week)
             self.myRoutineView.isHidden = !(type == .week)
             self.monthGraphView.isHidden = !(type == .month)
-            self.weeklyPercentView.isHidden = !(type == .week)
             self.routineCompareView.isHidden = !(type == .month)
-            self.routineCategoryView.isHidden = !(type == .month)
         }
     }
     

@@ -10,7 +10,13 @@ import CommonSystem
 import Foundation
 
 final class HomeViewModel {
+    enum RoutineTabType {
+        case routine
+        case review
+    }
+    
     private let coordinator: HomeCoordinator
+    var tabType: DataBinding<RoutineTabType> = DataBinding(.routine)
     
     public init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
@@ -29,6 +35,14 @@ final class HomeViewModel {
     }
     
     public func showReviewFullModally() {
+        coordinator.goToReview()
+    }
+    
+    public func goToEditOrder() {
+        coordinator.goToEditOrder()
+    }
+    
+    public func goToReview() {
         coordinator.goToReview()
     }
 }
