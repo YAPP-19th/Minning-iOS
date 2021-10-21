@@ -137,4 +137,8 @@ public extension UIFont {
     class var font26PBold: UIFont {
         UIFont.systemFont(ofSize: 26, weight: .bold)
     }
+    
+    class var font70PHeavy: UIFont {
+        UIFont.systemFont(ofSize: 70, weight: .heavy)
+    }
 }

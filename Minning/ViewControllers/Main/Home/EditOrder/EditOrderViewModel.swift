@@ -15,8 +15,4 @@ final class EditOrderViewModel {
     init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
     }
-    
-    public func goToBack() {
-        coordinator.goToBack()
-    }
 }
