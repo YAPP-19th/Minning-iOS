@@ -127,6 +127,8 @@
 		B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */; };
 		B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */; };
 		B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */; };
+		B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
+		B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
 		B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16DF226DA57F200A8E52B /* AppDelegate.swift */; };
 		B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0D16DFB26DA57F200A8E52B /* OurApp.xcdatamodeld */; };
 		B0D16DFF26DA57F400A8E52B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0D16DFE26DA57F400A8E52B /* Assets.xcassets */; };
@@ -295,6 +297,7 @@
 		B0AD5A732705DBCC00CC07B0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCategoryView.swift; sourceTree = "<group>"; };
 		B0D16DEF26DA57F200A8E52B /* Minning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D16DF226DA57F200A8E52B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0D16DFC26DA57F200A8E52B /* OurApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OurApp.xcdatamodel; sourceTree = "<group>"; };
@@ -588,6 +591,7 @@
 				B0ECF8762709930F0088C96E /* MyRoutineview */,
 				B0280458270986FB009D642A /* MonthGraphView.swift */,
 				B028045B2709871D009D642A /* RoutineCompareView.swift */,
+				B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1158,6 +1162,7 @@
 				B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
+				B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
@@ -1186,6 +1191,7 @@
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
+				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
 				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
 				B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
