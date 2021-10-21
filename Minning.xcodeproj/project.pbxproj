@@ -9,12 +9,7 @@
 /* Begin PBXBuildFile section */
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
-		83D2F6F2271C6B65002947D3 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6ED271C6B65002947D3 /* RoutineFooterView.swift */; };
-		83D2F6F3271C6B65002947D3 /* PhraseGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6EE271C6B65002947D3 /* PhraseGuideCell.swift */; };
-		83D2F6F4271C6B65002947D3 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6EF271C6B65002947D3 /* RoutineCell.swift */; };
-		83D2F6F5271C6B65002947D3 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6F0271C6B65002947D3 /* ReviewCell.swift */; };
-		83D2F6F6271C6B65002947D3 /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6F1271C6B65002947D3 /* RoutineHeaderView.swift */; };
-		83D8553F27135C83005DC0FD /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8553E27135C83005DC0FD /* RoutineView.swift */; };
+		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
 		B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0180ECC26DCC103008C6F3C /* AppConfiguration.swift */; };
@@ -132,6 +127,8 @@
 		B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */; };
 		B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */; };
 		B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */; };
+		B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
+		B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
 		B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16DF226DA57F200A8E52B /* AppDelegate.swift */; };
 		B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0D16DFB26DA57F200A8E52B /* OurApp.xcdatamodeld */; };
 		B0D16DFF26DA57F400A8E52B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0D16DFE26DA57F400A8E52B /* Assets.xcassets */; };
@@ -241,12 +238,7 @@
 		691B4B28941CA43A46A62C49 /* Pods-OurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp.release.xcconfig"; path = "Target Support Files/Pods-OurApp/Pods-OurApp.release.xcconfig"; sourceTree = "<group>"; };
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		83D2F6ED271C6B65002947D3 /* RoutineFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutineFooterView.swift; path = Views/RoutineFooterView.swift; sourceTree = "<group>"; };
-		83D2F6EE271C6B65002947D3 /* PhraseGuideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhraseGuideCell.swift; path = Views/PhraseGuideCell.swift; sourceTree = "<group>"; };
-		83D2F6EF271C6B65002947D3 /* RoutineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutineCell.swift; path = Views/RoutineCell.swift; sourceTree = "<group>"; };
-		83D2F6F0271C6B65002947D3 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = Views/ReviewCell.swift; sourceTree = "<group>"; };
-		83D2F6F1271C6B65002947D3 /* RoutineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutineHeaderView.swift; path = Views/RoutineHeaderView.swift; sourceTree = "<group>"; };
-		83D8553E27135C83005DC0FD /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B014273026DCBA9800DE11E0 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -305,6 +297,7 @@
 		B0AD5A732705DBCC00CC07B0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCategoryView.swift; sourceTree = "<group>"; };
 		B0D16DEF26DA57F200A8E52B /* Minning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D16DF226DA57F200A8E52B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0D16DFC26DA57F200A8E52B /* OurApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OurApp.xcdatamodel; sourceTree = "<group>"; };
@@ -386,17 +379,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		83D8553D27135C42005DC0FD /* Routine */ = {
+		83D2F6D9271C416E002947D3 /* WeeklyPercentView */ = {
 			isa = PBXGroup;
 			children = (
-				83D2F6EE271C6B65002947D3 /* PhraseGuideCell.swift */,
-				83D2F6F0271C6B65002947D3 /* ReviewCell.swift */,
-				83D2F6EF271C6B65002947D3 /* RoutineCell.swift */,
-				83D2F6ED271C6B65002947D3 /* RoutineFooterView.swift */,
-				83D2F6F1271C6B65002947D3 /* RoutineHeaderView.swift */,
-				83D8553E27135C83005DC0FD /* RoutineView.swift */,
+				B0280452270986B5009D642A /* WeeklyPercentView.swift */,
+				83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */,
 			);
-			path = Routine;
+			path = WeeklyPercentView;
 			sourceTree = "<group>";
 		};
 		A8CEA31FF1A9DB2BC92C9FE2 /* Pods */ = {
@@ -598,10 +587,11 @@
 		B028044E270986A2009D642A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				83D2F6D9271C416E002947D3 /* WeeklyPercentView */,
 				B0ECF8762709930F0088C96E /* MyRoutineview */,
-				B0280452270986B5009D642A /* WeeklyPercentView.swift */,
 				B0280458270986FB009D642A /* MonthGraphView.swift */,
 				B028045B2709871D009D642A /* RoutineCompareView.swift */,
+				B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -639,7 +629,6 @@
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				83D8553D27135C42005DC0FD /* Routine */,
 				B02803FA270855F9009D642A /* Notification */,
 				B02803EC27085197009D642A /* Add */,
 				B02803DF270850F9009D642A /* EditOrder */,
@@ -1173,6 +1162,7 @@
 				B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
+				B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
@@ -1201,10 +1191,10 @@
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
+				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
 				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
 				B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
-				83D2F6F5271C6B65002947D3 /* ReviewCell.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				B0280456270986D8009D642A /* MyRoutineView.swift in Sources */,
@@ -1213,7 +1203,6 @@
 				B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */,
 				B0180F0226DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
 				B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */,
-				83D2F6F4271C6B65002947D3 /* RoutineCell.swift in Sources */,
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
 				B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
@@ -1225,7 +1214,6 @@
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
-				83D2F6F2271C6B65002947D3 /* RoutineFooterView.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
@@ -1240,7 +1228,6 @@
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
-				83D8553F27135C83005DC0FD /* RoutineView.swift in Sources */,
 				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
@@ -1248,16 +1235,15 @@
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
-				83D2F6F3271C6B65002947D3 /* PhraseGuideCell.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
-				83D2F6F6271C6B65002947D3 /* RoutineHeaderView.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
 				B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
+				83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */,
 				B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B028038F2706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B02803F82708544F009D642A /* RecommendViewModel.swift in Sources */,
