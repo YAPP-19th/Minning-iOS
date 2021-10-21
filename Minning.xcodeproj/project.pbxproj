@@ -111,6 +111,18 @@
 		B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74A22705C83900854190 /* PasswordViewController.swift */; };
 		B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74A62705C84700854190 /* PasswordViewModel.swift */; };
 		B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74A62705C84700854190 /* PasswordViewModel.swift */; };
+		B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A308272233F900E0A479 /* RoutineHeaderView.swift */; };
+		B097A30E272233F900E0A479 /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A308272233F900E0A479 /* RoutineHeaderView.swift */; };
+		B097A30F272233F900E0A479 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterView.swift */; };
+		B097A310272233F900E0A479 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterView.swift */; };
+		B097A311272233F900E0A479 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30A272233F900E0A479 /* ReviewCell.swift */; };
+		B097A312272233F900E0A479 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30A272233F900E0A479 /* ReviewCell.swift */; };
+		B097A313272233F900E0A479 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30B272233F900E0A479 /* RoutineCell.swift */; };
+		B097A314272233F900E0A479 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30B272233F900E0A479 /* RoutineCell.swift */; };
+		B097A315272233F900E0A479 /* PhraseGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30C272233F900E0A479 /* PhraseGuideCell.swift */; };
+		B097A316272233F900E0A479 /* PhraseGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30C272233F900E0A479 /* PhraseGuideCell.swift */; };
+		B097A3182722340400E0A479 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A3172722340400E0A479 /* RoutineView.swift */; };
+		B097A3192722340400E0A479 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A3172722340400E0A479 /* RoutineView.swift */; };
 		B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A5A2705D66400CC07B0 /* BaseViewController.swift */; };
 		B0AD5A5C2705D66400CC07B0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A5A2705D66400CC07B0 /* BaseViewController.swift */; };
 		B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A642705D6C300CC07B0 /* MainTabBarViewController.swift */; };
@@ -289,6 +301,12 @@
 		B08E747F2705BC9D00854190 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B08E74A22705C83900854190 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		B08E74A62705C84700854190 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		B097A308272233F900E0A479 /* RoutineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineHeaderView.swift; sourceTree = "<group>"; };
+		B097A309272233F900E0A479 /* RoutineFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineFooterView.swift; sourceTree = "<group>"; };
+		B097A30A272233F900E0A479 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		B097A30B272233F900E0A479 /* RoutineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
+		B097A30C272233F900E0A479 /* PhraseGuideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseGuideCell.swift; sourceTree = "<group>"; };
+		B097A3172722340400E0A479 /* RoutineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
 		B0AD5A5A2705D66400CC07B0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B0AD5A642705D6C300CC07B0 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		B0AD5A682705D74000CC07B0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -626,9 +644,31 @@
 			path = Password;
 			sourceTree = "<group>";
 		};
+		B097A303272233CE00E0A479 /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				B097A3172722340400E0A479 /* RoutineView.swift */,
+				B097A307272233D300E0A479 /* Views */,
+			);
+			path = Routine;
+			sourceTree = "<group>";
+		};
+		B097A307272233D300E0A479 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B097A30C272233F900E0A479 /* PhraseGuideCell.swift */,
+				B097A30A272233F900E0A479 /* ReviewCell.swift */,
+				B097A30B272233F900E0A479 /* RoutineCell.swift */,
+				B097A309272233F900E0A479 /* RoutineFooterView.swift */,
+				B097A308272233F900E0A479 /* RoutineHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B097A303272233CE00E0A479 /* Routine */,
 				B02803FA270855F9009D642A /* Notification */,
 				B02803EC27085197009D642A /* Add */,
 				B02803DF270850F9009D642A /* EditOrder */,
@@ -1111,7 +1151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B097A312272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B0E1D25E270BEB5A006995C5 /* NotificationModel.swift in Sources */,
+				B097A314272233F900E0A479 /* RoutineCell.swift in Sources */,
 				B02803F2270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
@@ -1141,6 +1183,7 @@
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */,
+				B097A310272233F900E0A479 /* RoutineFooterView.swift in Sources */,
 				B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F627085447009D642A /* RecommendViewController.swift in Sources */,
@@ -1163,16 +1206,19 @@
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
+				B097A30E272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
+				B097A316272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
 				B0E1D258270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
 				B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
+				B097A3192722340400E0A479 /* RoutineView.swift in Sources */,
 				B02803902706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B02803F92708544F009D642A /* RecommendViewModel.swift in Sources */,
 			);
@@ -1184,6 +1230,7 @@
 			files = (
 				B0E1D25D270BEB5A006995C5 /* NotificationModel.swift in Sources */,
 				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
+				B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
 				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
@@ -1207,9 +1254,11 @@
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
 				B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
+				B097A313272233F900E0A479 /* RoutineCell.swift in Sources */,
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B0280459270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
+				B097A30F272233F900E0A479 /* RoutineFooterView.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
@@ -1232,11 +1281,14 @@
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
 				B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
+				B097A3182722340400E0A479 /* RoutineView.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
+				B097A315272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
+				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
