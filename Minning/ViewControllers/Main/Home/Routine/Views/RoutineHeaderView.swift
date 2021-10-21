@@ -41,7 +41,7 @@ final class RoutineHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(tabType: RoutineViewModel.RoutineTabType) {
+    func configure(tabType: HomeViewModel.RoutineTabType) {
         switch tabType {
         case .routine:
             routineButton.setTitleColor(.primaryBlack, for: .normal)

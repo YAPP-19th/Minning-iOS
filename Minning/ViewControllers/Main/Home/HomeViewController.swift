@@ -18,7 +18,7 @@ final class HomeViewController: BaseViewController {
         return $0
     }(ProfileView())
     
-    lazy var routineCollectionView: RoutineView = {
+    lazy var routineView: RoutineView = {
         $0.delegate = self
         return $0
     }(RoutineView())
@@ -45,11 +45,9 @@ final class HomeViewController: BaseViewController {
         [contentView, profileView].forEach {
             view.addSubview($0)
         }
-        [routineCollectionView].forEach {
-            contentView.addSubview($0)
-        }
-        
+        contentView.addSubview(routineView)
         contentView.backgroundColor = .minningLightGray100
+        
         contentView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
@@ -61,14 +59,18 @@ final class HomeViewController: BaseViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        routineCollectionView.snp.makeConstraints { make in
+        routineView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     override func bindViewModel() {
-        
+        viewModel.tabType.bind { [weak self] type in
+            guard let self = self else { return }
+            self.routineView.tabType = type
+            self.routineView.updateView()
+        }
     }
 }
 
@@ -83,14 +85,19 @@ extension HomeViewController: ProfileViewDelegate {
 }
 
 extension HomeViewController: RoutineViewDelegate {
-    func didSelectPhraseGuide() {
-        viewModel.showPhraseModally()
-    }
-    
-    func didSelectRoutineCell() {
-        showAlert(title: "알림", message: "명언 입력부터 ~~ 어쩌구") { _ in
-            self.viewModel.showPhraseModally()
+    func didSelectSection(_ section: RoutineView.TableViewSection) {
+        switch section {
+        case .header:
             return
+        case .phraseGuide:
+            viewModel.showPhraseModally()
+        case .routine:
+            showAlert(title: "알림", message: "명언 입력부터 ~~ 어쩌구") { _ in
+                self.viewModel.showPhraseModally()
+                return
+            }
+        case .review:
+            viewModel.goToReview()
         }
     }
     
@@ -98,7 +105,7 @@ extension HomeViewController: RoutineViewDelegate {
         viewModel.goToEditOrder()
     }
     
-    func didSelectReviewCell() {
-        viewModel.goToReview()
+    func didSelectTab(_ tabType: HomeViewModel.RoutineTabType) {
+        viewModel.tabType.accept(tabType)
     }
 }

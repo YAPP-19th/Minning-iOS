@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol RoutineFooterViewDelegate: AnyObject {
-    func didSelectEditOrder()
-}
-
 final class RoutineFooterView: UIView {    
     private let editOrderButton: UIButton = {
         $0.setTitle("순서 편집", for: .normal)
@@ -21,7 +17,7 @@ final class RoutineFooterView: UIView {
         return $0
     }(UIButton())
     
-    weak var delegate: RoutineFooterViewDelegate?
+    var editOrderButtonHandler: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +30,9 @@ final class RoutineFooterView: UIView {
     
     @objc
     private func onClickEditOrderButton(_ sender: UIButton) {
-        delegate?.didSelectEditOrder()
+        if let handler = editOrderButtonHandler {
+            handler()
+        }
     }
         
     private func setupViewLayout() {

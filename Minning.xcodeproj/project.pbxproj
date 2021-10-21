@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
-		83D2F6EC271C6B5B002947D3 /* RoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6E8271C6B5B002947D3 /* RoutineViewModel.swift */; };
 		83D2F6F2271C6B65002947D3 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6ED271C6B65002947D3 /* RoutineFooterView.swift */; };
 		83D2F6F3271C6B65002947D3 /* PhraseGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6EE271C6B65002947D3 /* PhraseGuideCell.swift */; };
 		83D2F6F4271C6B65002947D3 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6EF271C6B65002947D3 /* RoutineCell.swift */; };
@@ -242,7 +241,6 @@
 		691B4B28941CA43A46A62C49 /* Pods-OurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp.release.xcconfig"; path = "Target Support Files/Pods-OurApp/Pods-OurApp.release.xcconfig"; sourceTree = "<group>"; };
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		83D2F6E8271C6B5B002947D3 /* RoutineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutineViewModel.swift; path = Routine/RoutineViewModel.swift; sourceTree = "<group>"; };
 		83D2F6ED271C6B65002947D3 /* RoutineFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutineFooterView.swift; path = Views/RoutineFooterView.swift; sourceTree = "<group>"; };
 		83D2F6EE271C6B65002947D3 /* PhraseGuideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhraseGuideCell.swift; path = Views/PhraseGuideCell.swift; sourceTree = "<group>"; };
 		83D2F6EF271C6B65002947D3 /* RoutineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutineCell.swift; path = Views/RoutineCell.swift; sourceTree = "<group>"; };
@@ -641,7 +639,6 @@
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				83D2F6E8271C6B5B002947D3 /* RoutineViewModel.swift */,
 				83D8553D27135C42005DC0FD /* Routine */,
 				B02803FA270855F9009D642A /* Notification */,
 				B02803EC27085197009D642A /* Add */,
@@ -1264,7 +1261,6 @@
 				B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B028038F2706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B02803F82708544F009D642A /* RecommendViewModel.swift in Sources */,
-				83D2F6EC271C6B5B002947D3 /* RoutineViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
