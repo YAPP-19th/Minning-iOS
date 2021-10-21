@@ -24,6 +24,7 @@ final class HomeViewController: BaseViewController {
     }(RoutineView())
     
     private let contentView: UIView = UIView()
+    private let alertText = "명언 작성 후 루틴을 시작할 수 있습니다.\n지금 명언 작성 페이지로 이동하시겠습니까?"
     private let viewModel: HomeViewModel
     
     public init(viewModel: HomeViewModel) {
@@ -92,7 +93,7 @@ extension HomeViewController: RoutineViewDelegate {
         case .phraseGuide:
             viewModel.showPhraseModally()
         case .routine:
-            showAlert(title: "알림", message: "명언 입력부터 ~~ 어쩌구") { _ in
+            showAlert(title: "루틴", message: alertText) { _ in
                 self.viewModel.showPhraseModally()
                 return
             }
