@@ -9,17 +9,17 @@
 import DesignSystem
 import Foundation
 
-public enum RoutineCategory: Int, CaseIterable {
-    // 미라클모닝, 자기개발, 건강, 생활, 기타
-    case miracle = 0
-    case selfDev
-    case health
+public enum RoutineCategory {
+    // 운동, 생활, 자기개발, 미라클모닝
+    case exercise
     case life
+    case selfDev
+    case miracle
     case other
     
     var color: UIColor {
         switch self {
-        case .health:
+        case .exercise:
             return .cateGreen100
         case .life:
             return .cateYellow100
@@ -29,21 +29,6 @@ public enum RoutineCategory: Int, CaseIterable {
             return .cateSky100
         case .other:
             return .catePurple100
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .health:
-            return "건강"
-        case .life:
-            return "생활"
-        case .selfDev:
-            return "자기개발"
-        case .miracle:
-            return "미라클모닝"
-        case .other:
-            return "기타"
         }
     }
 }
@@ -83,9 +68,4 @@ public struct Routine {
     let title: String
     let category: RoutineCategory
     let result: RoutineResult
-}
-
-public struct ReportRoutine {
-    let category: RoutineCategory
-    let percent: CGFloat
 }
