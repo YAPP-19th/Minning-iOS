@@ -20,10 +20,13 @@
 		B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02804032709621F009D642A /* UILabel+Extensions.swift */; };
 		B028042127096C24009D642A /* MUIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028042027096C24009D642A /* MUIBarButtonItem.swift */; };
 		B028046227098803009D642A /* ComboButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028046127098803009D642A /* ComboButton.swift */; };
+		B04A4BFA271C1FE9004CE8CD /* HalfPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A4BF9271C1FE9004CE8CD /* HalfPieChart.swift */; };
+		B04A4BFC271C1FF5004CE8CD /* HalfPieDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A4BFB271C1FF5004CE8CD /* HalfPieDataSet.swift */; };
 		B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */; };
 		B08F0F2E2709F0BB00C1EBA5 /* CurveAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0F2D2709F0BB00C1EBA5 /* CurveAlgorithm.swift */; };
 		B08F0F302709F11800C1EBA5 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0F2F2709F11800C1EBA5 /* LineChart.swift */; };
 		B08F0F322709F13500C1EBA5 /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0F312709F13500C1EBA5 /* DotCALayer.swift */; };
+		B0C281F5271FE0DC00F032AD /* PieLegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281F4271FE0DC00F032AD /* PieLegendView.swift */; };
 		B0ECF875270992630088C96E /* NonScrollTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF874270992630088C96E /* NonScrollTableView.swift */; };
 		B0ECF8A5270AE3010088C96E /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8A4270AE3010088C96E /* UIImage+Extensions.swift */; };
 		B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FDEED9270552B100011FC4 /* PlainButton.swift */; };
@@ -63,10 +66,13 @@
 		B02804032709621F009D642A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		B028042027096C24009D642A /* MUIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUIBarButtonItem.swift; sourceTree = "<group>"; };
 		B028046127098803009D642A /* ComboButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboButton.swift; sourceTree = "<group>"; };
+		B04A4BF9271C1FE9004CE8CD /* HalfPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfPieChart.swift; sourceTree = "<group>"; };
+		B04A4BFB271C1FF5004CE8CD /* HalfPieDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfPieDataSet.swift; sourceTree = "<group>"; };
 		B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainUINavigationBar.swift; sourceTree = "<group>"; };
 		B08F0F2D2709F0BB00C1EBA5 /* CurveAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurveAlgorithm.swift; sourceTree = "<group>"; };
 		B08F0F2F2709F11800C1EBA5 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		B08F0F312709F13500C1EBA5 /* DotCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
+		B0C281F4271FE0DC00F032AD /* PieLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieLegendView.swift; sourceTree = "<group>"; };
 		B0ECF874270992630088C96E /* NonScrollTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonScrollTableView.swift; sourceTree = "<group>"; };
 		B0ECF8A4270AE3010088C96E /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		B0FDEED9270552B100011FC4 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 		B028044627097D3E009D642A /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				B04A4BF8271C1FDA004CE8CD /* HalfPieGraphView */,
 				B08F0F2C2709F0A800C1EBA5 /* LineGraphView */,
 				B0FDEEDD270559CC00011FC4 /* PlainTextField.swift */,
 				B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */,
@@ -158,6 +165,16 @@
 				B0ECF8A4270AE3010088C96E /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B04A4BF8271C1FDA004CE8CD /* HalfPieGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				B04A4BF9271C1FE9004CE8CD /* HalfPieChart.swift */,
+				B04A4BFB271C1FF5004CE8CD /* HalfPieDataSet.swift */,
+				B0C281F4271FE0DC00F032AD /* PieLegendView.swift */,
+			);
+			path = HalfPieGraphView;
 			sourceTree = "<group>";
 		};
 		B08F0F2C2709F0A800C1EBA5 /* LineGraphView */ = {
@@ -306,6 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B028046227098803009D642A /* ComboButton.swift in Sources */,
+				B04A4BFA271C1FE9004CE8CD /* HalfPieChart.swift in Sources */,
+				B0C281F5271FE0DC00F032AD /* PieLegendView.swift in Sources */,
 				B0180F8A26DCCCE7008C6F3C /* UIColor+Extensions.swift in Sources */,
 				B0180F8C26DCCD22008C6F3C /* Bundle+Extensions.swift in Sources */,
 				B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */,
@@ -318,6 +337,7 @@
 				B028040227095BF3009D642A /* TopTextButton.swift in Sources */,
 				B028042127096C24009D642A /* MUIBarButtonItem.swift in Sources */,
 				B0ECF875270992630088C96E /* NonScrollTableView.swift in Sources */,
+				B04A4BFC271C1FF5004CE8CD /* HalfPieDataSet.swift in Sources */,
 				B0FDEEE227055DEC00011FC4 /* ImageButton.swift in Sources */,
 				B0FDEEDE270559CC00011FC4 /* PlainTextField.swift in Sources */,
 				B0ECF8A5270AE3010088C96E /* UIImage+Extensions.swift in Sources */,

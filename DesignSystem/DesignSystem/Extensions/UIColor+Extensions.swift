@@ -60,6 +60,9 @@ public extension UIColor {
     static var grayE5E5E5: UIColor { fetchColor(#function) }
     static var grayEEF1F5: UIColor { fetchColor(#function) }
     static var grayEDEDED: UIColor { fetchColor(#function) }
+    static var gray787C84: UIColor { fetchColor(#function) }
+    static var grayF6F7F9: UIColor { fetchColor(#function) }
+    static var blue67A4FF: UIColor { fetchColor(#function) }
     static var minningDarkGray100: UIColor { fetchColor(#function) }
     static var minningLightGray100: UIColor { fetchColor(#function) }
 
