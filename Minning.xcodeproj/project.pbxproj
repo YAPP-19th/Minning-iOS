@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
+		83D2F6CA271B58A4002947D3 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6C9271B58A4002947D3 /* RoutineFooterView.swift */; };
+		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
+		83D8553F27135C83005DC0FD /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8553E27135C83005DC0FD /* RoutineView.swift */; };
+		83D85541271360EB005DC0FD /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D85540271360EB005DC0FD /* RoutineCell.swift */; };
+		83D8554627142DED005DC0FD /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8554527142DED005DC0FD /* RoutineHeaderView.swift */; };
+		83D8554B27147C7D005DC0FD /* PhraseGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8554A27147C7D005DC0FD /* PhraseGuideCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
@@ -250,6 +256,13 @@
 		691B4B28941CA43A46A62C49 /* Pods-OurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp.release.xcconfig"; path = "Target Support Files/Pods-OurApp/Pods-OurApp.release.xcconfig"; sourceTree = "<group>"; };
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		83D2F6C9271B58A4002947D3 /* RoutineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFooterView.swift; sourceTree = "<group>"; };
+		83D2F6D1271BF464002947D3 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
+		83D8553E27135C83005DC0FD /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		83D85540271360EB005DC0FD /* RoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
+		83D8554527142DED005DC0FD /* RoutineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineHeaderView.swift; sourceTree = "<group>"; };
+		83D8554A27147C7D005DC0FD /* PhraseGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseGuideCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -397,6 +410,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		83D2F6CE271BF21A002947D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83D85540271360EB005DC0FD /* RoutineCell.swift */,
+				83D8554527142DED005DC0FD /* RoutineHeaderView.swift */,
+				83D2F6C9271B58A4002947D3 /* RoutineFooterView.swift */,
+				83D8554A27147C7D005DC0FD /* PhraseGuideCell.swift */,
+				83D2F6D1271BF464002947D3 /* ReviewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83D2F6D3271BFE91002947D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83D8553D27135C42005DC0FD /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				83D2F6CE271BF21A002947D3 /* Views */,
+				83D8553E27135C83005DC0FD /* RoutineView.swift */,
+            );
+            path = Routine;
+            sourceTree = "<group>";
+        };
 		83D2F6D9271C416E002947D3 /* WeeklyPercentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +599,7 @@
 		B02803DF270850F9009D642A /* EditOrder */ = {
 			isa = PBXGroup;
 			children = (
+				83D2F6D3271BFE91002947D3 /* Views */,
 				B02803E627085141009D642A /* EditOrderViewController.swift */,
 				B02803E927085149009D642A /* EditOrderViewModel.swift */,
 			);
@@ -1263,6 +1306,7 @@
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
+				83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
