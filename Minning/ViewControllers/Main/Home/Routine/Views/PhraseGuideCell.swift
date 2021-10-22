@@ -37,10 +37,7 @@ final class PhraseGuideCell: UITableViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .minningBlue100
         contentView.layer.cornerRadius = 10
-        
-        [contentView].forEach {
-            addSubview($0)
-        }
+
         [titleLabel, pencilImageView].forEach {
             contentView.addSubview($0)
         }
