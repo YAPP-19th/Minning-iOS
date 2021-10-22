@@ -14,6 +14,7 @@ import SnapKit
 
 final class EditOrderViewController: BaseViewController {
     lazy var mainTableView: UITableView = {
+        $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.delegate = self
         $0.dataSource = self
@@ -78,7 +79,6 @@ final class EditOrderViewController: BaseViewController {
     
     override func setupViewLayout() {
         view.backgroundColor = .minningLightGray100
-        mainTableView.backgroundColor = .clear
 
         [mainTableView].forEach {
             view.addSubview($0)
@@ -105,9 +105,9 @@ extension EditOrderViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let moveCell = self.viewModel.tempDataList[sourceIndexPath.row]
+        let tempDataToBeMoved = self.viewModel.tempDataList[sourceIndexPath.row]
         self.viewModel.tempDataList.remove(at: sourceIndexPath.row)
-        self.viewModel.tempDataList.insert(moveCell, at: destinationIndexPath.row)
+        self.viewModel.tempDataList.insert(tempDataToBeMoved, at: destinationIndexPath.row)
     }
 }
 
