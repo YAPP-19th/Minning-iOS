@@ -26,9 +26,7 @@ final class EditOrderViewController: BaseViewController {
     }(UITableView())
     
     private let viewModel: EditOrderViewModel
-    
-    private var tempDataList = ["아침에 신문~", "모닝 커피", "달리기"]
-    
+        
     init(viewModel: EditOrderViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -102,14 +100,14 @@ extension EditOrderViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EditOrderCell.identifier, for: indexPath) as? EditOrderCell else {
             return .init()
         }
-        cell.configure(title: tempDataList[indexPath.row])
+        cell.configure(title: viewModel.tempDataList[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let moveCell = self.tempDataList[sourceIndexPath.row]
-        self.tempDataList.remove(at: sourceIndexPath.row)
-        self.tempDataList.insert(moveCell, at: destinationIndexPath.row)
+        let moveCell = self.viewModel.tempDataList[sourceIndexPath.row]
+        self.viewModel.tempDataList.remove(at: sourceIndexPath.row)
+        self.viewModel.tempDataList.insert(moveCell, at: destinationIndexPath.row)
     }
 }
 
