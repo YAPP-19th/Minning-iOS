@@ -163,8 +163,10 @@ final class RoutineCategoryView: UIView {
         
         halfPieChart.snp.makeConstraints { make in
             make.top.equalTo(categoryLegendStackView.snp.bottom).offset(35)
-            make.leading.equalToSuperview().offset(48)
-            make.trailing.equalToSuperview().offset(-48)
+//            make.leading.equalToSuperview().offset(48)
+//            make.trailing.equalToSuperview().offset(-48)
+            make.width.equalTo(280)
+            make.centerX.equalToSuperview()
             make.height.equalTo(halfPieChart.snp.width).multipliedBy(0.5 / 1.0)
         }
         
