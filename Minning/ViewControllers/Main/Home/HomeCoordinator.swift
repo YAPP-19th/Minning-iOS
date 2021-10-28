@@ -11,17 +11,13 @@ import Foundation
 
 protocol HomeRoute {
     func goToPhrase()
-    
     func goToRecommend()
-    
     func goToAdd()
-    
     func goToReview()
-    
     func goToEditOrder()
-    
     func goToNotification()
-    
+    func goToMyPage()
+    func goToNotice()
     func goToBack()
 }
 
@@ -76,6 +72,16 @@ extension HomeCoordinator: HomeRoute {
         let notificationVC = dependencies.createNotification(self)
         notificationVC.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(notificationVC, animated: true)
+    }
+    
+    func goToMyPage() {
+        let myPageVC = dependencies.createMyPage(self)
+        navigationController.pushViewController(myPageVC, animated: true)
+    }
+    
+    func goToNotice() {
+        let noticeVC = dependencies.createNotice(self)
+        navigationController.pushViewController(noticeVC, animated: true)
     }
     
     func goToBack() {

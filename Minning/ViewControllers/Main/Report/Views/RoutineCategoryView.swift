@@ -116,7 +116,7 @@ final class RoutineCategoryView: UIView {
     private let filterContainerView: UIView = UIView()
     private let tableFilterStackView: UIStackView = {
         $0.axis = .horizontal
-        $0.spacing = 4
+        $0.spacing = 2
         $0.alignment = .leading
         $0.setContentHuggingPriority(.required, for: .horizontal)
         return $0

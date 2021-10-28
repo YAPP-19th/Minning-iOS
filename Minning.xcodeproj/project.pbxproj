@@ -9,12 +9,7 @@
 /* Begin PBXBuildFile section */
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
-		83D2F6CA271B58A4002947D3 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6C9271B58A4002947D3 /* RoutineFooterView.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
-		83D8553F27135C83005DC0FD /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8553E27135C83005DC0FD /* RoutineView.swift */; };
-		83D85541271360EB005DC0FD /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D85540271360EB005DC0FD /* RoutineCell.swift */; };
-		83D8554627142DED005DC0FD /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8554527142DED005DC0FD /* RoutineHeaderView.swift */; };
-		83D8554B27147C7D005DC0FD /* PhraseGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8554A27147C7D005DC0FD /* PhraseGuideCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
@@ -105,6 +100,30 @@
 		B028045A270986FB009D642A /* MonthGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280458270986FB009D642A /* MonthGraphView.swift */; };
 		B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareView.swift */; };
 		B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareView.swift */; };
+		B08BEB65272A8B510078E00A /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB64272A8B510078E00A /* MyPageViewController.swift */; };
+		B08BEB66272A8B510078E00A /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB64272A8B510078E00A /* MyPageViewController.swift */; };
+		B08BEB68272A8B5A0078E00A /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB67272A8B5A0078E00A /* MyPageViewModel.swift */; };
+		B08BEB69272A8B5A0078E00A /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB67272A8B5A0078E00A /* MyPageViewModel.swift */; };
+		B08BEB6C272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB6B272A8C7E0078E00A /* FindPasswordViewController.swift */; };
+		B08BEB6D272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB6B272A8C7E0078E00A /* FindPasswordViewController.swift */; };
+		B08BEB6F272A8C880078E00A /* FindPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB6E272A8C880078E00A /* FindPasswordViewModel.swift */; };
+		B08BEB70272A8C880078E00A /* FindPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB6E272A8C880078E00A /* FindPasswordViewModel.swift */; };
+		B08BEB73272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB72272A8CE30078E00A /* EmailAuthViewModel.swift */; };
+		B08BEB74272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB72272A8CE30078E00A /* EmailAuthViewModel.swift */; };
+		B08BEB76272A8CEE0078E00A /* EmailAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB75272A8CEE0078E00A /* EmailAuthViewController.swift */; };
+		B08BEB77272A8CEE0078E00A /* EmailAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB75272A8CEE0078E00A /* EmailAuthViewController.swift */; };
+		B08BEB7A272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB79272A8DEA0078E00A /* ResetPasswordViewModel.swift */; };
+		B08BEB7B272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB79272A8DEA0078E00A /* ResetPasswordViewModel.swift */; };
+		B08BEB7D272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB7C272A8DF90078E00A /* ResetPasswordViewController.swift */; };
+		B08BEB7E272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB7C272A8DF90078E00A /* ResetPasswordViewController.swift */; };
+		B08BEB81272A8E650078E00A /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB80272A8E650078E00A /* NewPasswordViewModel.swift */; };
+		B08BEB82272A8E650078E00A /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB80272A8E650078E00A /* NewPasswordViewModel.swift */; };
+		B08BEB84272A8E770078E00A /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB83272A8E770078E00A /* NewPasswordViewController.swift */; };
+		B08BEB85272A8E770078E00A /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB83272A8E770078E00A /* NewPasswordViewController.swift */; };
+		B08BEB88272A8F400078E00A /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB87272A8F400078E00A /* NoticeViewModel.swift */; };
+		B08BEB89272A8F400078E00A /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB87272A8F400078E00A /* NoticeViewModel.swift */; };
+		B08BEB8B272A8F470078E00A /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB8A272A8F470078E00A /* NoticeViewController.swift */; };
+		B08BEB8C272A8F470078E00A /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BEB8A272A8F470078E00A /* NoticeViewController.swift */; };
 		B08E74762705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74772705BAE200854190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74752705BAE200854190 /* LoginViewController.swift */; };
 		B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74782705BBA300854190 /* AuthCoordinator.swift */; };
@@ -256,13 +275,7 @@
 		691B4B28941CA43A46A62C49 /* Pods-OurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp.release.xcconfig"; path = "Target Support Files/Pods-OurApp/Pods-OurApp.release.xcconfig"; sourceTree = "<group>"; };
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		83D2F6C9271B58A4002947D3 /* RoutineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineFooterView.swift; sourceTree = "<group>"; };
-		83D2F6D1271BF464002947D3 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
-		83D8553E27135C83005DC0FD /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
-		83D85540271360EB005DC0FD /* RoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
-		83D8554527142DED005DC0FD /* RoutineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineHeaderView.swift; sourceTree = "<group>"; };
-		83D8554A27147C7D005DC0FD /* PhraseGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseGuideCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -308,6 +321,18 @@
 		B0280455270986D8009D642A /* MyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineView.swift; sourceTree = "<group>"; };
 		B0280458270986FB009D642A /* MonthGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGraphView.swift; sourceTree = "<group>"; };
 		B028045B2709871D009D642A /* RoutineCompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCompareView.swift; sourceTree = "<group>"; };
+		B08BEB64272A8B510078E00A /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		B08BEB67272A8B5A0078E00A /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		B08BEB6B272A8C7E0078E00A /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
+		B08BEB6E272A8C880078E00A /* FindPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewModel.swift; sourceTree = "<group>"; };
+		B08BEB72272A8CE30078E00A /* EmailAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthViewModel.swift; sourceTree = "<group>"; };
+		B08BEB75272A8CEE0078E00A /* EmailAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthViewController.swift; sourceTree = "<group>"; };
+		B08BEB79272A8DEA0078E00A /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		B08BEB7C272A8DF90078E00A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		B08BEB80272A8E650078E00A /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
+		B08BEB83272A8E770078E00A /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
+		B08BEB87272A8F400078E00A /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
+		B08BEB8A272A8F470078E00A /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		B08E74752705BAE200854190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B08E74782705BBA300854190 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		B08E747B2705BBAA00854190 /* AuthDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDIContainer.swift; sourceTree = "<group>"; };
@@ -410,18 +435,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		83D2F6CE271BF21A002947D3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				83D85540271360EB005DC0FD /* RoutineCell.swift */,
-				83D8554527142DED005DC0FD /* RoutineHeaderView.swift */,
-				83D2F6C9271B58A4002947D3 /* RoutineFooterView.swift */,
-				83D8554A27147C7D005DC0FD /* PhraseGuideCell.swift */,
-				83D2F6D1271BF464002947D3 /* ReviewCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		83D2F6D3271BFE91002947D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,15 +443,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		83D8553D27135C42005DC0FD /* Routine */ = {
-			isa = PBXGroup;
-			children = (
-				83D2F6CE271BF21A002947D3 /* Views */,
-				83D8553E27135C83005DC0FD /* RoutineView.swift */,
-            );
-            path = Routine;
-            sourceTree = "<group>";
-        };
 		83D2F6D9271C416E002947D3 /* WeeklyPercentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,9 +661,66 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B08BEB60272A8B440078E00A /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				B08BEB64272A8B510078E00A /* MyPageViewController.swift */,
+				B08BEB67272A8B5A0078E00A /* MyPageViewModel.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		B08BEB6A272A8C6C0078E00A /* FindPassword */ = {
+			isa = PBXGroup;
+			children = (
+				B08BEB6B272A8C7E0078E00A /* FindPasswordViewController.swift */,
+				B08BEB6E272A8C880078E00A /* FindPasswordViewModel.swift */,
+			);
+			path = FindPassword;
+			sourceTree = "<group>";
+		};
+		B08BEB71272A8CC50078E00A /* EmailAuth */ = {
+			isa = PBXGroup;
+			children = (
+				B08BEB72272A8CE30078E00A /* EmailAuthViewModel.swift */,
+				B08BEB75272A8CEE0078E00A /* EmailAuthViewController.swift */,
+			);
+			path = EmailAuth;
+			sourceTree = "<group>";
+		};
+		B08BEB78272A8DD50078E00A /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				B08BEB79272A8DEA0078E00A /* ResetPasswordViewModel.swift */,
+				B08BEB7C272A8DF90078E00A /* ResetPasswordViewController.swift */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		B08BEB7F272A8E5A0078E00A /* NewPassword */ = {
+			isa = PBXGroup;
+			children = (
+				B08BEB80272A8E650078E00A /* NewPasswordViewModel.swift */,
+				B08BEB83272A8E770078E00A /* NewPasswordViewController.swift */,
+			);
+			path = NewPassword;
+			sourceTree = "<group>";
+		};
+		B08BEB86272A8F350078E00A /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				B08BEB87272A8F400078E00A /* NoticeViewModel.swift */,
+				B08BEB8A272A8F470078E00A /* NoticeViewController.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
 		B08E74712705BAC000854190 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				B08BEB7F272A8E5A0078E00A /* NewPassword */,
+				B08BEB71272A8CC50078E00A /* EmailAuth */,
+				B08BEB6A272A8C6C0078E00A /* FindPassword */,
 				B028037E2706A772009D642A /* SignUp */,
 				B08E749E2705C82B00854190 /* Password */,
 				B08E747E2705BC8600854190 /* Login */,
@@ -711,6 +772,9 @@
 		B0AD5A672705D73600CC07B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B08BEB86272A8F350078E00A /* Notice */,
+				B08BEB78272A8DD50078E00A /* ResetPassword */,
+				B08BEB60272A8B440078E00A /* MyPage */,
 				B097A303272233CE00E0A479 /* Routine */,
 				B02803FA270855F9009D642A /* Notification */,
 				B02803EC27085197009D642A /* Add */,
@@ -1196,35 +1260,44 @@
 			files = (
 				B097A312272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B0E1D25E270BEB5A006995C5 /* NotificationModel.swift in Sources */,
+				B08BEB70272A8C880078E00A /* FindPasswordViewModel.swift in Sources */,
 				B097A314272233F900E0A479 /* RoutineCell.swift in Sources */,
 				B02803F2270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
 				B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
+				B08BEB7E272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,
 				B08E747A2705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A32706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EF026DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0ECF87F2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
+				B08BEB66272A8B510078E00A /* MyPageViewController.swift in Sources */,
 				B0ECF8A3270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
+				B08BEB8C272A8F470078E00A /* NoticeViewController.swift in Sources */,
+				B08BEB6D272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
 				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
 				B0AD5A752705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				B0280457270986D8009D642A /* MyRoutineView.swift in Sources */,
 				B02803E827085141009D642A /* EditOrderViewController.swift in Sources */,
+				B08BEB77272A8CEE0078E00A /* EmailAuthViewController.swift in Sources */,
 				B02803EF270851A7009D642A /* AddViewController.swift in Sources */,
 				B0AD5A5C2705D66400CC07B0 /* BaseViewController.swift in Sources */,
 				B0180F0326DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
 				B02803EB27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B0180EFC26DCC604008C6F3C /* SplashViewController.swift in Sources */,
+				B08BEB7B272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */,
 				B0180ED626DCC307008C6F3C /* MainCoordinator.swift in Sources */,
 				B0ECF88F270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74812705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B028045A270986FB009D642A /* MonthGraphView.swift in Sources */,
+				B08BEB74272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */,
 				B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
+				B08BEB85272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B097A310272233F900E0A479 /* RoutineFooterView.swift in Sources */,
 				B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
@@ -1240,6 +1313,7 @@
 				B0280454270986B5009D642A /* WeeklyPercentView.swift in Sources */,
 				B02803962706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E227085131009D642A /* ReviewViewController.swift in Sources */,
+				B08BEB69272A8B5A0078E00A /* MyPageViewModel.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B0ECF8822709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
 				B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
@@ -1249,11 +1323,13 @@
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
+				B08BEB82272A8E650078E00A /* NewPasswordViewModel.swift in Sources */,
 				B097A30E272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
 				B08E747D2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */,
+				B08BEB89272A8F400078E00A /* NoticeViewModel.swift in Sources */,
 				B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B097A316272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
@@ -1277,8 +1353,11 @@
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
 				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
+				B08BEB7A272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
+				B08BEB65272A8B510078E00A /* MyPageViewController.swift in Sources */,
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
+				B08BEB8B272A8F470078E00A /* NoticeViewController.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
@@ -1286,15 +1365,19 @@
 				B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
+				B08BEB6C272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				B0280456270986D8009D642A /* MyRoutineView.swift in Sources */,
 				B02803E727085141009D642A /* EditOrderViewController.swift in Sources */,
 				B02803EE270851A7009D642A /* AddViewController.swift in Sources */,
 				B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */,
+				B08BEB73272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */,
 				B0180F0226DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
 				B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */,
+				B08BEB76272A8CEE0078E00A /* EmailAuthViewController.swift in Sources */,
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
+				B08BEB6F272A8C880078E00A /* FindPasswordViewModel.swift in Sources */,
 				B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B097A313272233F900E0A479 /* RoutineCell.swift in Sources */,
@@ -1306,6 +1389,7 @@
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
+				B08BEB81272A8E650078E00A /* NewPasswordViewModel.swift in Sources */,
 				83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
@@ -1313,14 +1397,17 @@
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B028043D270972B5009D642A /* RoutineModel.swift in Sources */,
 				B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */,
+				B08BEB68272A8B5A0078E00A /* MyPageViewModel.swift in Sources */,
 				B0AD5A712705D79300CC07B0 /* GroupViewController.swift in Sources */,
 				B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */,
+				B08BEB84272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0AD5A692705D74000CC07B0 /* HomeViewController.swift in Sources */,
 				B0280453270986B5009D642A /* WeeklyPercentView.swift in Sources */,
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
+				B08BEB88272A8F400078E00A /* NoticeViewModel.swift in Sources */,
 				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
@@ -1331,6 +1418,7 @@
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B097A315272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
+				B08BEB7D272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
