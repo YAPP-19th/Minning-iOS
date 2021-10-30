@@ -15,7 +15,7 @@ import SnapKit
 final class PasswordViewController: BaseViewController {
     private let titleLabel: UILabel = {
         $0.text = "비밀번호를 입력해주세요"
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         $0.font = .font20PBold
         return $0
     }(UILabel())

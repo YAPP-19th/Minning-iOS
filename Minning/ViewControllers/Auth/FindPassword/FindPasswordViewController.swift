@@ -15,7 +15,7 @@ import SnapKit
 final class FindPasswordViewController: BaseViewController {
     private let titleLabel: UILabel = {
         $0.text = "인증번호를 받을 이메일을 입력해주세요"
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         $0.font = .font20PBold
         return $0
     }(UILabel())
@@ -67,7 +67,6 @@ final class FindPasswordViewController: BaseViewController {
     }
     
     private func updateViewContent() {
-        
         if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
             navBar.titleContent = "비밀번호 찾기"
             navBar.removeDefaultShadowImage()
