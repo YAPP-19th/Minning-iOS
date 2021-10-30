@@ -10,6 +10,10 @@
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
 		8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */; };
+		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
+		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
+		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
+		9589B557271DF27300943BA3 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B556271DF27300943BA3 /* AddDayView.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
@@ -277,6 +281,10 @@
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCellSwipeView.swift; sourceTree = "<group>"; };
+		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
+		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
+		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
+		9589B556271DF27300943BA3 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -617,6 +625,8 @@
 			children = (
 				B02803F32708543D009D642A /* Recommend */,
 				B02803ED270851A7009D642A /* AddViewController.swift */,
+				9589B54F271C99E600943BA3 /* AddCategoryView.swift */,
+				9589B556271DF27300943BA3 /* AddDayView.swift */,
 				B02803F0270851AD009D642A /* AddViewModel.swift */,
 			);
 			path = Add;
@@ -626,7 +636,9 @@
 			isa = PBXGroup;
 			children = (
 				B02803F427085447009D642A /* RecommendViewController.swift */,
+				9589B54B271C403B00943BA3 /* RecommendViewCell.swift */,
 				B02803F72708544F009D642A /* RecommendViewModel.swift */,
+				9589B551271CB70200943BA3 /* RecommendCell.swift */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -1355,6 +1367,7 @@
 				B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
+				9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */,
 				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B08BEB7A272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
@@ -1403,8 +1416,10 @@
 				B08BEB68272A8B5A0078E00A /* MyPageViewModel.swift in Sources */,
 				B0AD5A712705D79300CC07B0 /* GroupViewController.swift in Sources */,
 				B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */,
+				9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */,
 				B08BEB84272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0AD5A692705D74000CC07B0 /* HomeViewController.swift in Sources */,
+				9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */,
 				B0280453270986B5009D642A /* WeeklyPercentView.swift in Sources */,
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
@@ -1417,6 +1432,7 @@
 				B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B097A3182722340400E0A479 /* RoutineView.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
+				9589B557271DF27300943BA3 /* AddDayView.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
@@ -1488,7 +1504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = "OurApp copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1509,7 +1525,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = "OurApp copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1649,7 +1665,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Minning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1671,7 +1687,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Minning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1693,7 +1709,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = OurAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1716,7 +1732,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = OurAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1738,7 +1754,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = OurAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1759,7 +1775,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M79H9K226Y;
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = OurAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

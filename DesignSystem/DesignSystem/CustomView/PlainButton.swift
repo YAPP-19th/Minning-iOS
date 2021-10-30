@@ -44,7 +44,8 @@ public class PlainButton: UIButton {
             case .kakao:
                 return UIImage(sharedNamed: "kakaoLogo")
             case .apple:
-                return UIImage(sharedNamed: "appleLogo")
+//                return UIImage(sharedNamed: "appleLogo")
+                return nil
             }
         }
     }
@@ -53,6 +54,12 @@ public class PlainButton: UIButton {
         didSet {
             updateButtonColor()
             updateLeftIcon()
+            
+            if plainButtonType != .normal {
+                titleLabel?.font = .font19P
+            } else {
+                titleLabel?.font = .font16PBold
+            }
         }
     }
     
@@ -85,7 +92,16 @@ public class PlainButton: UIButton {
     }
     
     private func updateLeftIcon() {
-        iconImageView.image = plainButtonType.leftIcon
+        if #available (iOS 15.0, *) {
+            var config = UIButton.Configuration.plain()
+            config.image = plainButtonType.leftIcon
+            config.imagePlacement = .leading
+            config.imagePadding = 6
+            configuration = config
+        } else {
+            self.setImage(plainButtonType.leftIcon, for: .normal)
+            self.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -97,16 +113,9 @@ public class PlainButton: UIButton {
         layer.masksToBounds = true
         backgroundColor = .minningBlue100
         titleLabel?.font = .font16PBold
-        
-        addSubview(iconImageView)
 
         self.snp.makeConstraints {
             $0.height.equalTo(Constant.Height.textButton)
-        }
-        
-        iconImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.centerY.equalToSuperview()
         }
     }
 }

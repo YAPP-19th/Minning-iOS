@@ -14,4 +14,12 @@ final class EmailAuthViewModel {
     public init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
     }
+    
+    public func goToBack() {
+        coordinator.goToBack()
+    }
+    
+    public func goToNewPassword() {
+        coordinator.goToNewPassword()
+    }
 }

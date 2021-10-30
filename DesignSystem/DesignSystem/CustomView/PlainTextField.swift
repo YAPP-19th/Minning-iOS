@@ -20,6 +20,12 @@ public class PlainTextField: UITextField {
         didSet { }
     }
     
+    public var isDeleteHidden: Bool = false {
+        didSet {
+            clearButton.isHidden = isDeleteHidden
+        }
+    }
+    
     public override var placeholder: String? {
         didSet {
             if let text = placeholder {

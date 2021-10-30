@@ -49,7 +49,8 @@ extension HomeCoordinator: HomeRoute {
     }
     
     func goToRecommend() {
-        let _ = dependencies.createRecommend(self)
+        let recommendVC = dependencies.createRecommend(self)
+        navigationController.topViewController?.present(recommendVC, animated: true, completion: nil)
     }
     
     func goToAdd() {
