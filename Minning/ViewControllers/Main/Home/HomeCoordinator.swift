@@ -77,11 +77,13 @@ extension HomeCoordinator: HomeRoute {
     
     func goToMyPage() {
         let myPageVC = dependencies.createMyPage(self)
+        myPageVC.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(myPageVC, animated: true)
     }
     
     func goToNotice() {
         let noticeVC = dependencies.createNotice(self)
+        noticeVC.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(noticeVC, animated: true)
     }
     
