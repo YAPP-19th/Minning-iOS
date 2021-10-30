@@ -10,9 +10,32 @@ import CommonSystem
 import Foundation
 
 final class MyPageViewModel {
-    private var firstSectionRowItems: [MyPageSettingRowItem] = []
-    private var secondSectionRowItems: [MyPageSettingRowItem] = []
-    private var thirdSectionRowItems: [MyPageSettingRowItem] = []
+    enum SectionType: Int {
+        case first = 1
+        case second
+        case third
+    }
+    
+    var firstSectionRowItems: [MyPageSettingRowItem] = []
+    var secondSectionRowItems: [MyPageSettingRowItem] = []
+    var thirdSectionRowItems: [MyPageSettingRowItem] = []
+    
+    var sectionCount: Int {
+        firstSectionRowItems.count + secondSectionRowItems.count + thirdSectionRowItems.count + 1
+    }
+    
+    func getRowCount(section: Int) -> Int {
+        switch SectionType(rawValue: section) {
+        case .first:
+            return firstSectionRowItems.count
+        case .second:
+            return secondSectionRowItems.count
+        case .third:
+            return thirdSectionRowItems.count
+        default:
+            return 0
+        }
+    }
     
     private let coordinator: HomeCoordinator
     
@@ -31,5 +54,9 @@ final class MyPageViewModel {
         secondSectionRowItems.append(MyPageSettingRowItem(type: .version))
         thirdSectionRowItems.append(MyPageSettingRowItem(type: .logout))
         thirdSectionRowItems.append(MyPageSettingRowItem(type: .deleteAccount))
+    }
+    
+    public func goToBack() {
+        coordinator.goToBack()
     }
 }
