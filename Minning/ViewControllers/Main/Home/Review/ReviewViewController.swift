@@ -25,7 +25,7 @@ final class ReviewViewController: BaseViewController {
     
     lazy var feedbackTextView: UITextView = {
         $0.delegate = self
-        $0.textColor = .primaryTextGray
+        $0.textColor = .grayB5B8BE
         $0.text = viewModel.feedbackPlaceholder
         $0.font = .font16P
         $0.isScrollEnabled = false
@@ -82,8 +82,14 @@ final class ReviewViewController: BaseViewController {
             make.leading.trailing.equalToSuperview()
         }
         
+        photoSelectButton.snp.makeConstraints { make in
+            make.top.equalTo(navigationBar.snp.bottom).offset(42)
+            make.leading.equalToSuperview().offset(16)
+            make.width.height.equalTo(100)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(66)
+            make.top.equalTo(photoSelectButton.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
         }
@@ -93,12 +99,6 @@ final class ReviewViewController: BaseViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.greaterThanOrEqualTo(35.5)
-        }
-        
-        photoSelectButton.snp.makeConstraints { make in
-            make.top.equalTo(feedbackTextView.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.width.height.equalTo(100)
         }
     }
     
