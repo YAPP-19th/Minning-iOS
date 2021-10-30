@@ -14,7 +14,15 @@ import SnapKit
 final class PhotoGridViewController: BaseViewController {
     
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
+    private lazy var rightBarButton = UIBarButtonItem(customView: rightBarButtonTitleLabel)
 
+    private lazy var rightBarButtonTitleLabel: UILabel = {
+        $0.font = .font16P
+        $0.textColor = .black
+        $0.text = "선택"
+        return $0
+    }(UILabel())
+    
     private lazy var mainCollectionView: UICollectionView = {
         $0.backgroundColor = .clear
         $0.dataSource = self
@@ -32,7 +40,7 @@ final class PhotoGridViewController: BaseViewController {
         $0.isHidden = true
         return $0
     }(UIButton())
-
+    
     private let viewModel: PhotoGridViewModel
     
     public init(viewModel: PhotoGridViewModel) {
@@ -76,8 +84,19 @@ final class PhotoGridViewController: BaseViewController {
         let navigationItem = UINavigationItem()
         
         navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "close"), style: .plain, target: self, action: #selector(onClickCloseButton(_:))))
+        navigationItem.setRightPlainBarButtonItems([rightBarButton])
         navigationBar.setItems([navigationItem], animated: false)
         navigationBar.titleContent = "그룹"
+    }
+
+    private func updateRightBarButton() {
+        let targetString = viewModel.selectedItemCount == 0 ? "" : "\(viewModel.selectedItemCount) "
+        let fullText = "\(targetString)선택"
+        let range = (fullText as NSString).range(of: targetString)
+        let valueAttrString = NSMutableAttributedString(string: fullText)
+        valueAttrString.addAttributes([.font: UIFont.font16P,
+                                       .foregroundColor: UIColor.blue], range: range)
+        rightBarButtonTitleLabel.attributedText = valueAttrString
     }
     
     @objc

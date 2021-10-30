@@ -11,6 +11,8 @@ import CommonSystem
 final class PhotoGridViewModel {
     private let coordinator: GroupCoordinator
     
+    var selectedItemCount: Int = 0
+    
     public init(coordinator: GroupCoordinator) {
         self.coordinator = coordinator
     }
