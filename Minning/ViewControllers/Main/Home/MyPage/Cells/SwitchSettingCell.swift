@@ -31,6 +31,11 @@ final class SwitchSettingCell: UITableViewCell {
         return $0
     }(UISwitch())
     
+    private let separator: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellLayout()
@@ -43,6 +48,7 @@ final class SwitchSettingCell: UITableViewCell {
     private func setupCellLayout() {
         contentView.addSubview(switchButton)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(separator)
         
         switchButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -53,6 +59,11 @@ final class SwitchSettingCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalTo(switchButton.snp.leading)
+        }
+        
+        separator.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

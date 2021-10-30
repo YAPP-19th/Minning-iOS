@@ -11,11 +11,14 @@ import DesignSystem
 import Foundation
 import SharedAssets
 import SnapKit
+import UIKit
 
 final class MyPageViewController: BaseViewController {
     lazy var myPageTableView: UITableView = {
         $0.delegate = self
         $0.dataSource = self
+        $0.separatorStyle = .none
+        $0.backgroundColor = .minningLightGray100
         $0.register(ProfileSettingCell.self, forCellReuseIdentifier: ProfileSettingCell.identifier)
         $0.register(NormalSettingCell.self, forCellReuseIdentifier: NormalSettingCell.identifier)
         $0.register(SwitchSettingCell.self, forCellReuseIdentifier: SwitchSettingCell.identifier)
@@ -55,7 +58,8 @@ final class MyPageViewController: BaseViewController {
         isHiddenStatusBarBGView = false
         
         myPageTableView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
@@ -75,7 +79,36 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         return viewModel.getRowCount(section: section)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 196 : 51
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 11
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSettingCell.identifier) as? ProfileSettingCell {
+                return cell
+            }
+        } else {
+            let rowItem = viewModel.getSectionRowItems(section: indexPath.section)[indexPath.row]
+            switch rowItem.type {
+            case .push:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: SwitchSettingCell.identifier) as? SwitchSettingCell {
+                    cell.rowItem = rowItem
+                    cell.selectionStyle = .none
+                    return cell
+                }
+            default:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: NormalSettingCell.identifier) as? NormalSettingCell {
+                    cell.rowItem = rowItem
+                    cell.selectionStyle = .none
+                    return cell
+                }
+            }
+        }
         return UITableViewCell()
     }
 }

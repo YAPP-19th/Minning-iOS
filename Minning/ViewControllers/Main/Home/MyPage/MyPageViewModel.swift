@@ -24,19 +24,6 @@ final class MyPageViewModel {
         firstSectionRowItems.count + secondSectionRowItems.count + thirdSectionRowItems.count + 1
     }
     
-    func getRowCount(section: Int) -> Int {
-        switch SectionType(rawValue: section) {
-        case .first:
-            return firstSectionRowItems.count
-        case .second:
-            return secondSectionRowItems.count
-        case .third:
-            return thirdSectionRowItems.count
-        default:
-            return 0
-        }
-    }
-    
     private let coordinator: HomeCoordinator
     
     public init(coordinator: HomeCoordinator) {
@@ -54,6 +41,36 @@ final class MyPageViewModel {
         secondSectionRowItems.append(MyPageSettingRowItem(type: .version))
         thirdSectionRowItems.append(MyPageSettingRowItem(type: .logout))
         thirdSectionRowItems.append(MyPageSettingRowItem(type: .deleteAccount))
+    }
+    
+    func getRowCount(section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            switch SectionType(rawValue: section) {
+            case .first:
+                return firstSectionRowItems.count
+            case .second:
+                return secondSectionRowItems.count
+            case .third:
+                return thirdSectionRowItems.count
+            default:
+                return 0
+            }
+        }
+    }
+    
+    func getSectionRowItems(section: Int) -> [MyPageSettingRowItem] {
+        switch SectionType(rawValue: section) {
+        case .first:
+            return firstSectionRowItems
+        case .second:
+            return secondSectionRowItems
+        case .third:
+            return thirdSectionRowItems
+        default:
+            return []
+        }
     }
     
     public func goToBack() {
