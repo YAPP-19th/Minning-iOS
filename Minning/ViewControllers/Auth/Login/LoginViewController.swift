@@ -70,7 +70,7 @@ final class LoginViewController: BaseViewController {
     
     private let appleLoginButton: PlainButton = {
         $0.isActive = true
-        $0.buttonContent = "Apple로 로그인"
+        $0.buttonContent = " Apple로 로그인"
         $0.plainButtonType = .apple
 //        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
         return $0
@@ -101,7 +101,9 @@ final class LoginViewController: BaseViewController {
     
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
-        viewModel.goToPassword(isLogin: false)
+        // MARK: Server API
+//        viewModel.goToPassword(isLogin: false)
+        viewModel.goToPassword(isLogin: true)
     }
     
     @objc
@@ -153,9 +155,9 @@ final class LoginViewController: BaseViewController {
         
         footerLoginContainerView.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(loginStackView.snp.bottom)
-            make.leading.equalTo(16)
-            make.trailing.equalTo(-16)
-            make.bottom.equalToSuperview().offset(-36)
+            make.leading.equalTo(38)
+            make.trailing.equalTo(-38)
+            make.bottom.equalToSuperview().offset(-56)
         }
         
         footerLoginContainerView.addSubview(footerLoginStackView)

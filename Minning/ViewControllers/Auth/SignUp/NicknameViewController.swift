@@ -15,7 +15,7 @@ import SnapKit
 final class NicknameViewController: BaseViewController {
     private let titleLabel: UILabel = {
         $0.text = "닉네임을 입력해주세요"
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         $0.font = .font20PBold
         return $0
     }(UILabel())
@@ -88,6 +88,7 @@ final class NicknameViewController: BaseViewController {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)
+        isHiddenStatusBarBGView = false
         
         [hintLabel, nicknameTextField, signUpButton].forEach {
             loginStackView.addArrangedSubview($0)

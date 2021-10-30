@@ -14,4 +14,12 @@ final class NewPasswordViewModel {
     public init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
     }
+    
+    public func goToBack() {
+        coordinator.goToBack()
+    }
+    
+    public func goToLogin() {
+        coordinator.start(asRoot: true)
+    }
 }

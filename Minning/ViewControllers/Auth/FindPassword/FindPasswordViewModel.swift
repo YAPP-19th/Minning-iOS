@@ -14,4 +14,12 @@ final class FindPasswordViewModel {
     public init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
     }
+    
+    public func goToBack() {
+        coordinator.goToBack()
+    }
+    
+    public func goToEmailAuth() {
+        coordinator.goToEmailAuth()
+    }
 }
