@@ -15,17 +15,7 @@ import UIKit
 
 final class AddViewController: BaseViewController {
     private let routineAlarmTableView = UITableView()
-    
     private let viewModel: AddViewModel
-    
-    init(viewModel: AddViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     private let rightBarButton: UIBarButtonItem = {
         $0.title = "완료"
@@ -33,10 +23,12 @@ final class AddViewController: BaseViewController {
         return $0
     }(UIBarButtonItem())
     
+    private let scrollView = UIScrollView()
+    
+    private let contentView = UIView()
+    
     private let stackView: UIStackView = {
         $0.axis = .vertical
-//        $0.spacing = 16
-//        $0.distribution = .equalSpacing
         return $0
     }(UIStackView())
     
@@ -51,10 +43,14 @@ final class AddViewController: BaseViewController {
     }(UIView())
     
     private let recommendButton: UIButton = {
-        $0.setTitle("👀 추천 루틴", for: .normal)
+        $0.setTitle("  추천 루틴  ", for: .normal)
         $0.setTitleColor(.minningBlue100, for: .normal)
-        $0.titleLabel?.font = .font16PBold
+        $0.titleLabel?.font = .font16P
         $0.addTarget(self, action: #selector(isRecommendButtonPressed), for: .touchUpInside)
+        $0.backgroundColor = .white
+        $0.layer.borderColor = UIColor.minningBlue100.cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 5
         return $0
     }(UIButton())
     
@@ -192,9 +188,8 @@ final class AddViewController: BaseViewController {
         return $0
     }(AddDayView(day: .sun))
     
-    private let routineAlarmStackView: UIStackView = {
+    private let routineLabelStackView: UIStackView = {
         $0.axis = .vertical
-        $0.spacing = 8
         return $0
     }(UIStackView())
     
@@ -214,7 +209,7 @@ final class AddViewController: BaseViewController {
     private let routineTimeView: UIView = {
         $0.backgroundColor = .white
         return $0
-    }(UIStackView())
+    }(UIView())
     
     private let routineTimeLabel: UILabel = {
         $0.text = "시간"
@@ -225,9 +220,8 @@ final class AddViewController: BaseViewController {
     
     private let routineAlarmView: UIView = {
         $0.backgroundColor = .white
-        $0.axis = .horizontal
         return $0
-    }(UIStackView())
+    }(UIView())
     
     private let routineAlarmOnOffLabel: UILabel = {
         $0.text = "알림 보내기"
@@ -267,17 +261,36 @@ final class AddViewController: BaseViewController {
         
     }
     
+    init(viewModel: AddViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func setupViewLayout() {
-        view.addSubview(stackView)
+        view.addSubview(scrollView)
         view.backgroundColor = .minningLightGray100
         
-        stackView.snp.makeConstraints { make in
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(26)
-            make.top.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.top).offset(26)
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.width.equalToSuperview()
-            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-31)
-            make.center.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(653)
         }
+
+        scrollView.addSubview(stackView)
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.contentLayoutGuide.snp.top).offset(31)
+            make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-31 - (tabBarController?.tabBar.frame.height)!)
+            make.width.equalTo(scrollView.snp.width)
+            make.center.equalTo(scrollView.snp.center)
+        }
+        
         // MARK: - 추천 루틴
         stackView.addArrangedSubview(recommendButtonView)
         recommendButtonView.addSubview(recommendButton)
@@ -289,7 +302,6 @@ final class AddViewController: BaseViewController {
         
         recommendButton.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.trailing.equalToSuperview()
             make.trailing.equalTo(-16)
         }
         stackView.setCustomSpacing(20.0, after: recommendButtonView)
@@ -433,33 +445,25 @@ final class AddViewController: BaseViewController {
         stackView.setCustomSpacing(20.0, after: routineStackView)
         
         // MARK: - 루틴 시간 및 알림
-        [routineAlarmLabel].forEach {
-            routineAlarmStackView.addArrangedSubview($0)
-        }
-        
+        stackView.addArrangedSubview(routineAlarmLabel)
         routineAlarmLabel.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalTo(14)
         }
         
-        stackView.addArrangedSubview(routineAlarmStackView)
+        stackView.setCustomSpacing(8.0, after: routineAlarmLabel)
         
-        routineAlarmStackView.snp.makeConstraints { make in
-            make.height.equalTo(14)
-        }
-        
-        stackView.setCustomSpacing(8.0, after: routineAlarmStackView)
-        
-        stackView.addArrangedSubview(routineAlarmTimeStackView)
         // MARK: - 시간, 알림 보내기
+        stackView.addArrangedSubview(routineAlarmTimeStackView)
         [routineTimeView, routineAlarmView].forEach {
             routineAlarmTimeStackView.addArrangedSubview($0)
         }
         
         routineAlarmTimeStackView.snp.makeConstraints { make in
-            make.height.equalTo(110)
+            make.height.equalTo(97)
             make.leading.equalToSuperview()
-//            make.top.equalTo(routineAlarmStackView.snp.bottom).offset(8)
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
         
         [routineTimeLabel, timePickerView].forEach {
@@ -471,7 +475,7 @@ final class AddViewController: BaseViewController {
         timePickerView.addSubview(timeLabel)
         timeLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(timePressed(_:))))
         
-        [routineAlarmOnOffLabel].forEach {
+        [routineAlarmOnOffLabel, alarmSwitch].forEach {
             routineAlarmView.addSubview($0)
         }
         
@@ -485,12 +489,6 @@ final class AddViewController: BaseViewController {
         timeLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        
-        routineAlarmView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-        }
-        
-        routineAlarmView.addSubview(alarmSwitch)
         
         alarmSwitch.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
