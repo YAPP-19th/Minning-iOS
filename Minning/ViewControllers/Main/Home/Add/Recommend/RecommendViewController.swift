@@ -49,6 +49,7 @@ final class RecommendViewController: BaseViewController, UITableViewDelegate, UI
 
     init(viewModel: RecommendViewModel) {
         self.viewModel = viewModel
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,7 +59,7 @@ final class RecommendViewController: BaseViewController, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
         setupViewLayout()
     }
     
@@ -67,6 +68,7 @@ final class RecommendViewController: BaseViewController, UITableViewDelegate, UI
     }
     
     override func setupViewLayout() {
+        view.backgroundColor = .white
         view.addSubview(closeButton)
         
         closeButton.snp.makeConstraints { make in
@@ -98,7 +100,7 @@ final class RecommendViewController: BaseViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return titles.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -80,8 +80,6 @@ class RecommendViewCell: UITableViewCell, UICollectionViewDelegate, UICollection
         fatalError("init(coder:) has not been implemented")
     }
     
-    var counter: Int = 0
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCell.identifier, for: indexPath) as? RecommendCell {
             cell.titleLabel.text = subtitle[indexPath.row]
