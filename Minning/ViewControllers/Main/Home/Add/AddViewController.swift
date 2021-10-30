@@ -11,7 +11,6 @@ import DesignSystem
 import Foundation
 import SharedAssets
 import SnapKit
-import UIKit
 
 final class AddViewController: BaseViewController {
     private let routineAlarmTableView = UITableView()

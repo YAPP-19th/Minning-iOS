@@ -6,7 +6,10 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
-import UIKit
+import CommonSystem
+import DesignSystem
+import SharedAssets
+import SnapKit
 
 class RecommendCell: UICollectionViewCell {
     static let identifier = "RecommendCell"

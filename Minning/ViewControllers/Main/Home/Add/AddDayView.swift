@@ -6,7 +6,10 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
-import UIKit
+import CommonSystem
+import DesignSystem
+import SharedAssets
+import SnapKit
 
 final class AddDayView: UIView {
     enum DayType {
@@ -46,10 +49,6 @@ final class AddDayView: UIView {
         return $0
     }(UILabel())
     
-    private let notSelectedColor: UIColor = .white
-    
-    private let selectedColor: UIColor = .minningBlue100
-    
     init(day: DayType) {
         self.day = day
         super.init(frame: .zero)
@@ -75,8 +74,6 @@ final class AddDayView: UIView {
             make.center.equalToSuperview()
         }
         
-        backgroundColor = notSelectedColor
-        
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(isButtonSelected(_:))))
     }
     
@@ -84,10 +81,10 @@ final class AddDayView: UIView {
     private func isButtonSelected(_ sender: Any) {
         isSelected.toggle()
         if isSelected {
-            backgroundColor = selectedColor
-            dayLabel.textColor = .white
+            backgroundColor = .minningBlue100
+            dayLabel.textColor = .primaryWhite
         } else {
-            backgroundColor = notSelectedColor
+            backgroundColor = .primaryWhite
             dayLabel.textColor = .minningGray100
         }
     }

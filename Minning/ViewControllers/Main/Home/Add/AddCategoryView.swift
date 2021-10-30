@@ -6,7 +6,10 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
-import UIKit
+import CommonSystem
+import DesignSystem
+import SharedAssets
+import SnapKit
 
 final class AddCategoryView: UIView {
     enum CategoryType {

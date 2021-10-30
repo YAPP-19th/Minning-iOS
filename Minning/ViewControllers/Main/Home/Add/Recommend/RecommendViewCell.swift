@@ -6,8 +6,10 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import CommonSystem
+import DesignSystem
+import SharedAssets
+import SnapKit
 
 class RecommendViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     static let identifier = "RecommendViewCell"
