@@ -17,6 +17,18 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     public var observers: [NSObjectProtocol] = []
     weak var tabBarDelegate: MainTabBarDelegate?
     
+    private let statusBarBGBar: UIView = {
+        $0.backgroundColor = .primaryWhite
+        $0.isHidden = true
+        return $0
+    }(UIView())
+    
+    public var isHiddenStatusBarBGView: Bool = true {
+        didSet {
+            statusBarBGBar.isHidden = isHiddenStatusBarBGView
+        }
+    }
+    
     open var keyboardInsetsAdjustingScrollView: UIScrollView? {
         return nil
     }
@@ -32,6 +44,12 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if registerKeyboardObservers {
             registerKeyboardNotifications()
+        }
+        
+        view.addSubview(statusBarBGBar)
+        statusBarBGBar.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         
         setupViewLayout()

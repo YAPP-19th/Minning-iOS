@@ -47,9 +47,10 @@ final class PasswordViewController: BaseViewController {
     
     private let findPasswordButton: UIButton = {
         $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(.primaryBlack, for: .normal)
         $0.titleLabel?.font = .font16PMedium
         $0.contentHorizontalAlignment = .left
+        $0.addTarget(self, action: #selector(onClickFindPassword(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -62,6 +63,11 @@ final class PasswordViewController: BaseViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    private func onClickFindPassword(_ sender: UIButton) {
+        viewModel.goToFindPassword()
     }
     
     @objc
@@ -102,6 +108,7 @@ final class PasswordViewController: BaseViewController {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)
+        isHiddenStatusBarBGView = false
         
         [hintLabel, loginTextField, loginButton, findPasswordButton].forEach {
             loginStackView.addArrangedSubview($0)

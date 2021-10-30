@@ -58,6 +58,10 @@ final class PasswordViewModel {
         coordinator.goToNickname(animated: true)
     }
     
+    public func goToFindPassword() {
+        coordinator.goToFindPassword()
+    }
+    
     public func goToBack() {
         coordinator.goToBack()
     }
