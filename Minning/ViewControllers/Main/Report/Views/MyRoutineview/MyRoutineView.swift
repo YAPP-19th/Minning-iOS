@@ -47,7 +47,7 @@ final class MyRoutineView: UIView {
     }
     
     private func createSampleData() {
-        let sampleCategory: [RoutineCategory] = [.exercise, .life, .miracle, .selfDev]
+        let sampleCategory: [RoutineCategory] = [.health, .life, .miracle, .selfDev]
         let sampleResult: [RoutineResult] = [.done, .tried, .relax, .failure]
         var sampleDataList: [Routine] = []
         

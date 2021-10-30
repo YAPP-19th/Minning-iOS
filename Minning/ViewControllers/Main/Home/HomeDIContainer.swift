@@ -45,4 +45,22 @@ final class HomeDIContainer {
         let notificationVC = NotificationViewController(viewModel: viewModel)
         return notificationVC
     }
+    
+    func createMyPage(_ coordinator: HomeCoordinator) -> MyPageViewController {
+        let viewModel = MyPageViewModel(coordinator: coordinator)
+        let myPageVC = MyPageViewController(viewModel: viewModel)
+        return myPageVC
+    }
+    
+    func createResetPassword(_ coordinator: HomeCoordinator) -> ResetPasswordViewController {
+        let viewModel = ResetPasswordViewModel(coordinator: coordinator)
+        let resetPasswordVC = ResetPasswordViewController(viewModel: viewModel)
+        return resetPasswordVC
+    }
+    
+    func createNotice(_ coordinator: HomeCoordinator) -> NoticeViewController {
+        let viewModel = NoticeViewModel(coordinator: coordinator)
+        let noticeVC = NoticeViewController(viewModel: viewModel)
+        return noticeVC
+    }
 }

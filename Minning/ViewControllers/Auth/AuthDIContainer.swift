@@ -27,4 +27,22 @@ final class AuthDIContainer {
         let vc = NicknameViewController(viewModel: viewModel)
         return vc
     }
+    
+    func createFindPassword(_ coordinator: AuthCoordinator) -> FindPasswordViewController {
+        let viewModel = FindPasswordViewModel(coordinator: coordinator)
+        let vc = FindPasswordViewController(viewModel: viewModel)
+        return vc
+    }
+    
+    func createEmailAuth(_ coordinator: AuthCoordinator) -> EmailAuthViewController {
+        let viewModel = EmailAuthViewModel(coordinator: coordinator)
+        let vc = EmailAuthViewController(viewModel: viewModel)
+        return vc
+    }
+    
+    func createNewPassword(_ coordinator: AuthCoordinator) -> NewPasswordViewController {
+        let viewModel = NewPasswordViewModel(coordinator: coordinator)
+        let vc = NewPasswordViewController(viewModel: viewModel)
+        return vc
+    }
 }

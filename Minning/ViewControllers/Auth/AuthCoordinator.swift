@@ -10,9 +10,13 @@ import DesignSystem
 import Foundation
 
 protocol AuthRoute {
+    func goToAuthHome()
     func goToPassword(animated: Bool, isLogin: Bool)
     func goToMain(asRoot: Bool)
     func goToNickname(animated: Bool)
+    func goToFindPassword()
+    func goToEmailAuth()
+    func goToNewPassword()
     func goToBack()
 }
 
@@ -41,6 +45,10 @@ class AuthCoordinator {
 }
 
 extension AuthCoordinator: AuthRoute {
+    func goToAuthHome() {
+        navigationController.popToRootViewController(animated: true)
+    }
+    
     func goToPassword(animated: Bool = false, isLogin: Bool) {
         let passwordVC = dependencies.createPassword(self, isLogin: isLogin)
         navigationController.pushViewController(passwordVC, animated: animated)
@@ -53,6 +61,21 @@ extension AuthCoordinator: AuthRoute {
     func goToNickname(animated: Bool = false) {
         let nicknameVC = dependencies.createNickname(self)
         navigationController.pushViewController(nicknameVC, animated: animated)
+    }
+    
+    func goToFindPassword() {
+        let findPwVC = dependencies.createFindPassword(self)
+        navigationController.pushViewController(findPwVC, animated: true)
+    }
+    
+    func goToEmailAuth() {
+        let emailAuthVC = dependencies.createEmailAuth(self)
+        navigationController.pushViewController(emailAuthVC, animated: true)
+    }
+    
+    func goToNewPassword() {
+        let newPasswordVC = dependencies.createNewPassword(self)
+        navigationController.pushViewController(newPasswordVC, animated: true)
     }
     
     func goToBack() {
