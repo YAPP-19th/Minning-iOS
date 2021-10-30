@@ -83,8 +83,12 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         return indexPath.section == 0 ? 196 : 51
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0 : 11
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 12
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,5 +114,31 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 0 {
+            let rowItem = viewModel.getSectionRowItems(section: indexPath.section)[indexPath.row]
+            switch rowItem.type {
+            case .rePassword:
+                DebugLog(rowItem.title)
+            case .push:
+                break
+            case .notice:
+                DebugLog(rowItem.title)
+            case .inquire:
+                DebugLog(rowItem.title)
+            case .agreement:
+                DebugLog(rowItem.title)
+            case .personalInfo:
+                DebugLog(rowItem.title)
+            case .version:
+                DebugLog(rowItem.title)
+            case .logout:
+                DebugLog(rowItem.title)
+            case .deleteAccount:
+                DebugLog(rowItem.title)
+            }
+        }
     }
 }
