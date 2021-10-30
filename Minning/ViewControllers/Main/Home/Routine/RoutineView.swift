@@ -176,25 +176,33 @@ extension RoutineView: UITableViewDataSource {
 //            completion(true)
 //        }
 //        completeAction.backgroundColor = .minningLightGray100
-//        completeAction.image = UIImage(sharedNamed: "complete_action.png")
+//        completeAction.image = convertSwipeViewToImage(action: .complete)
 //
 //        let halfAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
 //            print("half")
 //            completion(true)
 //        }
 //        halfAction.backgroundColor = .minningLightGray100
-//        halfAction.image = UIImage(sharedNamed: "half_action.png")
+//        halfAction.image = convertSwipeViewToImage(action: .half)
 //
 //        let dismissAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
 //            print("dismiss")
 //            completion(true)
 //        }
 //        dismissAction.backgroundColor = .minningLightGray100
-//        dismissAction.image = UIImage(sharedNamed: "dismiss_action.png")
+//        dismissAction.image = convertSwipeViewToImage(action: .dismiss)
 //
 //        return .init(actions: [halfAction, completeAction])
 //
 //        return .init(actions: [dismissAction])
+    }
+    
+    private func convertSwipeViewToImage(action: RoutineCellSwipeView.Action) -> UIImage {
+        let view = RoutineCellSwipeView(action: action)
+        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
+        return renderer.image { rendererContext in
+            view.layer.render(in: rendererContext.cgContext)
+        }
     }
 }
 
