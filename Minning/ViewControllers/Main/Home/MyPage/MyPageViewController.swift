@@ -120,24 +120,12 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section != 0 {
             let rowItem = viewModel.getSectionRowItems(section: indexPath.section)[indexPath.row]
             switch rowItem.type {
-            case .rePassword:
-                DebugLog(rowItem.title)
-            case .push:
-                break
-            case .notice:
-                DebugLog(rowItem.title)
-            case .inquire:
-                DebugLog(rowItem.title)
-            case .agreement:
-                DebugLog(rowItem.title)
-            case .personalInfo:
-                DebugLog(rowItem.title)
-            case .version:
-                DebugLog(rowItem.title)
             case .logout:
                 DebugLog(rowItem.title)
             case .deleteAccount:
                 DebugLog(rowItem.title)
+            default:
+                viewModel.goToSettingContent(type: rowItem.type)
             }
         }
     }

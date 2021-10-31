@@ -76,4 +76,23 @@ final class MyPageViewModel {
     public func goToBack() {
         coordinator.goToBack()
     }
+    
+    public func goToSettingContent(type: MyPageSettingRowItem.RowType) {
+        switch type {
+        case .rePassword:
+            coordinator.goToResetPassword()
+        case .notice:
+            coordinator.goToNotice()
+        case .inquire:
+            coordinator.goToInquire()
+        case .agreement:
+            coordinator.goToLargeContents(contentType: .agreement)
+        case .personalInfo:
+            coordinator.goToLargeContents(contentType: .personalInfo)
+        case .version:
+            coordinator.goToVersion()
+        default:
+            break
+        }
+    }
 }

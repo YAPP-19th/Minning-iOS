@@ -63,4 +63,22 @@ final class HomeDIContainer {
         let noticeVC = NoticeViewController(viewModel: viewModel)
         return noticeVC
     }
+    
+    func createLargeContents(_ coordinator: HomeCoordinator, contentType: MyPageSettingRowItem.RowType) -> LargeContentsViewController {
+        let viewModel = LargeContentsViewModel(coordinator: coordinator, contentType: contentType)
+        let largeContentsVC = LargeContentsViewController(viewModel: viewModel)
+        return largeContentsVC
+    }
+    
+    func createInquire(_ coordinator: HomeCoordinator) -> InquireViewController {
+        let viewModel = InquireViewModel(coordinator: coordinator)
+        let inquireVC = InquireViewController(viewModel: viewModel)
+        return inquireVC
+    }
+    
+    func createVersion(_ coordinator: HomeCoordinator) -> VersionViewController {
+        let viewModel = VersionViewModel(coordinator: coordinator)
+        let versionVC = VersionViewController(viewModel: viewModel)
+        return versionVC
+    }
 }
