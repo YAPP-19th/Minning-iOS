@@ -55,7 +55,6 @@ final class MyPageViewController: BaseViewController {
     override func setupViewLayout() {
         view.backgroundColor = .primaryLightGray
         view.addSubview(myPageTableView)
-        isHiddenStatusBarBGView = false
         
         myPageTableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)

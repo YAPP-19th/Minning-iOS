@@ -78,7 +78,7 @@ extension NoticeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: NotificationItemCell.identifier) as? NotificationItemCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: NoticeItemCell.identifier) as? NoticeItemCell {
             cell.item = viewModel.sampleNotiList.value[indexPath.row]
             cell.selectionStyle = .none
             return cell

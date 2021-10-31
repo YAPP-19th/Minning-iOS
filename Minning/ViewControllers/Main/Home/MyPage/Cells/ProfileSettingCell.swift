@@ -24,6 +24,11 @@ final class ProfileSettingCell: UITableViewCell {
     
     private let cameraButton: UIButton = {
         $0.backgroundColor = .primaryWhite
+        $0.setImage(UIImage(sharedNamed: "myPageCamera"), for: .normal)
+        $0.layer.shadowColor = UIColor.primaryBlack.withAlphaComponent(0.25).cgColor
+        $0.layer.shadowOpacity = 1
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowRadius = 15
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         return $0
