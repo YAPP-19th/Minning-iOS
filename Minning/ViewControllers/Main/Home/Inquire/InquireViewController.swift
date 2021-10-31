@@ -1,8 +1,8 @@
 //
-//  ResetPasswordViewController.swift
+//  InquireViewController.swift
 //  Minning
 //
-//  Created by denny on 2021/10/28.
+//  Created by denny on 2021/10/31.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
@@ -12,10 +12,10 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class ResetPasswordViewController: BaseViewController {
-    private let viewModel: ResetPasswordViewModel
+final class InquireViewController: BaseViewController {
+    private let viewModel: InquireViewModel
     
-    public init(viewModel: ResetPasswordViewModel) {
+    public init(viewModel: InquireViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,7 +35,7 @@ final class ResetPasswordViewController: BaseViewController {
     
     private func updateViewContent() {
         if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
-            navBar.titleContent = "비밀번호 재설정"
+            navBar.titleContent = "문의하기"
             navBar.removeDefaultShadowImage()
         }
     }

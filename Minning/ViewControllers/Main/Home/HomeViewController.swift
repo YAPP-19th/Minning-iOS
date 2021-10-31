@@ -84,6 +84,10 @@ extension HomeViewController: ProfileViewDelegate {
     func didSelectNoti() {
         viewModel.goToNotification()
     }
+    
+    func didSelectProfile() {
+        viewModel.goToMyPage()
+    }
 }
 
 extension HomeViewController: RoutineViewDelegate {

@@ -16,17 +16,20 @@ protocol ProfileViewDelegate: AnyObject {
     func didSelectAdd()
     
     func didSelectNoti()
+    
+    func didSelectProfile()
 }
 
 final class ProfileView: UIView {
     weak var delegate: ProfileViewDelegate?
     
-    private let profileImageView: UIImageView = {
+    private let profileImageButton: UIButton = {
         $0.backgroundColor = .primaryLightGray
         $0.layer.cornerRadius = 22
         $0.layer.masksToBounds = true
+        $0.addTarget(self, action: #selector(onClickProfileImageButton(_:)), for: .touchUpInside)
         return $0
-    }(UIImageView())
+    }(UIButton())
     
     private let optionButtonStackView: UIStackView = {
         $0.axis = .horizontal
@@ -73,6 +76,11 @@ final class ProfileView: UIView {
     }(ImageButton())
     
     @objc
+    private func onClickProfileImageButton(_ sender: UIButton) {
+        delegate?.didSelectProfile()
+    }
+    
+    @objc
     private func onClickOptionButton(_ sender: ImageButton) {
         switch sender {
         case addButton:
@@ -98,7 +106,7 @@ final class ProfileView: UIView {
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         layer.cornerRadius = 15
         
-        [profileImageView, titleLabel,
+        [profileImageButton, titleLabel,
          optionButtonStackView, leftArrowButton,
          rightArrowButton, weeklyDataStackView].forEach {
             addSubview($0)
@@ -118,14 +126,14 @@ final class ProfileView: UIView {
             }
         }
         
-        profileImageView.snp.makeConstraints { make in
+        profileImageButton.snp.makeConstraints { make in
             make.width.height.equalTo(40)
             make.top.equalToSuperview().offset(29)
             make.leading.equalToSuperview().offset(16)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.bottom).offset(17)
+            make.top.equalTo(profileImageButton.snp.bottom).offset(17)
             make.leading.equalToSuperview().offset(16)
         }
         

@@ -27,8 +27,15 @@ public class PlainUINavigationBar: UINavigationBar {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .primaryWhite
-        barTintColor = .primaryWhite
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .primaryWhite
+            appearance.shadowColor = nil
+            standardAppearance = appearance
+            scrollEdgeAppearance = appearance
+        }
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in

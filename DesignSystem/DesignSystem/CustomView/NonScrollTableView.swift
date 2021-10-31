@@ -16,7 +16,7 @@ public class NonScrollTableView: UITableView {
     }
     
     public override var contentSize: CGSize {
-        didSet{
+        didSet {
             self.invalidateIntrinsicContentSize()
         }
     }
