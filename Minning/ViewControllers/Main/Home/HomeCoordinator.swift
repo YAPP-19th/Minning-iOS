@@ -23,6 +23,7 @@ protocol HomeRoute {
     func goToInquire()
     func goToVersion()
     func goToBack()
+    func goToLogin(asRoot: Bool)
 }
 
 class HomeCoordinator {
@@ -117,5 +118,9 @@ extension HomeCoordinator: HomeRoute {
     
     func goToBack() {
         navigationController.popViewController(animated: true)
+    }
+    
+    func goToLogin(asRoot: Bool) {
+        coordinator.goToLogin(asRoot: asRoot)
     }
 }

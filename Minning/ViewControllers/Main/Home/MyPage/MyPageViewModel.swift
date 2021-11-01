@@ -77,6 +77,10 @@ final class MyPageViewModel {
         coordinator.goToBack()
     }
     
+    public func goToLogin() {
+        coordinator.goToLogin(asRoot: true)
+    }
+    
     public func goToSettingContent(type: MyPageSettingRowItem.RowType) {
         switch type {
         case .rePassword:

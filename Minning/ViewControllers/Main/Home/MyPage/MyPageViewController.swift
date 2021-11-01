@@ -120,9 +120,12 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             let rowItem = viewModel.getSectionRowItems(section: indexPath.section)[indexPath.row]
             switch rowItem.type {
             case .logout:
-                DebugLog(rowItem.title)
+                viewModel.goToLogin()
             case .deleteAccount:
-                DebugLog(rowItem.title)
+                self.showAlert(title: "계정 삭제", message: "정말 이 계정을 삭제하시겠습니까?", okTitle: "삭제", handler: { _ in
+                    // 계정 삭제 로직 진행
+                    DebugLog("계정 삭제")
+                })
             default:
                 viewModel.goToSettingContent(type: rowItem.type)
             }

@@ -119,6 +119,15 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    public func showAlert(title: String?, message: String?, okTitle: String, handler: @escaping (UIAlertAction) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: okTitle, style: .default, handler: handler)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     public func bindViewModel() { }
     public func setupViewLayout() { }
 }
