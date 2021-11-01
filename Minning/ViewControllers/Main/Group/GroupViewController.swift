@@ -20,14 +20,14 @@ final class GroupViewController: BaseViewController {
     
     private let myGroupTabButton: UIButton = {
         $0.setTitle("내 그룹", for: .normal)
-        $0.titleLabel?.font = .font20PExBold
+        $0.titleLabel?.font = .font22PExBold
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
     private let groupListTabButton: UIButton = {
         $0.setTitle("둘러보기", for: .normal)
-        $0.titleLabel?.font = .font20PExBold
+        $0.titleLabel?.font = .font22PExBold
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
@@ -64,7 +64,7 @@ final class GroupViewController: BaseViewController {
     private let filterContainerView: UIView = UIView()
     private let filterStackView: UIStackView = {
         $0.axis = .horizontal
-        $0.spacing = 2
+        $0.spacing = 8
         $0.alignment = .leading
         $0.setContentHuggingPriority(.required, for: .horizontal)
         return $0
@@ -133,7 +133,7 @@ final class GroupViewController: BaseViewController {
         
         myGroupTabButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(19)
-            make.leading.equalToSuperview()
+            make.leading.equalToSuperview().offset(28)
             make.height.equalTo(44)
             make.width.greaterThanOrEqualTo(44)
         }

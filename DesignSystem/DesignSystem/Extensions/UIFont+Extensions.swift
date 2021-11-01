@@ -134,6 +134,10 @@ public extension UIFont {
         UIFont.systemFont(ofSize: 20, weight: .heavy)
     }
     
+    class var font22PExBold: UIFont {
+        UIFont.systemFont(ofSize: 22, weight: .heavy)
+    }
+    
     class var font23PBold: UIFont {
         UIFont.systemFont(ofSize: 23, weight: .bold)
     }
