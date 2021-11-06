@@ -20,6 +20,10 @@ final class PhotoGridViewController: BaseViewController {
         $0.font = .font16P
         $0.textColor = .black
         $0.text = "선택"
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickSelectLabel(_:))))
+        $0.frame = .init(x: 0, y: 0, width: 50, height: 16)
+        $0.textAlignment = .right
         return $0
     }(UILabel())
     
@@ -57,6 +61,13 @@ final class PhotoGridViewController: BaseViewController {
         setupNavigationBar()
     }
     
+    override func bindViewModel() {
+        viewModel.selectedPhotoIndices.bindAndFire { [weak self] _ in
+            guard let `self` = self else { return }
+            self.updateRightBarButton()
+        }
+    }
+    
     override func setupViewLayout() {
         [navigationBar, mainCollectionView, deletePhotoButton].forEach {
             view.addSubview($0)
@@ -90,18 +101,31 @@ final class PhotoGridViewController: BaseViewController {
     }
 
     private func updateRightBarButton() {
-        let targetString = viewModel.selectedItemCount == 0 ? "" : "\(viewModel.selectedItemCount) "
-        let fullText = "\(targetString)선택"
+        guard mainCollectionView.allowsMultipleSelection else { return }
+        let selectedItemCount = viewModel.selectedPhotoIndices.value.count
+        let targetString = selectedItemCount == 0 ? "" : "\(selectedItemCount) "
+        let fullText = "\(targetString)취소"
         let range = (fullText as NSString).range(of: targetString)
         let valueAttrString = NSMutableAttributedString(string: fullText)
         valueAttrString.addAttributes([.font: UIFont.font16P,
-                                       .foregroundColor: UIColor.blue], range: range)
+                                       .foregroundColor: UIColor.blue007AFF], range: range)
         rightBarButtonTitleLabel.attributedText = valueAttrString
     }
     
     @objc
     private func onClickCloseButton(_ sender: Any?) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    private func onClickSelectLabel(_ sender: Any?) {
+        if mainCollectionView.allowsMultipleSelection {
+            viewModel.deselectAllPhotos()
+            mainCollectionView.reloadData()
+        }
+        mainCollectionView.allowsMultipleSelection.toggle()
+        rightBarButtonTitleLabel.text = mainCollectionView.allowsMultipleSelection ? "취소" : "선택"
+
     }
 }
 
@@ -112,7 +136,20 @@ extension PhotoGridViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else { return .init() }
+        cell.updateLayout(isSelected: viewModel.selectedPhotoIndices.value.contains(indexPath.row))
         return cell
+    }
+}
+
+extension PhotoGridViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard collectionView.allowsMultipleSelection else { return }
+        if viewModel.selectedPhotoIndices.value.contains(indexPath.row) {
+            viewModel.deselectPhoto(index: indexPath.row)
+        } else {
+            viewModel.selectPhoto(index: indexPath.row)
+        }
+        collectionView.reloadData()
     }
 }
 

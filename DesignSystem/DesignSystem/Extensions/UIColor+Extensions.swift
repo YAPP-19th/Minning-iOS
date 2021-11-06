@@ -55,6 +55,7 @@ public extension UIColor {
     static var primaryTextGray: UIColor { fetchColor(#function) }
     static var primaryLightGray: UIColor { fetchColor(#function) }
     static var subAlert: UIColor { fetchColor(#function) }
+    static var blue007AFF: UIColor { fetchColor(#function) }
     
     static var kakaoYellow: UIColor { fetchColor(#function) }
     static var kakaoBlack85: UIColor { fetchColor(#function) }
