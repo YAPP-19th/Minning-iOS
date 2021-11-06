@@ -65,7 +65,7 @@ final class WeeklyView: UIView {
     
     public var isTextBold: Bool = false {
         didSet {
-            dateLabel.textColor = isTextBold ? .black : .primaryTextGray
+            dateLabel.textColor = isTextBold ? .primaryBlack : .primaryTextGray
             dateLabel.font = isTextBold ? .font12PBold : .font12P
         }
     }

@@ -14,7 +14,7 @@ public class PlainUINavigationBar: UINavigationBar {
     private var defaultShadowImage: UIImage?
     
     private let titleLabel: UILabel = {
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         $0.font = .font16PMedium
         return $0
     }(UILabel())
@@ -53,7 +53,7 @@ public class PlainUINavigationBar: UINavigationBar {
     
     public func setDefaultPlainNavigationStyle() {
         isTranslucent = false
-        tintColor = .black
+        tintColor = .primaryBlack
         backgroundColor = .primaryWhite
     }
     
@@ -68,7 +68,7 @@ public class PlainUINavigationBar: UINavigationBar {
     }
     
     func reloadShadowImages() {
-        defaultShadowImage = UIImage(color: UIColor.black.withAlphaComponent(0.15),
+        defaultShadowImage = UIImage(color: UIColor.primaryBlack.withAlphaComponent(0.15),
                                      size: CGSize(width: 1, height: 1.0 / UIScreen.main.scale))
     }
 }

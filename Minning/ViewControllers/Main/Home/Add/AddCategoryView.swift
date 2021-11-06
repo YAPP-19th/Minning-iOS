@@ -74,7 +74,7 @@ final class AddCategoryView: UIView {
     }(UIImageView())
     
     private let categorySelectedView: UIView = {
-        $0.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        $0.backgroundColor = UIColor.primaryBlack040
         return $0
     }(UIView())
     
@@ -85,7 +85,7 @@ final class AddCategoryView: UIView {
     
     private let categoryLabel: UILabel = {
         $0.font = .font12PBold
-        $0.textColor = .white
+        $0.textColor = .primaryWhite
         return $0
     }(UILabel())
     

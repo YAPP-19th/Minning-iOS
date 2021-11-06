@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                toolbarClass: nil)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.tintColor = .black
+        window?.tintColor = .primaryBlack
         window?.rootViewController = navigationController
         
         appCoordinator = AppCoordinator(navigationController: navigationController,
@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             let newAppearance = UINavigationBarAppearance()
             newAppearance.configureWithOpaqueBackground()
-            newAppearance.backgroundColor = .black
-            newAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            newAppearance.backgroundColor = .primaryBlack
+            newAppearance.titleTextAttributes = [.foregroundColor: UIColor.primaryWhite]
             
             UINavigationBar.appearance().standardAppearance = newAppearance
         }

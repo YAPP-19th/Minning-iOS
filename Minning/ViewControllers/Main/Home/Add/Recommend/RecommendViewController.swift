@@ -52,7 +52,7 @@ final class RecommendViewController: BaseViewController, UITableViewDelegate, UI
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .white
+        view.backgroundColor = .primaryWhite
         view.addSubview(closeButton)
         
         closeButton.snp.makeConstraints { make in

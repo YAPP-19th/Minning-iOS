@@ -40,7 +40,7 @@ final class ProfileView: UIView {
     
     private let titleLabel: UILabel = {
         $0.font = .font20PExBold
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         $0.text = "9월 16일 (목)"
         return $0
     }(UILabel())

@@ -46,7 +46,7 @@ final class AddViewController: BaseViewController {
         $0.setTitleColor(.minningBlue100, for: .normal)
         $0.titleLabel?.font = .font16P
         $0.addTarget(self, action: #selector(isRecommendButtonPressed), for: .touchUpInside)
-        $0.backgroundColor = .white
+        $0.backgroundColor = .primaryWhite
         $0.layer.borderColor = UIColor.minningBlue100.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 5
@@ -62,7 +62,7 @@ final class AddViewController: BaseViewController {
     
     private let writeRoutineNameTextField: PlainTextField = {
         $0.placeholder = "ex. 아침에 물 한잔"
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         return $0
     }(PlainTextField())
     
@@ -89,7 +89,7 @@ final class AddViewController: BaseViewController {
     
     private let writeGoalNameTextField: PlainTextField = {
         $0.placeholder = "ex. 작은것부터 차근차근!"
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         return $0
     }(PlainTextField())
     
@@ -206,26 +206,26 @@ final class AddViewController: BaseViewController {
     }(UILabel())
     
     private let routineTimeView: UIView = {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .primaryWhite
         return $0
     }(UIView())
     
     private let routineTimeLabel: UILabel = {
         $0.text = "시간"
         $0.font = .font16P
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         return $0
     }(UILabel())
     
     private let routineAlarmView: UIView = {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .primaryWhite
         return $0
     }(UIView())
     
     private let routineAlarmOnOffLabel: UILabel = {
         $0.text = "알림 보내기"
         $0.font = .font16P
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         return $0
     }(UILabel())
     

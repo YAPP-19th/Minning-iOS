@@ -24,7 +24,7 @@ public class PlainButton: UIButton {
             case .kakao:
                 return .kakaoYellow
             case .apple:
-                return .black
+                return .primaryBlack
             }
         }
         
