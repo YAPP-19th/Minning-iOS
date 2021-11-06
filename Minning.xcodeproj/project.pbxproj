@@ -11,6 +11,9 @@
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
 		8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */; };
 		8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F71A2736BAEC008839FA /* GroupGuideCell.swift */; };
+		8373F6F9272D581D008839FA /* PhotoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6F8272D581D008839FA /* PhotoGridViewController.swift */; };
+		8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FA272D60D8008839FA /* PhotoCell.swift */; };
+		8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
@@ -305,6 +308,9 @@
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCellSwipeView.swift; sourceTree = "<group>"; };
 		8373F71A2736BAEC008839FA /* GroupGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGuideCell.swift; sourceTree = "<group>"; };
+		8373F6F8272D581D008839FA /* PhotoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewController.swift; sourceTree = "<group>"; };
+		8373F6FA272D60D8008839FA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewModel.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
@@ -478,6 +484,16 @@
 				33C9243593633CFA06F61563 /* Pods_MinningTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8373F6F4272D5800008839FA /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				8373F6F8272D581D008839FA /* PhotoGridViewController.swift */,
+				8373F6FA272D60D8008839FA /* PhotoCell.swift */,
+				8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		83D2F6D3271BFE91002947D3 /* Views */ = {
@@ -983,6 +999,7 @@
 		B0ECF889270AD8200088C96E /* GroupDetail */ = {
 			isa = PBXGroup;
 			children = (
+				8373F6F4272D5800008839FA /* Photo */,
 				B0ECF89D270AE0440088C96E /* JoinGroup */,
 				B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */,
 				B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */,
@@ -1458,6 +1475,7 @@
 				B09041AD272E26E300AE8623 /* LargeContentsViewController.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
+				8373F6F9272D581D008839FA /* PhotoGridViewController.swift in Sources */,
 				9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */,
 				B09041BE272E2A8200AE8623 /* VersionViewController.swift in Sources */,
 				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
@@ -1541,11 +1559,13 @@
 				8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */,
 				B08BEB7D272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
+				8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */,
 				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
+				8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */,
 				B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
 				83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */,

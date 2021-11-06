@@ -24,4 +24,8 @@ final class GroupDetailViewModel {
     func dismissVC() {
         coordinator.dismissVC()
     }
+    
+    func goToPhotoGrid() {
+        coordinator.goToPhotoGrid()
+    }
 }
