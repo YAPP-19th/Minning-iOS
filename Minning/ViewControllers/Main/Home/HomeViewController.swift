@@ -97,6 +97,8 @@ extension HomeViewController: RoutineViewDelegate {
             return
         case .phraseGuide:
             viewModel.showPhraseModally()
+        case .groupGuide:
+            viewModel.goToMyGroup()
         case .routine:
             showAlert(title: routineAlertTitle, message: routineAlertText) { _ in
                 self.viewModel.showPhraseModally()
@@ -104,6 +106,8 @@ extension HomeViewController: RoutineViewDelegate {
             }
         case .review:
             viewModel.goToReview()
+        case .footer:
+            return
         }
     }
     

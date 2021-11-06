@@ -10,6 +10,7 @@
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
 		8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */; };
+		8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F71A2736BAEC008839FA /* GroupGuideCell.swift */; };
 		8373F6F9272D581D008839FA /* PhotoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6F8272D581D008839FA /* PhotoGridViewController.swift */; };
 		8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FA272D60D8008839FA /* PhotoCell.swift */; };
 		8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */; };
@@ -168,8 +169,8 @@
 		B09041BF272E2A8200AE8623 /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09041BD272E2A8200AE8623 /* VersionViewController.swift */; };
 		B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A308272233F900E0A479 /* RoutineHeaderView.swift */; };
 		B097A30E272233F900E0A479 /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A308272233F900E0A479 /* RoutineHeaderView.swift */; };
-		B097A30F272233F900E0A479 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterView.swift */; };
-		B097A310272233F900E0A479 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterView.swift */; };
+		B097A30F272233F900E0A479 /* RoutineFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterCell.swift */; };
+		B097A310272233F900E0A479 /* RoutineFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterCell.swift */; };
 		B097A311272233F900E0A479 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30A272233F900E0A479 /* ReviewCell.swift */; };
 		B097A312272233F900E0A479 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30A272233F900E0A479 /* ReviewCell.swift */; };
 		B097A313272233F900E0A479 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30B272233F900E0A479 /* RoutineCell.swift */; };
@@ -306,6 +307,7 @@
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCellSwipeView.swift; sourceTree = "<group>"; };
+		8373F71A2736BAEC008839FA /* GroupGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGuideCell.swift; sourceTree = "<group>"; };
 		8373F6F8272D581D008839FA /* PhotoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewController.swift; sourceTree = "<group>"; };
 		8373F6FA272D60D8008839FA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewModel.swift; sourceTree = "<group>"; };
@@ -390,7 +392,7 @@
 		B09041BD272E2A8200AE8623 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		B091BA562736BDF6006F3E2A /* Minning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Minning.entitlements; sourceTree = "<group>"; };
 		B097A308272233F900E0A479 /* RoutineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineHeaderView.swift; sourceTree = "<group>"; };
-		B097A309272233F900E0A479 /* RoutineFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineFooterView.swift; sourceTree = "<group>"; };
+		B097A309272233F900E0A479 /* RoutineFooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineFooterCell.swift; sourceTree = "<group>"; };
 		B097A30A272233F900E0A479 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		B097A30B272233F900E0A479 /* RoutineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
 		B097A30C272233F900E0A479 /* PhraseGuideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseGuideCell.swift; sourceTree = "<group>"; };
@@ -867,9 +869,10 @@
 				B097A30C272233F900E0A479 /* PhraseGuideCell.swift */,
 				B097A30A272233F900E0A479 /* ReviewCell.swift */,
 				B097A30B272233F900E0A479 /* RoutineCell.swift */,
-				B097A309272233F900E0A479 /* RoutineFooterView.swift */,
+				B097A309272233F900E0A479 /* RoutineFooterCell.swift */,
 				B097A308272233F900E0A479 /* RoutineHeaderView.swift */,
 				8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */,
+				8373F71A2736BAEC008839FA /* GroupGuideCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1416,7 +1419,7 @@
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B08BEB85272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */,
-				B097A310272233F900E0A479 /* RoutineFooterView.swift in Sources */,
+				B097A310272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
 				B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F627085447009D642A /* RecommendViewController.swift in Sources */,
@@ -1495,6 +1498,7 @@
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B08BEB6C272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
+				8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */,
 				B0280456270986D8009D642A /* MyRoutineView.swift in Sources */,
 				B02803E727085141009D642A /* EditOrderViewController.swift in Sources */,
 				B02803EE270851A7009D642A /* AddViewController.swift in Sources */,
@@ -1514,7 +1518,7 @@
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B0280459270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
-				B097A30F272233F900E0A479 /* RoutineFooterView.swift in Sources */,
+				B097A30F272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,

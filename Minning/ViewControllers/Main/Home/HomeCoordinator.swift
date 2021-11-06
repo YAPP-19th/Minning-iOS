@@ -123,4 +123,8 @@ extension HomeCoordinator: HomeRoute {
     func goToLogin(asRoot: Bool) {
         coordinator.goToLogin(asRoot: asRoot)
     }
+    
+    func goToMyGroup() {
+        
+    }
 }
