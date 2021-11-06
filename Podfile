@@ -27,6 +27,7 @@ target 'Minning' do
   pod 'Pageboy'
   pod 'lottie-ios'
   pod 'KakaoSDK'
+  pod 'Reveal-SDK'
 
   target 'MinningTests' do
     inherit! :search_paths
