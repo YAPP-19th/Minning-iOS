@@ -45,7 +45,7 @@ final class ReviewCell: UITableViewCell {
         }
         
         titleLabel.font = .font16PBold
-        descriptionLabel.font = .font12P
+        descriptionLabel.font = .font14PMedium
         descriptionLabel.textColor = .minningDarkGray100
         reviewImageView.layer.cornerRadius = 7
         
