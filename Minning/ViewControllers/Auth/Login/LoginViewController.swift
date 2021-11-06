@@ -6,6 +6,7 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
+import AuthenticationServices
 import CommonSystem
 import DesignSystem
 import Foundation
@@ -72,7 +73,7 @@ final class LoginViewController: BaseViewController {
         $0.isActive = true
         $0.buttonContent = " Apple로 로그인"
         $0.plainButtonType = .apple
-//        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress(_:)), for: .touchUpInside)
         return $0
     }(PlainButton())
     
@@ -104,6 +105,18 @@ final class LoginViewController: BaseViewController {
         // MARK: Server API
 //        viewModel.goToPassword(isLogin: false)
         viewModel.goToPassword(isLogin: true)
+    }
+    
+    @objc
+    private func handleAuthorizationAppleIDButtonPress(_ sender: PlainButton) {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
     
     @objc
@@ -179,6 +192,46 @@ final class LoginViewController: BaseViewController {
     }
 }
 
-extension LoginViewController: UIScrollViewDelegate {
+extension LoginViewController: UIScrollViewDelegate { }
+
+extension LoginViewController: ASAuthorizationControllerDelegate,
+                                ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
     
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            
+            if let authorizationCode = appleIDCredential.authorizationCode,
+               let identityToken = appleIDCredential.identityToken,
+               let authString = String(data: authorizationCode, encoding: .utf8),
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+                DebugLog("authorizationCode: \(authorizationCode)")
+                DebugLog("identityToken: \(identityToken)")
+                DebugLog("authString: \(authString)")
+                DebugLog("tokenString: \(tokenString)")
+            }
+            
+            DebugLog("useridentifier: \(userIdentifier)")
+            DebugLog("fullName: \(String(describing: fullName))")
+            DebugLog("email: \(String(describing: email))")
+        case let passwordCredential as ASPasswordCredential:
+            let username = passwordCredential.user
+            let password = passwordCredential.password
+            
+            DebugLog("username: \(username)")
+            DebugLog("password: \(password)")
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        ErrorLog("Login Error")
+    }
 }

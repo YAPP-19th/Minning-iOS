@@ -388,6 +388,7 @@
 		B09041B6272E28B000AE8623 /* InquireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireViewController.swift; sourceTree = "<group>"; };
 		B09041BA272E2A7B00AE8623 /* VersionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewModel.swift; sourceTree = "<group>"; };
 		B09041BD272E2A8200AE8623 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
+		B091BA562736BDF6006F3E2A /* Minning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Minning.entitlements; sourceTree = "<group>"; };
 		B097A308272233F900E0A479 /* RoutineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineHeaderView.swift; sourceTree = "<group>"; };
 		B097A309272233F900E0A479 /* RoutineFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineFooterView.swift; sourceTree = "<group>"; };
 		B097A30A272233F900E0A479 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
@@ -951,6 +952,7 @@
 		B0D16DF126DA57F200A8E52B /* Minning */ = {
 			isa = PBXGroup;
 			children = (
+				B091BA562736BDF6006F3E2A /* Minning.entitlements */,
 				B028043B270972AB009D642A /* Model */,
 				B0180EF126DCC579008C6F3C /* ViewControllers */,
 				B0180ECE26DCC2D7008C6F3C /* Config */,
@@ -1624,7 +1626,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = "OurApp copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1645,7 +1647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6683XA59A4;
 				INFOPLIST_FILE = "OurApp copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1710,7 +1712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1766,7 +1768,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1782,10 +1784,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Minning/Minning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M79H9K226Y;
 				INFOPLIST_FILE = Minning/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1804,10 +1807,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Minning/Minning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M79H9K226Y;
 				INFOPLIST_FILE = Minning/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
