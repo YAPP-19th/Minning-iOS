@@ -15,7 +15,6 @@ import SnapKit
 final class GroupDetailViewController: BaseViewController {
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
     private let contentView: UIView = UIView()
-    private let dimmedView: UIView = UIView()
     
     private let joinButton: PlainButton = {
         $0.setTitle("참여하기", for: .normal)
@@ -58,12 +57,9 @@ final class GroupDetailViewController: BaseViewController {
     
     override func setupViewLayout() {
         view.backgroundColor = .primaryWhite
-        dimmedView.backgroundColor = .primaryBlack040
-        dimmedView.layer.opacity = 0
-        dimmedView.isHidden = true
         contentView.backgroundColor = .minningLightGray100
         
-        [navigationBar, contentView, dimmedView].forEach {
+        [navigationBar, contentView].forEach {
             view.addSubview($0)
         }
         
@@ -76,21 +72,15 @@ final class GroupDetailViewController: BaseViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        dimmedView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
         contentView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.trailing.equalToSuperview()
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.bottom.equalToSuperview()
         }
         
         joinButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-//            make.bottom.equalToSuperview().offset(-16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
         }
     }
@@ -111,27 +101,9 @@ final class GroupDetailViewController: BaseViewController {
     
     @objc
     private func onClickJoinButton(_ sender: Any?) {
-        setHiddenDimmedView(isHidden: false)
-        viewModel.showJoinGroup(completion: { [weak self] in
+        viewModel.showJoinGroup(completion: { [weak self] isSuccess in
             guard let `self` = self else { return }
-            self.setHiddenDimmedView(isHidden: true)
+            DebugLog("Group Popup 닫기 Result : \(isSuccess)")
         })
-    }
-    
-    private func setHiddenDimmedView(isHidden: Bool) {
-        if isHidden {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.dimmedView.layer.opacity = 0
-            })
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                self.dimmedView.isHidden = true
-            })
-        } else {
-            self.dimmedView.isHidden = false
-            UIView.animate(withDuration: 0.3, animations: {
-                self.dimmedView.layer.opacity = 1
-            })
-        }
     }
 }

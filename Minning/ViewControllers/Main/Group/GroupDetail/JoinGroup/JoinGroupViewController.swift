@@ -13,6 +13,18 @@ import SharedAssets
 import SnapKit
 
 final class JoinGroupViewController: BaseViewController {
+    var springDamping: CGFloat {
+        return 0.8
+    }
+    
+    var transitionDuration: Double {
+        return 0.5
+    }
+    
+    var transitionAnimationOptions: UIView.AnimationOptions {
+        return [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState]
+    }
+    
     private let backgroundView: UIView = UIView()
     private let contentView: UIView = {
         $0.backgroundColor = .primaryWhite
@@ -31,10 +43,11 @@ final class JoinGroupViewController: BaseViewController {
     
     private let joinButton: PlainButton = {
         $0.setTitle("참여하기", for: .normal)
+        $0.addTarget(self, action: #selector(onClickJoin(_:)), for: .touchUpInside)
         return $0
     }(PlainButton())
     
-    public var completion: (() -> Void)?
+    public var completion: ((Bool) -> Void)?
     
     private let viewModel: JoinGroupViewModel
     
@@ -47,17 +60,23 @@ final class JoinGroupViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showUpJoinGroupView(completion: nil)
+    }
+    
     override func bindViewModel() {
         
     }
     
     override func setupViewLayout() {
         view.backgroundColor = .clear
+        backgroundView.backgroundColor = .primaryBlack040
+        backgroundView.alpha = 0
+        
         [backgroundView, contentView].forEach {
             view.addSubview($0)
         }
-//        backgroundView.backgroundColor = .primaryBlack040
-        backgroundView.backgroundColor = .clear
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         backgroundView.addGestureRecognizer(tapGesture)
@@ -70,9 +89,12 @@ final class JoinGroupViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        contentView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(300)
+        if let keyWindow = UIApplication.shared.windows.first {
+            contentView.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalToSuperview().offset(400 + keyWindow.safeAreaInsets.bottom)
+                make.height.equalTo(400 + keyWindow.safeAreaInsets.bottom)
+            }
         }
         
         titleSectionLabel.snp.makeConstraints { make in
@@ -83,13 +105,45 @@ final class JoinGroupViewController: BaseViewController {
         joinButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
+            make.top.equalToSuperview().offset(334)
         }
     }
     
     @objc
     private func handleTap(sender: UITapGestureRecognizer) {
-        completion?()
-        dismiss(animated: true, completion: nil)
+        hideDownJoinGroupView(completion: { _ in
+            self.completion?(false)
+            self.dismiss(animated: false, completion: nil)
+        })
+    }
+    
+    @objc
+    private func onClickJoin(_ sender: UIButton) {
+        hideDownJoinGroupView(completion: { _ in
+            self.completion?(true) // TEMP
+            self.dismiss(animated: false, completion: nil)
+        })
+    }
+    
+    private func showUpJoinGroupView(completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+            self.backgroundView.alpha = 1
+            if let keyWindow = UIApplication.shared.windows.first {
+                self.contentView.frame.origin.y = keyWindow.frame.height - 400 - keyWindow.safeAreaInsets.bottom
+            }
+        }, completion: completion)
+    }
+    
+    private func hideDownJoinGroupView(completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+            self.backgroundView.alpha = 0
+            if let keyWindow = UIApplication.shared.windows.first {
+                self.contentView.frame.origin.y = keyWindow.frame.height
+            }
+        }, completion: { result in
+            completion?(result)
+        })
     }
 }
