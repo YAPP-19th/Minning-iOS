@@ -42,6 +42,7 @@ final class PhotoGridViewController: BaseViewController {
         $0.titleLabel?.font = .font17P
         $0.isEnabled = false
         $0.isHidden = true
+        $0.addTarget(self, action: #selector(onClickDeleteButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -65,6 +66,7 @@ final class PhotoGridViewController: BaseViewController {
         viewModel.selectedPhotoIndices.bindAndFire { [weak self] _ in
             guard let `self` = self else { return }
             self.updateRightBarButton()
+            self.updateDeleteButton()
         }
     }
     
@@ -112,6 +114,11 @@ final class PhotoGridViewController: BaseViewController {
         rightBarButtonTitleLabel.attributedText = valueAttrString
     }
     
+    private func updateDeleteButton() {
+        let selectedItemCount = viewModel.selectedPhotoIndices.value.count
+        deletePhotoButton.titleLabel?.textColor = selectedItemCount == 0 ? .minningDarkGray100 : .subAlert
+    }
+    
     @objc
     private func onClickCloseButton(_ sender: Any?) {
         dismiss(animated: true, completion: nil)
@@ -125,7 +132,12 @@ final class PhotoGridViewController: BaseViewController {
         }
         mainCollectionView.allowsMultipleSelection.toggle()
         rightBarButtonTitleLabel.text = mainCollectionView.allowsMultipleSelection ? "취소" : "선택"
-
+        deletePhotoButton.isHidden = !mainCollectionView.allowsMultipleSelection
+    }
+    
+    @objc
+    private func onClickDeleteButton(_ sender: Any?) {
+        DebugLog("Did Click Delete Button")
     }
 }
 
