@@ -82,11 +82,13 @@ final class PhotoGridViewController: BaseViewController {
         
         mainCollectionView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
         deletePhotoButton.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.height.equalTo(49)
         }
     }
