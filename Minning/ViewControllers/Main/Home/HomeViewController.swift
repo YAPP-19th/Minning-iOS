@@ -104,6 +104,8 @@ extension HomeViewController: RoutineViewDelegate {
             }
         case .review:
             viewModel.goToReview()
+        case .footer:
+            return
         }
     }
     

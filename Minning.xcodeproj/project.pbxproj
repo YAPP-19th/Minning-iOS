@@ -165,8 +165,8 @@
 		B09041BF272E2A8200AE8623 /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09041BD272E2A8200AE8623 /* VersionViewController.swift */; };
 		B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A308272233F900E0A479 /* RoutineHeaderView.swift */; };
 		B097A30E272233F900E0A479 /* RoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A308272233F900E0A479 /* RoutineHeaderView.swift */; };
-		B097A30F272233F900E0A479 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterView.swift */; };
-		B097A310272233F900E0A479 /* RoutineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterView.swift */; };
+		B097A30F272233F900E0A479 /* RoutineFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterCell.swift */; };
+		B097A310272233F900E0A479 /* RoutineFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A309272233F900E0A479 /* RoutineFooterCell.swift */; };
 		B097A311272233F900E0A479 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30A272233F900E0A479 /* ReviewCell.swift */; };
 		B097A312272233F900E0A479 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30A272233F900E0A479 /* ReviewCell.swift */; };
 		B097A313272233F900E0A479 /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B097A30B272233F900E0A479 /* RoutineCell.swift */; };
@@ -383,7 +383,7 @@
 		B09041BA272E2A7B00AE8623 /* VersionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewModel.swift; sourceTree = "<group>"; };
 		B09041BD272E2A8200AE8623 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		B097A308272233F900E0A479 /* RoutineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineHeaderView.swift; sourceTree = "<group>"; };
-		B097A309272233F900E0A479 /* RoutineFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineFooterView.swift; sourceTree = "<group>"; };
+		B097A309272233F900E0A479 /* RoutineFooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineFooterCell.swift; sourceTree = "<group>"; };
 		B097A30A272233F900E0A479 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		B097A30B272233F900E0A479 /* RoutineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
 		B097A30C272233F900E0A479 /* PhraseGuideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseGuideCell.swift; sourceTree = "<group>"; };
@@ -850,7 +850,7 @@
 				B097A30C272233F900E0A479 /* PhraseGuideCell.swift */,
 				B097A30A272233F900E0A479 /* ReviewCell.swift */,
 				B097A30B272233F900E0A479 /* RoutineCell.swift */,
-				B097A309272233F900E0A479 /* RoutineFooterView.swift */,
+				B097A309272233F900E0A479 /* RoutineFooterCell.swift */,
 				B097A308272233F900E0A479 /* RoutineHeaderView.swift */,
 				8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */,
 			);
@@ -1397,7 +1397,7 @@
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B08BEB85272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */,
-				B097A310272233F900E0A479 /* RoutineFooterView.swift in Sources */,
+				B097A310272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
 				B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F627085447009D642A /* RecommendViewController.swift in Sources */,
@@ -1494,7 +1494,7 @@
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B0280459270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
-				B097A30F272233F900E0A479 /* RoutineFooterView.swift in Sources */,
+				B097A30F272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,

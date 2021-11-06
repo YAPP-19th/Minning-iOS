@@ -8,16 +8,18 @@
 
 import SnapKit
 
-protocol RoutineHeaderViewDelegate: AnyObject {
+protocol RoutineHeaderCellDelegate: AnyObject {
     func didSelectRoutineTab()
     func didSelectReviewTab()
 }
 
-final class RoutineHeaderView: UIView {    
+final class RoutineHeaderCell: UITableViewCell {
+    static let identifier = "RoutineHeaderCell"
+
     private let routineButton: UIButton = {
         $0.setTitle("루틴", for: .normal)
         $0.setTitleColor(.primaryBlack, for: .normal)
-        $0.titleLabel?.font = .font20PExBold
+        $0.titleLabel?.font = .font22PExBold
         $0.addTarget(self, action: #selector(onClickRoutineButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
@@ -25,23 +27,25 @@ final class RoutineHeaderView: UIView {
     private let reviewButton: UIButton = {
         $0.setTitle("돌아보기", for: .normal)
         $0.setTitleColor(.grayB5B8BE, for: .normal)
-        $0.titleLabel?.font = .font20PExBold
+        $0.titleLabel?.font = .font22PExBold
         $0.addTarget(self, action: #selector(onClickReviewButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
 
-    weak var delegate: RoutineHeaderViewDelegate?
+    weak var delegate: RoutineHeaderCellDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(tabType: HomeViewModel.RoutineTabType) {
+    func configure(delegate: RoutineHeaderCellDelegate, tabType: HomeViewModel.RoutineTabType) {
+        self.delegate = delegate
+        
         switch tabType {
         case .routine:
             routineButton.setTitleColor(.primaryBlack, for: .normal)
@@ -63,8 +67,11 @@ final class RoutineHeaderView: UIView {
     }
     
     private func setupViewLayout() {
+        backgroundColor = .clear
+        selectionStyle = .none
+        
         [routineButton, reviewButton].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
         
         routineButton.snp.makeConstraints { make in
