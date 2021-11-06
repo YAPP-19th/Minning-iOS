@@ -18,7 +18,12 @@ protocol HomeRoute {
     func goToNotification()
     func goToMyPage()
     func goToNotice()
+    func goToResetPassword()
+    func goToLargeContents(contentType: MyPageSettingRowItem.RowType)
+    func goToInquire()
+    func goToVersion()
     func goToBack()
+    func goToLogin(asRoot: Bool)
 }
 
 class HomeCoordinator {
@@ -77,15 +82,45 @@ extension HomeCoordinator: HomeRoute {
     
     func goToMyPage() {
         let myPageVC = dependencies.createMyPage(self)
+        myPageVC.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(myPageVC, animated: true)
     }
     
     func goToNotice() {
         let noticeVC = dependencies.createNotice(self)
+        noticeVC.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(noticeVC, animated: true)
+    }
+    
+    func goToResetPassword() {
+        let resetVC = dependencies.createResetPassword(self)
+        resetVC.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(resetVC, animated: true)
+    }
+    
+    func goToLargeContents(contentType: MyPageSettingRowItem.RowType) {
+        let largeContentsVC = dependencies.createLargeContents(self, contentType: contentType)
+        largeContentsVC.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(largeContentsVC, animated: true)
+    }
+    
+    func goToInquire() {
+        let inquireVC = dependencies.createInquire(self)
+        inquireVC.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(inquireVC, animated: true)
+    }
+    
+    func goToVersion() {
+        let versionVC = dependencies.createVersion(self)
+        versionVC.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(versionVC, animated: true)
     }
     
     func goToBack() {
         navigationController.popViewController(animated: true)
+    }
+    
+    func goToLogin(asRoot: Bool) {
+        coordinator.goToLogin(asRoot: asRoot)
     }
 }

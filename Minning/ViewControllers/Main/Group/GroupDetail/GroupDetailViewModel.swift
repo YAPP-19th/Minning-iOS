@@ -17,7 +17,7 @@ final class GroupDetailViewModel {
         self.coordinator = coordinator
     }
     
-    func showJoinGroup(completion: (() -> Void)?) {
+    func showJoinGroup(completion: ((Bool) -> Void)?) {
         coordinator.showJoinGroup(completion: completion)
     }
     

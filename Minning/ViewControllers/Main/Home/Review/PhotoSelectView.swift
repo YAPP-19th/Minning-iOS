@@ -23,7 +23,7 @@ final class PhotoSelectButton: UIButton {
     private let addTitleLabel: UILabel = {
         $0.font = .font16P
         $0.textColor = .primaryWhite
-        $0.text = "사진 추가"
+        $0.text = "사진 0/1"
         $0.isUserInteractionEnabled = false
         return $0
     }(UILabel())

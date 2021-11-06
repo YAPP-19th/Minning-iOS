@@ -108,7 +108,6 @@ final class PasswordViewController: BaseViewController {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)
-        isHiddenStatusBarBGView = false
         
         [hintLabel, loginTextField, loginButton, findPasswordButton].forEach {
             loginStackView.addArrangedSubview($0)

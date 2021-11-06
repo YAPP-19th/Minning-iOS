@@ -88,7 +88,6 @@ final class NicknameViewController: BaseViewController {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)
-        isHiddenStatusBarBGView = false
         
         [hintLabel, nicknameTextField, signUpButton].forEach {
             loginStackView.addArrangedSubview($0)

@@ -22,6 +22,10 @@ final class HomeViewModel {
         self.coordinator = coordinator
     }
     
+    public func goToMyPage() {
+        coordinator.goToMyPage()
+    }
+    
     public func goToAdd() {
         coordinator.goToAdd()
     }

@@ -9,7 +9,7 @@ import DesignSystem
 import Foundation
 
 protocol MainRoute {
-    
+    func goToLogin(asRoot: Bool)
 }
 
 class MainCoordinator {
@@ -37,5 +37,7 @@ class MainCoordinator {
 }
 
 extension MainCoordinator: MainRoute {
-
+    func goToLogin(asRoot: Bool) {
+        coordinator.gotoLogin(asRoot: asRoot)
+    }
 }

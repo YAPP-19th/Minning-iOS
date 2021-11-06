@@ -77,7 +77,6 @@ final class FindPasswordViewController: BaseViewController {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(findPasswordStackView)
-        isHiddenStatusBarBGView = false
         
         [hintLabel, emailTextField, requestCodeButton].forEach {
             findPasswordStackView.addArrangedSubview($0)
