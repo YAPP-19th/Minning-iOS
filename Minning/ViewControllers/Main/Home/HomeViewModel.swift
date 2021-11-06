@@ -49,4 +49,8 @@ final class HomeViewModel {
     public func goToReview() {
         coordinator.goToReview()
     }
+    
+    public func goToMyGroup() {
+        coordinator.goToMyGroup()
+    }
 }

@@ -18,6 +18,7 @@ final class RoutineView: UIView {
     enum TableViewSection: Int, CaseIterable {
         case header
         case phraseGuide
+        case groupGuide
         case routine
         case review
         case footer
@@ -32,6 +33,7 @@ final class RoutineView: UIView {
         $0.dataSource = self
         $0.register(RoutineHeaderCell.self, forCellReuseIdentifier: RoutineHeaderCell.identifier)
         $0.register(PhraseGuideCell.self, forCellReuseIdentifier: PhraseGuideCell.identifier)
+        $0.register(GroupGuideCell.self, forCellReuseIdentifier: GroupGuideCell.identifier)
         $0.register(RoutineCell.self, forCellReuseIdentifier: RoutineCell.identifier)
         $0.register(ReviewCell.self, forCellReuseIdentifier: ReviewCell.identifier)
         $0.register(RoutineFooterCell.self, forCellReuseIdentifier: RoutineFooterCell.identifier)
@@ -80,6 +82,8 @@ extension RoutineView: UITableViewDataSource {
             return 1
         case .phraseGuide:
             return tabType == .routine ? 1 : .zero
+        case .groupGuide:
+            return 0 // 명언 작성 완료 후 노출
         case .routine:
             return tabType == .routine ? 3 : .zero
         case .review:
@@ -101,6 +105,11 @@ extension RoutineView: UITableViewDataSource {
             return cell
         case .phraseGuide:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: PhraseGuideCell.identifier, for: indexPath) as? PhraseGuideCell else {
+                return .init()
+            }
+            return cell
+        case .groupGuide:
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: GroupGuideCell.identifier, for: indexPath) as? GroupGuideCell else {
                 return .init()
             }
             return cell
@@ -134,6 +143,8 @@ extension RoutineView: UITableViewDataSource {
             return 70
         case .phraseGuide:
             return 58
+        case .groupGuide:
+            return 58
         case .routine:
             return 78
         case .review:
@@ -145,15 +156,6 @@ extension RoutineView: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        switch TableViewSection(rawValue: section) {
-        case .routine:
-            return tabType == .routine ? 37 : .zero
-        default:
-            return .zero
-        }
-    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard indexPath.section == TableViewSection.routine.rawValue else { return nil }
         return nil
