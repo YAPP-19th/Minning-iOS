@@ -38,14 +38,14 @@ final class WeeklyResultView: UIView {
     
     private let resultImageView = UIImageView()
     private let titleLabel: UILabel = {
-        $0.font = .font16PMedium
+        $0.font = .font16PBold
         $0.textColor = .gray787C84
         return $0
     }(UILabel())
     
     private let countLabel: UILabel = {
         $0.font = .font16PMedium
-        $0.textColor = .minningBlue100
+        $0.textColor = .primaryBlack
         return $0
     }(UILabel())
     
@@ -62,29 +62,28 @@ final class WeeklyResultView: UIView {
     private func configure(with resultType: ResultType, count: Int) {
         resultImageView.image = resultType.image
         titleLabel.text = resultType.title
-        countLabel.text = "\(count)"
+        countLabel.text = "\(count)개"
     }
     
     private func setupView() {
-        backgroundColor = .grayF6F7F9
-        layer.cornerRadius = 10
+        backgroundColor = .primaryWhite
         
         [resultImageView, titleLabel, countLabel].forEach {
             addSubview($0)
         }
         
         resultImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview().offset(8)
-            make.width.height.equalTo(20)
+            make.leading.equalToSuperview().offset(20)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(16)
         }
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(8)
-            make.bottom.equalToSuperview().offset(-14)
+            make.leading.equalTo(resultImageView.snp.trailing).offset(11)
+            make.centerY.equalToSuperview()
         }
         countLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-14)
+            make.trailing.equalTo(-30)
+            make.centerY.equalToSuperview()
         }
     }
 }
