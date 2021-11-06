@@ -190,6 +190,10 @@ final class GroupViewController: BaseViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            self.viewModel.showDetail()
+        })
     }
     
     @objc

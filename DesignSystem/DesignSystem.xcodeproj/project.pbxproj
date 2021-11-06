@@ -20,6 +20,7 @@
 		B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02804032709621F009D642A /* UILabel+Extensions.swift */; };
 		B028042127096C24009D642A /* MUIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028042027096C24009D642A /* MUIBarButtonItem.swift */; };
 		B028046227098803009D642A /* ComboButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028046127098803009D642A /* ComboButton.swift */; };
+		B034C6C62736853400CA4512 /* PlainSmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B034C6C52736853400CA4512 /* PlainSmallButton.swift */; };
 		B04A4BFA271C1FE9004CE8CD /* HalfPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A4BF9271C1FE9004CE8CD /* HalfPieChart.swift */; };
 		B04A4BFC271C1FF5004CE8CD /* HalfPieDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A4BFB271C1FF5004CE8CD /* HalfPieDataSet.swift */; };
 		B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */; };
@@ -66,6 +67,7 @@
 		B02804032709621F009D642A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		B028042027096C24009D642A /* MUIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUIBarButtonItem.swift; sourceTree = "<group>"; };
 		B028046127098803009D642A /* ComboButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboButton.swift; sourceTree = "<group>"; };
+		B034C6C52736853400CA4512 /* PlainSmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainSmallButton.swift; sourceTree = "<group>"; };
 		B04A4BF9271C1FE9004CE8CD /* HalfPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfPieChart.swift; sourceTree = "<group>"; };
 		B04A4BFB271C1FF5004CE8CD /* HalfPieDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfPieDataSet.swift; sourceTree = "<group>"; };
 		B08E74AD2705CBCB00854190 /* PlainUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainUINavigationBar.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				B028040127095BF3009D642A /* TopTextButton.swift */,
 				B028046127098803009D642A /* ComboButton.swift */,
 				B0ECF874270992630088C96E /* NonScrollTableView.swift */,
+				B034C6C52736853400CA4512 /* PlainSmallButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */,
 				B08F0F302709F11800C1EBA5 /* LineChart.swift in Sources */,
 				B02803D72706FFB3009D642A /* CircleProgressView.swift in Sources */,
+				B034C6C62736853400CA4512 /* PlainSmallButton.swift in Sources */,
 				B0FDEEDC2705585D00011FC4 /* UIFont+Extensions.swift in Sources */,
 				B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */,
 				B08F0F322709F13500C1EBA5 /* DotCALayer.swift in Sources */,
