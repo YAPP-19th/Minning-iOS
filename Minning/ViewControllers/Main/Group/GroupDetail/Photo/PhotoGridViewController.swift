@@ -18,7 +18,7 @@ final class PhotoGridViewController: BaseViewController {
 
     private lazy var rightBarButtonTitleLabel: UILabel = {
         $0.font = .font16P
-        $0.textColor = .black
+        $0.textColor = .primaryBlack
         $0.text = "선택"
         $0.isUserInteractionEnabled = true
         $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickSelectLabel(_:))))
