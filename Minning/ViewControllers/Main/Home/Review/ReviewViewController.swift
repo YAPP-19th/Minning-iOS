@@ -18,7 +18,7 @@ final class ReviewViewController: BaseViewController {
     
     private let titleLabel: UILabel = {
         $0.text = ""
-        $0.font = .font12PBold
+        $0.font = .font14PBold
         $0.textColor = .primaryTextGray
         return $0
     }(UILabel())
@@ -100,35 +100,37 @@ final class ReviewViewController: BaseViewController {
         }
         
         photoSelectButton.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(42)
-            make.leading.equalToSuperview().offset(16)
-            make.width.height.equalTo(100)
+            make.top.equalTo(navigationBar.snp.bottom).offset(12)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(photoSelectButton.snp.width)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(photoSelectButton.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
         }
         
         feedbackTextView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.height.greaterThanOrEqualTo(35.5)
         }
         
         selectedPhotoImageView.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(300)
+            make.top.equalTo(navigationBar.snp.bottom).offset(12)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(photoSelectButton.snp.width)
         }
         
         selectedPhotoImageView.addSubview(dismissPhotoButton)
         
         dismissPhotoButton.snp.makeConstraints { make in
-            make.top.equalTo(10)
-            make.trailing.equalTo(-10)
+            make.top.equalTo(20)
+            make.trailing.equalTo(-20)
             make.width.height.equalTo(28)
         }
     }
@@ -136,25 +138,11 @@ final class ReviewViewController: BaseViewController {
     private func showSelectedPhotoImageView() {
         selectedPhotoImageView.isHidden = false
         photoSelectButton.isHidden = true
-        
-        titleLabel.snp.removeConstraints()
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(selectedPhotoImageView.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-        }
     }
     
     private func hideSelectedPhotoImageView() {
         selectedPhotoImageView.isHidden = true
         photoSelectButton.isHidden = false
-        
-        titleLabel.snp.removeConstraints()
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(photoSelectButton.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-        }
     }
     
     @objc
