@@ -34,35 +34,35 @@ final class WeeklyPercentView: UIView {
     
     private let percentValueLabel: UILabel = {
         $0.text = "90"
-        $0.font = .font70PHeavy
+        $0.font = .font50PHeavy
         $0.textColor = .primaryBlack
         return $0
     }(UILabel())
     
     private let percentLabel: UILabel = {
         $0.text = "%"
-        $0.font = .font20PMedium
+        $0.font = .font30P
         $0.textColor = .primaryBlack
         return $0
     }(UILabel())
     
     private let percentStackView: UIStackView = {
         $0.axis = .horizontal
-        $0.spacing = 5
+        $0.spacing = 4
         return $0
     }(UIStackView())
     
     private let descriptionLabel: UILabel = {
         $0.text = "일주일동안 고생했어요 👍"
-        $0.font = .font20PBold
+        $0.font = .font22PExBold
         $0.textColor = .primaryBlack
         return $0
     }(UILabel())
     
     private let resultStackView: UIStackView = {
-        $0.axis = .horizontal
+        $0.axis = .vertical
         $0.distribution = .fillEqually
-        $0.spacing = 8
+        $0.spacing = 0
         return $0
     }(UIStackView())
     
@@ -78,14 +78,14 @@ final class WeeklyPercentView: UIView {
     private func setupView() {
         backgroundColor = .primaryWhite
         
-        [titleStackView, percentStackView, descriptionLabel, resultStackView].forEach {
+        [descriptionLabel, percentStackView, titleStackView, resultStackView].forEach {
             addSubview($0)
-        }
-        [titleLabel, percentGuideButton].forEach {
-            titleStackView.addArrangedSubview($0)
         }
         [percentValueLabel, percentLabel].forEach {
             percentStackView.addArrangedSubview($0)
+        }
+        [titleLabel, percentGuideButton].forEach {
+            titleStackView.addArrangedSubview($0)
         }
         
         let completeView = WeeklyResultView(resultType: .complete, count: 10)
@@ -95,24 +95,24 @@ final class WeeklyPercentView: UIView {
             resultStackView.addArrangedSubview($0)
         }
         
-        titleStackView.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(20)
-            make.centerX.equalToSuperview()
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
         }
         percentStackView.snp.makeConstraints { make in
-            make.top.equalTo(titleStackView.snp.bottom).offset(2)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(descriptionLabel.snp.bottom)
+            make.leading.equalTo(20)
         }
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(percentStackView.snp.bottom).offset(6)
-            make.centerX.equalToSuperview()
+        titleStackView.snp.makeConstraints { make in
+            make.top.equalTo(percentStackView.snp.bottom).offset(4)
+            make.leading.equalTo(20)
         }
         resultStackView.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
-            make.leading.equalTo(16)
-            make.trailing.equalTo(-16)
-            make.height.equalTo(80)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(titleStackView.snp.bottom).offset(52)
             make.bottom.equalTo(-20)
+            make.height.equalTo(120)
         }
     }
 }
