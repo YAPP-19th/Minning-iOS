@@ -59,6 +59,12 @@ extension GroupCoordinator: GroupRoute {
         navigationController.topViewController?.presentedViewController?.present(photoGridVC, animated: true, completion: nil)
     }
     
+    func goToPhotoDetail() {
+        let photoDetailVC = dependencies.createPhotoDetail(self)
+        photoDetailVC.modalPresentationStyle = .fullScreen
+        navigationController.topViewController?.presentedViewController?.present(photoDetailVC, animated: true, completion: nil)
+    }
+    
     func goToNewGroup() {
         let newGroupVC = dependencies.createNewGroup(self)
         newGroupVC.hidesBottomBarWhenPushed = true

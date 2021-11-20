@@ -57,6 +57,15 @@ public class PlainUINavigationBar: UINavigationBar {
         backgroundColor = .primaryWhite
     }
     
+    public func setDarkPlainNavigationStyle() {
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = .primaryBlack
+        }
+        tintColor = .primaryWhite
+        titleLabel.textColor = .primaryWhite
+    }
+    
     public func setDefaultShadowImage() {
         guard shadowImage != defaultShadowImage else { return }
         shadowImage = defaultShadowImage
