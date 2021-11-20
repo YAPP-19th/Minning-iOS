@@ -60,7 +60,11 @@ public class PlainUINavigationBar: UINavigationBar {
     public func setDarkPlainNavigationStyle() {
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = .primaryBlack
+            appearance.shadowColor = nil
+            standardAppearance = appearance
+            scrollEdgeAppearance = appearance
         }
         tintColor = .primaryWhite
         titleLabel.textColor = .primaryWhite
