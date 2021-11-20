@@ -33,6 +33,12 @@ final class ReportViewController: BaseViewController {
         return $0
     }(ComboButton())
     
+    private let percentGuideButton: UIButton = {
+        $0.setImage(UIImage(sharedNamed: "questionButton.png"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickPercentGuideButton(_:)), for: .touchUpInside)
+        return $0
+    }(UIButton())
+    
     private let scrollView: UIScrollView = {
         $0.keyboardDismissMode = .interactive
         return $0
@@ -45,6 +51,26 @@ final class ReportViewController: BaseViewController {
         $0.distribution = .equalSpacing
         return $0
     }(UIStackView())
+    
+    private let bubbleView: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        $0.layer.cornerRadius = 10
+        $0.isHidden = true
+        return $0
+    }(UIView())
+    
+    private let bubbleTriagleView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "bubble_triangle_report")
+        $0.isHidden = true
+        return $0
+    }(UIImageView())
+    
+    private lazy var bubbleLabel: UILabel = {
+        $0.text = viewModel.tabType.value == .week ? "매주 수요일마다 주 리포트가 갱신됩니다" : "매월 첫째주에 월 리포트가 갱신됩니다"
+        $0.textColor = .minningDarkGray100
+        $0.font = .font14P
+        return $0
+    }(UILabel())
     
     // MARK: Report Content View
     private let myRoutineView: MyRoutineView = MyRoutineView()
@@ -82,10 +108,12 @@ final class ReportViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .minningLightGray100
+        view.backgroundColor = .primaryWhite
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickBackground(_:))))
         
         [weekTabButton, monthTabButton,
-         dataComboButton, scrollView].forEach {
+         dataComboButton, percentGuideButton, scrollView, bubbleTriagleView, bubbleView].forEach {
             view.addSubview($0)
         }
         
@@ -106,6 +134,12 @@ final class ReportViewController: BaseViewController {
         dataComboButton.snp.makeConstraints { make in
             make.top.equalTo(weekTabButton.snp.bottom).offset(13)
             make.leading.equalToSuperview().offset(16)
+        }
+        
+        percentGuideButton.snp.makeConstraints { make in
+            make.centerY.equalTo(dataComboButton)
+            make.trailing.equalToSuperview().offset(-8)
+            make.width.height.equalTo(44)
         }
         
         scrollView.delegate = self
@@ -134,6 +168,26 @@ final class ReportViewController: BaseViewController {
          routineCompareView].forEach {
             contentStackView.addArrangedSubview($0)
         }
+        
+        bubbleTriagleView.snp.makeConstraints { make in
+            make.top.equalTo(percentGuideButton.snp.bottom).offset(-13)
+            make.trailing.equalToSuperview().offset(-28.62)
+            make.width.equalTo(20.32)
+            make.height.equalTo(16.14)
+        }
+        
+        bubbleView.snp.makeConstraints { make in
+            make.top.equalTo(bubbleTriagleView.snp.bottom).offset(-1)
+            make.leading.equalTo(12)
+            make.trailing.equalTo(-12)
+            make.height.equalTo(50)
+        }
+        
+        bubbleView.addSubview(bubbleLabel)
+        
+        bubbleLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     override func bindViewModel() {
@@ -147,12 +201,32 @@ final class ReportViewController: BaseViewController {
             self.weeklyPercentView.isHidden = !(type == .week)
             self.routineCompareView.isHidden = !(type == .month)
             self.routineCategoryView.isHidden = !(type == .month)
+            
+            self.updateBubbleLabel()
         }
     }
     
     @objc
     private func onClickComboButton(_ sender: UIButton) {
         DebugLog("Did Click Combo Button")
+    }
+    
+    @objc
+    private func onClickPercentGuideButton(_ sender: Any) {
+        bubbleTriagleView.isHidden.toggle()
+        bubbleView.isHidden.toggle()
+        updateBubbleLabel()
+    }
+    
+    @objc
+    private func onClickBackground(_ sender: Any) {
+        guard bubbleTriagleView.isHidden == false, bubbleView.isHidden == false else { return }
+        bubbleTriagleView.isHidden = true
+        bubbleView.isHidden = true
+    }
+    
+    private func updateBubbleLabel() {
+        bubbleLabel.text = viewModel.tabType.value == .week ? "매주 수요일마다 주 리포트가 갱신됩니다" : "매월 첫째주에 월 리포트가 갱신됩니다"
     }
 }
 
