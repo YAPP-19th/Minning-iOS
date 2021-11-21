@@ -10,10 +10,10 @@
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
 		8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */; };
-		8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F71A2736BAEC008839FA /* GroupGuideCell.swift */; };
 		8373F6F9272D581D008839FA /* PhotoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6F8272D581D008839FA /* PhotoGridViewController.swift */; };
 		8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FA272D60D8008839FA /* PhotoCell.swift */; };
 		8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */; };
+		8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F71A2736BAEC008839FA /* GroupGuideCell.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
@@ -195,6 +195,18 @@
 		B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */; };
 		B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */; };
 		B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */; };
+		B0ADFDEF2748849B003019E5 /* AuthAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFDEE2748849B003019E5 /* AuthAPIRequest.swift */; };
+		B0ADFDF02748849B003019E5 /* AuthAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFDEE2748849B003019E5 /* AuthAPIRequest.swift */; };
+		B0ADFE0B274885E4003019E5 /* MinningAPIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE0A274885E4003019E5 /* MinningAPIConstant.swift */; };
+		B0ADFE0C274885E4003019E5 /* MinningAPIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE0A274885E4003019E5 /* MinningAPIConstant.swift */; };
+		B0ADFE4327488AFF003019E5 /* MinningProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE4227488AFF003019E5 /* MinningProperty.swift */; };
+		B0ADFE4427488AFF003019E5 /* MinningProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE4227488AFF003019E5 /* MinningProperty.swift */; };
+		B0ADFE4C27488EB9003019E5 /* MinningHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */; };
+		B0ADFE4D27488EB9003019E5 /* MinningHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */; };
+		B0ADFE4F27489211003019E5 /* MinningRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE4E27489211003019E5 /* MinningRequest.swift */; };
+		B0ADFE5027489211003019E5 /* MinningRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE4E27489211003019E5 /* MinningRequest.swift */; };
+		B0ADFE6B274B10AC003019E5 /* MinningAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */; };
+		B0ADFE6C274B10AC003019E5 /* MinningAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */; };
 		B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
 		B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
 		B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16DF226DA57F200A8E52B /* AppDelegate.swift */; };
@@ -307,10 +319,10 @@
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCellSwipeView.swift; sourceTree = "<group>"; };
-		8373F71A2736BAEC008839FA /* GroupGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGuideCell.swift; sourceTree = "<group>"; };
 		8373F6F8272D581D008839FA /* PhotoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewController.swift; sourceTree = "<group>"; };
 		8373F6FA272D60D8008839FA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewModel.swift; sourceTree = "<group>"; };
+		8373F71A2736BAEC008839FA /* GroupGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGuideCell.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
@@ -405,6 +417,12 @@
 		B0AD5A732705DBCC00CC07B0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B0AD5A762705DBEE00CC07B0 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		B0ADFDEE2748849B003019E5 /* AuthAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIRequest.swift; sourceTree = "<group>"; };
+		B0ADFE0A274885E4003019E5 /* MinningAPIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningAPIConstant.swift; sourceTree = "<group>"; };
+		B0ADFE4227488AFF003019E5 /* MinningProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningProperty.swift; sourceTree = "<group>"; };
+		B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningHeader.swift; sourceTree = "<group>"; };
+		B0ADFE4E27489211003019E5 /* MinningRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningRequest.swift; sourceTree = "<group>"; };
+		B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningAPIModel.swift; sourceTree = "<group>"; };
 		B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCategoryView.swift; sourceTree = "<group>"; };
 		B0D16DEF26DA57F200A8E52B /* Minning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D16DF226DA57F200A8E52B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -540,6 +558,7 @@
 				B0180EEB26DCC52A008C6F3C /* AppCoordinator.swift */,
 				B0180EEE26DCC551008C6F3C /* AppDIContainer.swift */,
 				B0AD5A5A2705D66400CC07B0 /* BaseViewController.swift */,
+				B0ADFE4227488AFF003019E5 /* MinningProperty.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -926,6 +945,18 @@
 			path = Group;
 			sourceTree = "<group>";
 		};
+		B0ADFDCE27488250003019E5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B0ADFDEE2748849B003019E5 /* AuthAPIRequest.swift */,
+				B0ADFE0A274885E4003019E5 /* MinningAPIConstant.swift */,
+				B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */,
+				B0ADFE4E27489211003019E5 /* MinningRequest.swift */,
+				B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		B0D16DE626DA57F200A8E52B = {
 			isa = PBXGroup;
 			children = (
@@ -955,6 +986,7 @@
 		B0D16DF126DA57F200A8E52B /* Minning */ = {
 			isa = PBXGroup;
 			children = (
+				B0ADFDCE27488250003019E5 /* Network */,
 				B091BA562736BDF6006F3E2A /* Minning.entitlements */,
 				B028043B270972AB009D642A /* Model */,
 				B0180EF126DCC579008C6F3C /* ViewControllers */,
@@ -1391,6 +1423,7 @@
 				B09041B1272E26EA00AE8623 /* LargeContentsViewModel.swift in Sources */,
 				B08BEB8C272A8F470078E00A /* NoticeViewController.swift in Sources */,
 				B08BEB6D272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
+				B0ADFDF02748849B003019E5 /* AuthAPIRequest.swift in Sources */,
 				B02803842706A784009D642A /* NicknameViewController.swift in Sources */,
 				B09041BF272E2A8200AE8623 /* VersionViewController.swift in Sources */,
 				B0180ED426DCC307008C6F3C /* AppConfiguration.swift in Sources */,
@@ -1408,6 +1441,7 @@
 				B0180ED626DCC307008C6F3C /* MainCoordinator.swift in Sources */,
 				B0ECF88F270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74812705BC9D00854190 /* LoginViewModel.swift in Sources */,
+				B0ADFE0C274885E4003019E5 /* MinningAPIConstant.swift in Sources */,
 				B02803A92706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B09041A4272D905A00AE8623 /* NormalSettingCell.swift in Sources */,
 				B028045A270986FB009D642A /* MonthGraphView.swift in Sources */,
@@ -1417,6 +1451,7 @@
 				B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */,
 				B0AD5A662705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BC2706FF45009D642A /* WeeklyView.swift in Sources */,
+				B0ADFE4D27488EB9003019E5 /* MinningHeader.swift in Sources */,
 				B08BEB85272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B097A310272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
@@ -1427,6 +1462,7 @@
 				B0180EFF26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B028043E270972B5009D642A /* RoutineModel.swift in Sources */,
 				B0180ED726DCC307008C6F3C /* AppDelegate.swift in Sources */,
+				B0ADFE6C274B10AC003019E5 /* MinningAPIModel.swift in Sources */,
 				B0AD5A722705D79300CC07B0 /* GroupViewController.swift in Sources */,
 				B0180ED826DCC307008C6F3C /* OurApp.xcdatamodeld in Sources */,
 				B0AD5A6A2705D74000CC07B0 /* HomeViewController.swift in Sources */,
@@ -1437,6 +1473,7 @@
 				B08BEB69272A8B5A0078E00A /* MyPageViewModel.swift in Sources */,
 				B08E74A82705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B0ECF8822709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
+				B0ADFE4427488AFF003019E5 /* MinningProperty.swift in Sources */,
 				B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FD27085604009D642A /* NotificationViewController.swift in Sources */,
@@ -1459,6 +1496,7 @@
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
 				B0E1D258270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
+				B0ADFE5027489211003019E5 /* MinningRequest.swift in Sources */,
 				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
 				B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B097A3192722340400E0A479 /* RoutineView.swift in Sources */,
@@ -1491,6 +1529,7 @@
 				B09041A0272D8E7900AE8623 /* ProfileSettingCell.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
+				B0ADFE0B274885E4003019E5 /* MinningAPIConstant.swift in Sources */,
 				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
 				B09041B4272E28A900AE8623 /* InquireViewModel.swift in Sources */,
 				B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
@@ -1507,6 +1546,7 @@
 				B08BEB73272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */,
 				B09041A9272D925D00AE8623 /* SettingModel.swift in Sources */,
 				B0180F0226DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
+				B0ADFE6B274B10AC003019E5 /* MinningAPIModel.swift in Sources */,
 				B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B08BEB76272A8CEE0078E00A /* EmailAuthViewController.swift in Sources */,
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
@@ -1515,6 +1555,7 @@
 				B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B097A313272233F900E0A479 /* RoutineCell.swift in Sources */,
+				B0ADFE4327488AFF003019E5 /* MinningProperty.swift in Sources */,
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B0280459270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
@@ -1540,6 +1581,7 @@
 				9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */,
 				B0280453270986B5009D642A /* WeeklyPercentView.swift in Sources */,
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
+				B0ADFE4C27488EB9003019E5 /* MinningHeader.swift in Sources */,
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
@@ -1563,6 +1605,7 @@
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */,
 				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
+				B0ADFDEF2748849B003019E5 /* AuthAPIRequest.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
@@ -1571,6 +1614,7 @@
 				B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
 				83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */,
+				B0ADFE4F27489211003019E5 /* MinningRequest.swift in Sources */,
 				B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B028038F2706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B09041BB272E2A7B00AE8623 /* VersionViewModel.swift in Sources */,
