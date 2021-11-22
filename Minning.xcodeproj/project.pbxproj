@@ -952,6 +952,7 @@
 		B0ADFDCE27488250003019E5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */,
 				B0ADFDEE2748849B003019E5 /* AuthAPIRequest.swift */,
 				B0ADFE0A274885E4003019E5 /* MinningAPIConstant.swift */,
 				B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */,
@@ -963,7 +964,6 @@
 		B0D16DE626DA57F200A8E52B = {
 			isa = PBXGroup;
 			children = (
-				B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */,
 				B0180F7526DCCC1E008C6F3C /* CommonSystem.xcodeproj */,
 				B0180F5626DCCBA0008C6F3C /* SharedAssets.xcodeproj */,
 				B0180F3526DCCB58008C6F3C /* DesignSystem.xcodeproj */,
