@@ -23,22 +23,24 @@ public struct LoginRequest: Codable {
     }
 }
 
-public struct LoginResponseModel: Codable {
-    
-}
-
 public struct AuthAPIRequest: MinningAPIRequestable {
     enum RequestType: APIRouteable {
         case loginByEmail(request: LoginRequest)
         case checkVerificationCode(email: String, number: String)
+        case send(email: String)
+        case refreshToken
         case logout
         
         var requestURL: URL {
             switch self {
             case .loginByEmail:
                 return MinningAPIConstant.authURL.appendingPathComponent("login")
+            case .send:
+                return MinningAPIConstant.authURL.appendingPathComponent("send")
             case .checkVerificationCode:
                 return MinningAPIConstant.authURL.appendingPathComponent("check").appendingPathComponent("number")
+            case .refreshToken:
+                return MinningAPIConstant.authURL.appendingPathComponent("reissue")
             case .logout:
                 return MinningAPIConstant.authURL.appendingPathComponent("logout")
             }
@@ -46,7 +48,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
         
         var httpMethod: HTTPMethod {
             switch self {
-            case .loginByEmail, .checkVerificationCode:
+            case .loginByEmail, .send, .checkVerificationCode, .refreshToken:
                 return .post
             case .logout:
                 return .get
@@ -60,9 +62,15 @@ public struct AuthAPIRequest: MinningAPIRequestable {
                 parameters["email"] = request.email
                 parameters["password"] = request.password
                 return parameters
+            case let .send(email):
+                parameters["email"] = email
+                return parameters
             case let .checkVerificationCode(email, number):
                 parameters["email"] = email
                 parameters["number"] = number
+                return parameters
+            case .refreshToken:
+                parameters["refreshToken"] = TokenManager.shared.getRefreshToken()
                 return parameters
             case .logout:
                 return nil
@@ -71,7 +79,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
         
         var requestEncoding: RequestEncoding {
             switch self {
-            case .loginByEmail, .checkVerificationCode:
+            case .loginByEmail, .send, .checkVerificationCode, .refreshToken:
                 return .json
             case .logout:
                 return .url
@@ -84,9 +92,17 @@ public struct AuthAPIRequest: MinningAPIRequestable {
         perform(.loginByEmail(request: request), completion: completion)
     }
     
+    public static func send(email: String, completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+        perform(.send(email: email), completion: completion)
+    }
+    
     public static func checkVerificationCode(email: String, number: String,
                                              completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
         perform(.checkVerificationCode(email: email, number: number), completion: completion)
+    }
+    
+    public static func refreshToken(completion: @escaping (Result<RefreshTokenResponseModel, Error>) -> Void) {
+        perform(.refreshToken, completion: completion)
     }
     
     public static func logout(completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {

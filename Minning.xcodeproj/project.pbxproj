@@ -207,6 +207,8 @@
 		B0ADFE5027489211003019E5 /* MinningRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE4E27489211003019E5 /* MinningRequest.swift */; };
 		B0ADFE6B274B10AC003019E5 /* MinningAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */; };
 		B0ADFE6C274B10AC003019E5 /* MinningAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */; };
+		B0ADFE6E274B1461003019E5 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE6D274B1461003019E5 /* TokenManager.swift */; };
+		B0ADFE6F274B1461003019E5 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADFE6D274B1461003019E5 /* TokenManager.swift */; };
 		B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
 		B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */; };
 		B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D16DF226DA57F200A8E52B /* AppDelegate.swift */; };
@@ -423,6 +425,7 @@
 		B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningHeader.swift; sourceTree = "<group>"; };
 		B0ADFE4E27489211003019E5 /* MinningRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningRequest.swift; sourceTree = "<group>"; };
 		B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningAPIModel.swift; sourceTree = "<group>"; };
+		B0ADFE6D274B1461003019E5 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCategoryView.swift; sourceTree = "<group>"; };
 		B0D16DEF26DA57F200A8E52B /* Minning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D16DF226DA57F200A8E52B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -559,6 +562,7 @@
 				B0180EEE26DCC551008C6F3C /* AppDIContainer.swift */,
 				B0AD5A5A2705D66400CC07B0 /* BaseViewController.swift */,
 				B0ADFE4227488AFF003019E5 /* MinningProperty.swift */,
+				B0ADFE6D274B1461003019E5 /* TokenManager.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -952,7 +956,6 @@
 				B0ADFE0A274885E4003019E5 /* MinningAPIConstant.swift */,
 				B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */,
 				B0ADFE4E27489211003019E5 /* MinningRequest.swift */,
-				B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 		B0D16DE626DA57F200A8E52B = {
 			isa = PBXGroup;
 			children = (
+				B0ADFE6A274B10AC003019E5 /* MinningAPIModel.swift */,
 				B0180F7526DCCC1E008C6F3C /* CommonSystem.xcodeproj */,
 				B0180F5626DCCBA0008C6F3C /* SharedAssets.xcodeproj */,
 				B0180F3526DCCB58008C6F3C /* DesignSystem.xcodeproj */,
@@ -1500,6 +1504,7 @@
 				B02804002708561C009D642A /* NotificationViewModel.swift in Sources */,
 				B0AD5A7B2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B097A3192722340400E0A479 /* RoutineView.swift in Sources */,
+				B0ADFE6F274B1461003019E5 /* TokenManager.swift in Sources */,
 				B02803902706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B02803F92708544F009D642A /* RecommendViewModel.swift in Sources */,
 			);
@@ -1543,6 +1548,7 @@
 				B02803EE270851A7009D642A /* AddViewController.swift in Sources */,
 				B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */,
 				B09041B0272E26EA00AE8623 /* LargeContentsViewModel.swift in Sources */,
+				B0ADFE6E274B1461003019E5 /* TokenManager.swift in Sources */,
 				B08BEB73272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */,
 				B09041A9272D925D00AE8623 /* SettingModel.swift in Sources */,
 				B0180F0226DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
