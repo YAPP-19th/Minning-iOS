@@ -43,10 +43,15 @@ final class PasswordViewModel {
     }
     
     private let coordinator: AuthCoordinator
+    
+    public let emailValue: String
+    public var passwordValue: DataBinding<String> = DataBinding("")
+    public var socialType: DataBinding<SocialType> = DataBinding(.email)
     public var passwordViewType: DataBinding<PasswordViewType> = DataBinding(.login)
     
-    public init(coordinator: AuthCoordinator, passwordViewType: PasswordViewType) {
+    public init(coordinator: AuthCoordinator, passwordViewType: PasswordViewType, email: String) {
         self.coordinator = coordinator
+        self.emailValue = email
         self.passwordViewType.accept(passwordViewType)
     }
     
@@ -64,5 +69,18 @@ final class PasswordViewModel {
     
     public func goToBack() {
         coordinator.goToBack()
+    }
+    
+    public func processLogin() {
+        let loginRequest = LoginRequest(email: emailValue, password: passwordValue.value, socialType: socialType.value)
+        AuthAPIRequest.login(request: loginRequest, completion: { result in
+            switch result {
+            case .success(let response):
+                DebugLog(response.message.status)
+                DebugLog(response.message.msg)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        })
     }
 }

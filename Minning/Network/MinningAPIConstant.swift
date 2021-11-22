@@ -9,15 +9,11 @@ import Foundation
 
 struct MinningAPIConstant {
     static var authURL: URL {
-        var urlComponents = URLComponents()
-        urlComponents.path = "/auth"
-        return urlComponents.url!
+        return mainURL.appendingPathComponent("/auth")
     }
     
     static var groupURL: URL {
-        var urlComponents = URLComponents()
-        urlComponents.path = "/group"
-        return urlComponents.url!
+        return mainURL.appendingPathComponent("/group")
     }
     
     #if DEBUG

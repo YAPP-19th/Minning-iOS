@@ -11,8 +11,6 @@ import CommonSystem
 
 final class LoginViewModel: ObservableObject {
     public var emailValue: DataBinding<String> = DataBinding("")
-    public var passwordValue: DataBinding<String> = DataBinding("")
-    public var socialType: DataBinding<SocialType> = DataBinding(.email)
     
     private let coordinator: AuthCoordinator
     
@@ -21,13 +19,6 @@ final class LoginViewModel: ObservableObject {
     }
     
     public func goToPassword(isLogin: Bool) {
-        coordinator.goToPassword(animated: true, isLogin: isLogin)
-    }
-    
-    public func doLogin() {
-        let loginRequest = LoginRequest(email: emailValue.value, password: passwordValue.value, socialType: socialType.value)
-        AuthAPIRequest.login(request: loginRequest, completion: { result in
-            
-        })
+        coordinator.goToPassword(animated: true, isLogin: isLogin, email: emailValue.value)
     }
 }

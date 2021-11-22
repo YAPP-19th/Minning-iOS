@@ -73,7 +73,8 @@ final class PasswordViewController: BaseViewController {
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
         if viewModel.passwordViewType.value == .login {
-            viewModel.goToMain()
+//            viewModel.goToMain()
+            viewModel.processLogin()
         } else {
             viewModel.goToNickname()
         }

@@ -85,7 +85,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
             }
         }
         
-        var parameters: [String : Any]? {
+        var parameters: [String: Any]? {
             var parameters: [String: Any] = [:]
             switch self {
             case let .signUp(request):

@@ -52,7 +52,7 @@ public protocol APIRouteable: URLRequestConvertible {
     var baseURL: URL { get }
     var requestURL: URL { get }
     var httpMethod: HTTPMethod { get }
-    var parameters: [String : Any]? { get }
+    var parameters: [String: Any]? { get }
     var requestEncoding: RequestEncoding { get }
 }
 
@@ -65,10 +65,11 @@ protocol MinningAPIRequestable {
 extension MinningAPIRequestable {
     static func perform<T: Decodable>(_ request: RequestType,
                                       completion: @escaping (Result<T, Error>) -> Void) {
+        DebugLog("Request URL : \(request.requestURL.absoluteString)")
         let dataRequest = AF.request(request)
         dataRequest
             .validate(statusCode: 200..<300)
-            .responseDecodable{ (response: AFDataResponse<T>) in
+            .responseDecodable { (response: AFDataResponse<T>) in
                 let responseData = response.data ?? Data()
                 let string = String(data: responseData, encoding: .utf8)
                 
