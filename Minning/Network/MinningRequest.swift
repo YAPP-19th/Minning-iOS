@@ -65,7 +65,9 @@ protocol MinningAPIRequestable {
 extension MinningAPIRequestable {
     static func perform<T: Decodable>(_ request: RequestType,
                                       completion: @escaping (Result<T, Error>) -> Void) {
-        DebugLog("Request URL : \(request.requestURL.absoluteString)")
+        DebugLog("Request URL: \(request.requestURL.absoluteString)")
+        DebugLog("Request Parameters: \(request.parameters.debugDescription)")
+        
         let dataRequest = AF.request(request)
         dataRequest
             .validate(statusCode: 200..<300)

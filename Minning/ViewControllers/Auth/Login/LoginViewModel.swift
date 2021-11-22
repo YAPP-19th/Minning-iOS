@@ -5,12 +5,11 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
-import Combine
-import Foundation
 import CommonSystem
+import Foundation
 
 final class LoginViewModel: ObservableObject {
-    public var emailValue: DataBinding<String> = DataBinding("")
+    public var emailValue: DataBinding<String?> = DataBinding(nil)
     
     private let coordinator: AuthCoordinator
     
@@ -19,6 +18,10 @@ final class LoginViewModel: ObservableObject {
     }
     
     public func goToPassword(isLogin: Bool) {
-        coordinator.goToPassword(animated: true, isLogin: isLogin, email: emailValue.value)
+        if let email = emailValue.value {
+            coordinator.goToPassword(animated: true, isLogin: isLogin, email: email)
+        } else {
+            ErrorLog("Email을 입력해주세요")
+        }
     }
 }

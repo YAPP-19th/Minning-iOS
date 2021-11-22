@@ -45,7 +45,7 @@ final class PasswordViewModel {
     private let coordinator: AuthCoordinator
     
     public let emailValue: String
-    public var passwordValue: DataBinding<String> = DataBinding("")
+    public var passwordValue: DataBinding<String?> = DataBinding(nil)
     public var socialType: DataBinding<SocialType> = DataBinding(.email)
     public var passwordViewType: DataBinding<PasswordViewType> = DataBinding(.login)
     
@@ -72,15 +72,19 @@ final class PasswordViewModel {
     }
     
     public func processLogin() {
-        let loginRequest = LoginRequest(email: emailValue, password: passwordValue.value, socialType: socialType.value)
-        AuthAPIRequest.login(request: loginRequest, completion: { result in
-            switch result {
-            case .success(let response):
-                DebugLog(response.message.status)
-                DebugLog(response.message.msg)
-            case .failure(let error):
-                ErrorLog(error.localizedDescription)
-            }
-        })
+        if let password = passwordValue.value {
+            let loginRequest = LoginRequest(email: emailValue, password: password, socialType: socialType.value)
+            AuthAPIRequest.login(request: loginRequest, completion: { result in
+                switch result {
+                case .success(let response):
+                    DebugLog(response.message.status)
+                    DebugLog(response.message.msg)
+                case .failure(let error):
+                    ErrorLog(error.localizedDescription)
+                }
+            })
+        } else {
+            ErrorLog("Password를 입력해주세요.")
+        }
     }
 }
