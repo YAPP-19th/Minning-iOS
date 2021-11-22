@@ -10,9 +10,9 @@ import Foundation
 import CommonSystem
 
 final class LoginViewModel: ObservableObject {
-    public var emailValue: DataBinding<String> = ""
-    public var passwordValue: DataBinding<String> = ""
-    public var socialType: DataBinding<LoginRequest.SocialType> = .email
+    public var emailValue: DataBinding<String> = DataBinding("")
+    public var passwordValue: DataBinding<String> = DataBinding("")
+    public var socialType: DataBinding<SocialType> = DataBinding(.email)
     
     private let coordinator: AuthCoordinator
     
@@ -26,9 +26,7 @@ final class LoginViewModel: ObservableObject {
     
     public func doLogin() {
         let loginRequest = LoginRequest(email: emailValue.value, password: passwordValue.value, socialType: socialType.value)
-        let authAPIRequest = AuthAPIRequest.loginByEmail(request: loginRequest)
-        
-        MinningRequest.perform(authAPIRequest, completion: { result in
+        AuthAPIRequest.login(request: loginRequest, completion: { result in
             
         })
     }
