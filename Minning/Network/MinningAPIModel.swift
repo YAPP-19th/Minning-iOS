@@ -151,12 +151,33 @@ public struct RetrospectResponseModel: Codable {
 }
 
 public struct RetrospectModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case image
+        case content
+        case date
+        case id
+        case result
+        case routine
+    }
+    
     public let content: String
     public let date: String
     public let id: Int64
     public let imageUrl: String
     public let result: String
     public let routine: RoutineModel
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        imageUrl = try values.decode(String.self, forKey: .image)
+        content = try values.decode(String.self, forKey: .content)
+        id = try values.decode(Int64.self, forKey: .id)
+        result = try values.decode(String.self, forKey: .result)
+        routine = try values.decode(RoutineModel.self, forKey: .routine)
+        date = try values.decode(String.self, forKey: .date)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
 }
 
 public struct RoutineResponseModel: Codable {
@@ -334,11 +355,11 @@ public struct SayingCompareModel: Codable {
 }
 
 public struct TodaySayingCheckResponseModel: Codable {
-    public let data: TodayCheckModel
+    public let data: BoolModel
     public let message: CommonAPIResponse
 }
 
-public struct TodayCheckModel: Codable {
+public struct BoolModel: Codable {
     public let result: Bool
 }
 
@@ -358,6 +379,7 @@ public struct GroupResponseModel: Codable {
     public let message: CommonAPIResponse
 }
 
+// TODO: imageUrl decode 추가
 public struct GroupModel: Codable {
     public let id: Int64
     public let imageUrl: String
@@ -428,4 +450,42 @@ public struct GroupTimeModel: Codable {
     public let minute: Int
     public let nano: Int
     public let second: Int
+}
+
+public struct DoTodayMissionResponseModel: Codable {
+    public let data: BoolModel
+    public let message: CommonAPIResponse
+}
+
+public struct DeleteCaptureResponseModel: Codable {
+    public let data: BoolModel
+    public let message: CommonAPIResponse
+}
+
+public struct CaptureListResponseModel: Codable {
+    public let data: CaptureListModel
+    public let message: CommonAPIResponse
+}
+
+public struct CaptureListModel: Codable {
+    public let captures: [CaptureModel]
+}
+
+public struct CaptureModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case captureId
+        case images
+    }
+    
+    public let captureId: Int64
+    public let imageUrl: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        imageUrl = try values.decode(String.self, forKey: .images)
+        captureId = try values.decode(Int64.self, forKey: .captureId)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
 }
