@@ -139,3 +139,75 @@ public struct AccessTokenModel: Codable {
         grantType = try values.decode(String.self, forKey: .grantType)
     }
 }
+
+public struct RetrospectListResponseModel: Codable {
+    public let data: [RetrospectModel]
+    public let message: CommonAPIResponse
+}
+
+public struct RetrospectResponseModel: Codable {
+    public let data: RetrospectModel
+    public let message: CommonAPIResponse
+}
+
+public struct RetrospectModel: Codable {
+    public let content: String
+    public let date: String
+    public let id: Int64
+    public let imageUrl: String
+    public let result: String
+    public let routine: RoutineModel
+}
+
+public struct RoutineModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case category
+        case days
+        case goal
+        case id
+        case startTime
+        case title
+    }
+    
+    public let category: RoutineCategory
+    public let days: [Day]
+    public let goal: String
+    public let id: Int64
+    public let startTime: String
+    public let title: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let categoryValue = try values.decode(String.self, forKey: .category)
+        
+        switch categoryValue {
+        case "건강":
+            category = .health
+        case "생활":
+            category = .life
+        case "자기개발":
+            category = .selfDev
+        case "미라클모닝":
+            category = .miracle
+        case "기타":
+            category = .other
+        default:
+            category = .other
+        }
+        
+        let daysValue = try values.decode([String].self, forKey: .days)
+        var dayList: [Day] = []
+        
+        daysValue.forEach { dayString in
+            dayList.append(Day(rawValue: dayString)!)
+        }
+        
+        days = dayList
+        goal = try values.decode(String.self, forKey: .goal)
+        id = try values.decode(Int64.self, forKey: .id)
+        startTime = try values.decode(String.self, forKey: .startTime)
+        title = try values.decode(String.self, forKey: .title)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}

@@ -16,6 +16,18 @@ struct MinningAPIConstant {
         return mainURL.appendingPathComponent("/account")
     }
     
+    static var retrospectURL: URL {
+        return mainURL.appendingPathComponent("/retrospect")
+    }
+    
+    static var reportURL: URL {
+        return mainURL.appendingPathComponent("/report")
+    }
+    
+    static var routineURL: URL {
+        return mainURL.appendingPathComponent("/routine")
+    }
+    
     static var groupURL: URL {
         return mainURL.appendingPathComponent("/group")
     }

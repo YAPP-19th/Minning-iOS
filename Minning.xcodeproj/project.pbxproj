@@ -55,6 +55,8 @@
 		B0180F7E26DCCC2C008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B01C775D274CFE000032B329 /* AccountAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C775C274CFE000032B329 /* AccountAPIRequest.swift */; };
 		B01C7761274CFE030032B329 /* AccountAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C775C274CFE000032B329 /* AccountAPIRequest.swift */; };
+		B01C7763274D00D00032B329 /* RetrospectAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */; };
+		B01C7764274D00D00032B329 /* RetrospectAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */; };
 		B02803832706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803842706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803852706A7A8009D642A /* NicknameViewModel.swift */; };
@@ -350,6 +352,7 @@
 		B0180F7526DCCC1E008C6F3C /* CommonSystem.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonSystem.xcodeproj; path = CommonSystem/CommonSystem.xcodeproj; sourceTree = "<group>"; };
 		B0180FB026DCD010008C6F3C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B01C775C274CFE000032B329 /* AccountAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAPIRequest.swift; sourceTree = "<group>"; };
+		B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrospectAPIRequest.swift; sourceTree = "<group>"; };
 		B02803822706A784009D642A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		B02803852706A7A8009D642A /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		B028038E2706D785009D642A /* HomeDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDIContainer.swift; sourceTree = "<group>"; };
@@ -961,6 +964,7 @@
 				B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */,
 				B0ADFE4E27489211003019E5 /* MinningRequest.swift */,
 				B01C775C274CFE000032B329 /* AccountAPIRequest.swift */,
+				B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1454,6 +1458,7 @@
 				B09041A4272D905A00AE8623 /* NormalSettingCell.swift in Sources */,
 				B028045A270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08BEB74272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */,
+				B01C7764274D00D00032B329 /* RetrospectAPIRequest.swift in Sources */,
 				B090419A272D8CC400AE8623 /* NoticeItemCell.swift in Sources */,
 				B09041AA272D925D00AE8623 /* SettingModel.swift in Sources */,
 				B08E74A42705C83900854190 /* PasswordViewController.swift in Sources */,
@@ -1538,6 +1543,7 @@
 				B08BEB8B272A8F470078E00A /* NoticeViewController.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B09041A0272D8E7900AE8623 /* ProfileSettingCell.swift in Sources */,
+				B01C7763274D00D00032B329 /* RetrospectAPIRequest.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
 				B0ADFE0B274885E4003019E5 /* MinningAPIConstant.swift in Sources */,
