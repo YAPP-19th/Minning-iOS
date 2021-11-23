@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public enum SocialProcess: String, Codable {
     case signUp = "SIGNUP"
@@ -379,13 +380,31 @@ public struct GroupResponseModel: Codable {
     public let message: CommonAPIResponse
 }
 
-// TODO: imageUrl decode 추가
 public struct GroupModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case image
+        case participant
+        case rate
+        case title
+    }
+    
     public let id: Int64
     public let imageUrl: String
     public let participant: Int
     public let rate: Int
     public let title: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int64.self, forKey: .id)
+        imageUrl = try values.decode(String.self, forKey: .image)
+        title = try values.decode(String.self, forKey: .title)
+        participant = try values.decode(Int.self, forKey: .participant)
+        rate = try values.decode(Int.self, forKey: .rate)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
 }
 
 public struct GroupDetailResponseModel: Codable {
