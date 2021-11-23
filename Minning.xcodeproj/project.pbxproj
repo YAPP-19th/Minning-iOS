@@ -53,6 +53,8 @@
 		B0180F7C26DCCC27008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0180F7D26DCCC2C008C6F3C /* CommonSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; };
 		B0180F7E26DCCC2C008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B01C775D274CFE000032B329 /* AccountAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C775C274CFE000032B329 /* AccountAPIRequest.swift */; };
+		B01C7761274CFE030032B329 /* AccountAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C775C274CFE000032B329 /* AccountAPIRequest.swift */; };
 		B02803832706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803842706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803852706A7A8009D642A /* NicknameViewModel.swift */; };
@@ -347,6 +349,7 @@
 		B0180F5626DCCBA0008C6F3C /* SharedAssets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SharedAssets.xcodeproj; path = SharedAssets/SharedAssets.xcodeproj; sourceTree = "<group>"; };
 		B0180F7526DCCC1E008C6F3C /* CommonSystem.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonSystem.xcodeproj; path = CommonSystem/CommonSystem.xcodeproj; sourceTree = "<group>"; };
 		B0180FB026DCD010008C6F3C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B01C775C274CFE000032B329 /* AccountAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAPIRequest.swift; sourceTree = "<group>"; };
 		B02803822706A784009D642A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		B02803852706A7A8009D642A /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		B028038E2706D785009D642A /* HomeDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDIContainer.swift; sourceTree = "<group>"; };
@@ -957,6 +960,7 @@
 				B0ADFE0A274885E4003019E5 /* MinningAPIConstant.swift */,
 				B0ADFE4B27488EB9003019E5 /* MinningHeader.swift */,
 				B0ADFE4E27489211003019E5 /* MinningRequest.swift */,
+				B01C775C274CFE000032B329 /* AccountAPIRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1486,6 +1490,7 @@
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
+				B01C7761274CFE030032B329 /* AccountAPIRequest.swift in Sources */,
 				B08BEB82272A8E650078E00A /* NewPasswordViewModel.swift in Sources */,
 				B09041B5272E28A900AE8623 /* InquireViewModel.swift in Sources */,
 				B097A30E272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
@@ -1516,6 +1521,7 @@
 			files = (
 				B0E1D25D270BEB5A006995C5 /* NotificationModel.swift in Sources */,
 				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
+				B01C775D274CFE000032B329 /* AccountAPIRequest.swift in Sources */,
 				B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
 				B09041AD272E26E300AE8623 /* LargeContentsViewController.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,

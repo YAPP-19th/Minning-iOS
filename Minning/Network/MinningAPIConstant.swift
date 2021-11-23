@@ -12,6 +12,10 @@ struct MinningAPIConstant {
         return mainURL.appendingPathComponent("/auth")
     }
     
+    static var accountURL: URL {
+        return mainURL.appendingPathComponent("/account")
+    }
+    
     static var groupURL: URL {
         return mainURL.appendingPathComponent("/group")
     }

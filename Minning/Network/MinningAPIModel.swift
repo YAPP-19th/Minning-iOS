@@ -18,6 +18,41 @@ public struct CommonAPIResponse: Codable {
     public let status: String
 }
 
+public struct MyInfoModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case email
+        case nickname
+        case profile
+    }
+    
+    public let email: String
+    public let nickname: String
+    public let profileUrl: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        email = try values.decode(String.self, forKey: .email)
+        nickname = try values.decode(String.self, forKey: .nickname)
+        profileUrl = try values.decode(String.self, forKey: .profile)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}
+
+public struct UserResponseModel: Codable {
+    public let data: MyInfoModel
+    public let message: CommonAPIResponse
+}
+
+public struct EmailExistResponseModel: Codable {
+    public let data: EmailExistModel
+    public let message: CommonAPIResponse
+}
+
+public struct EmailExistModel: Codable {
+    public let exist: Bool
+}
+
 public struct SocialCheckResponseModel: Codable {
     public let data: SocialDataResponseModel
     public let message: CommonAPIResponse

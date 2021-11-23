@@ -48,6 +48,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
         case socialCheck(request: SocialRequest)
         case loginByEmail(request: LoginRequest)
         case checkVerificationCode(email: String, number: String)
+        case checkEmailExist(email: String)
         case send(email: String)
         case refreshToken
         case resetPassword(email: String, password: String)
@@ -65,6 +66,8 @@ public struct AuthAPIRequest: MinningAPIRequestable {
                 return MinningAPIConstant.authURL.appendingPathComponent("login")
             case .send:
                 return MinningAPIConstant.authURL.appendingPathComponent("send")
+            case let .checkEmailExist(email):
+                return MinningAPIConstant.authURL.appendingPathComponent("email").appendingPathComponent(email)
             case .checkVerificationCode:
                 return MinningAPIConstant.authURL.appendingPathComponent("check").appendingPathComponent("number")
             case .refreshToken:
@@ -80,7 +83,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
             switch self {
             case .signUp, .loginByEmail, .send, .checkVerificationCode, .refreshToken, .resetPassword, .socialCheck, .signUpSocial:
                 return .post
-            case .logout:
+            case .checkEmailExist, .logout:
                 return .get
             }
         }
@@ -129,7 +132,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
                 parameters["email"] = email
                 parameters["password"] = password
                 return parameters
-            case .logout:
+            case .checkEmailExist, .logout:
                 return nil
             }
         }
@@ -138,7 +141,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
             switch self {
             case .signUp, .loginByEmail, .socialCheck, .signUpSocial, .send, .checkVerificationCode, .refreshToken, .resetPassword:
                 return .json
-            case .logout:
+            case .logout, .checkEmailExist:
                 return .url
             }
         }
@@ -179,5 +182,9 @@ public struct AuthAPIRequest: MinningAPIRequestable {
     
     public static func logout(completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
         perform(.logout, completion: completion)
+    }
+    
+    public static func checkEmailExist(email: String, completion: @escaping (Result<EmailExistResponseModel, Error>) -> Void) {
+        perform(.checkEmailExist(email: email), completion: completion)
     }
 }
