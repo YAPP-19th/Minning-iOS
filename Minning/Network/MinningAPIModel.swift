@@ -159,6 +159,16 @@ public struct RetrospectModel: Codable {
     public let routine: RoutineModel
 }
 
+public struct RoutineResponseModel: Codable {
+    public let data: RoutineModel
+    public let message: CommonAPIResponse
+}
+
+public struct RoutineListResponseModel: Codable {
+    public let data: [RoutineModel]
+    public let message: CommonAPIResponse
+}
+
 public struct RoutineModel: Codable {
     enum CodingKeys: String, CodingKey {
         case category
@@ -210,4 +220,18 @@ public struct RoutineModel: Codable {
     }
     
     public func encode(to encoder: Encoder) throws { }
+}
+
+public struct RoutinePercentResponseModel: Codable {
+    public let data: [RoutinePercentModel]
+    public let message: CommonAPIResponse
+}
+
+public struct RoutinePercentModel: Codable {
+    public let date: String
+    public let fullyDone: Int
+    public let partiallyDone: Int
+    public let totalDone: Int
+    public let rate: String
+    
 }
