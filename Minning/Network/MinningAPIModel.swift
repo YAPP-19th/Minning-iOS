@@ -352,3 +352,80 @@ public struct SayingModel: Codable {
     public let content: String
     public let id: Int64
 }
+
+public struct GroupResponseModel: Codable {
+    public let data: [GroupModel]
+    public let message: CommonAPIResponse
+}
+
+public struct GroupModel: Codable {
+    public let id: Int64
+    public let imageUrl: String
+    public let participant: Int
+    public let rate: Int
+    public let title: String
+}
+
+public struct GroupDetailResponseModel: Codable {
+    public let date: GroupDetailModel
+    public let message: CommonAPIResponse
+}
+
+public struct GroupDetailModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case beginTime
+        case endTime
+        case category
+        case id
+        case participant
+        case rate
+        case shoot
+        case title
+    }
+    
+    public let beginTime: GroupTimeModel
+    public let endTime: GroupTimeModel
+    public let category: RoutineCategory
+    public let id: Int64
+    public let participant: Int
+    public let rate: Int
+    public let shoot: String
+    public let title: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let categoryValue = try values.decode(String.self, forKey: .category)
+        
+        switch categoryValue {
+        case "건강":
+            category = .health
+        case "생활":
+            category = .life
+        case "자기개발":
+            category = .selfDev
+        case "미라클모닝":
+            category = .miracle
+        case "기타":
+            category = .other
+        default:
+            category = .other
+        }
+        
+        title = try values.decode(String.self, forKey: .title)
+        shoot = try values.decode(String.self, forKey: .shoot)
+        beginTime = try values.decode(GroupTimeModel.self, forKey: .beginTime)
+        endTime = try values.decode(GroupTimeModel.self, forKey: .endTime)
+        id = try values.decode(Int64.self, forKey: .id)
+        participant = try values.decode(Int.self, forKey: .participant)
+        rate = try values.decode(Int.self, forKey: .rate)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}
+
+public struct GroupTimeModel: Codable {
+    public let hour: Int
+    public let minute: Int
+    public let nano: Int
+    public let second: Int
+}
