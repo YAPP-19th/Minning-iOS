@@ -85,6 +85,10 @@ public struct AuthAPIRequest: MinningAPIRequestable {
             }
         }
         
+        var image: UIImage? {
+            return nil
+        }
+        
         var parameters: [String: Any]? {
             var parameters: [String: Any] = [:]
             switch self {

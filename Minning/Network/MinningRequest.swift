@@ -35,6 +35,7 @@ public enum RequestEncoding {
     case url
     case urlQuery
     case json
+    case multipartFormData
     
     var parameterEncoding: ParameterEncoding {
         switch self {
@@ -44,6 +45,8 @@ public enum RequestEncoding {
             return URLEncoding.queryString
         case .json:
             return JSONEncoding.default
+        case .multipartFormData:
+            return JSONEncoding.default // 사용하지 않는 값
         }
     }
 }
@@ -52,8 +55,13 @@ public protocol APIRouteable: URLRequestConvertible {
     var baseURL: URL { get }
     var requestURL: URL { get }
     var httpMethod: HTTPMethod { get }
+    var image: UIImage? { get }
     var parameters: [String: Any]? { get }
     var requestEncoding: RequestEncoding { get }
+}
+
+public protocol UploadRouteable: UploadConvertible {
+    
 }
 
 protocol MinningAPIRequestable {
@@ -66,6 +74,7 @@ extension MinningAPIRequestable {
     static func perform<T: Decodable>(_ request: RequestType,
                                       completion: @escaping (Result<T, Error>) -> Void) {
         DebugLog("Request URL: \(request.requestURL.absoluteString)")
+        DebugLog("Request Header: \(request.urlRequest?.allHTTPHeaderFields.debugDescription ?? "nil")")
         DebugLog("Request Parameters: \(request.parameters.debugDescription)")
         
         let dataRequest = AF.request(request)
@@ -85,10 +94,60 @@ extension MinningAPIRequestable {
                 }
             }
     }
+    
+    static func performMultipart<T: Decodable>(_ request: RequestType,
+                                               completion: @escaping (Result<T, Error>) -> Void) {
+        let multipartFormData: MultipartFormData = MultipartFormData()
+        if let parameters = request.parameters {
+            parameters.forEach { parameter in
+                if let data = parameter.value as? Data {
+                    multipartFormData.append(data, withName: parameter.key)
+                }
+            }
+        }
+        
+        if let image = request.image,
+            let imageData = image.jpegData(compressionQuality: 1) {
+            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg",mimeType: "image/jpeg")
+        }
+        
+        let newHeaders = [MinningHeader.accept(value: "application/json"),
+                          MinningHeader.contentType(value: "application/json"),
+                          MinningHeader.authorization]
+        
+        var headers: HTTPHeaders = HTTPHeaders()
+        newHeaders.forEach { newHeader in
+            headers.add(HTTPHeader(name: newHeader.key, value: newHeader.value))
+        }
+        
+        let uploadRequest = AF.upload(multipartFormData: multipartFormData,
+                                      to: request.requestURL,
+                                      method: request.httpMethod,
+                                      headers: headers)
+        
+        DebugLog("Request URL: \(request.requestURL.absoluteString)")
+        DebugLog("Request Header: \(request.urlRequest?.allHTTPHeaderFields.debugDescription ?? "nil")")
+        
+        uploadRequest
+            .validate(statusCode: 200..<300)
+            .responseDecodable { (response: AFDataResponse<T>) in
+                let responseData = response.data ?? Data()
+                let string = String(data: responseData, encoding: .utf8)
+                
+                DebugLog("Repsonse: \(string ?? "")")
+                
+                switch response.result {
+                case .success(let response):
+                    completion(.success(response))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
 }
 
-extension APIRouteable {
-    public var baseURL: URL {
+public extension APIRouteable {
+    var baseURL: URL {
         #if DEBUG
         return MinningAPIConstant.mainURL
         #else
@@ -96,11 +155,11 @@ extension APIRouteable {
         #endif
     }
     
-    public var accessToken: String {
+    var accessToken: String {
         return ""
     }
     
-    public func asURLRequest() throws -> URLRequest {
+    func asURLRequest() throws -> URLRequest {
         var request = URLRequest(url: requestURL)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = .reloadIgnoringLocalCacheData
