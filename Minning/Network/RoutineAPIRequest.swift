@@ -100,7 +100,7 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
     }
     
     public static func addRoutine(request: RoutineRequest,
-                                     completion: @escaping (Result<RoutineResponseModel, Error>) -> Void) {
+                                  completion: @escaping (Result<RoutineResponseModel, Error>) -> Void) {
         perform(.addRoutine(request: request), completion: completion)
     }
     

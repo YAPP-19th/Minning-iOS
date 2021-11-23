@@ -235,3 +235,90 @@ public struct RoutinePercentModel: Codable {
     public let rate: String
     
 }
+
+public struct ReportResponseModel: Codable {
+    public let monthRoutineReportList: [ReportModel]
+    public let weakRateList: [String]
+    public let message: CommonAPIResponse
+}
+
+public struct ReportWeekResponseModel: Codable {
+    public let data: ReportWeekModel
+    public let message: CommonAPIResponse
+}
+
+public struct ReportWeekModel: Codable {
+    public let fullyDoneCount: Int
+    public let lastDate: String
+    public let notDoneCount: Int
+    public let partiallyDoneCount: Int
+    public let rate: String
+    public let responseWeekRoutine: [ReportWeekRoutineModel]
+}
+
+public struct ReportWeekRoutineModel: Codable {
+    public let retrospectDayList: [ReportRetrospectModel]
+    public let title: String
+}
+
+public struct ReportRetrospectModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case day
+        case result
+    }
+    
+    public let day: Day
+    public let result: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let dayValue = try values.decode(String.self, forKey: .day)
+        day = Day(rawValue: dayValue)!
+        result = try values.decode(String.self, forKey: .result)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}
+
+public struct ReportModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case category
+        case fullyDoneRate
+        case notDoneRate
+        case partiallyDoneRate
+        case title
+    }
+    
+    public let category: RoutineCategory
+    public let fullyDoneRate: String
+    public let notDoneRate: String
+    public let partiallyDoneRate: String
+    public let title: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let categoryValue = try values.decode(String.self, forKey: .category)
+        
+        switch categoryValue {
+        case "건강":
+            category = .health
+        case "생활":
+            category = .life
+        case "자기개발":
+            category = .selfDev
+        case "미라클모닝":
+            category = .miracle
+        case "기타":
+            category = .other
+        default:
+            category = .other
+        }
+        
+        fullyDoneRate = try values.decode(String.self, forKey: .fullyDoneRate)
+        notDoneRate = try values.decode(String.self, forKey: .notDoneRate)
+        partiallyDoneRate = try values.decode(String.self, forKey: .partiallyDoneRate)
+        title = try values.decode(String.self, forKey: .title)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}
