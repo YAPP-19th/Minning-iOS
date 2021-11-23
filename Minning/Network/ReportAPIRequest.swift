@@ -8,7 +8,6 @@
 
 import Alamofire
 import CommonSystem
-import Pageboy
 
 public struct ReportAPIRequest: MinningAPIRequestable {
     enum RequestType: APIRouteable {

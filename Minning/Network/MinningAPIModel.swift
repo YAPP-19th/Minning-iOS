@@ -322,3 +322,33 @@ public struct ReportModel: Codable {
     
     public func encode(to encoder: Encoder) throws { }
 }
+
+public struct SayingCompareResponseModel: Codable {
+    public let data: SayingCompareModel
+    public let message: CommonAPIResponse
+}
+
+public struct SayingCompareModel: Codable {
+    public let id: Int64
+    public let result: Bool
+}
+
+public struct TodaySayingCheckResponseModel: Codable {
+    public let data: TodayCheckModel
+    public let message: CommonAPIResponse
+}
+
+public struct TodayCheckModel: Codable {
+    public let result: Bool
+}
+
+public struct SayingResponseModel: Codable {
+    public let data: SayingModel
+    public let message: CommonAPIResponse
+}
+
+public struct SayingModel: Codable {
+    public let author: String
+    public let content: String
+    public let id: Int64
+}

@@ -61,6 +61,8 @@
 		B01C7767274D08500032B329 /* RoutineAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7765274D08500032B329 /* RoutineAPIRequest.swift */; };
 		B01C7769274D0ECB0032B329 /* ReportAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7768274D0ECB0032B329 /* ReportAPIRequest.swift */; };
 		B01C776A274D0ECB0032B329 /* ReportAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7768274D0ECB0032B329 /* ReportAPIRequest.swift */; };
+		B01C776C274D12CD0032B329 /* SayingAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C776B274D12CD0032B329 /* SayingAPIRequest.swift */; };
+		B01C776D274D12CD0032B329 /* SayingAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C776B274D12CD0032B329 /* SayingAPIRequest.swift */; };
 		B02803832706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803842706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803852706A7A8009D642A /* NicknameViewModel.swift */; };
@@ -359,6 +361,7 @@
 		B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrospectAPIRequest.swift; sourceTree = "<group>"; };
 		B01C7765274D08500032B329 /* RoutineAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineAPIRequest.swift; sourceTree = "<group>"; };
 		B01C7768274D0ECB0032B329 /* ReportAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAPIRequest.swift; sourceTree = "<group>"; };
+		B01C776B274D12CD0032B329 /* SayingAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SayingAPIRequest.swift; sourceTree = "<group>"; };
 		B02803822706A784009D642A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		B02803852706A7A8009D642A /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		B028038E2706D785009D642A /* HomeDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDIContainer.swift; sourceTree = "<group>"; };
@@ -973,6 +976,7 @@
 				B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */,
 				B01C7765274D08500032B329 /* RoutineAPIRequest.swift */,
 				B01C7768274D0ECB0032B329 /* ReportAPIRequest.swift */,
+				B01C776B274D12CD0032B329 /* SayingAPIRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1434,6 +1438,7 @@
 				B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08BEB7E272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,
+				B01C776D274D12CD0032B329 /* SayingAPIRequest.swift in Sources */,
 				B08E747A2705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B02803A32706DCB5009D642A /* ReportDIContainer.swift in Sources */,
 				B09041AE272E26E300AE8623 /* LargeContentsViewController.swift in Sources */,
@@ -1629,6 +1634,7 @@
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
 				B0180EEC26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B09041B7272E28B000AE8623 /* InquireViewController.swift in Sources */,
+				B01C776C274D12CD0032B329 /* SayingAPIRequest.swift in Sources */,
 				B097A315272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
 				8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */,
 				B08BEB7D272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,

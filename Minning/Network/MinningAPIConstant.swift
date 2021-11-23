@@ -24,6 +24,18 @@ struct MinningAPIConstant {
         return mainURL.appendingPathComponent("/report")
     }
     
+    static var sayingURL: URL {
+        return mainURL.appendingPathComponent("/saying")
+    }
+    
+    static var missionURL: URL {
+        return mainURL.appendingPathComponent("/mission")
+    }
+    
+    static var captureURL: URL {
+        return mainURL.appendingPathComponent("/capture")
+    }
+    
     static var routineURL: URL {
         return mainURL.appendingPathComponent("/routine")
     }
