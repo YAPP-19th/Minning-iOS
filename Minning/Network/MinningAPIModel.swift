@@ -424,8 +424,8 @@ public struct GroupDetailModel: Codable {
         case title
     }
     
-    public let beginTime: GroupTimeModel
-    public let endTime: GroupTimeModel
+    public let beginTime: TimeModel
+    public let endTime: TimeModel
     public let category: RoutineCategory
     public let id: Int64
     public let participant: Int
@@ -454,8 +454,8 @@ public struct GroupDetailModel: Codable {
         
         title = try values.decode(String.self, forKey: .title)
         shoot = try values.decode(String.self, forKey: .shoot)
-        beginTime = try values.decode(GroupTimeModel.self, forKey: .beginTime)
-        endTime = try values.decode(GroupTimeModel.self, forKey: .endTime)
+        beginTime = try values.decode(TimeModel.self, forKey: .beginTime)
+        endTime = try values.decode(TimeModel.self, forKey: .endTime)
         id = try values.decode(Int64.self, forKey: .id)
         participant = try values.decode(Int.self, forKey: .participant)
         rate = try values.decode(Int.self, forKey: .rate)
@@ -464,7 +464,7 @@ public struct GroupDetailModel: Codable {
     public func encode(to encoder: Encoder) throws { }
 }
 
-public struct GroupTimeModel: Codable {
+public struct TimeModel: Codable {
     public let hour: Int
     public let minute: Int
     public let nano: Int
@@ -504,6 +504,113 @@ public struct CaptureModel: Codable {
         
         imageUrl = try values.decode(String.self, forKey: .images)
         captureId = try values.decode(Int64.self, forKey: .captureId)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}
+
+public struct MissionListResponseModel: Codable {
+    public let data: [MissionModel]
+    public let message: CommonAPIResponse
+}
+
+public struct MissionModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case achievementRate
+        case image
+        case period
+        case title
+        case weeks
+    }
+    
+    public let achievementRate: Int
+    public let imageUrl: String
+    public let period: Int
+    public let title: String
+    public let weeks: [Day]
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        achievementRate = try values.decode(Int.self, forKey: .achievementRate)
+        imageUrl = try values.decode(String.self, forKey: .image)
+        period = try values.decode(Int.self, forKey: .period)
+        title = try values.decode(String.self, forKey: .title)
+        
+        let weeksValue = try values.decode([String].self, forKey: .weeks)
+        weeks = weeksValue.map { Day(rawValue: $0)! }
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}
+
+public struct MissionDetailResponseModel: Codable {
+    public let data: MissionDetailModel
+    public let message: CommonAPIResponse
+}
+
+public struct MissionDetailModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case beginTime
+        case endTime
+        case category
+        case endDate
+        case groupAchievementRate
+        case myAchievementRate
+        case nowPeople
+        case participant
+        case period
+        case shoot
+        case title
+        case weeks
+    }
+    
+    public let beginTime: TimeModel
+    public let endTime: TimeModel
+    public let category: RoutineCategory
+    public let endDate: String
+    public let groupAchievementRate: Int
+    public let myAchievementRate: Int
+    public let nowPeople: Int
+    public let participant: Int
+    public let period: Int
+    public let shoot: String
+    public let title: String
+    public let weeks: [Day]
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        beginTime = try values.decode(TimeModel.self, forKey: .beginTime)
+        endTime = try values.decode(TimeModel.self, forKey: .endTime)
+        endDate = try values.decode(String.self, forKey: .endDate)
+        groupAchievementRate = try values.decode(Int.self, forKey: .groupAchievementRate)
+        myAchievementRate = try values.decode(Int.self, forKey: .myAchievementRate)
+        period = try values.decode(Int.self, forKey: .period)
+        participant = try values.decode(Int.self, forKey: .participant)
+        nowPeople = try values.decode(Int.self, forKey: .nowPeople)
+        title = try values.decode(String.self, forKey: .title)
+        shoot = try values.decode(String.self, forKey: .shoot)
+        
+        let categoryValue = try values.decode(String.self, forKey: .category)
+        
+        switch categoryValue {
+        case "건강":
+            category = .health
+        case "생활":
+            category = .life
+        case "자기개발":
+            category = .selfDev
+        case "미라클모닝":
+            category = .miracle
+        case "기타":
+            category = .other
+        default:
+            category = .other
+        }
+        
+        let weeksValue = try values.decode([String].self, forKey: .weeks)
+        weeks = weeksValue.map { Day(rawValue: $0)! }
     }
     
     public func encode(to encoder: Encoder) throws { }
