@@ -1669,7 +1669,7 @@
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				95826632272D999B00E67EE3 /* GroupCategoryCell.swift in Sources */,
-				B01C7769274D0ECB0032B329 /* ReportAPIRequest.swift in Sources */
+				B01C7769274D0ECB0032B329 /* ReportAPIRequest.swift in Sources */,
 				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
 				B08BEB88272A8F400078E00A /* NoticeViewModel.swift in Sources */,
 				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
