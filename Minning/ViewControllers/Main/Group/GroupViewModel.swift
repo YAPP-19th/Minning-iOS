@@ -19,8 +19,20 @@ final class GroupViewModel {
         case ended
     }
     
+    enum MyGroupTabType {
+        case now
+        case done
+    }
+    
     var tabType: DataBinding<GroupTabType> = DataBinding(.myGroup)
+<<<<<<< HEAD
     var goingTabType: DataBinding<OnGoingTabType> = DataBinding(.onGoing)
+=======
+    var myGroupTabType: DataBinding<MyGroupTabType> = DataBinding(.now)
+    var currentCategory: DataBinding<RoutineCategory?> = DataBinding(nil)
+    var isCurrentCategoryAll: DataBinding<Bool> = DataBinding(true)
+    
+>>>>>>> develop
     private let coordinator: GroupCoordinator
     
     public init(coordinator: GroupCoordinator) {

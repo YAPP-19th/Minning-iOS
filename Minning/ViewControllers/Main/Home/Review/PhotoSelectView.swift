@@ -23,10 +23,17 @@ final class PhotoSelectButton: UIButton {
     private let addTitleLabel: UILabel = {
         $0.font = .font16P
         $0.textColor = .primaryWhite
-        $0.text = "사진 추가"
+        $0.text = "사진 0/1"
         $0.isUserInteractionEnabled = false
         return $0
     }(UILabel())
+    
+    private let addStackView: UIStackView = {
+        $0.axis = .vertical
+        $0.spacing = 8
+        $0.alignment = .center
+        return $0
+    }(UIStackView())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,21 +45,20 @@ final class PhotoSelectButton: UIButton {
     }
     
     private func setupView() {
+        addSubview(addStackView)
         [addImageView, addTitleLabel].forEach {
-            addSubview($0)
+            addStackView.addArrangedSubview($0)
         }
         
         addImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(27)
-            make.centerX.equalToSuperview()
             make.width.height.equalTo(20)
         }
         
-        addTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(addImageView.snp.bottom).offset(8)
-            make.centerX.equalToSuperview()
+        addStackView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(100)
         }
-        
+
         layer.cornerRadius = 10
         layer.masksToBounds = true
         backgroundColor = .minningGray100

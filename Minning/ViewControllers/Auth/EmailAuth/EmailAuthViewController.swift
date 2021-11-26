@@ -87,7 +87,6 @@ final class EmailAuthViewController: BaseViewController {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(findPasswordStackView)
-        isHiddenStatusBarBGView = false
         
         [hintLabel, authCodeTextField, authButton].forEach {
             findPasswordStackView.addArrangedSubview($0)

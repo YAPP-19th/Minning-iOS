@@ -10,11 +10,12 @@ import CommonSystem
 import DesignSystem
 
 final class FilterButton: UIButton {
+    public var isAll: Bool = false
     public var category: RoutineCategory = .miracle
     
     public override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .blue67A4FF : .primaryWhite
+            backgroundColor = isSelected ? .blue67A4FF : .minningLightGray100
             setTitleColor(isSelected ? .primaryWhite : .gray787C84, for: .normal)
         }
     }

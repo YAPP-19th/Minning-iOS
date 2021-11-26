@@ -11,7 +11,7 @@ import Foundation
 
 protocol AuthRoute {
     func goToAuthHome()
-    func goToPassword(animated: Bool, isLogin: Bool)
+    func goToPassword(animated: Bool, isLogin: Bool, email: String)
     func goToMain(asRoot: Bool)
     func goToNickname(animated: Bool)
     func goToFindPassword()
@@ -49,8 +49,8 @@ extension AuthCoordinator: AuthRoute {
         navigationController.popToRootViewController(animated: true)
     }
     
-    func goToPassword(animated: Bool = false, isLogin: Bool) {
-        let passwordVC = dependencies.createPassword(self, isLogin: isLogin)
+    func goToPassword(animated: Bool = false, isLogin: Bool, email: String) {
+        let passwordVC = dependencies.createPassword(self, isLogin: isLogin, email: email)
         navigationController.pushViewController(passwordVC, animated: animated)
     }
     

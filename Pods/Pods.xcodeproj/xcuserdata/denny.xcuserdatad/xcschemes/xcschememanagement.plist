@@ -242,47 +242,54 @@
 			<key>orderHint</key>
 			<integer>37</integer>
 		</dict>
-		<key>SDWebImage.xcscheme</key>
+		<key>Reveal-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>38</integer>
 		</dict>
-		<key>SnapKit-framework.xcscheme</key>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>39</integer>
 		</dict>
-		<key>SnapKit-library.xcscheme</key>
+		<key>SnapKit-framework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>40</integer>
 		</dict>
-		<key>SwiftLint-framework.xcscheme</key>
+		<key>SnapKit-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>41</integer>
 		</dict>
-		<key>SwiftLint-library.xcscheme</key>
+		<key>SwiftLint-framework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>42</integer>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>SwiftLint-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>43</integer>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>44</integer>
 		</dict>
 		<key>lottie-ios.xcscheme</key>
 		<dict>

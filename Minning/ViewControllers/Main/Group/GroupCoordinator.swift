@@ -11,7 +11,12 @@ import Foundation
 
 protocol GroupRoute {
     func showDetail()
+<<<<<<< HEAD
     func showJoinGroup(completion: (() -> Void)?)
+=======
+    func showJoinGroup(completion: ((Bool) -> Void)?)
+    func goToNewGroup()
+>>>>>>> develop
     
     func goToBack()
     func dismissVC()
@@ -45,11 +50,17 @@ extension GroupCoordinator: GroupRoute {
         navigationController.topViewController?.present(detailVC, animated: true, completion: nil)
     }
     
-    func showJoinGroup(completion: (() -> Void)?) {
+    func showJoinGroup(completion: ((Bool) -> Void)?) {
         let joinGroupVC = dependencies.createJoinGroup(self)
         joinGroupVC.modalPresentationStyle = .overCurrentContext
         joinGroupVC.completion = completion
-        navigationController.topViewController?.presentedViewController?.present(joinGroupVC, animated: true, completion: nil)
+        navigationController.topViewController?.presentedViewController?.present(joinGroupVC, animated: false, completion: nil)
+    }
+    
+    func goToPhotoGrid() {
+        let photoGridVC = dependencies.createPhotoGrid(self)
+        photoGridVC.modalPresentationStyle = .fullScreen
+        navigationController.topViewController?.presentedViewController?.present(photoGridVC, animated: true, completion: nil)
     }
     
     func goToBack() {

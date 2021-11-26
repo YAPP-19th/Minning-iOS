@@ -57,7 +57,7 @@ final class RoutineCell: UITableViewCell {
         }
         
         titleLabel.font = .font16PBold
-        descriptionLabel.font = .font12P
+        descriptionLabel.font = .font14PMedium
         descriptionLabel.textColor = .minningDarkGray100
         completeLabel.font = .font12P
         completeLabel.textColor = .minningBlue100

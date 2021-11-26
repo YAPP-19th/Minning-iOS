@@ -30,7 +30,7 @@ class RecommendViewCell: UITableViewCell, UICollectionViewDelegate, UICollection
     }(UICollectionViewFlowLayout())
     
     lazy var recommendCollectionView: UICollectionView = {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .primaryWhite
         $0.register(RecommendCell.self, forCellWithReuseIdentifier: RecommendCell.identifier)
         $0.isScrollEnabled = true
         $0.delegate = self
@@ -57,7 +57,7 @@ class RecommendViewCell: UITableViewCell, UICollectionViewDelegate, UICollection
     func setupViewLayout() {
         layout.scrollDirection = .horizontal
         
-        backgroundColor = .white
+        backgroundColor = .primaryWhite
         
         addSubview(recommendLabel)
         addSubview(recommendCollectionView)

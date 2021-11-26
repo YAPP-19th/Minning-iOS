@@ -46,13 +46,18 @@ public extension UIColor {
 
     static var primaryRed: UIColor { fetchColor(#function) }
     static var minningBlue100: UIColor { fetchColor(#function) }
+    static var minningBlue70: UIColor { fetchColor(#function) }
+    static var minningBlue20: UIColor { fetchColor(#function) }
     static var primaryBlue030: UIColor { fetchColor(#function) }
     static var primaryWhite: UIColor { fetchColor(#function) }
     static var minningGray100: UIColor { fetchColor(#function) }
     static var primaryBlack: UIColor { fetchColor(#function) }
     static var primaryBlack040: UIColor { fetchColor(#function) }
+    static var primaryBlack080: UIColor { fetchColor(#function) }
     static var primaryTextGray: UIColor { fetchColor(#function) }
     static var primaryLightGray: UIColor { fetchColor(#function) }
+    static var subAlert: UIColor { fetchColor(#function) }
+    static var blue007AFF: UIColor { fetchColor(#function) }
     
     static var kakaoYellow: UIColor { fetchColor(#function) }
     static var kakaoBlack85: UIColor { fetchColor(#function) }

@@ -21,4 +21,10 @@ final class GroupDIContainer {
         let joinGroupVC = JoinGroupViewController(viewModel: viewModel)
         return joinGroupVC
     }
+    
+    func createPhotoGrid(_ coordinator: GroupCoordinator) -> PhotoGridViewController {
+        let viewModel = PhotoGridViewModel(coordinator: coordinator)
+        let photoGridVC = PhotoGridViewController(viewModel: viewModel)
+        return photoGridVC
+    }
 }

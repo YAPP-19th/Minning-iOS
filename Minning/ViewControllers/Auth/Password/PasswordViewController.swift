@@ -73,7 +73,8 @@ final class PasswordViewController: BaseViewController {
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
         if viewModel.passwordViewType.value == .login {
-            viewModel.goToMain()
+//            viewModel.goToMain()
+            viewModel.processLogin()
         } else {
             viewModel.goToNickname()
         }
@@ -82,6 +83,7 @@ final class PasswordViewController: BaseViewController {
     @objc
     private func textFieldDidChange(_ sender: PlainTextField) {
         loginButton.isActive = sender.text?.count ?? 0 > 0
+        viewModel.passwordValue.accept(sender.text)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +110,6 @@ final class PasswordViewController: BaseViewController {
         view.backgroundColor = .primaryLightGray
         view.addSubview(titleLabel)
         view.addSubview(loginStackView)
-        isHiddenStatusBarBGView = false
         
         [hintLabel, loginTextField, loginButton, findPasswordButton].forEach {
             loginStackView.addArrangedSubview($0)

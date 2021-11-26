@@ -13,7 +13,7 @@ final class PhraseGuideCell: UITableViewCell {
 
     private let titleLabel: UILabel = {
         $0.text = "글을 따라쓰고 오늘 루틴을 시작해봐요"
-        $0.font = .font14PBold
+        $0.font = .font16PBold
         $0.textColor = .primaryWhite
         return $0
     }(UILabel())
@@ -35,7 +35,7 @@ final class PhraseGuideCell: UITableViewCell {
     private func setupViewLayout() {
         selectionStyle = .none
         backgroundColor = .clear
-        contentView.backgroundColor = .minningBlue100
+        contentView.backgroundColor = .blue67A4FF
         contentView.layer.cornerRadius = 10
 
         [titleLabel, pencilImageView].forEach {

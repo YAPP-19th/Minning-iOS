@@ -17,18 +17,6 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     public var observers: [NSObjectProtocol] = []
     weak var tabBarDelegate: MainTabBarDelegate?
     
-    private let statusBarBGBar: UIView = {
-        $0.backgroundColor = .primaryWhite
-        $0.isHidden = true
-        return $0
-    }(UIView())
-    
-    public var isHiddenStatusBarBGView: Bool = true {
-        didSet {
-            statusBarBGBar.isHidden = isHiddenStatusBarBGView
-        }
-    }
-    
     open var keyboardInsetsAdjustingScrollView: UIScrollView? {
         return nil
     }
@@ -40,16 +28,10 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .primaryWhite
+        view.backgroundColor = .primaryWhite
         
         if registerKeyboardObservers {
             registerKeyboardNotifications()
-        }
-        
-        view.addSubview(statusBarBGBar)
-        statusBarBGBar.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         
         setupViewLayout()
@@ -131,6 +113,15 @@ public class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     public func showAlert(title: String?, message: String?, handler: @escaping (UIAlertAction) -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default, handler: handler)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    public func showAlert(title: String?, message: String?, okTitle: String, handler: @escaping (UIAlertAction) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: okTitle, style: .default, handler: handler)
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancelAction)

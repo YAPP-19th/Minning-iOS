@@ -18,14 +18,14 @@ final class ReviewViewController: BaseViewController {
     
     private let titleLabel: UILabel = {
         $0.text = ""
-        $0.font = .font12PBold
+        $0.font = .font14PBold
         $0.textColor = .primaryTextGray
         return $0
     }(UILabel())
     
     lazy var feedbackTextView: UITextView = {
         $0.delegate = self
-        $0.textColor = .primaryTextGray
+        $0.textColor = .grayB5B8BE
         $0.text = viewModel.feedbackPlaceholder
         $0.font = .font16P
         $0.isScrollEnabled = false
@@ -37,6 +37,23 @@ final class ReviewViewController: BaseViewController {
         $0.addTarget(self, action: #selector(onClickSelectPhotoFromLibrary(_:)), for: .touchUpInside)
         return $0
     }(PhotoSelectButton())
+    
+    private let selectedPhotoImageView: UIImageView = {
+        $0.backgroundColor = .minningLightGray100
+        $0.layer.cornerRadius = 7
+        $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
+        $0.isHidden = true
+        return $0
+    }(UIImageView())
+    
+    private let dismissPhotoButton: UIButton = {
+        $0.backgroundColor = .primaryBlack080
+        $0.layer.cornerRadius = 14
+        $0.setImage(UIImage(sharedNamed: "close_white"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickDismissPhotoButton(_:)), for: .touchUpInside)
+        return $0
+    }(UIButton())
     
     init(viewModel: ReviewViewModel) {
         self.viewModel = viewModel
@@ -73,7 +90,7 @@ final class ReviewViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        [navigationBar, titleLabel, feedbackTextView, photoSelectButton].forEach {
+        [navigationBar, titleLabel, feedbackTextView, photoSelectButton, selectedPhotoImageView].forEach {
             view.addSubview($0)
         }
         
@@ -82,24 +99,50 @@ final class ReviewViewController: BaseViewController {
             make.leading.trailing.equalToSuperview()
         }
         
+        photoSelectButton.snp.makeConstraints { make in
+            make.top.equalTo(navigationBar.snp.bottom).offset(12)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(photoSelectButton.snp.width)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(66)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(photoSelectButton.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
         }
         
         feedbackTextView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.height.greaterThanOrEqualTo(35.5)
         }
         
-        photoSelectButton.snp.makeConstraints { make in
-            make.top.equalTo(feedbackTextView.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.width.height.equalTo(100)
+        selectedPhotoImageView.snp.makeConstraints { make in
+            make.top.equalTo(navigationBar.snp.bottom).offset(12)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(photoSelectButton.snp.width)
         }
+        
+        selectedPhotoImageView.addSubview(dismissPhotoButton)
+        
+        dismissPhotoButton.snp.makeConstraints { make in
+            make.top.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.width.height.equalTo(28)
+        }
+    }
+    
+    private func showSelectedPhotoImageView() {
+        selectedPhotoImageView.isHidden = false
+        photoSelectButton.isHidden = true
+    }
+    
+    private func hideSelectedPhotoImageView() {
+        selectedPhotoImageView.isHidden = true
+        photoSelectButton.isHidden = false
     }
     
     @objc
@@ -115,6 +158,13 @@ final class ReviewViewController: BaseViewController {
     @objc
     private func onClickSelectPhotoFromLibrary(_ sender: Any?) {
         DebugLog("Did Click Select Photo Button")
+        showSelectedPhotoImageView()
+    }
+    
+    @objc
+    private func onClickDismissPhotoButton(_ sender: Any?) {
+        DebugLog("Did Click Dismiss Photo Button")
+        hideSelectedPhotoImageView()
     }
 }
 

@@ -18,8 +18,10 @@ final class RoutineView: UIView {
     enum TableViewSection: Int, CaseIterable {
         case header
         case phraseGuide
+        case groupGuide
         case routine
         case review
+        case footer
     }
     
     weak var delegate: RoutineViewDelegate?
@@ -29,9 +31,12 @@ final class RoutineView: UIView {
         $0.separatorStyle = .none
         $0.delegate = self
         $0.dataSource = self
+        $0.register(RoutineHeaderCell.self, forCellReuseIdentifier: RoutineHeaderCell.identifier)
         $0.register(PhraseGuideCell.self, forCellReuseIdentifier: PhraseGuideCell.identifier)
+        $0.register(GroupGuideCell.self, forCellReuseIdentifier: GroupGuideCell.identifier)
         $0.register(RoutineCell.self, forCellReuseIdentifier: RoutineCell.identifier)
         $0.register(ReviewCell.self, forCellReuseIdentifier: ReviewCell.identifier)
+        $0.register(RoutineFooterCell.self, forCellReuseIdentifier: RoutineFooterCell.identifier)
         return $0
     }(UITableView())
     
@@ -59,32 +64,6 @@ final class RoutineView: UIView {
 }
 
 extension RoutineView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch TableViewSection(rawValue: section) {
-        case .header:
-            let header = RoutineHeaderView()
-            header.delegate = self
-            header.configure(tabType: tabType)
-            return header
-        default:
-            return nil
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        switch TableViewSection(rawValue: section) {
-        case .routine:
-            let footer = RoutineFooterView()
-            footer.editOrderButtonHandler = { [weak self] in
-                guard let delegate = self?.delegate else { return }
-                return delegate.didSelectEditOrder()
-            }
-            return footer
-        default:
-            return nil
-        }
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let section = TableViewSection(rawValue: indexPath.section) {
             delegate?.didSelectSection(section)
@@ -100,13 +79,17 @@ extension RoutineView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch TableViewSection(rawValue: section) {
         case .header:
-            return 0
+            return 1
         case .phraseGuide:
             return tabType == .routine ? 1 : .zero
+        case .groupGuide:
+            return 0 // 명언 작성 완료 후 노출
         case .routine:
             return tabType == .routine ? 3 : .zero
         case .review:
             return tabType == .routine ? .zero : 2
+        case .footer:
+            return 1
         default:
             return 0
         }
@@ -115,9 +98,18 @@ extension RoutineView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch TableViewSection(rawValue: indexPath.section) {
         case .header:
-            return .init()
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: RoutineHeaderCell.identifier, for: indexPath) as? RoutineHeaderCell else {
+                return .init()
+            }
+            cell.configure(delegate: self, tabType: tabType)
+            return cell
         case .phraseGuide:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: PhraseGuideCell.identifier, for: indexPath) as? PhraseGuideCell else {
+                return .init()
+            }
+            return cell
+        case .groupGuide:
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: GroupGuideCell.identifier, for: indexPath) as? GroupGuideCell else {
                 return .init()
             }
             return cell
@@ -131,6 +123,15 @@ extension RoutineView: UITableViewDataSource {
                 return .init()
             }
             return cell
+        case .footer:
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: RoutineFooterCell.identifier, for: indexPath) as? RoutineFooterCell else {
+                return .init()
+            }
+            cell.editOrderButtonHandler = { [weak self] in
+                guard let delegate = self?.delegate else { return }
+                return delegate.didSelectEditOrder()
+            }
+            return cell
         default:
             return .init()
         }
@@ -138,35 +139,23 @@ extension RoutineView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch TableViewSection(rawValue: indexPath.section) {
+        case .header:
+            return 70
         case .phraseGuide:
+            return 58
+        case .groupGuide:
             return 58
         case .routine:
             return 78
         case .review:
             return 78
+        case .footer:
+            return 41
         default:
             return .zero
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch TableViewSection(rawValue: section) {
-        case .header:
-            return 70
-        default:
-            return .zero
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        switch TableViewSection(rawValue: section) {
-        case .routine:
-            return tabType == .routine ? 37 : .zero
-        default:
-            return .zero
-        }
-    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard indexPath.section == TableViewSection.routine.rawValue else { return nil }
         return nil
@@ -176,29 +165,37 @@ extension RoutineView: UITableViewDataSource {
 //            completion(true)
 //        }
 //        completeAction.backgroundColor = .minningLightGray100
-//        completeAction.image = UIImage(sharedNamed: "complete_action.png")
+//        completeAction.image = convertSwipeViewToImage(action: .complete)
 //
 //        let halfAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
 //            print("half")
 //            completion(true)
 //        }
 //        halfAction.backgroundColor = .minningLightGray100
-//        halfAction.image = UIImage(sharedNamed: "half_action.png")
+//        halfAction.image = convertSwipeViewToImage(action: .half)
 //
 //        let dismissAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
 //            print("dismiss")
 //            completion(true)
 //        }
 //        dismissAction.backgroundColor = .minningLightGray100
-//        dismissAction.image = UIImage(sharedNamed: "dismiss_action.png")
+//        dismissAction.image = convertSwipeViewToImage(action: .dismiss)
 //
 //        return .init(actions: [halfAction, completeAction])
 //
 //        return .init(actions: [dismissAction])
     }
+    
+    private func convertSwipeViewToImage(action: RoutineCellSwipeView.Action) -> UIImage {
+        let view = RoutineCellSwipeView(action: action)
+        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
+        return renderer.image { rendererContext in
+            view.layer.render(in: rendererContext.cgContext)
+        }
+    }
 }
 
-extension RoutineView: RoutineHeaderViewDelegate {
+extension RoutineView: RoutineHeaderCellDelegate {
     func didSelectRoutineTab() {
         delegate?.didSelectTab(.routine)
     }

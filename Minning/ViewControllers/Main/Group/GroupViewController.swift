@@ -5,82 +5,74 @@
 //  Created by denny on 2021/09/30.
 //  Copyright © 2021 Minning. All rights reserved.
 //
-
 import CommonSystem
 import DesignSystem
 import Foundation
 import SharedAssets
 import SnapKit
 
-final class GroupViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    private let category: [String] = ["전체", "미라클모닝", "자기개발", "건강", "생활"]
+final class GroupViewController: BaseViewController {
+    private let titleSectionContainerView: UIView = {
+        $0.backgroundColor = .primaryWhite
+        return $0
+    }(UIView())
     
     private let myGroupTabButton: UIButton = {
         $0.setTitle("내 그룹", for: .normal)
-        $0.titleLabel?.font = .font20PExBold
+        $0.titleLabel?.font = .font22PExBold
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
     private let groupListTabButton: UIButton = {
         $0.setTitle("둘러보기", for: .normal)
-        $0.titleLabel?.font = .font20PExBold
+        $0.titleLabel?.font = .font22PExBold
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
-    private let filterStackView: UIStackView = {
+    private let subTitleStackView: UIStackView = {
         $0.axis = .vertical
         return $0
     }(UIStackView())
     
-    private var filterOnGoingStackView: UIStackView = {
+    private let subTabContainerView: UIView = UIView()
+    
+    private let subTabNowButton: UIButton = {
+        $0.setTitle("진행중 3", for: .normal)
+        $0.titleLabel?.font = .font16PExBold
+        $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
+        return $0
+    }(UIButton())
+    
+    private let subTabDoneButton: UIButton = {
+        $0.setTitle("종료 5", for: .normal)
+        $0.titleLabel?.font = .font16PExBold
+        $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
+        return $0
+    }(UIButton())
+    
+    private let filterScrollView: UIScrollView = {
+        $0.bounces = false
+        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
+        $0.contentInsetAdjustmentBehavior = .never
+        return $0
+    }(UIScrollView())
+    
+    private let filterContainerView: UIView = UIView()
+    private let filterStackView: UIStackView = {
         $0.axis = .horizontal
+        $0.spacing = 8
+        $0.alignment = .leading
+        $0.setContentHuggingPriority(.required, for: .horizontal)
         return $0
     }(UIStackView())
     
-    private let layout: UICollectionViewFlowLayout = {
-        $0.scrollDirection = .horizontal
+    lazy var groupListTableView: UITableView = {
+        $0.backgroundColor = .systemOrange
         return $0
-    }(UICollectionViewFlowLayout())
-    
-    private let verticalLayout: UICollectionViewFlowLayout = {
-        $0.scrollDirection = .vertical
-        return $0
-    }(UICollectionViewFlowLayout())
-    
-    lazy var filterCollectionView: UICollectionView = {
-        return $0
-    }(UICollectionView(frame: .zero, collectionViewLayout: layout))
-    
-    lazy var groupListCollectionView: UICollectionView = {
-        return $0
-    }(UICollectionView(frame: .zero, collectionViewLayout: verticalLayout))
-    
-    private let onGoingButton: UIButton = {
-            $0.setTitle("진행중 0", for: .normal)
-            $0.titleLabel?.font = .font16PBold
-            $0.setTitleColor(.primaryBlack, for: .selected)
-            $0.setTitleColor(.grayB5B8BE, for: .normal)
-            $0.isSelected = true
-//            $0.addTarget(self, action: #selector(onGoingButtonClicked), for: .touchUpInside)
-            return $0
-        }(UIButton())
-        
-        private let endedButton: UIButton = {
-            $0.setTitle("종료 0", for: .normal)
-            $0.titleLabel?.font = .font16PBold
-            $0.setTitleColor(.primaryBlack, for: .selected)
-            $0.setTitleColor(.grayB5B8BE, for: .normal)
-//            $0.addTarget(self, action: #selector(onGoingButtonClicked), for: .touchUpInside)
-            return $0
-        }(UIButton())
-        
-        private let redAlertImageView: UIView = {
-            $0.backgroundColor = .primaryRed
-            $0.layer.cornerRadius = 2
-            return $0
-        }(UIView())
+    }(UITableView())
     
     private let viewModel: GroupViewModel
     
@@ -104,27 +96,43 @@ final class GroupViewController: BaseViewController, UICollectionViewDelegate, U
             self.myGroupTabButton.setTitleColor(type == .myGroup ? .primaryBlack : .minningGray100, for: .normal)
             self.groupListTabButton.setTitleColor(type == .groupList ? .primaryBlack : .minningGray100, for: .normal)
             
-            if type == .myGroup {
-                self.groupListCollectionView.isHidden = true
-                self.setupOngoingFilterStackView()
-                
-            } else {
-                self.filterStackView.isHidden = true
-                self.setupCategoryCollectionView()
-            }
+            self.subTabContainerView.isHidden = !(type == .myGroup)
+            self.filterScrollView.isHidden = !(type == .groupList)
+        }
+        
+        viewModel.myGroupTabType.bindAndFire { [weak self] type in
+            guard let `self` = self else { return }
+            self.subTabNowButton.setTitleColor(type == .now ? .primaryBlack : .minningGray100, for: .normal)
+            self.subTabDoneButton.setTitleColor(type == .done ? .primaryBlack : .minningGray100, for: .normal)
         }
     }
     
     override func setupViewLayout() {
         view.backgroundColor = .minningLightGray100
-        
-        [myGroupTabButton, groupListTabButton, filterStackView, groupListCollectionView].forEach {
+        [titleSectionContainerView, groupListTableView].forEach {
             view.addSubview($0)
+        }
+        
+        [myGroupTabButton, groupListTabButton, subTitleStackView].forEach {
+            titleSectionContainerView.addSubview($0)
+        }
+        
+        [subTabNowButton, subTabDoneButton].forEach {
+            subTabContainerView.addSubview($0)
+        }
+        
+        subTitleStackView.addArrangedSubview(subTabContainerView)
+        subTitleStackView.addArrangedSubview(filterScrollView)
+        filterScrollView.addSubview(filterContainerView)
+        filterContainerView.addSubview(filterStackView)
+        
+        titleSectionContainerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
         }
         
         myGroupTabButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(19)
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(28)
             make.height.equalTo(44)
             make.width.greaterThanOrEqualTo(44)
         }
@@ -136,73 +144,55 @@ final class GroupViewController: BaseViewController, UICollectionViewDelegate, U
             make.width.greaterThanOrEqualTo(44)
         }
         
-        filterStackView.snp.makeConstraints { make in
-            make.top.equalTo(myGroupTabButton.snp.bottom).offset(23)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+        subTitleStackView.snp.makeConstraints { make in
+            make.top.equalTo(myGroupTabButton.snp.bottom).offset(21)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
         }
         
-
+        // MARK: Sub Tab Section
+        subTabContainerView.snp.makeConstraints { make in
+            make.height.equalTo(33)
+        }
         
-        groupListCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(filterStackView.snp.bottom)
+        subTabNowButton.snp.makeConstraints { make in
+            make.top.bottom.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(28)
+        }
+        
+        subTabDoneButton.snp.makeConstraints { make in
+            make.top.bottom.centerY.equalToSuperview()
+            make.leading.equalTo(subTabNowButton.snp.trailing).offset(20)
+        }
+        
+        // MARK: Category Section
+        filterScrollView.snp.makeConstraints { make in
+            make.height.equalTo(33)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        filterContainerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalToSuperview()
+            make.width.equalToSuperview().priority(250)
+        }
+        
+        filterStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        setupFilterview()
+        
+        groupListTableView.snp.makeConstraints { make in
+            make.top.equalTo(titleSectionContainerView.snp.bottom)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-    }
-    
-    private func setupOngoingFilterStackView() {
-        print("Pressed 내그룹")
-        filterStackView.addArrangedSubview(filterOnGoingStackView)
         
-        [onGoingButton, endedButton, redAlertImageView].forEach {
-            filterOnGoingStackView.addSubview($0)
-        }
-        
-        onGoingButton.snp.makeConstraints { make in
-                    make.height.equalTo(19)
-                    make.leading.equalTo(12)
-            make.top.equalTo(filterOnGoingStackView.snp.top).offset(6)
-            
-        }
-        
-        endedButton.snp.makeConstraints { make in
-                    make.height.equalTo(19)
-            make.leading.equalTo(onGoingButton.snp.trailing).offset(20)
-            make.top.equalTo(filterOnGoingStackView.snp.top).offset(6)
-            
-        }
-        
-        redAlertImageView.snp.makeConstraints { make in
-                    make.height.equalTo(4)
-                    make.width.equalTo(4)
-            make.leading.equalTo(endedButton.snp.trailing).offset(2)
-            make.top.equalTo(filterOnGoingStackView.snp.top)
-            
-        }
-    }
-    
-    private func setupCategoryCollectionView() {
-        print("Pressed 둘러보기")
-        filterStackView.addArrangedSubview(filterCollectionView)
-        
-        filterCollectionView.backgroundColor = .systemPink
-        
-        filterCollectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(53)
-        }
-    }
-    
-    private func setupFilterCollectionView() {
-        filterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        filterCollectionView.backgroundColor = .systemGreen
-    }
-    
-    private func setupGroupListCollectionView() {
-        groupListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        filterCollectionView.backgroundColor = .systemOrange
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            self.viewModel.showDetail()
+        })
     }
     
     @objc
@@ -212,21 +202,72 @@ final class GroupViewController: BaseViewController, UICollectionViewDelegate, U
             viewModel.tabType.accept(.myGroup)
         case groupListTabButton:
             viewModel.tabType.accept(.groupList)
+        case subTabNowButton:
+            viewModel.myGroupTabType.accept(.now)
+        case subTabDoneButton:
+            viewModel.myGroupTabType.accept(.done)
         default:
             break
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return category.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCategoryCell.identifier, for: indexPath) as? GroupCategoryCell {
-            cell.label.text = category[indexPath.row]
-            return cell
+    private func setupFilterview() {
+        let leadingSpacer = UIView()
+        let trailingSpacer = UIView()
+        [leadingSpacer, trailingSpacer].forEach {
+            $0.snp.makeConstraints { make in
+                make.width.equalTo(16)
+            }
         }
-        return UICollectionViewCell()
+        
+        filterStackView.addArrangedSubview(leadingSpacer)
+        filterStackView.setCustomSpacing(0, after: leadingSpacer)
+        
+        let filterButton = FilterButton()
+        filterButton.isSelected = viewModel.isCurrentCategoryAll.value
+        filterButton.isAll = true
+        filterButton.setTitle("전체", for: .normal)
+        filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
+        filterStackView.addArrangedSubview(filterButton)
+        filterStackView.addArrangedSubview(trailingSpacer)
+        
+        RoutineCategory.allCases.enumerated().forEach { index, category in
+            let filterButton = FilterButton()
+            filterButton.isSelected = viewModel.currentCategory.value == category
+            filterButton.category = category
+            filterButton.setTitle(category.title, for: .normal)
+            filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
+            filterStackView.addArrangedSubview(filterButton)
+            
+            if index == RoutineCategory.allCases.count - 1 {
+                filterStackView.addArrangedSubview(trailingSpacer)
+                filterStackView.setCustomSpacing(0, after: filterButton)
+            }
+        }
     }
     
+    private func updateFilterView() {
+        filterStackView.arrangedSubviews.forEach { subView in
+            if let filterButton = subView as? FilterButton {
+                if filterButton.isAll {
+                    filterButton.isSelected = viewModel.isCurrentCategoryAll.value
+                } else {
+                    filterButton.isSelected = filterButton.category == viewModel.currentCategory.value
+                }
+            }
+        }
+    }
+    
+    @objc
+    private func onClickFilterButton(_ sender: FilterButton) {
+        if sender.isAll {
+            viewModel.isCurrentCategoryAll.accept(true)
+            viewModel.currentCategory.accept(nil)
+        } else {
+            viewModel.isCurrentCategoryAll.accept(false)
+            viewModel.currentCategory.accept(sender.category)
+        }
+        
+        updateFilterView()
+    }
 }

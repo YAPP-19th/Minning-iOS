@@ -18,15 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let navigationController = UINavigationController(navigationBarClass: PlainUINavigationBar.self,
-                                                          toolbarClass: nil)
+                                                               toolbarClass: nil)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.tintColor = .black
+        window?.tintColor = .primaryBlack
         window?.rootViewController = navigationController
         
         appCoordinator = AppCoordinator(navigationController: navigationController,
                                         appDIContainer: appDIContainer)
         appCoordinator?.gotoSplash()
+        
+        if #available(iOS 13.0, *) {
+            let newAppearance = UINavigationBarAppearance()
+            newAppearance.configureWithOpaqueBackground()
+            newAppearance.backgroundColor = .primaryBlack
+            newAppearance.titleTextAttributes = [.foregroundColor: UIColor.primaryWhite]
+            
+            UINavigationBar.appearance().standardAppearance = newAppearance
+        }
+        
         window?.makeKeyAndVisible()
         
         return true
@@ -35,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "OurApp")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { storeDescription, error in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

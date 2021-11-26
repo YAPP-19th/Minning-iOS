@@ -126,7 +126,7 @@ public class LineChart: UIView {
             
             let lineLayer = CAShapeLayer()
             lineLayer.path = path.cgPath
-            lineLayer.strokeColor = UIColor.white.cgColor
+            lineLayer.strokeColor = UIColor.primaryBlack.cgColor
             lineLayer.fillColor = UIColor.clear.cgColor
             dataLayer.addSublayer(lineLayer)
         }

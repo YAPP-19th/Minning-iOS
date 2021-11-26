@@ -12,7 +12,7 @@ import UIKit
 public class DotCALayer: CALayer {
 
     public var innerRadius: CGFloat = 8
-    public var dotInnerColor = UIColor.black
+    public var dotInnerColor = UIColor.primaryBlack
 
     public override init() {
         super.init()

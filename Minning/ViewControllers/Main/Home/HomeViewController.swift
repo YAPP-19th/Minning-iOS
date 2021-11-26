@@ -24,7 +24,8 @@ final class HomeViewController: BaseViewController {
     }(RoutineView())
     
     private let contentView: UIView = UIView()
-    private let alertText = "명언 작성 후 루틴을 시작할 수 있습니다.\n지금 명언 작성 페이지로 이동하시겠습니까?"
+    private let routineAlertTitle = "알림"
+    private let routineAlertText = "루틴 활성화를 위해 오늘의 명언 따라쓰기를 완료해주세요!"
     private let viewModel: HomeViewModel
     
     public init(viewModel: HomeViewModel) {
@@ -83,6 +84,10 @@ extension HomeViewController: ProfileViewDelegate {
     func didSelectNoti() {
         viewModel.goToNotification()
     }
+    
+    func didSelectProfile() {
+        viewModel.goToMyPage()
+    }
 }
 
 extension HomeViewController: RoutineViewDelegate {
@@ -92,13 +97,17 @@ extension HomeViewController: RoutineViewDelegate {
             return
         case .phraseGuide:
             viewModel.showPhraseModally()
+        case .groupGuide:
+            viewModel.goToMyGroup()
         case .routine:
-            showAlert(title: "루틴", message: alertText) { _ in
+            showAlert(title: routineAlertTitle, message: routineAlertText) { _ in
                 self.viewModel.showPhraseModally()
                 return
             }
         case .review:
             viewModel.goToReview()
+        case .footer:
+            return
         }
     }
     

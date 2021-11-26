@@ -22,6 +22,10 @@ final class HomeViewModel {
         self.coordinator = coordinator
     }
     
+    public func goToMyPage() {
+        coordinator.goToMyPage()
+    }
+    
     public func goToAdd() {
         coordinator.goToAdd()
     }
@@ -44,5 +48,9 @@ final class HomeViewModel {
     
     public func goToReview() {
         coordinator.goToReview()
+    }
+    
+    public func goToMyGroup() {
+        coordinator.goToMyGroup()
     }
 }
