@@ -31,11 +31,11 @@ extension PointEntry: Comparable {
 }
 
 public class LineChart: UIView {
-    public let entireLineGap: CGFloat = (UIScreen.main.bounds.width - 75.0)
+    public let entireLineGap: CGFloat = (UIScreen.main.bounds.width - 123.0)
 //    public let lineGap: CGFloat = (UIScreen.main.bounds.width - 75.0) / 4
     
     public let topSpace: CGFloat = 28.0
-    public let bottomSpace: CGFloat = 34.0
+    public let bottomSpace: CGFloat = 29.0
     
     public let topHorizontalLine: CGFloat = 110.0 / 100.0
     
@@ -47,7 +47,7 @@ public class LineChart: UIView {
 
     public var innerRadius: CGFloat = 8
 
-    public var outerRadius: CGFloat = 12
+    public var outerRadius: CGFloat = 16
     
     public var dataEntries: [PointEntry]? {
         didSet {
@@ -83,7 +83,7 @@ public class LineChart: UIView {
         scrollView.layer.addSublayer(mainLayer)
         self.layer.addSublayer(gridLayer)
         self.addSubview(scrollView)
-        self.backgroundColor = .primaryWhite
+        self.backgroundColor = .clear
     }
     
     public override func layoutSubviews() {
@@ -97,6 +97,7 @@ public class LineChart: UIView {
             gridLayer.frame = CGRect(x: 0, y: topSpace, width: self.frame.width, height: mainLayer.frame.height - topSpace - bottomSpace)
             if showDots { drawDots() }
             clean()
+            drawValueLabel()
             drawVerticalLines()
             drawHorizontalLines()
             if isCurved {
@@ -171,7 +172,7 @@ public class LineChart: UIView {
                 textLayer.alignmentMode = CATextLayerAlignmentMode.center
                 textLayer.contentsScale = UIScreen.main.scale
                 textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
-                textLayer.fontSize = 11
+                textLayer.fontSize = 12
                 textLayer.alignmentMode = .center
                 textLayer.string = dataEntries[idx].label
                 mainLayer.addSublayer(textLayer)
@@ -238,11 +239,11 @@ public class LineChart: UIView {
             
             for dataPoint in dataPoints {
                 let xValue = dataPoint.x - outerRadius / 2
-                let yValue = (dataPoint.y + 75) - (outerRadius * 2) - 29
+                let yValue = (dataPoint.y + 75) - (outerRadius * 2) - 23
                 let dotLayer = DotCALayer()
                 dotLayer.dotInnerColor = UIColor.minningBlue100
                 dotLayer.innerRadius = innerRadius
-                dotLayer.backgroundColor = UIColor.primaryBlue030.cgColor
+                dotLayer.backgroundColor = UIColor.minningBlue20.cgColor
                 dotLayer.cornerRadius = outerRadius / 2
                 dotLayer.frame = CGRect(x: xValue, y: yValue, width: outerRadius, height: outerRadius)
                 dotLayers.append(dotLayer)
@@ -256,6 +257,26 @@ public class LineChart: UIView {
                     anim.toValue = 1
                     dotLayer.add(anim, forKey: "opacity")
                 }
+            }
+        }
+    }
+    
+    private func drawValueLabel() {
+        if let dataEntries = dataEntries {
+            dataEntries.enumerated().forEach { index, dataEntry in
+                let lineGap = entireLineGap / CGFloat(dataEntries.count - 1)
+                guard let dataPoint = dataPoints?[index] else { return }
+                let textLayer = CATextLayer()
+                textLayer.frame = CGRect(x: lineGap * CGFloat(index) + 53 - (lineGap / 2), y: (dataPoint.y + 75) - (outerRadius * 2) - 37, width: lineGap, height: 14)
+                textLayer.foregroundColor = UIColor.primaryBlack.cgColor
+                textLayer.backgroundColor = UIColor.clear.cgColor
+                textLayer.alignmentMode = CATextLayerAlignmentMode.center
+                textLayer.contentsScale = UIScreen.main.scale
+                textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
+                textLayer.fontSize = 12
+                textLayer.alignmentMode = .center
+                textLayer.string = "\(dataEntry.value)%"
+                mainLayer.addSublayer(textLayer)
             }
         }
     }
