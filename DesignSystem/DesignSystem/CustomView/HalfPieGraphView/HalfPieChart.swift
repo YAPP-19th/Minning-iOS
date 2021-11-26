@@ -75,7 +75,7 @@ public class HalfPieChart: UIView {
         centerCirclePath.close()
         
         maskLayer.path = centerCirclePath.cgPath
-        maskLayer.fillColor = UIColor.primaryWhite.cgColor
+        maskLayer.fillColor = UIColor.minningLightGray100.cgColor
         layer.addSublayer(maskLayer)
     }
 

@@ -52,16 +52,21 @@ final class RoutineCategoryView: UIView {
     private var currentCategory: RoutineCategory = .miracle {
         didSet {
             updateFilterView()
-            updateCategoryDataView(reportRoutine: routineData[currentCategory.rawValue])
         }
     }
     
     private let sectionTitle: UILabel = {
-        $0.font = .font12PBold
-        $0.textColor = .minningDarkGray100
+        $0.font = .font20PBold
+        $0.textColor = .primaryBlack
         $0.text = "카테고리별 비교"
         return $0
     }(UILabel())
+    
+    private let categoryContianerView: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        $0.layer.cornerRadius = 10
+        return $0
+    }(UIView())
     
     private let categoryLegendStackView: UIStackView = {
         $0.axis = .horizontal
@@ -79,28 +84,11 @@ final class RoutineCategoryView: UIView {
         return $0
     }(HalfPieChart())
     
-    private let dataContainerView: UIView = {
-        $0.backgroundColor = .grayF6F7F9
-        $0.layer.cornerRadius = 10
+    private let minningImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "minning_icon")
         return $0
-    }(UIView())
-    
-    private let categoryTitleLabel: UILabel = {
-        $0.font = .font14PBold
-        $0.textColor = .gray787C84
-        $0.numberOfLines = 1
-        $0.sizeToFit()
-        return $0
-    }(UILabel())
-    
-    private let categoryValueLabel: UILabel = {
-        $0.font = .font14P
-        $0.textColor = .gray787C84
-        $0.numberOfLines = 1
-        $0.sizeToFit()
-        return $0
-    }(UILabel())
-    
+    }(UIImageView())
+
     private let separator: UIView = {
         $0.backgroundColor = .grayEDEDED
         return $0
@@ -117,7 +105,7 @@ final class RoutineCategoryView: UIView {
     private let filterContainerView: UIView = UIView()
     private let tableFilterStackView: UIStackView = {
         $0.axis = .horizontal
-        $0.spacing = 2
+        $0.spacing = 8
         $0.alignment = .leading
         $0.setContentHuggingPriority(.required, for: .horizontal)
         return $0
@@ -135,68 +123,64 @@ final class RoutineCategoryView: UIView {
     
     private func setupView() {
         backgroundColor = .primaryWhite
-        [sectionTitle, categoryLegendStackView,
-         halfPieChart, dataContainerView, separator,
+        [sectionTitle, categoryContianerView,
+         separator,
          filterScrollView].forEach {
             addSubview($0)
+        }
+        [categoryLegendStackView, halfPieChart, minningImageView].forEach {
+            categoryContianerView.addSubview($0)
         }
         
         filterScrollView.addSubview(filterContainerView)
         filterContainerView.addSubview(tableFilterStackView)
         
-        [categoryTitleLabel, categoryValueLabel].forEach {
-            dataContainerView.addSubview($0)
-        }
-        
         setupFilterview()
         
         sectionTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(20)
+        }
+        
+        categoryContianerView.snp.makeConstraints { make in
+            make.top.equalTo(sectionTitle.snp.bottom).offset(20)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
         }
         
         categoryLegendStackView.snp.makeConstraints { make in
-            make.top.equalTo(sectionTitle.snp.bottom).offset(21)
+            make.top.equalTo(20)
             make.leading.greaterThanOrEqualToSuperview()
             make.trailing.lessThanOrEqualToSuperview()
             make.centerX.equalToSuperview()
         }
         
         halfPieChart.snp.makeConstraints { make in
-            make.top.equalTo(categoryLegendStackView.snp.bottom).offset(35)
+            make.top.equalTo(categoryLegendStackView.snp.bottom).offset(20)
 //            make.leading.equalToSuperview().offset(48)
 //            make.trailing.equalToSuperview().offset(-48)
             make.width.equalTo(280)
             make.centerX.equalToSuperview()
             make.height.equalTo(halfPieChart.snp.width).multipliedBy(0.5 / 1.0)
+            make.bottom.equalTo(-26)
         }
         
-        dataContainerView.snp.makeConstraints { make in
-            make.bottom.equalTo(halfPieChart.snp.bottom)
+        minningImageView.snp.makeConstraints { make in
+            make.width.equalTo(82)
+            make.height.equalTo(60)
             make.centerX.equalToSuperview()
+            make.bottom.equalTo(-26)
         }
-        
-        categoryTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(13)
-            make.centerX.equalToSuperview()
-        }
-        
-        categoryValueLabel.snp.makeConstraints { make in
-            make.top.equalTo(categoryTitleLabel.snp.bottom).offset(9)
-            make.leading.equalToSuperview().offset(22)
-            make.bottom.equalToSuperview().offset(-14)
-            make.centerX.equalToSuperview()
-        }
-        
-        separator.snp.makeConstraints { make in
-            make.top.equalTo(halfPieChart.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(18)
-            make.trailing.equalToSuperview().offset(-18)
-            make.height.equalTo(1)
-        }
-        
+//
+//        separator.snp.makeConstraints { make in
+//            make.top.equalTo(halfPieChart.snp.bottom).offset(20)
+//            make.leading.equalToSuperview().offset(18)
+//            make.trailing.equalToSuperview().offset(-18)
+//            make.height.equalTo(1)
+//        }
+//
         filterScrollView.snp.makeConstraints { make in
-            make.top.equalTo(separator.snp.bottom).offset(20)
+            make.top.equalTo(categoryContianerView.snp.bottom).offset(40)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(33)
             make.bottom.equalToSuperview().offset(-20)
@@ -205,7 +189,7 @@ final class RoutineCategoryView: UIView {
         filterContainerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.equalToSuperview()
-            make.width.equalToSuperview().priority(250)
+//            make.width.equalToSuperview().priority(250)
         }
         
         tableFilterStackView.snp.makeConstraints { make in
@@ -256,19 +240,6 @@ final class RoutineCategoryView: UIView {
         }
     }
     
-    private func updateCategoryDataView(reportRoutine: ReportRoutine) {
-        categoryTitleLabel.text = reportRoutine.category.title
-        
-        let targetString = "\(Int(reportRoutine.percent))%"
-        let fullText = "전체 중 \(targetString)"
-        
-        let range = (fullText as NSString).range(of: targetString)
-        let valueAttrString = NSMutableAttributedString(string: fullText)
-        valueAttrString.addAttributes([.font: UIFont.font20PBold,
-                                       .foregroundColor: UIColor.blue67A4FF,
-                                       .baselineOffset: -1.5], range: range)
-        categoryValueLabel.attributedText = valueAttrString
-    }
     
     private func updateFilterView() {
         tableFilterStackView.arrangedSubviews.enumerated().forEach { index, subView in
