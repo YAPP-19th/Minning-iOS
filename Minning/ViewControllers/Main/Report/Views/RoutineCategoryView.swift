@@ -90,7 +90,7 @@ final class RoutineCategoryView: UIView {
     }(UIImageView())
 
     private let separator: UIView = {
-        $0.backgroundColor = .grayEDEDED
+        $0.backgroundColor = .primaryLightGray
         return $0
     }(UIView())
     
@@ -111,10 +111,33 @@ final class RoutineCategoryView: UIView {
         return $0
     }(UIStackView())
     
+    private let selectedCategoryInfoView: UIView = {
+        $0.backgroundColor = .minningBlue20
+        $0.layer.cornerRadius = 10
+        return $0
+    }(UIView())
+    
+    private lazy var selectedCategoryLabel: UILabel = {
+        $0.font = .font20PBold
+        $0.textColor = .minningDarkGray100
+        if let currentRoutine = routineData.first {
+            let targetString = "\(Int(currentRoutine.percent))%"
+            let fullText = "전체 중 \(targetString)를 차지하고 있어요"
+            
+            let range = (fullText as NSString).range(of: targetString)
+            let valueAttrString = NSMutableAttributedString(string: fullText)
+            valueAttrString.addAttributes([.font: UIFont.font20PBold,
+                                           .foregroundColor: UIColor.minningBlue100,
+                                           .baselineOffset: 0], range: range)
+            $0.attributedText = valueAttrString
+        }
+        return $0
+    }(UILabel())
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
         setupPieData()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -125,7 +148,8 @@ final class RoutineCategoryView: UIView {
         backgroundColor = .primaryWhite
         [sectionTitle, categoryContianerView,
          separator,
-         filterScrollView].forEach {
+         filterScrollView,
+         selectedCategoryInfoView].forEach {
             addSubview($0)
         }
         [categoryLegendStackView, halfPieChart, minningImageView].forEach {
@@ -134,11 +158,17 @@ final class RoutineCategoryView: UIView {
         
         filterScrollView.addSubview(filterContainerView)
         filterContainerView.addSubview(tableFilterStackView)
-        
+        selectedCategoryInfoView.addSubview(selectedCategoryLabel)
+
         setupFilterview()
         
+        separator.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(12)
+        }
+        
         sectionTitle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalTo(separator.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(20)
         }
         
@@ -171,19 +201,11 @@ final class RoutineCategoryView: UIView {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(-26)
         }
-//
-//        separator.snp.makeConstraints { make in
-//            make.top.equalTo(halfPieChart.snp.bottom).offset(20)
-//            make.leading.equalToSuperview().offset(18)
-//            make.trailing.equalToSuperview().offset(-18)
-//            make.height.equalTo(1)
-//        }
-//
+
         filterScrollView.snp.makeConstraints { make in
             make.top.equalTo(categoryContianerView.snp.bottom).offset(40)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(33)
-            make.bottom.equalToSuperview().offset(-20)
         }
         
         filterContainerView.snp.makeConstraints { make in
@@ -194,6 +216,18 @@ final class RoutineCategoryView: UIView {
         
         tableFilterStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        selectedCategoryInfoView.snp.makeConstraints { make in
+            make.top.equalTo(filterScrollView.snp.bottom).offset(20)
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+            make.bottom.equalTo(-20)
+            make.height.equalTo(70)
+        }
+        
+        selectedCategoryLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
     
@@ -240,7 +274,6 @@ final class RoutineCategoryView: UIView {
         }
     }
     
-    
     private func updateFilterView() {
         tableFilterStackView.arrangedSubviews.enumerated().forEach { index, subView in
             if let filterButton = subView as? FilterButton {
@@ -249,9 +282,22 @@ final class RoutineCategoryView: UIView {
         }
     }
     
+    private func updateSelectedCategoryLabel(with routine: ReportRoutine) {
+        let targetString = "\(Int(routine.percent))%"
+        let fullText = "전체 중 \(targetString)를 차지하고 있어요"
+        
+        let range = (fullText as NSString).range(of: targetString)
+        let valueAttrString = NSMutableAttributedString(string: fullText)
+        valueAttrString.addAttributes([.font: UIFont.font20PBold,
+                                       .foregroundColor: UIColor.minningBlue100,
+                                       .baselineOffset: 0], range: range)
+        selectedCategoryLabel.attributedText = valueAttrString
+    }
+    
     @objc
     private func onClickFilterButton(_ sender: FilterButton) {
         currentCategory = sender.category
         updateFilterView()
+        updateSelectedCategoryLabel(with: routineData[currentCategory.rawValue])
     }
 }
