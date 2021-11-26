@@ -44,7 +44,8 @@ class SplashViewController: BaseViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.viewModel.goToLogin()
+//            self.viewModel.goToLogin()
+            self.viewModel.goToMain()
         })
     }
     

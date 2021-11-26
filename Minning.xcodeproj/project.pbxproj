@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
+		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
+		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
+		95826625272D54D600E67EE3 /* OngoingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826624272D54D600E67EE3 /* OngoingView.swift */; };
+		95826627272D550400E67EE3 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826626272D550400E67EE3 /* GroupCell.swift */; };
+		9582662B272D579300E67EE3 /* MygroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662A272D579300E67EE3 /* MygroupView.swift */; };
+		9582662E272D57CB00E67EE3 /* GroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662D272D57CB00E67EE3 /* GroupListView.swift */; };
+		95826630272D57DC00E67EE3 /* EndedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662F272D57DC00E67EE3 /* EndedView.swift */; };
+		95826632272D999B00E67EE3 /* GroupCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826631272D999B00E67EE3 /* GroupCategoryCell.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
 		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
 		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
 		9589B557271DF27300943BA3 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B556271DF27300943BA3 /* AddDayView.swift */; };
-		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
-		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
 		B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0180ECC26DCC103008C6F3C /* AppConfiguration.swift */; };
@@ -192,10 +198,6 @@
 		B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */; };
 		B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF893270AD8CC0088C96E /* GroupModel.swift */; };
 		B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF893270AD8CC0088C96E /* GroupModel.swift */; };
-		B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */; };
-		B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */; };
-		B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */; };
-		B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */; };
 		B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */; };
 		B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */; };
 		B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */; };
@@ -279,12 +281,18 @@
 		691B4B28941CA43A46A62C49 /* Pods-OurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp.release.xcconfig"; path = "Target Support Files/Pods-OurApp/Pods-OurApp.release.xcconfig"; sourceTree = "<group>"; };
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
+		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
+		95826624272D54D600E67EE3 /* OngoingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingView.swift; sourceTree = "<group>"; };
+		95826626272D550400E67EE3 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		9582662A272D579300E67EE3 /* MygroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MygroupView.swift; sourceTree = "<group>"; };
+		9582662D272D57CB00E67EE3 /* GroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListView.swift; sourceTree = "<group>"; };
+		9582662F272D57DC00E67EE3 /* EndedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedView.swift; sourceTree = "<group>"; };
+		95826631272D999B00E67EE3 /* GroupCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCategoryCell.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
 		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		9589B556271DF27300943BA3 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
-		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
-		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B014273026DCBA9800DE11E0 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -382,8 +390,6 @@
 		B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModel.swift; sourceTree = "<group>"; };
 		B0ECF893270AD8CC0088C96E /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
-		B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
-		B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModel.swift; sourceTree = "<group>"; };
 		B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewModel.swift; sourceTree = "<group>"; };
 		B6A5A7CC6938E672B3DF7DA0 /* Pods-Minning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning.release.xcconfig"; path = "Target Support Files/Pods-Minning/Pods-Minning.release.xcconfig"; sourceTree = "<group>"; };
@@ -458,6 +464,33 @@
 				83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */,
 			);
 			path = WeeklyPercentView;
+			sourceTree = "<group>";
+		};
+		95826623272D54BD00E67EE3 /* OngoingGroup */ = {
+			isa = PBXGroup;
+			children = (
+				95826624272D54D600E67EE3 /* OngoingView.swift */,
+				9582662F272D57DC00E67EE3 /* EndedView.swift */,
+			);
+			path = OngoingGroup;
+			sourceTree = "<group>";
+		};
+		95826628272D575600E67EE3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95826629272D577C00E67EE3 /* MyGroup */,
+				95826623272D54BD00E67EE3 /* OngoingGroup */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95826629272D577C00E67EE3 /* MyGroup */ = {
+			isa = PBXGroup;
+			children = (
+				9582662A272D579300E67EE3 /* MygroupView.swift */,
+				9582662D272D57CB00E67EE3 /* GroupListView.swift */,
+			);
+			path = MyGroup;
 			sourceTree = "<group>";
 		};
 		A8CEA31FF1A9DB2BC92C9FE2 /* Pods */ = {
@@ -817,9 +850,11 @@
 		B0AD5A6C2705D77700CC07B0 /* Group */ = {
 			isa = PBXGroup;
 			children = (
-				B0ECF896270AD9EE0088C96E /* NewGroup */,
+				95826628272D575600E67EE3 /* Views */,
 				B0ECF889270AD8200088C96E /* GroupDetail */,
 				B0AD5A702705D79300CC07B0 /* GroupViewController.swift */,
+				95826631272D999B00E67EE3 /* GroupCategoryCell.swift */,
+				95826626272D550400E67EE3 /* GroupCell.swift */,
 				B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */,
 				B02803A72706DD6E009D642A /* GroupDIContainer.swift */,
 				B02803AA2706DD75009D642A /* GroupCoordinator.swift */,
@@ -906,15 +941,6 @@
 				B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */,
 			);
 			path = GroupDetail;
-			sourceTree = "<group>";
-		};
-		B0ECF896270AD9EE0088C96E /* NewGroup */ = {
-			isa = PBXGroup;
-			children = (
-				B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */,
-				B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */,
-			);
-			path = NewGroup;
 			sourceTree = "<group>";
 		};
 		B0ECF89D270AE0440088C96E /* JoinGroup */ = {
@@ -1277,7 +1303,6 @@
 				B02803F2270851AD009D642A /* AddViewModel.swift in Sources */,
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
-				B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08BEB7E272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,
 				B08E747A2705BBA300854190 /* AuthCoordinator.swift in Sources */,
@@ -1331,7 +1356,6 @@
 				B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FD27085604009D642A /* NotificationViewController.swift in Sources */,
-				B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
@@ -1365,13 +1389,13 @@
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
 				9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */,
-				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B08BEB7A272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08BEB65272A8B510078E00A /* MyPageViewController.swift in Sources */,
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				B08BEB8B272A8F470078E00A /* NoticeViewController.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
+				9582662E272D57CB00E67EE3 /* GroupListView.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
 				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
@@ -1379,6 +1403,7 @@
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B08BEB6C272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
+				95826625272D54D600E67EE3 /* OngoingView.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				B0280456270986D8009D642A /* MyRoutineView.swift in Sources */,
 				B02803E727085141009D642A /* EditOrderViewController.swift in Sources */,
@@ -1401,6 +1426,7 @@
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
+				9582662B272D579300E67EE3 /* MygroupView.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B08BEB81272A8E650078E00A /* NewPasswordViewModel.swift in Sources */,
 				83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */,
@@ -1410,6 +1436,7 @@
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B028043D270972B5009D642A /* RoutineModel.swift in Sources */,
 				B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */,
+				95826630272D57DC00E67EE3 /* EndedView.swift in Sources */,
 				B08BEB68272A8B5A0078E00A /* MyPageViewModel.swift in Sources */,
 				B0AD5A712705D79300CC07B0 /* GroupViewController.swift in Sources */,
 				B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */,
@@ -1421,12 +1448,12 @@
 				B02803952706D78D009D642A /* HomeCoordinator.swift in Sources */,
 				B02803E127085131009D642A /* ReviewViewController.swift in Sources */,
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
+				95826632272D999B00E67EE3 /* GroupCategoryCell.swift in Sources */,
 				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
 				B08BEB88272A8F400078E00A /* NoticeViewModel.swift in Sources */,
 				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
-				B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B097A3182722340400E0A479 /* RoutineView.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
 				9589B557271DF27300943BA3 /* AddDayView.swift in Sources */,
@@ -1439,6 +1466,7 @@
 				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
+				95826627272D550400E67EE3 /* GroupCell.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
 				B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,

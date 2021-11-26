@@ -14,8 +14,13 @@ final class GroupViewModel {
         case myGroup
         case groupList
     }
+    enum OnGoingTabType {
+        case onGoing
+        case ended
+    }
     
     var tabType: DataBinding<GroupTabType> = DataBinding(.myGroup)
+    var goingTabType: DataBinding<OnGoingTabType> = DataBinding(.onGoing)
     private let coordinator: GroupCoordinator
     
     public init(coordinator: GroupCoordinator) {
@@ -26,7 +31,11 @@ final class GroupViewModel {
         coordinator.showDetail()
     }
     
-    func goToNewGroup() {
-        coordinator.goToNewGroup()
+    func showMygroup() {
+        
+    }
+    
+    func showOngoingGroup() {
+        
     }
 }
