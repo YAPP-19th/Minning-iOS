@@ -122,6 +122,7 @@ final class LoginViewController: BaseViewController {
     @objc
     private func textFieldDidChange(_ sender: PlainTextField) {
         loginButton.isActive = sender.text?.count ?? 0 > 0
+        viewModel.emailValue.accept(sender.text)
     }
     
     override func setupViewLayout() {

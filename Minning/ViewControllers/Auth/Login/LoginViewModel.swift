@@ -2,13 +2,15 @@
 //  LoginViewModel.swift
 //  Minning
 //
-//  Created by denny on 2021/09/30.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
+import CommonSystem
 import Foundation
 
-final class LoginViewModel {
+final class LoginViewModel: ObservableObject {
+    public var emailValue: DataBinding<String?> = DataBinding(nil)
+    
     private let coordinator: AuthCoordinator
     
     public init(coordinator: AuthCoordinator) {
@@ -16,6 +18,10 @@ final class LoginViewModel {
     }
     
     public func goToPassword(isLogin: Bool) {
-        coordinator.goToPassword(animated: true, isLogin: isLogin)
+        if let email = emailValue.value {
+            coordinator.goToPassword(animated: true, isLogin: isLogin, email: email)
+        } else {
+            ErrorLog("Email을 입력해주세요")
+        }
     }
 }

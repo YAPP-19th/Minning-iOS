@@ -16,8 +16,8 @@ final class AuthDIContainer {
         return vc
     }
     
-    func createPassword(_ coordinator: AuthCoordinator, isLogin: Bool) -> PasswordViewController {
-        let viewModel = PasswordViewModel(coordinator: coordinator, passwordViewType: isLogin ? .login : .signUp)
+    func createPassword(_ coordinator: AuthCoordinator, isLogin: Bool, email: String) -> PasswordViewController {
+        let viewModel = PasswordViewModel(coordinator: coordinator, passwordViewType: isLogin ? .login : .signUp, email: email)
         let vc = PasswordViewController(viewModel: viewModel)
         return vc
     }

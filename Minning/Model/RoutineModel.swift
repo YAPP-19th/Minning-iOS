@@ -9,6 +9,16 @@
 import DesignSystem
 import Foundation
 
+public enum Day: String, CaseIterable {
+    case mon = "MON"
+    case tue = "TUE"
+    case wed = "WED"
+    case thu = "THU"
+    case fri = "FRI"
+    case sat = "SAT"
+    case sun = "SUN"
+}
+
 public enum RoutineCategory: Int, CaseIterable {
     // 미라클모닝, 자기개발, 건강, 생활, 기타
     case miracle = 0
