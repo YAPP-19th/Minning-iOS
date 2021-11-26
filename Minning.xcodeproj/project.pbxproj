@@ -14,6 +14,8 @@
 		8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FA272D60D8008839FA /* PhotoCell.swift */; };
 		8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */; };
 		8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F71A2736BAEC008839FA /* GroupGuideCell.swift */; };
+		8373F7692748BC02008839FA /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7682748BC02008839FA /* PhotoDetailViewController.swift */; };
+		8373F76B2748BC4B008839FA /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
@@ -341,6 +343,8 @@
 		8373F6FA272D60D8008839FA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewModel.swift; sourceTree = "<group>"; };
 		8373F71A2736BAEC008839FA /* GroupGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGuideCell.swift; sourceTree = "<group>"; };
+		8373F7682748BC02008839FA /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
@@ -532,14 +536,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8373F6F4272D5800008839FA /* Photo */ = {
+		8373F6F4272D5800008839FA /* PhotoGrid */ = {
 			isa = PBXGroup;
 			children = (
 				8373F6F8272D581D008839FA /* PhotoGridViewController.swift */,
 				8373F6FA272D60D8008839FA /* PhotoCell.swift */,
 				8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */,
 			);
-			path = Photo;
+			path = PhotoGrid;
+			sourceTree = "<group>";
+		};
+		8373F7642748BBB1008839FA /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8373F7682748BC02008839FA /* PhotoDetailViewController.swift */,
+				8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */,
+			);
+			path = PhotoDetail;
 			sourceTree = "<group>";
 		};
 		83D2F6D3271BFE91002947D3 /* Views */ = {
@@ -1069,7 +1082,8 @@
 		B0ECF889270AD8200088C96E /* GroupDetail */ = {
 			isa = PBXGroup;
 			children = (
-				8373F6F4272D5800008839FA /* Photo */,
+				8373F7642748BBB1008839FA /* PhotoDetail */,
+				8373F6F4272D5800008839FA /* PhotoGrid */,
 				B0ECF89D270AE0440088C96E /* JoinGroup */,
 				B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */,
 				B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */,
@@ -1558,6 +1572,7 @@
 				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
 				B01C775D274CFE000032B329 /* AccountAPIRequest.swift in Sources */,
 				B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
+				8373F7692748BC02008839FA /* PhotoDetailViewController.swift in Sources */,
 				B09041AD272E26E300AE8623 /* LargeContentsViewController.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
@@ -1620,6 +1635,7 @@
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
+				8373F76B2748BC4B008839FA /* PhotoDetailViewModel.swift in Sources */,
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B028043D270972B5009D642A /* RoutineModel.swift in Sources */,
 				B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */,
