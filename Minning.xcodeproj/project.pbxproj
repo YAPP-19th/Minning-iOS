@@ -1549,11 +1549,8 @@
 				B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FD27085604009D642A /* NotificationViewController.swift in Sources */,
-<<<<<<< HEAD
-=======
 				B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B09041B8272E28B000AE8623 /* InquireViewController.swift in Sources */,
->>>>>>> develop
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B0C281F0271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
