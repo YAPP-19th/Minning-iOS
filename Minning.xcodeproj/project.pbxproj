@@ -16,6 +16,7 @@
 		8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F71A2736BAEC008839FA /* GroupGuideCell.swift */; };
 		8373F7692748BC02008839FA /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7682748BC02008839FA /* PhotoDetailViewController.swift */; };
 		8373F76B2748BC4B008839FA /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */; };
+		8373F79327527F7F008839FA /* GroupTitleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F79227527F7F008839FA /* GroupTitleContainerView.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
@@ -345,6 +346,7 @@
 		8373F71A2736BAEC008839FA /* GroupGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGuideCell.swift; sourceTree = "<group>"; };
 		8373F7682748BC02008839FA /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
+		8373F79227527F7F008839FA /* GroupTitleContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTitleContainerView.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
@@ -553,6 +555,24 @@
 				8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */,
 			);
 			path = PhotoDetail;
+			sourceTree = "<group>";
+		};
+		8373F78D27527F48008839FA /* GroupDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */,
+				B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */,
+				8373F79127527F53008839FA /* Views */,
+			);
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		8373F79127527F53008839FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8373F79227527F7F008839FA /* GroupTitleContainerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		83D2F6D3271BFE91002947D3 /* Views */ = {
@@ -1082,11 +1102,10 @@
 		B0ECF889270AD8200088C96E /* GroupDetail */ = {
 			isa = PBXGroup;
 			children = (
+				8373F78D27527F48008839FA /* GroupDetail */,
 				8373F7642748BBB1008839FA /* PhotoDetail */,
 				8373F6F4272D5800008839FA /* PhotoGrid */,
 				B0ECF89D270AE0440088C96E /* JoinGroup */,
-				B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */,
-				B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */,
 			);
 			path = GroupDetail;
 			sourceTree = "<group>";
@@ -1631,6 +1650,7 @@
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B08BEB81272A8E650078E00A /* NewPasswordViewModel.swift in Sources */,
+				8373F79327527F7F008839FA /* GroupTitleContainerView.swift in Sources */,
 				83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
