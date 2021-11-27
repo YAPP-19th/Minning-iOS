@@ -78,11 +78,11 @@ public enum RoutineResult {
     var symbolImage: UIImage? {
         switch self {
         case .done:
-            return UIImage(sharedNamed: "routine_done")
+            return UIImage(sharedNamed: "weekly_complete")
         case .failure:
-            return UIImage(sharedNamed: "routine_failure")
+            return UIImage(sharedNamed: "weekly_half")
         case .tried:
-            return UIImage(sharedNamed: "routine_tried")
+            return UIImage(sharedNamed: "weekly_incomplete")
         case .relax:
             return nil
         }
