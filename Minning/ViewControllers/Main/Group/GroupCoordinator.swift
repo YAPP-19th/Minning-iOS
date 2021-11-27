@@ -42,8 +42,7 @@ class GroupCoordinator {
 extension GroupCoordinator: GroupRoute {
     func showDetail() {
         let detailVC = dependencies.createDetail(self)
-        detailVC.modalPresentationStyle = .fullScreen
-        navigationController.topViewController?.present(detailVC, animated: true, completion: nil)
+        navigationController.pushViewController(detailVC, animated: true)
     }
     
     func showJoinGroup(completion: ((Bool) -> Void)?) {

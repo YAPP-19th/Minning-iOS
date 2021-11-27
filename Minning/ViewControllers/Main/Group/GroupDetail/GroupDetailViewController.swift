@@ -8,13 +8,47 @@
 
 import CommonSystem
 import DesignSystem
-import Foundation
 import SharedAssets
 import SnapKit
 
 final class GroupDetailViewController: BaseViewController {
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
+    
+    private let scrollView: UIScrollView = {
+        $0.keyboardDismissMode = .interactive
+        return $0
+    }(UIScrollView())
+    
     private let contentView: UIView = UIView()
+    private let contentStackView: UIStackView = {
+        $0.axis = .vertical
+        return $0
+    }(UIStackView())
+    
+    private let groupTitleContainerView: UIView = {
+        $0.backgroundColor = .minningBlue100
+        return $0
+    }(UIView())
+    
+    private let myInfoConatainerView: UIView = {
+        $0.backgroundColor = .primaryWhite
+        return $0
+    }(UIView())
+    
+    private let ruleContainerView: UIView = {
+        $0.backgroundColor = .cateGreen100
+        return $0
+    }(UIView())
+    
+    private let groupPhotoContainerView: UIView = {
+        $0.backgroundColor = .cateYellow100
+        return $0
+    }(UIView())
+    
+    private let myPhotoConatinerView: UIView = {
+        $0.backgroundColor = .catePurple100
+        return $0
+    }(UIView())
     
     private let joinButton: PlainButton = {
         $0.setTitle("참여하기", for: .normal)
@@ -56,15 +90,19 @@ final class GroupDetailViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .primaryWhite
-        contentView.backgroundColor = .minningLightGray100
-        
-        [navigationBar, contentView].forEach {
+        [navigationBar, scrollView].forEach {
             view.addSubview($0)
         }
         
-        [joinButton].forEach {
+        scrollView.addSubview(contentView)
+        
+        [contentStackView, joinButton].forEach {
             contentView.addSubview($0)
+        }
+        
+        [groupTitleContainerView, myInfoConatainerView, ruleContainerView,
+         groupPhotoContainerView, myPhotoConatinerView].forEach {
+            contentStackView.addArrangedSubview($0)
         }
         
         navigationBar.snp.makeConstraints { make in
@@ -72,10 +110,39 @@ final class GroupDetailViewController: BaseViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        contentView.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+                
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+        
+        contentStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        groupTitleContainerView.snp.makeConstraints { make in
+            make.height.equalTo(282)
+        }
+        
+        myInfoConatainerView.snp.makeConstraints { make in
+            make.height.equalTo(198)
+        }
+        
+        ruleContainerView.snp.makeConstraints { make in
+            make.height.equalTo(170)
+        }
+        
+        groupPhotoContainerView.snp.makeConstraints { make in
+            make.height.equalTo(210)
+        }
+        
+        myPhotoConatinerView.snp.makeConstraints { make in
+            make.height.equalTo(520)
         }
         
         joinButton.snp.makeConstraints { make in
