@@ -28,6 +28,7 @@ final class MyRoutineView: UIView {
     }(UILabel())
     
     lazy var routineTableView: NonScrollTableView = {
+        $0.backgroundColor = .grayEEF1F5
         $0.delegate = self
         $0.dataSource = self
         $0.estimatedRowHeight = 46
@@ -96,7 +97,7 @@ final class MyRoutineView: UIView {
             make.top.equalTo(sectionTitleLabel.snp.bottom).offset(13)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-105)
         }
     }
 }
@@ -107,7 +108,10 @@ extension MyRoutineView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 46
+        if indexPath.row == 0 {
+            return 35
+        }
+        return 37
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
