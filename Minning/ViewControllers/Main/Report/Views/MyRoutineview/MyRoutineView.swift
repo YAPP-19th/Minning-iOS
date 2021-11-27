@@ -15,9 +15,14 @@ import SnapKit
 final class MyRoutineView: UIView {
     private var sampleRoutineData: [[Routine]] = []
     
-    private let sectionTitle: UILabel = {
-        $0.font = .font12PBold
-        $0.textColor = .minningDarkGray100
+    private var separatorView: UIView = {
+        $0.backgroundColor = .primaryLightGray
+        return $0
+    }(UIView())
+    
+    private let sectionTitleLabel: UILabel = {
+        $0.font = .font20PBold
+        $0.textColor = .primaryBlack
         $0.text = "내 루틴"
         return $0
     }(UILabel())
@@ -73,17 +78,22 @@ final class MyRoutineView: UIView {
     private func setupView() {
         backgroundColor = .primaryWhite
         
-        [sectionTitle, routineTableView].forEach {
+        [separatorView, sectionTitleLabel, routineTableView].forEach {
             addSubview($0)
         }
         
-        sectionTitle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+        separatorView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(12)
+        }
+        
+        sectionTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(separatorView.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(16)
         }
         
         routineTableView.snp.makeConstraints { make in
-            make.top.equalTo(sectionTitle.snp.bottom).offset(13)
+            make.top.equalTo(sectionTitleLabel.snp.bottom).offset(13)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-20)
