@@ -26,6 +26,7 @@
 		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
 		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
 		9589B557271DF27300943BA3 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B556271DF27300943BA3 /* AddDayView.swift */; };
+		95A8DD982756C0C70087A343 /* ReportEmptyVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8DD972756C0C70087A343 /* ReportEmptyVIew.swift */; };
 		95AAE0BC2755069300021635 /* GroupListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AAE0BB2755069300021635 /* GroupListCellViewModel.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
@@ -356,6 +357,7 @@
 		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		9589B556271DF27300943BA3 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
+		95A8DD972756C0C70087A343 /* ReportEmptyVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEmptyVIew.swift; sourceTree = "<group>"; };
 		95AAE0BB2755069300021635 /* GroupListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCellViewModel.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -806,6 +808,7 @@
 				B0280458270986FB009D642A /* MonthGraphView.swift */,
 				B028045B2709871D009D642A /* RoutineCompareView.swift */,
 				B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */,
+				95A8DD972756C0C70087A343 /* ReportEmptyVIew.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1676,6 +1679,7 @@
 				B09041A3272D905A00AE8623 /* NormalSettingCell.swift in Sources */,
 				B097A3182722340400E0A479 /* RoutineView.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
+				95A8DD982756C0C70087A343 /* ReportEmptyVIew.swift in Sources */,
 				9589B557271DF27300943BA3 /* AddDayView.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B0904199272D8CC400AE8623 /* NoticeItemCell.swift in Sources */,
