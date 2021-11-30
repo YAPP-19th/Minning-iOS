@@ -13,7 +13,6 @@ import SharedAssets
 import SnapKit
 
 final class OngoingView: UIView {
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

@@ -10,8 +10,10 @@ import DesignSystem
 import Foundation
 import SharedAssets
 import SnapKit
+import UIKit
 
 final class GroupViewController: BaseViewController {
+    
     private let titleSectionContainerView: UIView = {
         $0.backgroundColor = .primaryWhite
         return $0
@@ -41,6 +43,7 @@ final class GroupViewController: BaseViewController {
     private let subTabNowButton: UIButton = {
         $0.setTitle("진행중 3", for: .normal)
         $0.titleLabel?.font = .font16PExBold
+        $0.setTitleColor(.primaryBlack, for: .normal)
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
@@ -48,6 +51,7 @@ final class GroupViewController: BaseViewController {
     private let subTabDoneButton: UIButton = {
         $0.setTitle("종료 5", for: .normal)
         $0.titleLabel?.font = .font16PExBold
+        $0.setTitleColor(.primaryBlack, for: .normal)
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
@@ -69,10 +73,11 @@ final class GroupViewController: BaseViewController {
         return $0
     }(UIStackView())
     
-    lazy var groupListTableView: UITableView = {
-        $0.backgroundColor = .systemOrange
+    private let myGroupView: UIView = MygroupView()
+    lazy var groupListTableView: UIView = {
+        $0.backgroundColor = .minningLightGray100
         return $0
-    }(UITableView())
+    }(UIView())
     
     private let viewModel: GroupViewModel
     
@@ -99,12 +104,6 @@ final class GroupViewController: BaseViewController {
             self.subTabContainerView.isHidden = !(type == .myGroup)
             self.filterScrollView.isHidden = !(type == .groupList)
         }
-        
-        viewModel.myGroupTabType.bindAndFire { [weak self] type in
-            guard let `self` = self else { return }
-            self.subTabNowButton.setTitleColor(type == .now ? .primaryBlack : .minningGray100, for: .normal)
-            self.subTabDoneButton.setTitleColor(type == .done ? .primaryBlack : .minningGray100, for: .normal)
-        }
     }
     
     override func setupViewLayout() {
@@ -116,6 +115,8 @@ final class GroupViewController: BaseViewController {
         [myGroupTabButton, groupListTabButton, subTitleStackView].forEach {
             titleSectionContainerView.addSubview($0)
         }
+        
+        groupListTableView.addSubview(myGroupView)
         
         [subTabNowButton, subTabDoneButton].forEach {
             subTabContainerView.addSubview($0)
@@ -150,6 +151,18 @@ final class GroupViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-10)
         }
         
+        groupListTableView.snp.makeConstraints { make in
+            make.top.equalTo(titleSectionContainerView.snp.bottom).offset(12)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        myGroupView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
         // MARK: Sub Tab Section
         subTabContainerView.snp.makeConstraints { make in
             make.height.equalTo(33)
@@ -182,14 +195,7 @@ final class GroupViewController: BaseViewController {
         }
         
         setupFilterview()
-        
-        groupListTableView.snp.makeConstraints { make in
-            make.top.equalTo(titleSectionContainerView.snp.bottom)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.viewModel.showDetail()
         })
@@ -230,7 +236,7 @@ final class GroupViewController: BaseViewController {
         filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
         filterStackView.addArrangedSubview(filterButton)
         filterStackView.addArrangedSubview(trailingSpacer)
-        
+    
         RoutineCategory.allCases.enumerated().forEach { index, category in
             let filterButton = FilterButton()
             filterButton.isSelected = viewModel.currentCategory.value == category
@@ -257,7 +263,7 @@ final class GroupViewController: BaseViewController {
             }
         }
     }
-    
+       
     @objc
     private func onClickFilterButton(_ sender: FilterButton) {
         if sender.isAll {
