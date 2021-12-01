@@ -42,7 +42,7 @@ final class ReportEmptyView: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .minningLightGray100
+        backgroundColor = .minningLightGray100s
         [characterView, contentLabel, subcontentLabel].forEach {
             addSubview($0)
         }
