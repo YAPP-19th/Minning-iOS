@@ -8,7 +8,6 @@
 
 import CommonSystem
 import DesignSystem
-import Foundation
 import SharedAssets
 import SnapKit
 
