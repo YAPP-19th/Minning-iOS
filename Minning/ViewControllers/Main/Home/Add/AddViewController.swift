@@ -415,6 +415,8 @@ final class AddViewController: BaseViewController {
             stackView.addArrangedSubview($0)
         }
         
+        stackView.setCustomSpacing(14.0, after: categoryLabel)
+        
         categoryLabel.snp.makeConstraints { make in
             make.height.equalTo(24)
         }
