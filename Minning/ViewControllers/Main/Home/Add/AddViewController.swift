@@ -116,11 +116,22 @@ final class AddViewController: BaseViewController {
         return $0
     }(UILabel())
     
+    private let categoryScrollView = UIScrollView()
+    
     private let categoryIconStackView: UIStackView = {
         $0.axis = .horizontal
         $0.distribution = .equalSpacing
+        $0.spacing = 8
         return $0
     }(UIStackView())
+    
+    private let leadingEmptyView: UIView = {
+        return $0
+    }(UIView())
+    
+    private let trailingEmptyView: UIView = {
+        return $0
+    }(UIView())
     
     private let morningView: AddCategoryView = {
         return $0
@@ -285,7 +296,7 @@ final class AddViewController: BaseViewController {
             make.width.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.equalTo(786)
+//            make.height.equalTo(786)
         }
 
         scrollView.addSubview(stackView)
@@ -293,7 +304,7 @@ final class AddViewController: BaseViewController {
         stackView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.contentLayoutGuide.snp.top).offset(31)
             make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset( -(tabBarController?.tabBar.frame.height)!)
-            
+            make.height.equalTo(786)
             make.width.equalTo(scrollView.snp.width)
             make.center.equalTo(scrollView.snp.center)
         }
@@ -359,8 +370,15 @@ final class AddViewController: BaseViewController {
         stackView.setCustomSpacing(19.0, after: numberOfGoalLabel)
 
         // MARK: - 카테고리
-        [morningView, selfImproveView, healthView, lifeView, etcView].forEach {
+        categoryScrollView.addSubview(categoryIconStackView)
+        
+        [leadingEmptyView, morningView, selfImproveView, healthView, lifeView, etcView, trailingEmptyView].forEach {
             categoryIconStackView.addArrangedSubview($0)
+        }
+        
+        leadingEmptyView.snp.makeConstraints { make in
+            make.width.equalTo(8)
+            make.height.equalTo(65)
         }
         
         morningView.snp.makeConstraints { make in
@@ -387,28 +405,47 @@ final class AddViewController: BaseViewController {
             make.width.equalTo(65)
             make.height.equalTo(65)
         }
-
-        [categoryLabel, categoryIconStackView].forEach {
-            categoryStackView.addArrangedSubview($0)
+        
+        trailingEmptyView.snp.makeConstraints { make in
+            make.width.equalTo(8)
+            make.height.equalTo(65)
+        }
+        
+        [categoryLabel, categoryScrollView].forEach {
+            stackView.addArrangedSubview($0)
         }
         
         categoryLabel.snp.makeConstraints { make in
             make.height.equalTo(24)
         }
         
+        categoryScrollView.snp.makeConstraints { make in
+            make.height.equalTo(65)
+            make.leading.trailing.equalToSuperview()
+        }
+        
         categoryIconStackView.snp.makeConstraints { make in
             make.height.equalTo(65)
-            make.trailing.equalTo(-16)
+            make.leading.trailing.equalToSuperview()
+//            make.leading.equalToSuperview()
+//            make.trailing.equalTo(-16)
         }
         
-        categoryStackView.snp.makeConstraints { make in
-            make.height.equalTo(97)
-        }
-                
-        stackView.addArrangedSubview(categoryStackView)
+//        stackView.addArrangedSubview(categoryStackView)
+//        categoryIconStackView.snp.makeConstraints { make in
+//            make.height.equalTo(65)
+//            make.trailing.equalTo(-16)
+//        }
         
-        stackView.setCustomSpacing(20.0, after: categoryStackView)
+//        categoryStackView.snp.makeConstraints { make in
+//            make.height.equalTo(97)
+//        }
         
+        stackView.setCustomSpacing(20.0, after: categoryScrollView)
+        
+//        stackView.setCustomSpacing(20.0, after: categoryStackView)
+        
+        // MARK: - Gap Line
         stackView.addArrangedSubview(gapLine)
         
         gapLine.snp.makeConstraints { make in
