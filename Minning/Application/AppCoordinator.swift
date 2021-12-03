@@ -41,6 +41,14 @@ extension AppCoordinator: AppRoute {
         navigationController.pushViewController(splash, animated: false)
     }
     
+    func gotoOnBoarding() {
+        let startDI = StartDIContainer()
+        let coordinator = StartCoordinator(navigationController: navigationController,
+                                           dependencies: startDI,
+                                           coordinator: self)
+        coordinator.start()
+    }
+    
     func gotoMain(asRoot: Bool = false) {
         let mainID = MainDIContainer()
         let coordinator = MainCoordinator(navigationController: navigationController,

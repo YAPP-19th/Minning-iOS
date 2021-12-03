@@ -2,7 +2,6 @@
 //  ReportEmptyView.swift
 //  Minning
 //
-//  Created by 박지윤 on 2021/12/01.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
@@ -41,7 +40,7 @@ final class ReportEmptyView: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .minningLightGray100s
+        backgroundColor = .minningLightGray100
         [characterView, contentLabel, subcontentLabel].forEach {
             addSubview($0)
         }
