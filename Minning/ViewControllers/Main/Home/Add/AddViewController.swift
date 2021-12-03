@@ -22,11 +22,13 @@ final class AddViewController: BaseViewController {
         return $0
     }(UIBarButtonItem())
     
-    private let scrollView = UIScrollView()
-    
-    private let contentView = UIView()
-    
+    private let scrollView: UIScrollView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIScrollView())
+       
     private let stackView: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         return $0
     }(UIStackView())
@@ -292,23 +294,22 @@ final class AddViewController: BaseViewController {
         view.backgroundColor = .white
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.width.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-//            make.height.equalTo(786)
         }
-
+        
         scrollView.addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.contentLayoutGuide.snp.top).offset(31)
-            make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset( -(tabBarController?.tabBar.frame.height)!)
-            make.height.equalTo(786)
+            make.top.equalTo(scrollView.snp.top).offset(19)
+            make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset( -31 - (tabBarController?.tabBar.frame.height)!)
+            make.trailing.equalToSuperview()
             make.width.equalTo(scrollView.snp.width)
+            make.height.equalTo(786)
             make.center.equalTo(scrollView.snp.center)
         }
-        
+
         // MARK: - 추천 루틴
         stackView.addArrangedSubview(recommendButtonView)
         recommendButtonView.addSubview(recommendButton)
@@ -429,23 +430,9 @@ final class AddViewController: BaseViewController {
         categoryIconStackView.snp.makeConstraints { make in
             make.height.equalTo(65)
             make.leading.trailing.equalToSuperview()
-//            make.leading.equalToSuperview()
-//            make.trailing.equalTo(-16)
         }
         
-//        stackView.addArrangedSubview(categoryStackView)
-//        categoryIconStackView.snp.makeConstraints { make in
-//            make.height.equalTo(65)
-//            make.trailing.equalTo(-16)
-//        }
-        
-//        categoryStackView.snp.makeConstraints { make in
-//            make.height.equalTo(97)
-//        }
-        
         stackView.setCustomSpacing(20.0, after: categoryScrollView)
-        
-//        stackView.setCustomSpacing(20.0, after: categoryStackView)
         
         // MARK: - Gap Line
         stackView.addArrangedSubview(gapLine)
@@ -519,16 +506,17 @@ final class AddViewController: BaseViewController {
         stackView.setCustomSpacing(19.0, after: routineAlarmLabel)
         
         // MARK: - 시간, 알림 보내기
-        stackView.addArrangedSubview(routineAlarmTimeStackView)
         [routineTimeView, routineAlarmView].forEach {
             routineAlarmTimeStackView.addArrangedSubview($0)
         }
+        
+        stackView.addArrangedSubview(routineAlarmTimeStackView)
         
         routineAlarmTimeStackView.snp.makeConstraints { make in
             make.height.equalTo(97)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.top.equalTo(routineAlarmLabel.snp.bottom).offset(19)
         }
         
         [routineTimeLabel, timePickerView].forEach {
@@ -565,6 +553,7 @@ final class AddViewController: BaseViewController {
         routineTimeView.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.leading.equalToSuperview()
+            make.top.equalToSuperview()
         }
         
         routineAlarmView.snp.makeConstraints { make in
