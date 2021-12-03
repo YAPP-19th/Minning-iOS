@@ -26,7 +26,8 @@ final class AddViewController: BaseViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIScrollView())
-       
+    
+    private let scrollContainerView: UIView = UIView()
     private let stackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -295,19 +296,22 @@ final class AddViewController: BaseViewController {
         
         scrollView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
         
-        scrollView.addSubview(stackView)
+        scrollView.addSubview(scrollContainerView)
+        scrollContainerView.addSubview(stackView)
+        
+        scrollContainerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(786).priority(250)
+        }
         
         stackView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top).offset(19)
-            make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset( -31 - (tabBarController?.tabBar.frame.height)!)
-            make.trailing.equalToSuperview()
+            make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-19)
             make.width.equalTo(scrollView.snp.width)
-            make.height.equalTo(786)
-            make.center.equalTo(scrollView.snp.center)
         }
 
         // MARK: - 추천 루틴
@@ -328,6 +332,10 @@ final class AddViewController: BaseViewController {
         // MARK: - 루틴 이름 작성
         [writeRoutineNameLabel, writeRoutineNameTextField].forEach {
             routineNameStackView.addArrangedSubview($0)
+        }
+        
+        writeRoutineNameTextField.snp.makeConstraints { make in
+            make.height.equalTo(50)
         }
         
         stackView.addArrangedSubview(routineNameStackView)
@@ -357,6 +365,10 @@ final class AddViewController: BaseViewController {
         stackView.setCustomSpacing(40.0, after: routineGoalStackView)
         
         stackView.addArrangedSubview(numberOfGoalLabel)
+        
+        writeGoalNameTextField.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
         
         routineGoalStackView.snp.makeConstraints { make in
             make.height.equalTo(88)
