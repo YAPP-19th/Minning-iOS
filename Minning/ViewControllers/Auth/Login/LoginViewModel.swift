@@ -78,7 +78,8 @@ final class LoginViewModel: ObservableObject {
                 DebugLog("me() success.")
                 
                 if let kakaoUser = user {
-                    DebugLog("[로그인된 사용자 정보]\nnickname: \(kakaoUser.kakaoAccount?.profile?.nickname ?? "nil")\nuserId: \(String(describing: kakaoUser.id))")
+                    DebugLog("[로그인된 사용자 정보]\nnickname: \(kakaoUser.kakaoAccount?.profile?.nickname ?? "nil")\nuserId: \(String(describing: kakaoUser.id))\nEmail: \(kakaoUser.kakaoAccount?.email)")
+                    
                     if let kakaoUserId = kakaoUser.id,
                         let email = kakaoUser.kakaoAccount?.email {
                         self.processSocialCheck(email: email, id: kakaoUserId, socialType: .kakao, token: token)

@@ -9,6 +9,7 @@ import CoreData
 import DesignSystem
 import KakaoSDKAuth
 import KakaoSDKCommon
+import KakaoSDKUser
 import UIKit
 
 @main
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         KakaoSDKCommon.initSDK(appKey: "a48aa63d7b0c956c19683ef43e633aac")
+//        UserApi.shared.logout(completion: { (error) in
+//            
+//        })
         
         let navigationController = UINavigationController(navigationBarClass: PlainUINavigationBar.self,
                                                           toolbarClass: nil)
