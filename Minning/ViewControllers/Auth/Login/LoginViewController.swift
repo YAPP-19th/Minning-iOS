@@ -208,6 +208,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate,
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
             
+            DebugLog("useridentifier: \(userIdentifier)")
+            DebugLog("fullName: \(String(describing: fullName))")
+            DebugLog("email: \(String(describing: email))")
+            
             if let authorizationCode = appleIDCredential.authorizationCode,
                let identityToken = appleIDCredential.identityToken,
                let authString = String(data: authorizationCode, encoding: .utf8),
@@ -216,11 +220,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate,
                 DebugLog("identityToken: \(identityToken)")
                 DebugLog("authString: \(authString)")
                 DebugLog("tokenString: \(tokenString)")
+                
+                viewModel.processSocialCheck(email: email ?? "", id: 0, socialType: .apple, token: tokenString)
             }
-            
-            DebugLog("useridentifier: \(userIdentifier)")
-            DebugLog("fullName: \(String(describing: fullName))")
-            DebugLog("email: \(String(describing: email))")
         case let passwordCredential as ASPasswordCredential:
             let username = passwordCredential.user
             let password = passwordCredential.password

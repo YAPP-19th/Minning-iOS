@@ -24,4 +24,16 @@ final class LoginViewModel: ObservableObject {
             ErrorLog("Email을 입력해주세요")
         }
     }
+    
+    public func processSocialCheck(email: String, id: Int64, socialType: SocialType, token: String) {
+        let socialRequest = SocialRequest(email: email, id: id, socialType: socialType, token: token)
+        AuthAPIRequest.socialCheck(request: socialRequest, completion: { result in
+            switch result {
+            case .success(let response):
+                DebugLog("SocialCheck AccessToken : \(response.data.accessToken)")
+            case .failure(let error):
+                ErrorLog("Error : \(error.localizedDescription)")
+            }
+        })
+    }
 }
