@@ -7,6 +7,9 @@
 
 import CommonSystem
 import Foundation
+import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
 
 final class LoginViewModel: ObservableObject {
     public var emailValue: DataBinding<String?> = DataBinding(nil)
@@ -33,6 +36,54 @@ final class LoginViewModel: ObservableObject {
                 DebugLog("SocialCheck AccessToken : \(response.data.accessToken)")
             case .failure(let error):
                 ErrorLog("Error : \(error.localizedDescription)")
+            }
+        })
+    }
+    
+    public func requestKakaoTalkLogin() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { oauthToken, error in
+                if let error = error {
+                    ErrorLog(error.localizedDescription)
+                } else {
+                    // Kakao Login Success
+                    if let accessToken = oauthToken?.accessToken {
+                        self.getKakaoUserInfo(token: accessToken)
+                    }
+                }
+            }
+        } else {
+            requestKakaoAccountLogin()
+        }
+    }
+    
+    private func requestKakaoAccountLogin() {
+        UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+            if let error = error {
+                ErrorLog(error.localizedDescription)
+            } else {
+                DebugLog("loginWithKakaoAccount() success ===> \(String(describing: oauthToken))")
+                if let accessToken = oauthToken?.accessToken {
+                    self.getKakaoUserInfo(token: accessToken)
+                }
+            }
+        }
+    }
+    
+    private func getKakaoUserInfo(token: String) {
+        UserApi.shared.me(completion: { user, error in
+            if let error = error {
+                ErrorLog(error.localizedDescription)
+            } else {
+                DebugLog("me() success.")
+                
+                if let kakaoUser = user {
+                    DebugLog("[로그인된 사용자 정보]\nnickname: \(kakaoUser.kakaoAccount?.profile?.nickname ?? "nil")\nuserId: \(String(describing: kakaoUser.id))")
+                    if let kakaoUserId = kakaoUser.id,
+                        let email = kakaoUser.kakaoAccount?.email {
+                        self.processSocialCheck(email: email, id: kakaoUserId, socialType: .kakao, token: token)
+                    }
+                }
             }
         })
     }

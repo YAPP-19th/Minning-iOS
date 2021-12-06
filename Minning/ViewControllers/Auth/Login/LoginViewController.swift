@@ -65,7 +65,7 @@ final class LoginViewController: BaseViewController {
         $0.isActive = true
         $0.buttonContent = "카카오로 로그인"
         $0.plainButtonType = .kakao
-//        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(onClickKakaoLoginButon(_:)), for: .touchUpInside)
         return $0
     }(PlainButton())
     
@@ -105,6 +105,11 @@ final class LoginViewController: BaseViewController {
         // MARK: Server API
 //        viewModel.goToPassword(isLogin: false)
         viewModel.goToPassword(isLogin: true)
+    }
+    
+    @objc
+    private func onClickKakaoLoginButon(_ sender: PlainButton) {
+        viewModel.requestKakaoTalkLogin()
     }
     
     @objc
