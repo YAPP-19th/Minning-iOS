@@ -59,21 +59,6 @@ public struct SocialCheckResponseModel: Codable {
     public let message: CommonAPIResponse
 }
 
-public struct SocialCheckErrorResponseModel: Codable {
-    public let data: SocialErrorDataModel
-    public let message: CommonAPIResponse
-}
-
-public struct SocialErrorDataModel: Codable {
-    public let processes: String
-    public let data: SocialErrorEmailDataModel
-}
-
-public struct SocialErrorEmailDataModel: Codable {
-    public let email: String
-    public let socialType: String
-}
-
 public struct SocialDataResponseModel: Codable {
     enum CodingKeys: String, CodingKey {
         case data
