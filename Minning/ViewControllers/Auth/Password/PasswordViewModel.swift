@@ -60,7 +60,7 @@ final class PasswordViewModel {
     }
     
     public func goToNickname() {
-        coordinator.goToNickname(animated: true)
+        coordinator.goToNickname(animated: true, email: emailValue, password: passwordValue.value)
     }
     
     public func goToFindPassword() {

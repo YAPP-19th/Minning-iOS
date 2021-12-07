@@ -28,6 +28,15 @@ final class LoginViewModel: ObservableObject {
         }
     }
     
+    public func goToNicknameBySocial(socialType: SocialType, socialToken: String) {
+        coordinator.goToNickname(email: nil, password: nil,
+                                 socialToken: socialToken, isSocial: true, socialType: socialType)
+    }
+    
+    public func goToMain() {
+        coordinator.goToMain()
+    }
+    
     public func processSocialCheck(socialType: SocialType, token: String) {
         let socialRequest = SocialRequest(socialType: socialType, token: token)
         DebugLog("Social Check API Start")
@@ -35,11 +44,21 @@ final class LoginViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 // 회원인 경우
-                DebugLog("SocialCheck AccessToken : \(response.data.accessToken)")
+                let epochTime = TimeInterval(response.data.expiresIn) / 1000
+                DebugLog("SocialCheck AccessToken : \(response.data.accessToken), EpochTime: \(epochTime)")
                 
+                let setAccessTokenResult = TokenManager.shared.setAccessToken(token: response.data.accessToken)
+                let setRefreshTokenResult = TokenManager.shared.setRefreshToken(token: response.data.refreshToken)
+                let setExpiredInResult = TokenManager.shared.setAccessTokenExpiredDate(expiredAt: Date(timeIntervalSince1970: epochTime))
+                
+                if setAccessTokenResult && setRefreshTokenResult && setExpiredInResult {
+                    DebugLog("Move To Main")
+                    self.goToMain()
+                }
             case .failure(let error):
                 // 회원이 아닌 경우
-                ErrorLog("Error : \(error.localizedDescription)")
+                ErrorLog("Error : \(error.localizedDescription), No User")
+                self.goToNicknameBySocial(socialType: socialType, socialToken: token)
             }
         })
     }

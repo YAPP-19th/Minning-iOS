@@ -60,11 +60,14 @@ final class NicknameViewController: BaseViewController {
     
     @objc
     private func onClickSignUpButon(_ sender: PlainButton) {
-        viewModel.goToMain()
+        viewModel.processSignUp()
     }
     
     @objc
     private func textFieldDidChange(_ sender: PlainTextField) {
+        if let nickname = sender.text {
+            viewModel.nickname.accept(nickname)
+        }
         signUpButton.isActive = sender.text?.count ?? 0 > 0
     }
     
