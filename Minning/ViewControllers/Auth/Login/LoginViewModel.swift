@@ -34,8 +34,11 @@ final class LoginViewModel: ObservableObject {
         AuthAPIRequest.socialCheck(request: socialRequest, completion: { result in
             switch result {
             case .success(let response):
+                // 회원인 경우
                 DebugLog("SocialCheck AccessToken : \(response.data.accessToken)")
+                
             case .failure(let error):
+                // 회원이 아닌 경우
                 ErrorLog("Error : \(error.localizedDescription)")
             }
         })

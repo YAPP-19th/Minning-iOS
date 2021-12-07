@@ -11,6 +11,7 @@
 		B0180F8026DCCC50008C6F3C /* LogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0180F7F26DCCC50008C6F3C /* LogConfig.swift */; };
 		B0180F8626DCCC70008C6F3C /* DataBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0180F8526DCCC70008C6F3C /* DataBinding.swift */; };
 		B0180F8826DCCC99008C6F3C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0180F8726DCCC99008C6F3C /* String+Extensions.swift */; };
+		B0199287275EE30F00FF3E96 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0199286275EE30F00FF3E96 /* KeychainManager.swift */; };
 		B02803DD27070110009D642A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803DC27070110009D642A /* Date+Extensions.swift */; };
 		FEE58894F5F91BB732CB0DB7 /* libPods-CommonSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2CEFD01767744BDFE5CB45 /* libPods-CommonSystem.a */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		B0180F7F26DCCC50008C6F3C /* LogConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfig.swift; sourceTree = "<group>"; };
 		B0180F8526DCCC70008C6F3C /* DataBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBinding.swift; sourceTree = "<group>"; };
 		B0180F8726DCCC99008C6F3C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		B0199286275EE30F00FF3E96 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		B02803DC27070110009D642A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		EC771CF23FC3631D887485D5 /* Pods-CommonSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonSystem.release.xcconfig"; path = "Target Support Files/Pods-CommonSystem/Pods-CommonSystem.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				B0180F8526DCCC70008C6F3C /* DataBinding.swift */,
 				B0180F8726DCCC99008C6F3C /* String+Extensions.swift */,
 				B02803DC27070110009D642A /* Date+Extensions.swift */,
+				B0199286275EE30F00FF3E96 /* KeychainManager.swift */,
 			);
 			path = CommonSystem;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				B02803DD27070110009D642A /* Date+Extensions.swift in Sources */,
 				B0180F8826DCCC99008C6F3C /* String+Extensions.swift in Sources */,
 				B0180F8626DCCC70008C6F3C /* DataBinding.swift in Sources */,
+				B0199287275EE30F00FF3E96 /* KeychainManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
