@@ -48,8 +48,13 @@ final class NicknameViewModel {
     }
     
     private func processSocialSignUp() {
-        if let socialType = socialType, let socialToken = token {
-            let socialSignUpRequest = SocialSignUpRequest(token: socialToken, nickname: nickname.value, socialType: socialType)
+        if let socialType = socialType,
+            let socialToken = token,
+            let email = email {
+            let socialSignUpRequest = SocialSignUpRequest(token: socialToken,
+                                                          nickname: nickname.value,
+                                                          email: email,
+                                                          socialType: socialType)
             AuthAPIRequest.socialSignUp(request: socialSignUpRequest, completion: { result in
                 switch result {
                 case .success(let response):
@@ -65,7 +70,7 @@ final class NicknameViewModel {
                         self.goToMain()
                     }
                 case .failure(let error):
-                    ErrorLog(error.localizedDescription)
+                    ErrorLog(error.defaultError.localizedDescription)
                 }
             })
         }

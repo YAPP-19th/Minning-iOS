@@ -100,37 +100,37 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
     }
     
     public static func addRoutine(request: RoutineRequest,
-                                  completion: @escaping (Result<RoutineResponseModel, Error>) -> Void) {
+                                  completion: @escaping (Result<RoutineResponseModel, MinningAPIError>) -> Void) {
         perform(.addRoutine(request: request), completion: completion)
     }
     
     public static func modifyRoutine(routineId: Int64,
                                      request: RoutineRequest,
-                                     completion: @escaping (Result<RoutineResponseModel, Error>) -> Void) {
+                                     completion: @escaping (Result<RoutineResponseModel, MinningAPIError>) -> Void) {
         perform(.modifyRoutine(id: routineId, request: request), completion: completion)
     }
     
     public static func fetchSingleRoutine(routineId: Int64,
-                                          completion: @escaping (Result<RoutineResponseModel, Error>) -> Void) {
+                                          completion: @escaping (Result<RoutineResponseModel, MinningAPIError>) -> Void) {
         perform(.fetchSingleRoutine(id: routineId), completion: completion)
     }
     
     public static func deleteRoutine(routineId: Int64,
-                                     completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+                                     completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.deleteRoutine(id: routineId), completion: completion)
     }
     
-    public static func getRoutinePercentPerWeek(completion: @escaping (Result<RoutinePercentResponseModel, Error>) -> Void) {
+    public static func getRoutinePercentPerWeek(completion: @escaping (Result<RoutinePercentResponseModel, MinningAPIError>) -> Void) {
         perform(.fetchPercentPerWeek, completion: completion)
     }
     
-    public static func routineListByDay(day: Day, completion: @escaping (Result<RoutineListResponseModel, Error>) -> Void) {
+    public static func routineListByDay(day: Day, completion: @escaping (Result<RoutineListResponseModel, MinningAPIError>) -> Void) {
         perform(.fetchAllByDay(day: day), completion: completion)
     }
     
     public static func modifyRoutineOrderByDay(day: Day,
                                                routineIds: [Int64],
-                                               completion: @escaping (Result<RoutineListResponseModel, Error>) -> Void) {
+                                               completion: @escaping (Result<RoutineListResponseModel, MinningAPIError>) -> Void) {
         perform(.modifyRoutineOrder(day: day, ids: routineIds), completion: completion)
     }
 }

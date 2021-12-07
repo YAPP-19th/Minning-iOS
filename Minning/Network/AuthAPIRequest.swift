@@ -32,6 +32,7 @@ public struct SocialSignUpRequest: Codable {
 //    let email: String
     let token: String
     let nickname: String
+    let email: String
     let socialType: SocialType
 }
 
@@ -109,7 +110,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
                 parameters["token"] = request.token
                 return parameters
             case let.signUpSocial(request):
-//                parameters["email"] = request.email
+                parameters["email"] = request.email
                 parameters["token"] = request.token
                 parameters["nickname"] = request.nickname
                 parameters["socialType"] = request.socialType.rawValue
@@ -149,48 +150,48 @@ public struct AuthAPIRequest: MinningAPIRequestable {
     }
     
     public static func login(request: LoginRequest,
-                             completion: @escaping (Result<LoginResponseModel, Error>) -> Void) {
+                             completion: @escaping (Result<LoginResponseModel, MinningAPIError>) -> Void) {
         perform(.loginByEmail(request: request), completion: completion)
     }
     
     public static func signUp(request: SignUpRequest,
-                              completion: @escaping (Result<SignUpResponseModel, Error>) -> Void) {
+                              completion: @escaping (Result<SignUpResponseModel, MinningAPIError>) -> Void) {
         perform(.signUp(request: request), completion: completion)
     }
     
     public static func socialSignUp(request: SocialSignUpRequest,
-                                    completion: @escaping (Result<SignUpResponseModel, Error>) -> Void) {
+                                    completion: @escaping (Result<SignUpResponseModel, MinningAPIError>) -> Void) {
         perform(.signUpSocial(request: request), completion: completion)
     }
     
     public static func socialCheck(request: SocialRequest,
-                                   completion: @escaping (Result<SignUpResponseModel, Error>) -> Void) {
-        perform(.socialCheck(request: request), completion: completion)
+                                   completion: @escaping (Result<SignUpResponseModel, MinningAPIError>) -> Void) {
+        perform(.socialCheck(request: request), isCustomError: true, completion: completion)
     }
     
-    public static func send(email: String, completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+    public static func send(email: String, completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.send(email: email), completion: completion)
     }
     
     public static func checkVerificationCode(email: String, number: String,
-                                             completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+                                             completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.checkVerificationCode(email: email, number: number), completion: completion)
     }
     
-    public static func refreshToken(completion: @escaping (Result<RefreshTokenResponseModel, Error>) -> Void) {
+    public static func refreshToken(completion: @escaping (Result<RefreshTokenResponseModel, MinningAPIError>) -> Void) {
         perform(.refreshToken, completion: completion)
     }
     
     public static func resetPassword(email: String, password: String,
-                                     completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+                                     completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.resetPassword(email: email, password: password), completion: completion)
     }
     
-    public static func logout(completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+    public static func logout(completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.logout, completion: completion)
     }
     
-    public static func checkEmailExist(email: String, completion: @escaping (Result<EmailExistResponseModel, Error>) -> Void) {
+    public static func checkEmailExist(email: String, completion: @escaping (Result<EmailExistResponseModel, MinningAPIError>) -> Void) {
         perform(.checkEmailExist(email: email), completion: completion)
     }
 }

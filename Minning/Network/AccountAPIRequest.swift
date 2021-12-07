@@ -65,19 +65,19 @@ public struct AccountAPIRequest: MinningAPIRequestable {
         }
     }
     
-    public static func myInfo(completion: @escaping (Result<UserResponseModel, Error>) -> Void) {
+    public static func myInfo(completion: @escaping (Result<UserResponseModel, MinningAPIError>) -> Void) {
         perform(.myInfo, completion: completion)
     }
     
-    public static func toggleNotification(completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+    public static func toggleNotification(completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.toggleNotification, completion: completion)
     }
     
-    public static func changePassword(password: String, completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+    public static func changePassword(password: String, completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.changePassword(password: password), completion: completion)
     }
     
-    public static func deleteUser(completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+    public static func deleteUser(completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.deleteUser, completion: completion)
     }
 }

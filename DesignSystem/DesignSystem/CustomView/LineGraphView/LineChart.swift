@@ -21,11 +21,11 @@ public struct PointEntry {
 }
 
 extension PointEntry: Comparable {
-    public static func <(lhs: PointEntry, rhs: PointEntry) -> Bool {
+    public static func < (lhs: PointEntry, rhs: PointEntry) -> Bool {
         return lhs.value < rhs.value
     }
     
-    public static func ==(lhs: PointEntry, rhs: PointEntry) -> Bool {
+    public static func == (lhs: PointEntry, rhs: PointEntry) -> Bool {
         return lhs.value == rhs.value
     }
 }

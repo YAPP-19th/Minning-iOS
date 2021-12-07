@@ -85,6 +85,4 @@ extension NotificationViewController: UITableViewDataSource, UITableViewDelegate
         }
         return UITableViewCell()
     }
-    
-    
 }

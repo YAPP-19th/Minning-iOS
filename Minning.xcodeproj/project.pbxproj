@@ -56,6 +56,8 @@
 		B0180F7C26DCCC27008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0180F7D26DCCC2C008C6F3C /* CommonSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; };
 		B0180F7E26DCCC2C008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B01992A0275FA56200FF3E96 /* MinningAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019929F275FA56200FF3E96 /* MinningAPIError.swift */; };
+		B01992A1275FA56200FF3E96 /* MinningAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019929F275FA56200FF3E96 /* MinningAPIError.swift */; };
 		B01C775D274CFE000032B329 /* AccountAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C775C274CFE000032B329 /* AccountAPIRequest.swift */; };
 		B01C7761274CFE030032B329 /* AccountAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C775C274CFE000032B329 /* AccountAPIRequest.swift */; };
 		B01C7763274D00D00032B329 /* RetrospectAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */; };
@@ -377,6 +379,7 @@
 		B0180F5626DCCBA0008C6F3C /* SharedAssets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SharedAssets.xcodeproj; path = SharedAssets/SharedAssets.xcodeproj; sourceTree = "<group>"; };
 		B0180F7526DCCC1E008C6F3C /* CommonSystem.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonSystem.xcodeproj; path = CommonSystem/CommonSystem.xcodeproj; sourceTree = "<group>"; };
 		B0180FB026DCD010008C6F3C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B019929F275FA56200FF3E96 /* MinningAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinningAPIError.swift; sourceTree = "<group>"; };
 		B01C775C274CFE000032B329 /* AccountAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAPIRequest.swift; sourceTree = "<group>"; };
 		B01C7762274D00D00032B329 /* RetrospectAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrospectAPIRequest.swift; sourceTree = "<group>"; };
 		B01C7765274D08500032B329 /* RoutineAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineAPIRequest.swift; sourceTree = "<group>"; };
@@ -1029,6 +1032,7 @@
 				B01C776E274D15740032B329 /* GroupAPIRequest.swift */,
 				B01C7771274D18C20032B329 /* CaptureAPIRequest.swift */,
 				B01C7774274D18CA0032B329 /* MissionAPIRequest.swift */,
+				B019929F275FA56200FF3E96 /* MinningAPIError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1590,6 +1594,7 @@
 				B070558A275A59F200AB776F /* OnBoardingViewController.swift in Sources */,
 				B097A3192722340400E0A479 /* RoutineView.swift in Sources */,
 				B0ADFE6F274B1461003019E5 /* TokenManager.swift in Sources */,
+				B01992A1275FA56200FF3E96 /* MinningAPIError.swift in Sources */,
 				B02803902706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B02803F92708544F009D642A /* RecommendViewModel.swift in Sources */,
 			);
@@ -1670,6 +1675,7 @@
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
 				8373F76B2748BC4B008839FA /* PhotoDetailViewModel.swift in Sources */,
+				B01992A0275FA56200FF3E96 /* MinningAPIError.swift in Sources */,
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B028043D270972B5009D642A /* RoutineModel.swift in Sources */,
 				B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */,

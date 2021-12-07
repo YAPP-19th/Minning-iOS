@@ -67,12 +67,17 @@ public protocol UploadRouteable: UploadConvertible {
 protocol MinningAPIRequestable {
     associatedtype RequestType: APIRouteable
     static func perform<T: Decodable>(_ request: RequestType,
-                                      completion: @escaping (Result<T, Error>) -> Void)
+                                      isCustomError: Bool,
+                                      completion: @escaping (Result<T, MinningAPIError>) -> Void)
+    static func performMultipart<T: Decodable>(_ request: RequestType,
+                                               isCustomError: Bool,
+                                               completion: @escaping (Result<T, MinningAPIError>) -> Void)
 }
 
 extension MinningAPIRequestable {
     static func perform<T: Decodable>(_ request: RequestType,
-                                      completion: @escaping (Result<T, Error>) -> Void) {
+                                      isCustomError: Bool = false,
+                                      completion: @escaping (Result<T, MinningAPIError>) -> Void) {
         DebugLog("Request URL: \(request.requestURL.absoluteString)")
         DebugLog("Request Header: \(request.urlRequest?.allHTTPHeaderFields.debugDescription ?? "nil")")
         DebugLog("Request Parameters: \(request.parameters.debugDescription)")
@@ -90,13 +95,18 @@ extension MinningAPIRequestable {
                 case .success(let response):
                     completion(.success(response))
                 case .failure(let error):
-                    completion(.failure(error))
+                    if isCustomError {
+                        completion(.failure(.custom(error: error, customValue: responseData)))
+                    } else {
+                        completion(.failure(.normal(error: error)))
+                    }
                 }
             }
     }
     
     static func performMultipart<T: Decodable>(_ request: RequestType,
-                                               completion: @escaping (Result<T, Error>) -> Void) {
+                                               isCustomError: Bool = false,
+                                               completion: @escaping (Result<T, MinningAPIError>) -> Void) {
         let multipartFormData: MultipartFormData = MultipartFormData()
         if let parameters = request.parameters {
             parameters.forEach { parameter in
@@ -108,7 +118,7 @@ extension MinningAPIRequestable {
         
         if let image = request.image,
             let imageData = image.jpegData(compressionQuality: 1) {
-            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg",mimeType: "image/jpeg")
+            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
         }
         
         let newHeaders = [MinningHeader.accept(value: "application/json"),
@@ -140,7 +150,11 @@ extension MinningAPIRequestable {
                 case .success(let response):
                     completion(.success(response))
                 case .failure(let error):
-                    completion(.failure(error))
+                    if isCustomError {
+                        completion(.failure(.custom(error: error, customValue: responseData)))
+                    } else {
+                        completion(.failure(.normal(error: error)))
+                    }
                 }
             }
     }

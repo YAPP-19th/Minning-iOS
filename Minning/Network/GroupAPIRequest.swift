@@ -43,17 +43,17 @@ public struct GroupAPIRequest: MinningAPIRequestable {
         }
     }
     
-    public static func getGroupList(completion: @escaping (Result<GroupResponseModel, Error>) -> Void) {
+    public static func getGroupList(completion: @escaping (Result<GroupResponseModel, MinningAPIError>) -> Void) {
         perform(.groupList, completion: completion)
     }
     
     public static func getGroupListByCategory(category: RoutineCategory,
-                                              completion: @escaping (Result<GroupResponseModel, Error>) ->  Void) {
+                                              completion: @escaping (Result<GroupResponseModel, MinningAPIError>) -> Void) {
         perform(.groupListByCategory(category: category), completion: completion)
     }
     
     public static func getGroupDetail(groupId: Int64,
-                                      completion: @escaping (Result<GroupDetailResponseModel, Error>) -> Void) {
+                                      completion: @escaping (Result<GroupDetailResponseModel, MinningAPIError>) -> Void) {
         perform(.groupDetail(id: groupId), completion: completion)
     }
 }

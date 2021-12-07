@@ -14,7 +14,7 @@ public class MUIBarButtonItem: UIBarButtonItem {
         didSet {
             if let font = textFont {
                 setTitleTextAttributes([
-                    NSAttributedString.Key.font : font
+                    NSAttributedString.Key.font: font
                 ], for: .normal)
             }
         }
