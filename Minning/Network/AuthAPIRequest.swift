@@ -165,7 +165,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
     }
     
     public static func socialCheck(request: SocialRequest,
-                                   completion: @escaping (Result<SignUpResponseModel, MinningAPIError>) -> Void) {
+                                   completion: @escaping (Result<SocialCheckResponseModel, MinningAPIError>) -> Void) {
         perform(.socialCheck(request: request), isCustomError: true, completion: completion)
     }
     

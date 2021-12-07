@@ -89,7 +89,7 @@ extension MinningAPIRequestable {
                 let responseData = response.data ?? Data()
                 let string = String(data: responseData, encoding: .utf8)
                 
-                DebugLog("Repsonse: \(string ?? "")")
+                DebugLog("StatusCode: \(response.response?.statusCode)")
                 
                 switch response.result {
                 case .success(let response):
