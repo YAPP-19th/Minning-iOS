@@ -18,14 +18,26 @@ final class LoginViewModel: ObservableObject {
     
     public init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
+        let _ = TokenManager.shared.deleteAllTokenData()
     }
     
-    public func goToPassword(isLogin: Bool) {
+    public func processEmailCheck() {
         if let email = emailValue.value {
-            coordinator.goToPassword(animated: true, isLogin: isLogin, email: email)
+            AuthAPIRequest.checkEmailExist(email: email, completion: { result in
+                switch result {
+                case .success(let response):
+                    self.goToPassword(email: email, isLogin: response.data.exist)
+                case .failure(let error):
+                    ErrorLog(error.defaultError.localizedDescription)
+                }
+            })
         } else {
-            ErrorLog("Email을 입력해주세요")
+            ErrorLog("Email을 입력해주세요.")
         }
+    }
+    
+    private func goToPassword(email: String, isLogin: Bool) {
+        coordinator.goToPassword(animated: true, isLogin: isLogin, email: email)
     }
     
     public func goToNicknameBySocial(socialType: SocialType, socialToken: String, email: String) {

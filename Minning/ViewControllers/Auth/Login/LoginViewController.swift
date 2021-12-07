@@ -102,9 +102,7 @@ final class LoginViewController: BaseViewController {
     
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
-        // MARK: Server API
-//        viewModel.goToPassword(isLogin: false)
-        viewModel.goToPassword(isLogin: true)
+        viewModel.processEmailCheck()
     }
     
     @objc

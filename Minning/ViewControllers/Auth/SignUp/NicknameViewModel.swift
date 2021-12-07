@@ -43,7 +43,34 @@ final class NicknameViewModel {
         if isSocial {
             processSocialSignUp()
         } else {
-            DebugLog("Normal Sign Up")
+            processEmailSignUp()
+        }
+    }
+    
+    private func processEmailSignUp() {
+        if let email = email,
+           let password = password {
+            let request = SignUpRequest(email: email, nickname: nickname.value,
+                                        password: password, socialType: .email)
+            
+            AuthAPIRequest.signUp(request: request, completion: { result in
+                switch result {
+                case .success(let response):
+                    let epochTime = TimeInterval(response.data.expiresIn) / 1000
+                    DebugLog("Email SignUp AccessToken : \(response.data.accessToken), EpochTime: \(epochTime)")
+                    
+                    let setAccessTokenResult = TokenManager.shared.setAccessToken(token: response.data.accessToken)
+                    let setRefreshTokenResult = TokenManager.shared.setRefreshToken(token: response.data.refreshToken)
+                    let setExpiredInResult = TokenManager.shared.setAccessTokenExpiredDate(expiredAt: Date(timeIntervalSince1970: epochTime))
+                    
+                    if setAccessTokenResult && setRefreshTokenResult && setExpiredInResult {
+                        DebugLog("Move To Main")
+                        self.goToMain()
+                    }
+                case .failure(let error):
+                    ErrorLog(error.defaultError.localizedDescription)
+                }
+            })
         }
     }
     

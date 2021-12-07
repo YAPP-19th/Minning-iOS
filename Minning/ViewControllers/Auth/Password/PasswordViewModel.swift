@@ -77,8 +77,17 @@ final class PasswordViewModel {
             AuthAPIRequest.login(request: loginRequest, completion: { result in
                 switch result {
                 case .success(let response):
-                    DebugLog(response.message.status)
-                    DebugLog(response.message.msg)
+                    let epochTime = TimeInterval(response.data.expiresIn) / 1000
+                    DebugLog("Login AccessToken : \(response.data.accessToken), EpochTime: \(epochTime)")
+                    
+                    let setAccessTokenResult = TokenManager.shared.setAccessToken(token: response.data.accessToken)
+                    let setRefreshTokenResult = TokenManager.shared.setRefreshToken(token: response.data.refreshToken)
+                    let setExpiredInResult = TokenManager.shared.setAccessTokenExpiredDate(expiredAt: Date(timeIntervalSince1970: epochTime))
+                    
+                    if setAccessTokenResult && setRefreshTokenResult && setExpiredInResult {
+                        DebugLog("Move To Main")
+                        self.goToMain()
+                    }
                 case .failure(let error):
                     ErrorLog(error.localizedDescription)
                 }
