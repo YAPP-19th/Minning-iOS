@@ -35,8 +35,8 @@ public struct SocialSignUpRequest: Codable {
 }
 
 public struct SocialRequest: Codable {
-    let email: String
-    let id: Int64
+//    let email: String
+//    let id: Int64
     let socialType: SocialType
     let token: String
 }
@@ -102,9 +102,8 @@ public struct AuthAPIRequest: MinningAPIRequestable {
                 parameters["socialType"] = request.socialType.rawValue
                 return parameters
             case let .socialCheck(request):
-                parameters["email"] = request.email
-                parameters["id"] = request.id
-                parameters["social"] = request.socialType.rawValue
+//                parameters["email"] = request.email
+//                parameters["id"] = request.id
                 parameters["socialType"] = request.socialType.rawValue
                 parameters["token"] = request.token
                 return parameters
@@ -159,7 +158,7 @@ public struct AuthAPIRequest: MinningAPIRequestable {
     
     public static func socialCheck(request: SocialRequest,
                                    completion: @escaping (Result<SignUpResponseModel, Error>) -> Void) {
-        
+        perform(.socialCheck(request: request), completion: completion)
     }
     
     public static func send(email: String, completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {

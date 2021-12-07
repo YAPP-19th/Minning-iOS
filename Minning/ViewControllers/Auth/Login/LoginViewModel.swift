@@ -7,8 +7,8 @@
 
 import CommonSystem
 import Foundation
-import KakaoSDKCommon
 import KakaoSDKAuth
+import KakaoSDKCommon
 import KakaoSDKUser
 
 final class LoginViewModel: ObservableObject {
@@ -28,8 +28,9 @@ final class LoginViewModel: ObservableObject {
         }
     }
     
-    public func processSocialCheck(email: String, id: Int64, socialType: SocialType, token: String) {
-        let socialRequest = SocialRequest(email: email, id: id, socialType: socialType, token: token)
+    public func processSocialCheck(socialType: SocialType, token: String) {
+        let socialRequest = SocialRequest(socialType: socialType, token: token)
+        DebugLog("Social Check API Start")
         AuthAPIRequest.socialCheck(request: socialRequest, completion: { result in
             switch result {
             case .success(let response):
@@ -78,12 +79,10 @@ final class LoginViewModel: ObservableObject {
                 DebugLog("me() success.")
                 
                 if let kakaoUser = user {
-                    DebugLog("[로그인된 사용자 정보]\nnickname: \(kakaoUser.kakaoAccount?.profile?.nickname ?? "nil")\nuserId: \(String(describing: kakaoUser.id))\nEmail: \(kakaoUser.kakaoAccount?.email)")
-                    
-                    if let kakaoUserId = kakaoUser.id,
-                        let email = kakaoUser.kakaoAccount?.email {
-                        self.processSocialCheck(email: email, id: kakaoUserId, socialType: .kakao, token: token)
-                    }
+                    DebugLog("nickname: \(kakaoUser.kakaoAccount?.profile?.nickname ?? "nil")")
+                    DebugLog("userId: \(String(describing: kakaoUser.id))")
+                    DebugLog("Email: \(kakaoUser.kakaoAccount?.email ?? "nil")")
+                    self.processSocialCheck(socialType: .kakao, token: token)
                 }
             }
         })

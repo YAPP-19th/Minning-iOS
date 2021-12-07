@@ -226,7 +226,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate,
                 DebugLog("authString: \(authString)")
                 DebugLog("tokenString: \(tokenString)")
                 
-                viewModel.processSocialCheck(email: email ?? "", id: 0, socialType: .apple, token: tokenString)
+                viewModel.processSocialCheck(socialType: .apple, token: tokenString)
             }
         case let passwordCredential as ASPasswordCredential:
             let username = passwordCredential.user
