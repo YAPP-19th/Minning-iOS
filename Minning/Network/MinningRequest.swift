@@ -170,14 +170,14 @@ public extension APIRouteable {
     }
     
     var accessToken: String {
-        return ""
+        return TokenManager.shared.getAccessToken() ?? ""
     }
     
     func asURLRequest() throws -> URLRequest {
         var request = URLRequest(url: requestURL)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = .reloadIgnoringLocalCacheData
-        request.setValue(accessToken, forHTTPHeaderField: "AccessToken")
+        request.setValue(accessToken, forHTTPHeaderField: "Authorization")
         
         let newHeaders = [MinningHeader.accept(value: "application/json"),
                           MinningHeader.contentType(value: "application/json")]

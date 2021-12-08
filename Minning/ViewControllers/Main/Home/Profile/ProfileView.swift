@@ -23,6 +23,14 @@ protocol ProfileViewDelegate: AnyObject {
 final class ProfileView: UIView {
     weak var delegate: ProfileViewDelegate?
     
+    public var profileData: User? {
+        didSet {
+            if let profileUrl = profileData?.profileFullUrl {
+                downloadImage(from: profileUrl)
+            }
+        }
+    }
+    
     private let profileImageButton: UIButton = {
         $0.backgroundColor = .primaryLightGray
         $0.layer.cornerRadius = 22
@@ -163,5 +171,21 @@ final class ProfileView: UIView {
             make.trailing.equalTo(rightArrowButton.snp.leading).offset(-15)
             make.bottom.equalToSuperview().offset(-27)
         }
+    }
+    
+    private func downloadImage(from url: URL) {
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DebugLog(response?.suggestedFilename ?? url.lastPathComponent)
+            DebugLog("Download Finished")
+            
+            DispatchQueue.main.async() { [weak self] in
+                self?.profileImageButton.setImage(UIImage(data: data), for: .normal)
+            }
+        }
+    }
+    
+    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }

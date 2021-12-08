@@ -22,7 +22,7 @@ public enum MinningHeader {
     public var key: String {
         switch self {
         case .authorization:
-            return "authorization"
+            return "Authorization"
         case .accept:
             return "Accept"
         case .contentType:
@@ -35,7 +35,7 @@ public enum MinningHeader {
     public var value: String {
         switch self {
         case .authorization:
-            return "" // Token 관리 모듈 필요
+            return TokenManager.shared.getAccessToken() ?? ""
         case .accept(let value):
             return value
         case .contentType(let value):

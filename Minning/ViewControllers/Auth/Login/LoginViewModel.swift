@@ -18,7 +18,10 @@ final class LoginViewModel: ObservableObject {
     
     public init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
-        let _ = TokenManager.shared.deleteAllTokenData()
+        
+        if TokenManager.shared.deleteAllTokenData() {
+            DebugLog("All Token Data Deleted.")
+        }
     }
     
     public func processEmailCheck() {

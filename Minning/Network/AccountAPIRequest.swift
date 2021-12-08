@@ -19,7 +19,7 @@ public struct AccountAPIRequest: MinningAPIRequestable {
         var requestURL: URL {
             switch self {
             case .myInfo:
-                return MinningAPIConstant.accountURL.appendingPathComponent("signup")
+                return MinningAPIConstant.accountURL.appendingPathComponent("me")
             case .toggleNotification:
                 return MinningAPIConstant.accountURL
             case .changePassword:
