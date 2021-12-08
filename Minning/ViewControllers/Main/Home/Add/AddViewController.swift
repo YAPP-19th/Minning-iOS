@@ -459,35 +459,13 @@ final class AddViewController: BaseViewController {
         // MARK: - 루틴 요일
         [monView, tueView, wedView, thuView, friView, satView, sunView].forEach {
             routineDayStackView.addArrangedSubview($0)
+            $0.snp.makeConstraints { make in
+                make.width.equalTo(38)
+            }
         }
         
         monView.snp.makeConstraints { make in
-            make.width.equalTo(38)
             make.height.equalTo(38)
-        }
-        
-        tueView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        wedView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        thuView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        friView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        satView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        sunView.snp.makeConstraints { make in
-            make.width.equalTo(38)
         }
         
         [routineDayLabel, routineDayStackView].forEach {

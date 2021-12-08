@@ -187,7 +187,7 @@ public class LineChart: UIView {
         
         let lineGap = entireLineGap / CGFloat(dataPoints.count - 1)
         
-        for (index, _) in dataPoints.enumerated() {
+        for index in dataPoints.indices {
             let path = UIBezierPath()
             path.move(to: CGPoint(x: 53 + (lineGap * CGFloat(index)), y: 0))
             path.addLine(to: CGPoint(x: 53 + (lineGap * CGFloat(index)), y: gridLayer.frame.size.height))

@@ -102,7 +102,7 @@ final class GroupDetailViewController: BaseViewController {
     @objc
     private func onClickJoinButton(_ sender: Any?) {
         viewModel.showJoinGroup(completion: { [weak self] isSuccess in
-            guard let `self` = self else { return }
+//            guard let `self` = self else { return }
             DebugLog("Group Popup 닫기 Result : \(isSuccess)")
         })
     }
