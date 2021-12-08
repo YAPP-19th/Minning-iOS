@@ -15,7 +15,7 @@ public struct User {
     
     public init(userModel: MyInfoModel) {
         self.nickname = userModel.nickname
-        self.profileUrl = userModel.profileUrl
+        self.profileUrl = userModel.profileUrl ?? ""
         self.email = userModel.email
     }
     

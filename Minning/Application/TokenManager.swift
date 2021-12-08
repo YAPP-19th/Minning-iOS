@@ -20,7 +20,11 @@ public class TokenManager {
     private init() { }
     
     public func getAccessToken() -> String? {
-        return KeychainManager.shared.getString(TokenManager.accessTokenKey)
+        if let token = KeychainManager.shared.getString(TokenManager.accessTokenKey) {
+            return "BEARER \(token)"
+        } else {
+            return nil
+        }
     }
     
     public func setAccessToken(token: String) -> Bool {
