@@ -16,6 +16,7 @@ final class MyPageViewModel {
         case third
     }
     
+    var myInfo: DataBinding<User?> = DataBinding(nil)
     var firstSectionRowItems: [MyPageSettingRowItem] = []
     var secondSectionRowItems: [MyPageSettingRowItem] = []
     var thirdSectionRowItems: [MyPageSettingRowItem] = []
@@ -98,5 +99,16 @@ final class MyPageViewModel {
         default:
             break
         }
+    }
+    
+    public func getUserData() {
+        AccountAPIRequest.myInfo(completion: { result in
+            switch result {
+            case .success(let userModel):
+                self.myInfo.accept(User(userModel: userModel.data))
+            case .failure(let error):
+                ErrorLog(error.defaultError.localizedDescription)
+            }
+        })
     }
 }
