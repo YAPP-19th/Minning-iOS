@@ -110,6 +110,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             case .push:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: SwitchSettingCell.identifier) as? SwitchSettingCell {
                     cell.rowItem = rowItem
+                    cell.delegate = self
                     cell.selectionStyle = .none
                     return cell
                 }
