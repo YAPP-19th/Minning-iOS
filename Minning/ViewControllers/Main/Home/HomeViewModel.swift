@@ -16,10 +16,22 @@ final class HomeViewModel {
     }
     
     private let coordinator: HomeCoordinator
+    var myInfo: DataBinding<User?> = DataBinding(nil)
     var tabType: DataBinding<RoutineTabType> = DataBinding(.routine)
     
     public init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
+    }
+    
+    public func getUserData() {
+        AccountAPIRequest.myInfo(completion: { result in
+            switch result {
+            case .success(let userModel):
+                self.myInfo.accept(User(userModel: userModel.data))
+            case .failure(let error):
+                ErrorLog(error.defaultError.localizedDescription)
+            }
+        })
     }
     
     public func goToMyPage() {

@@ -30,7 +30,7 @@ class CurveAlgorithm {
             result.append(curvedSegment)
         }
         
-        for idx in 1..<points.count-1 {
+        for idx in 1..<points.count - 1 {
             let pointM = result[idx - 1].controlPoint2
             
             let pointN = result[idx].controlPoint1

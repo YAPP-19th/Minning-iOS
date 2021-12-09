@@ -7,6 +7,9 @@
 
 import CoreData
 import DesignSystem
+import KakaoSDKAuth
+import KakaoSDKCommon
+import KakaoSDKUser
 import UIKit
 
 @main
@@ -17,8 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let appDIContainer = AppDIContainer()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        KakaoSDKCommon.initSDK(appKey: "a48aa63d7b0c956c19683ef43e633aac")
+//        UserApi.shared.logout(completion: { (error) in
+//            
+//        })
+        
         let navigationController = UINavigationController(navigationBarClass: PlainUINavigationBar.self,
-                                                               toolbarClass: nil)
+                                                          toolbarClass: nil)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.tintColor = .primaryBlack
@@ -40,6 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        if AuthApi.isKakaoTalkLoginUrl(url) {
+            return AuthController.handleOpenUrl(url: url)
+        }
+        
+        return false
     }
     
     // MARK: - Core Data stack

@@ -16,6 +16,9 @@ final class MyPageViewModel {
         case third
     }
     
+    var myInfo: DataBinding<User?> = DataBinding(nil)
+    var isPushEnable: DataBinding<Bool> = DataBinding(false)
+    
     var firstSectionRowItems: [MyPageSettingRowItem] = []
     var secondSectionRowItems: [MyPageSettingRowItem] = []
     var thirdSectionRowItems: [MyPageSettingRowItem] = []
@@ -98,5 +101,40 @@ final class MyPageViewModel {
         default:
             break
         }
+    }
+    
+    public func getUserData() {
+        AccountAPIRequest.myInfo(completion: { result in
+            switch result {
+            case .success(let userModel):
+                self.myInfo.accept(User(userModel: userModel.data))
+            case .failure(let error):
+                ErrorLog(error.defaultError.localizedDescription)
+            }
+        })
+    }
+    
+    public func deleteUserData() {
+        AccountAPIRequest.deleteUser(completion: { result in
+            switch result {
+            case .success(let response):
+                DebugLog("Account Delete Complete: \(response.status)")
+                self.goToLogin()
+            case .failure(let error):
+                ErrorLog("Account Delete Error: \(error.defaultError.localizedDescription)")
+            }
+        })
+    }
+    
+    public func setPushEnable() {
+        AccountAPIRequest.toggleNotification(completion: { result in
+            switch result {
+            case .success(let response):
+                self.isPushEnable.accept(!self.isPushEnable.value)
+                DebugLog("Toggle Push Complete: \(response.status)")
+            case .failure(let error):
+                ErrorLog("Toggle Push Error: \(error.defaultError.localizedDescription)")
+            }
+        })
     }
 }

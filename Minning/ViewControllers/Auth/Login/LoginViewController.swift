@@ -65,7 +65,7 @@ final class LoginViewController: BaseViewController {
         $0.isActive = true
         $0.buttonContent = "카카오로 로그인"
         $0.plainButtonType = .kakao
-//        $0.addTarget(self, action: #selector(toggleButtonStatus(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(onClickKakaoLoginButon(_:)), for: .touchUpInside)
         return $0
     }(PlainButton())
     
@@ -102,9 +102,12 @@ final class LoginViewController: BaseViewController {
     
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
-        // MARK: Server API
-//        viewModel.goToPassword(isLogin: false)
-        viewModel.goToPassword(isLogin: true)
+        viewModel.processEmailCheck()
+    }
+    
+    @objc
+    private func onClickKakaoLoginButon(_ sender: PlainButton) {
+        viewModel.requestKakaoTalkLogin()
     }
     
     @objc
@@ -208,6 +211,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate,
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
             
+            DebugLog("useridentifier: \(userIdentifier)")
+            DebugLog("fullName: \(String(describing: fullName))")
+            DebugLog("email: \(String(describing: email))")
+            
             if let authorizationCode = appleIDCredential.authorizationCode,
                let identityToken = appleIDCredential.identityToken,
                let authString = String(data: authorizationCode, encoding: .utf8),
@@ -216,11 +223,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate,
                 DebugLog("identityToken: \(identityToken)")
                 DebugLog("authString: \(authString)")
                 DebugLog("tokenString: \(tokenString)")
+                
+                viewModel.processSocialCheck(socialType: .apple, token: tokenString)
             }
-            
-            DebugLog("useridentifier: \(userIdentifier)")
-            DebugLog("fullName: \(String(describing: fullName))")
-            DebugLog("email: \(String(describing: email))")
         case let passwordCredential as ASPasswordCredential:
             let username = passwordCredential.user
             let password = passwordCredential.password
