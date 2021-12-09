@@ -131,13 +131,21 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             case .logout:
                 viewModel.goToLogin()
             case .deleteAccount:
-                self.showAlert(title: "계정 삭제", message: "정말 이 계정을 삭제하시겠습니까?", okTitle: "삭제", handler: { _ in
-                    // 계정 삭제 로직 진행
-                    DebugLog("계정 삭제")
+                self.showAlert(title: "계정 삭제",
+                               message: "정말 이 계정을 삭제하시겠습니까?",
+                               okTitle: "삭제", handler: { [weak self] _ in
+                    guard let `self` = self else { return }
+                    self.viewModel.deleteUserData()
                 })
             default:
                 viewModel.goToSettingContent(type: rowItem.type)
             }
         }
+    }
+}
+
+extension MyPageViewController: SwitchSettingCellDelegate {
+    func onClickSwitch() {
+        viewModel.setPushEnable()
     }
 }

@@ -12,12 +12,24 @@ import Foundation
 import SharedAssets
 import SnapKit
 
+protocol SwitchSettingCellDelegate: AnyObject {
+    func onClickSwitch()
+}
+
 final class SwitchSettingCell: UITableViewCell {
     static let identifier: String = "SwitchSettingCell"
     
     public var rowItem: MyPageSettingRowItem? {
         didSet {
             titleLabel.text = rowItem?.title
+        }
+    }
+    
+    public weak var delegate: SwitchSettingCellDelegate?
+    
+    public var isSwitchOn: Bool = false {
+        didSet {
+            switchButton.setOn(isSwitchOn, animated: true)
         }
     }
     
@@ -28,6 +40,7 @@ final class SwitchSettingCell: UITableViewCell {
     }(UILabel())
     
     private let switchButton: UISwitch = {
+        $0.addTarget(self, action: #selector(onTapSwitch(_:)), for: .valueChanged)
         return $0
     }(UISwitch())
     
@@ -35,6 +48,11 @@ final class SwitchSettingCell: UITableViewCell {
         $0.backgroundColor = .minningLightGray100
         return $0
     }(UIView())
+    
+    @objc
+    private func onTapSwitch(_ sender: UISwitch) {
+        delegate?.onClickSwitch()
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
