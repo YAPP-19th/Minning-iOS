@@ -42,13 +42,12 @@ public struct ReportAPIRequest: MinningAPIRequestable {
     }
     
     public static func monthlyReport(year: Int, month: Int,
-                                     completion: @escaping (Result<ReportResponseModel, Error>) -> Void) {
+                                     completion: @escaping (Result<ReportResponseModel, MinningAPIError>) -> Void) {
         perform(.monthlyReport(year: year, month: month), completion: completion)
     }
     
     public static func weeklyReport(lastDate: String,
-                                    completion: @escaping (Result<ReportWeekResponseModel, Error>) -> Void) {
+                                    completion: @escaping (Result<ReportWeekResponseModel, MinningAPIError>) -> Void) {
         perform(.weeklyReport(lastDate: lastDate), completion: completion)
     }
 }
-

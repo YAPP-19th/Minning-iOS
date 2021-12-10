@@ -27,4 +27,9 @@ final class GroupDIContainer {
         let photoGridVC = PhotoGridViewController(viewModel: viewModel)
         return photoGridVC
     }
+    
+    func createPhotoDetail(_ coordinator: GroupCoordinator, viewModel: PhotoDetailViewModel) -> PhotoDetailViewController {
+        let photoDetailVC = PhotoDetailViewController(viewModel: viewModel)
+        return photoDetailVC
+    }
 }

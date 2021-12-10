@@ -22,11 +22,14 @@ final class AddViewController: BaseViewController {
         return $0
     }(UIBarButtonItem())
     
-    private let scrollView = UIScrollView()
+    private let scrollView: UIScrollView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIScrollView())
     
-    private let contentView = UIView()
-    
+    private let scrollContainerView: UIView = UIView()
     private let stackView: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         return $0
     }(UIStackView())
@@ -55,14 +58,15 @@ final class AddViewController: BaseViewController {
     
     private let writeRoutineNameLabel: UILabel = {
         $0.text = "루틴 이름 작성"
-        $0.textColor = .minningDarkGray100
-        $0.font = .font12P
+        $0.textColor = .primaryBlack
+        $0.font = .font20PBold
         return $0
     }(UILabel())
     
     private let writeRoutineNameTextField: PlainTextField = {
         $0.placeholder = "ex. 아침에 물 한잔"
-        $0.textColor = .primaryBlack
+        $0.textColor = .gray787C84
+        $0.backgroundColor = .minningLightGray100
         return $0
     }(PlainTextField())
     
@@ -82,14 +86,15 @@ final class AddViewController: BaseViewController {
     
     private let writeGoalNameLabel: UILabel = {
         $0.text = "루틴 목표 작성"
-        $0.textColor = .minningDarkGray100
-        $0.font = .font12P
+        $0.textColor = .primaryBlack
+        $0.font = .font20PBold
         return $0
     }(UILabel())
     
     private let writeGoalNameTextField: PlainTextField = {
         $0.placeholder = "ex. 작은것부터 차근차근!"
-        $0.textColor = .primaryBlack
+        $0.textColor = .gray787C84
+        $0.backgroundColor = .minningLightGray100
         return $0
     }(PlainTextField())
     
@@ -108,17 +113,28 @@ final class AddViewController: BaseViewController {
     }(UIStackView())
     
     private let categoryLabel: UILabel = {
-        $0.text = "카테고리"
-        $0.textColor = .minningDarkGray100
-        $0.font = .font12P
+        $0.text = "카테고리 설정"
+        $0.textColor = .primaryBlack
+        $0.font = .font20PBold
         return $0
     }(UILabel())
+    
+    private let categoryScrollView = UIScrollView()
     
     private let categoryIconStackView: UIStackView = {
         $0.axis = .horizontal
         $0.distribution = .equalSpacing
+        $0.spacing = 8
         return $0
     }(UIStackView())
+    
+    private let leadingEmptyView: UIView = {
+        return $0
+    }(UIView())
+    
+    private let trailingEmptyView: UIView = {
+        return $0
+    }(UIView())
     
     private let morningView: AddCategoryView = {
         return $0
@@ -140,6 +156,11 @@ final class AddViewController: BaseViewController {
         return $0
     }(AddCategoryView(category: .etc))
     
+    private let gapLine: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
+    
     private let routineDayStackView: UIStackView = {
         $0.axis = .horizontal
         $0.distribution = .equalSpacing
@@ -154,8 +175,8 @@ final class AddViewController: BaseViewController {
     
     private let routineDayLabel: UILabel = {
         $0.text = "루틴 요일"
-        $0.font = .font12P
-        $0.textColor = .minningDarkGray100
+        $0.font = .font20PBold
+        $0.textColor = .primaryBlack
         return $0
     }(UILabel())
     
@@ -200,8 +221,8 @@ final class AddViewController: BaseViewController {
     
     private let routineAlarmLabel: UILabel = {
         $0.text = "루틴 시간 및 알림"
-        $0.textColor = .minningDarkGray100
-        $0.font = .font12P
+        $0.textColor = .primaryBlack
+        $0.font = .font20PBold
         return $0
     }(UILabel())
     
@@ -271,25 +292,28 @@ final class AddViewController: BaseViewController {
     
     override func setupViewLayout() {
         view.addSubview(scrollView)
-        view.backgroundColor = .minningLightGray100
+        view.backgroundColor = .white
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.width.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalTo(653)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
-
-        scrollView.addSubview(stackView)
+        
+        scrollView.addSubview(scrollContainerView)
+        scrollContainerView.addSubview(stackView)
+        
+        scrollContainerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(786).priority(250)
+        }
         
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.contentLayoutGuide.snp.top).offset(31)
-            make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-31 - (tabBarController?.tabBar.frame.height)!)
+            make.top.equalTo(scrollView.snp.top).offset(19)
+            make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-19)
             make.width.equalTo(scrollView.snp.width)
-            make.center.equalTo(scrollView.snp.center)
         }
-        
+
         // MARK: - 추천 루틴
         stackView.addArrangedSubview(recommendButtonView)
         recommendButtonView.addSubview(recommendButton)
@@ -310,11 +334,15 @@ final class AddViewController: BaseViewController {
             routineNameStackView.addArrangedSubview($0)
         }
         
+        writeRoutineNameTextField.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
         stackView.addArrangedSubview(routineNameStackView)
         stackView.addArrangedSubview(numberOfRoutineLabel)
         
         routineNameStackView.snp.makeConstraints { make in
-            make.height.equalTo(72)
+            make.height.equalTo(88)
             make.leading.equalTo(16)
             make.trailing.equalTo(-16)
         }
@@ -325,7 +353,7 @@ final class AddViewController: BaseViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(17)
         }
-        stackView.setCustomSpacing(20.0, after: numberOfRoutineLabel)
+        stackView.setCustomSpacing(19.0, after: numberOfRoutineLabel)
         
         // MARK: - 루틴 목표 작성
         [writeGoalNameLabel, writeGoalNameTextField].forEach {
@@ -334,12 +362,16 @@ final class AddViewController: BaseViewController {
         
         stackView.addArrangedSubview(routineGoalStackView)
         
-        stackView.setCustomSpacing(4.0, after: routineGoalStackView)
+        stackView.setCustomSpacing(40.0, after: routineGoalStackView)
         
         stackView.addArrangedSubview(numberOfGoalLabel)
         
+        writeGoalNameTextField.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
         routineGoalStackView.snp.makeConstraints { make in
-            make.height.equalTo(72)
+            make.height.equalTo(88)
             make.trailing.equalTo(-16)
         }
         
@@ -348,86 +380,92 @@ final class AddViewController: BaseViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(17)
         }
-        stackView.setCustomSpacing(20.0, after: numberOfGoalLabel)
+        stackView.setCustomSpacing(19.0, after: numberOfGoalLabel)
 
         // MARK: - 카테고리
-        [morningView, selfImproveView, healthView, lifeView, etcView].forEach {
+        categoryScrollView.addSubview(categoryIconStackView)
+        
+        [leadingEmptyView, morningView, selfImproveView, healthView, lifeView, etcView, trailingEmptyView].forEach {
             categoryIconStackView.addArrangedSubview($0)
+        }
+        
+        leadingEmptyView.snp.makeConstraints { make in
+            make.width.equalTo(8)
+            make.height.equalTo(65)
         }
         
         morningView.snp.makeConstraints { make in
             make.width.equalTo(65)
+            make.height.equalTo(65)
         }
         
         selfImproveView.snp.makeConstraints { make in
             make.width.equalTo(65)
+            make.height.equalTo(65)
         }
         
         healthView.snp.makeConstraints { make in
             make.width.equalTo(65)
+            make.height.equalTo(65)
         }
         
         lifeView.snp.makeConstraints { make in
             make.width.equalTo(65)
+            make.height.equalTo(65)
         }
         
         etcView.snp.makeConstraints { make in
             make.width.equalTo(65)
-        }
-
-        [categoryLabel, categoryIconStackView].forEach {
-            categoryStackView.addArrangedSubview($0)
+            make.height.equalTo(65)
         }
         
+        trailingEmptyView.snp.makeConstraints { make in
+            make.width.equalTo(8)
+            make.height.equalTo(65)
+        }
+        
+        [categoryLabel, categoryScrollView].forEach {
+            stackView.addArrangedSubview($0)
+        }
+        
+        stackView.setCustomSpacing(14.0, after: categoryLabel)
+        
         categoryLabel.snp.makeConstraints { make in
-            make.height.equalTo(14)
+            make.height.equalTo(24)
+        }
+        
+        categoryScrollView.snp.makeConstraints { make in
+            make.height.equalTo(65)
+            make.leading.trailing.equalToSuperview()
         }
         
         categoryIconStackView.snp.makeConstraints { make in
             make.height.equalTo(65)
-            make.trailing.equalTo(-16)
+            make.leading.trailing.equalToSuperview()
         }
         
-        categoryStackView.snp.makeConstraints { make in
-            make.height.equalTo(87)
-        }
-                
-        stackView.addArrangedSubview(categoryStackView)
+        stackView.setCustomSpacing(20.0, after: categoryScrollView)
         
-        stackView.setCustomSpacing(40.0, after: categoryStackView)
+        // MARK: - Gap Line
+        stackView.addArrangedSubview(gapLine)
+        
+        gapLine.snp.makeConstraints { make in
+            make.height.equalTo(12)
+            make.leading.equalToSuperview()
+        }
+        
+        stackView.setCustomSpacing(20.0, after: gapLine)
         
         // MARK: - 루틴 요일
         [monView, tueView, wedView, thuView, friView, satView, sunView].forEach {
             routineDayStackView.addArrangedSubview($0)
+            $0.snp.makeConstraints { make in
+                make.width.equalTo(38)
+            }
         }
         
         monView.snp.makeConstraints { make in
-            make.width.equalTo(38)
             make.height.equalTo(38)
-        }
-        
-        tueView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        wedView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        thuView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        friView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        satView.snp.makeConstraints { make in
-            make.width.equalTo(38)
-        }
-        
-        sunView.snp.makeConstraints { make in
-            make.width.equalTo(38)
         }
         
         [routineDayLabel, routineDayStackView].forEach {
@@ -436,33 +474,39 @@ final class AddViewController: BaseViewController {
         
         stackView.addArrangedSubview(routineStackView)
         
+        routineDayStackView.snp.makeConstraints { make in
+            make.top.equalTo(routineDayLabel.snp.bottom).offset(14)
+            make.height.equalTo(38)
+        }
+        
         routineStackView.snp.makeConstraints { make in
-            make.height.equalTo(64)
+            make.height.equalTo(76)
             make.trailing.equalTo(-16)
         }
         
-        stackView.setCustomSpacing(20.0, after: routineStackView)
+        stackView.setCustomSpacing(40.0, after: routineStackView)
         
         // MARK: - 루틴 시간 및 알림
         stackView.addArrangedSubview(routineAlarmLabel)
         routineAlarmLabel.snp.makeConstraints { make in
             make.width.equalToSuperview()
-            make.height.equalTo(14)
+            make.height.equalTo(24)
         }
         
-        stackView.setCustomSpacing(8.0, after: routineAlarmLabel)
+        stackView.setCustomSpacing(19.0, after: routineAlarmLabel)
         
         // MARK: - 시간, 알림 보내기
-        stackView.addArrangedSubview(routineAlarmTimeStackView)
         [routineTimeView, routineAlarmView].forEach {
             routineAlarmTimeStackView.addArrangedSubview($0)
         }
+        
+        stackView.addArrangedSubview(routineAlarmTimeStackView)
         
         routineAlarmTimeStackView.snp.makeConstraints { make in
             make.height.equalTo(97)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.top.equalTo(routineAlarmLabel.snp.bottom).offset(19)
         }
         
         [routineTimeLabel, timePickerView].forEach {
@@ -499,6 +543,7 @@ final class AddViewController: BaseViewController {
         routineTimeView.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.leading.equalToSuperview()
+            make.top.equalToSuperview()
         }
         
         routineAlarmView.snp.makeConstraints { make in

@@ -19,9 +19,7 @@ final class MyRoutineContentItemView: UIView {
     
     public var routineItem: Routine? {
         didSet {
-            symbolImageView.image = routineItem?.result.symbolImage?.withRenderingMode(.alwaysTemplate)
-            symbolImageView.layer.opacity = routineItem?.result.symbolOpacity ?? 0
-            symbolImageView.tintColor = routineItem?.result == .failure ? .minningGray100 : routineItem?.category.color
+            symbolImageView.image = routineItem?.result.symbolImage
         }
     }
     
@@ -36,12 +34,10 @@ final class MyRoutineContentItemView: UIView {
     
     private func setupView() {
         self.snp.makeConstraints { make in
-            make.width.height.equalTo(30)
+            make.width.height.equalTo(35)
         }
         
-        backgroundColor = .minningLightGray100
-        layer.cornerRadius = 5
-        layer.masksToBounds = true
+        backgroundColor = .primaryWhite
         
         addSubview(symbolImageView)
         symbolImageView.snp.makeConstraints { make in

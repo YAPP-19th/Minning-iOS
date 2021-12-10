@@ -78,23 +78,23 @@ public struct MissionAPIRequest: MinningAPIRequestable {
         }
     }
     
-    public static func getMissionList(completion: @escaping (Result<MissionListResponseModel, Error>) -> Void) {
+    public static func getMissionList(completion: @escaping (Result<MissionListResponseModel, MinningAPIError>) -> Void) {
         perform(.missionList, completion: completion)
     }
     
-    public static func createMission(request: MissionRequest, completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+    public static func createMission(request: MissionRequest, completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.createMission(request: request), completion: completion)
     }
     
-    public static func getEndedMissionList(completion: @escaping (Result<MissionListResponseModel, Error>) -> Void) {
+    public static func getEndedMissionList(completion: @escaping (Result<MissionListResponseModel, MinningAPIError>) -> Void) {
         perform(.endedMissionList, completion: completion)
     }
     
-    public static func getMissionDetail(missionId: Int64, completion: @escaping (Result<MissionDetailResponseModel, Error>) -> Void) {
+    public static func getMissionDetail(missionId: Int64, completion: @escaping (Result<MissionDetailResponseModel, MinningAPIError>) -> Void) {
         perform(.missionDetail(missionId: missionId), completion: completion)
     }
     
-    public static func deleteMission(missionId: Int64, completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+    public static func deleteMission(missionId: Int64, completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.deleteMission(missionId: missionId), completion: completion)
     }
 }

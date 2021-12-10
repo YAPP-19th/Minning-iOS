@@ -23,6 +23,16 @@ protocol ProfileViewDelegate: AnyObject {
 final class ProfileView: UIView {
     weak var delegate: ProfileViewDelegate?
     
+    public var profileData: User? {
+        didSet {
+            if let profileUrl = profileData?.profileFullUrl {
+                downloadImage(from: profileUrl, completion: { image in
+                    self.profileImageButton.setImage(image, for: .normal)
+                })
+            }
+        }
+    }
+    
     private let profileImageButton: UIButton = {
         $0.backgroundColor = .primaryLightGray
         $0.layer.cornerRadius = 22

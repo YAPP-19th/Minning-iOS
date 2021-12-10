@@ -17,6 +17,10 @@ final class PhotoGridViewModel {
         self.coordinator = coordinator
     }
     
+    func goToPhotoDetail(viewModel: PhotoDetailViewModel) {
+        coordinator.goToPhotoDetail(viewModel: viewModel)
+    }
+    
     func selectPhoto(index: Int) {
         var newIndices = selectedPhotoIndices.value
         newIndices.append(index)

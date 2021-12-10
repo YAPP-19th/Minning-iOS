@@ -40,6 +40,17 @@ final class ProfileSettingCell: UITableViewCell {
         return $0
     }(UILabel())
     
+    public var profileData: User? {
+        didSet {
+            nicknameLabel.text = "\(profileData?.nickname ?? "nil") 님"
+            if let profileUrl = profileData?.profileFullUrl {
+                downloadImage(from: profileUrl, completion: { image in
+                    self.profileImageView.image = image
+                })
+            }
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellLayout()

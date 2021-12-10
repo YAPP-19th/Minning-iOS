@@ -20,7 +20,6 @@ target 'Minning' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
-  pod 'GoogleSignIn'
   pod 'SwiftyJSON'
   pod 'SwiftLint'
   pod 'Promises'
