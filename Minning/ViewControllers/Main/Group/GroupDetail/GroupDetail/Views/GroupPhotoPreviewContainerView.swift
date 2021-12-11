@@ -52,6 +52,11 @@ final class GroupPhotoPreviewContainerView: UIView {
         return $0
     }(UILabel())
     
+    private let separatorView: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -63,7 +68,7 @@ final class GroupPhotoPreviewContainerView: UIView {
     
     private func setupView() {
         backgroundColor = .primaryWhite
-        [titleLabel, photoCollectionView, photoEmptyView].forEach {
+        [titleLabel, photoCollectionView, photoEmptyView, separatorView].forEach {
             addSubview($0)
         }
         photoCollectionView.isHidden = true
@@ -78,14 +83,12 @@ final class GroupPhotoPreviewContainerView: UIView {
         
         photoCollectionView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(14)
-            make.bottom.equalTo(-20)
             make.height.equalTo(120)
             make.leading.trailing.equalToSuperview()
         }
         
         photoEmptyView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(14)
-            make.bottom.equalTo(-20)
             make.height.equalTo(120)
             make.leading.equalTo(16)
             make.trailing.equalTo(-16)
@@ -101,6 +104,13 @@ final class GroupPhotoPreviewContainerView: UIView {
         emptyLabel.snp.makeConstraints { make in
             make.bottom.equalTo(-22)
             make.centerX.equalToSuperview()
+        }
+        
+        separatorView.snp.makeConstraints { make in
+            make.top.equalTo(photoCollectionView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(12)
+            make.bottom.equalToSuperview()
         }
     }
     

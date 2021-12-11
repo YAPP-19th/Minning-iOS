@@ -14,7 +14,7 @@ import SnapKit
 final class GroupRuleContainerView: UIView {
     
     private let titleLabel: UILabel = {
-        $0.font = .font22PExBold
+        $0.font = .font20PExBold
         $0.textColor = .primaryBlack
         $0.text = "그룹 규칙"
         return $0
@@ -58,6 +58,11 @@ final class GroupRuleContainerView: UIView {
         return $0
     }(UILabel())
 
+    private let separatorView: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -69,7 +74,7 @@ final class GroupRuleContainerView: UIView {
     
     private func setupView() {
         backgroundColor = .primaryWhite
-        [titleLabel, pictureImageView, pictureTitleLabel, pictureValueLabel, ruleImageView, ruleTitleLabel, ruleValueLabel].forEach {
+        [titleLabel, pictureImageView, pictureTitleLabel, pictureValueLabel, ruleImageView, ruleTitleLabel, ruleValueLabel, separatorView].forEach {
             addSubview($0)
         }
         
@@ -104,12 +109,18 @@ final class GroupRuleContainerView: UIView {
         ruleTitleLabel.snp.makeConstraints { make in
             make.leading.equalTo(pictureTitleLabel)
             make.top.equalTo(pictureTitleLabel.snp.bottom).offset(21)
-            make.bottom.equalTo(-30)
         }
         
         ruleValueLabel.snp.makeConstraints { make in
             make.trailing.equalTo(-20)
             make.centerY.equalTo(ruleTitleLabel)
+        }
+        
+        separatorView.snp.makeConstraints { make in
+            make.top.equalTo(ruleTitleLabel.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(12)
+            make.bottom.equalToSuperview()
         }
     }
     

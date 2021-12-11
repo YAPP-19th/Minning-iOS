@@ -18,8 +18,8 @@ final class GroupTitleContainerView: UIView {
         $0.layer.cornerRadius = 10
         $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
         $0.layer.shadowOpacity = 1
-        $0.layer.shadowRadius = 20
-        $0.layer.shadowOffset = CGSize(width: 0, height: 10)
+        $0.layer.shadowRadius = 10
+        $0.layer.shadowOffset = CGSize(width: 0, height: 3)
         return $0
     }(UIView())
     

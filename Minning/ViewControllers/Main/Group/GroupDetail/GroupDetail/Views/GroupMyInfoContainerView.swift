@@ -76,6 +76,11 @@ final class GroupMyInfoContainerView: UIView {
         $0.text = "오전 7시"
         return $0
     }(UILabel())
+    
+    private let separatorView: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,7 +93,7 @@ final class GroupMyInfoContainerView: UIView {
     
     private func setupView() {
         backgroundColor = .primaryWhite
-        [titleLabel, termImageView, termTitleLabel, termValueLabel, dayImageView, dayTitleLabel, dayValueLabel, alarmImageView, alarmTitleLabel, alarmValueLabel].forEach {
+        [titleLabel, termImageView, termTitleLabel, termValueLabel, dayImageView, dayTitleLabel, dayValueLabel, alarmImageView, alarmTitleLabel, alarmValueLabel, separatorView].forEach {
             addSubview($0)
         }
         
@@ -139,12 +144,18 @@ final class GroupMyInfoContainerView: UIView {
         alarmTitleLabel.snp.makeConstraints { make in
             make.leading.equalTo(dayTitleLabel)
             make.top.equalTo(dayTitleLabel.snp.bottom).offset(21)
-            make.bottom.equalTo(-30)
         }
         
         alarmValueLabel.snp.makeConstraints { make in
             make.trailing.equalTo(-20)
             make.centerY.equalTo(alarmTitleLabel)
+        }
+        
+        separatorView.snp.makeConstraints { make in
+            make.top.equalTo(alarmTitleLabel.snp.bottom).offset(30)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(12)
+            make.bottom.equalToSuperview()
         }
     }
 

@@ -42,6 +42,11 @@ final class GroupInfoCollectionView: UIView {
         $0.numberOfLines = 0
         return $0
     }(UILabel())
+    
+    private let separatorView: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,7 +58,7 @@ final class GroupInfoCollectionView: UIView {
     }
     
     private func setupView() {
-        [groupInfoTitleLabel, groupInfoLabel, descriptionTitleLabel, descriptionLabel].forEach {
+        [groupInfoTitleLabel, groupInfoLabel, descriptionTitleLabel, descriptionLabel, separatorView].forEach {
             addSubview($0)
         }
         
@@ -76,7 +81,13 @@ final class GroupInfoCollectionView: UIView {
             make.top.equalTo(descriptionTitleLabel.snp.bottom).offset(14)
             make.leading.equalTo(20)
             make.trailing.equalTo(-20)
-            make.bottom.equalTo(-40)
+        }
+        
+        separatorView.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(40)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(12)
+            make.bottom.equalToSuperview()
         }
     }
     
