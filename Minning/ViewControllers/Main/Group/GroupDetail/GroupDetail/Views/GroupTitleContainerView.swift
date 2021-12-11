@@ -96,7 +96,7 @@ final class GroupTitleContainerView: UIView {
     }(UILabel())
     
     private let medalImageView: UIImageView = {
-        $0.backgroundColor = .cateSky100
+        $0.image = UIImage(sharedNamed: "medal_gold")
         return $0
     }(UIImageView())
 

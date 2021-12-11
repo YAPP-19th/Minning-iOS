@@ -122,10 +122,6 @@ final class GroupDetailViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-//        groupTitleContainerView.snp.makeConstraints { make in
-//            make.height.equalTo(282)
-//        }
-        
         myInfoConatainerView.snp.makeConstraints { make in
             make.height.equalTo(198)
         }
