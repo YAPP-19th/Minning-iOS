@@ -55,6 +55,11 @@ final class GroupViewController: BaseViewController {
         return $0
     }(UIButton())
     
+    private let newEndedGroupAlertImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "groupAlert")
+        return $0
+    }(UIImageView())
+    
     private let filterScrollView: UIScrollView = {
         $0.bounces = false
         $0.showsVerticalScrollIndicator = false
@@ -159,7 +164,7 @@ final class GroupViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        [subTabNowButton, subTabDoneButton].forEach {
+        [subTabNowButton, subTabDoneButton, newEndedGroupAlertImageView].forEach {
             subTabContainerView.addSubview($0)
         }
         
@@ -199,11 +204,6 @@ final class GroupViewController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
-//        onGoingView.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//            make.top.bottom.leading.trailing.equalToSuperview()
-//        }
-        
         // MARK: Sub Tab Section
         subTabContainerView.snp.makeConstraints { make in
             make.height.equalTo(33)
@@ -217,6 +217,12 @@ final class GroupViewController: BaseViewController {
         subTabDoneButton.snp.makeConstraints { make in
             make.top.bottom.centerY.equalToSuperview()
             make.leading.equalTo(subTabNowButton.snp.trailing).offset(20)
+        }
+        
+        newEndedGroupAlertImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(2)
+            make.leading.equalTo(subTabDoneButton.snp.trailing).offset(2)
+            make.width.height.equalTo(4)
         }
         
         // MARK: Category Section
@@ -253,6 +259,7 @@ final class GroupViewController: BaseViewController {
             viewModel.myGroupTabType.accept(.now)
         case subTabDoneButton:
             viewModel.myGroupTabType.accept(.done)
+            newEndedGroupAlertImageView.isHidden = true
         default:
             break
         }
