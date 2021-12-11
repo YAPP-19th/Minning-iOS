@@ -31,10 +31,7 @@ final class GroupDetailViewController: BaseViewController {
     
     private let ruleContainerView = GroupRuleContainerView()
     
-    private let groupPhotoContainerView: UIView = {
-        $0.backgroundColor = .cateYellow100
-        return $0
-    }(UIView())
+    private let groupPhotoPreviewContainerView = GroupPhotoPreviewContainerView()
     
     private let myPhotoConatinerView: UIView = {
         $0.backgroundColor = .catePurple100
@@ -92,7 +89,7 @@ final class GroupDetailViewController: BaseViewController {
         }
         
         [groupTitleContainerView, myInfoConatainerView, ruleContainerView,
-         groupPhotoContainerView, myPhotoConatinerView].forEach {
+         groupPhotoPreviewContainerView, myPhotoConatinerView].forEach {
             contentStackView.addArrangedSubview($0)
         }
         
@@ -114,10 +111,6 @@ final class GroupDetailViewController: BaseViewController {
         
         contentStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-        }
-
-        groupPhotoContainerView.snp.makeConstraints { make in
-            make.height.equalTo(210)
         }
         
         myPhotoConatinerView.snp.makeConstraints { make in
