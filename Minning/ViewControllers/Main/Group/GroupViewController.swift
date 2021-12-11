@@ -192,7 +192,7 @@ final class GroupViewController: BaseViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            self.viewModel.showDetail()
+            self.viewModel.showOpenedGroupDetail()
         })
     }
     

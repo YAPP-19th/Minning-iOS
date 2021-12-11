@@ -84,7 +84,7 @@ final class GroupInfoCollectionView: UIView {
         }
         
         separatorView.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(40)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(60)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(12)
             make.bottom.equalToSuperview()

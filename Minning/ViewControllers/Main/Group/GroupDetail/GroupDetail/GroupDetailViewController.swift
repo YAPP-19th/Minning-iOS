@@ -12,6 +12,11 @@ import SharedAssets
 import SnapKit
 
 final class GroupDetailViewController: BaseViewController {
+    
+    enum GroupViewType {
+        case openedGroup, myGroup, closedGroup
+    }
+    
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
     
     private let scrollView: UIScrollView = {
@@ -39,10 +44,13 @@ final class GroupDetailViewController: BaseViewController {
         return $0
     }(PlainButton())
     
+    var viewType: GroupViewType?
+    
     private let viewModel: GroupDetailViewModel
     
-    public init(viewModel: GroupDetailViewModel) {
+    public init(viewModel: GroupDetailViewModel, viewType: GroupViewType) {
         self.viewModel = viewModel
+        self.viewType = viewType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -83,10 +91,7 @@ final class GroupDetailViewController: BaseViewController {
             contentView.addSubview($0)
         }
         
-        [groupTitleContainerView, myInfoConatainerView, ruleContainerView,
-         groupPhotoPreviewContainerView, groupInfoContainerView, groupPhotoContainerView, groupQuitView].forEach {
-            contentStackView.addArrangedSubview($0)
-        }
+        setViewsByViewType()
         
         navigationBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -112,6 +117,25 @@ final class GroupDetailViewController: BaseViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
+        }
+    }
+    
+    private func setViewsByViewType() {
+        switch viewType {
+        case .openedGroup:
+            [groupTitleContainerView, ruleContainerView, groupPhotoPreviewContainerView, groupInfoContainerView].forEach {
+                contentStackView.addArrangedSubview($0)
+            }
+        case .myGroup:
+            [groupTitleContainerView, myInfoConatainerView, groupInfoContainerView, ruleContainerView, groupPhotoContainerView, groupQuitView].forEach {
+                contentStackView.addArrangedSubview($0)
+            }
+        case .closedGroup:
+            [groupTitleContainerView, myInfoConatainerView, groupPhotoContainerView, groupQuitView].forEach {
+                contentStackView.addArrangedSubview($0)
+            }
+        case .none:
+            break
         }
     }
     
