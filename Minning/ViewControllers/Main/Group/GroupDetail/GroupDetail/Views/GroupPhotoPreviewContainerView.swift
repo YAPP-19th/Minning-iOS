@@ -14,7 +14,7 @@ import SnapKit
 final class GroupPhotoPreviewContainerView: UIView {
     
     private let titleLabel: UILabel = {
-        $0.font = .font22PExBold
+        $0.font = .font20PExBold
         $0.textColor = .primaryBlack
         $0.text = "그룹 사진"
         return $0
