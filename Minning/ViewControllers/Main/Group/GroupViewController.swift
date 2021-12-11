@@ -13,7 +13,6 @@ import SnapKit
 import UIKit
 
 final class GroupViewController: BaseViewController {
-    
     private let titleSectionContainerView: UIView = {
         $0.backgroundColor = .primaryWhite
         return $0
@@ -104,6 +103,8 @@ final class GroupViewController: BaseViewController {
             self.subTabContainerView.isHidden = !(type == .myGroup)
             self.filterScrollView.isHidden = !(type == .groupList)
         }
+        
+
     }
     
     override func setupViewLayout() {

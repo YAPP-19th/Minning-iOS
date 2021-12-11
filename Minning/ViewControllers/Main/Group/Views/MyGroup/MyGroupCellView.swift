@@ -1,8 +1,8 @@
 //
-//  GroupViewModel.swift
+//  MyGroupCellView.swift
 //  Minning
 //
-//  Created by denny on 2021/09/30.
+//  Created by 박지윤 on 2021/12/11.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
@@ -10,11 +10,8 @@ import CommonSystem
 import DesignSystem
 import SharedAssets
 import SnapKit
-import UIKit
 
-class GroupListCell: UITableViewCell {
-    static let identifier = "GroupListCell"
-    
+class MyGroupCellView: UIView {
     var cellBackgroundView: UIView = {
         $0.backgroundColor = .minningLightGray100
         return $0
@@ -32,7 +29,6 @@ class GroupListCell: UITableViewCell {
     }(UIImageView())
     
     var iconImageView: UIImageView = {
-        $0.image = UIImage(sharedNamed: "categoryMiracleMorningIcon")
         return $0
     }(UIImageView())
     
@@ -49,11 +45,13 @@ class GroupListCell: UITableViewCell {
     }(UIView())
     
     var achieveRateLabel: UILabel = {
-        $0.text = "평균 달성률 100%"
+        $0.text = "내 달성률 100%"
         $0.textColor = .minningBlue100
         $0.font = .font14P
         return $0
     }(UILabel())
+    
+    var achieveLabelCount: Int = 101
     
     var participantLabel: UILabel = {
         $0.text = "27명 참여중"
@@ -62,8 +60,22 @@ class GroupListCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    var dayLabel: UILabel = {
+        $0.text = "월, 수, 목"
+        $0.textColor = .minningDarkGray100
+        $0.font = .font14P
+        return $0
+    }(UILabel())
+    
+    var dayLeftLabel: UILabel = {
+        $0.text = "D-7"
+        $0.textColor = .minningDarkGray100
+        $0.font = .font14P
+        return $0
+    }(UILabel())
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
     }
     
@@ -71,18 +83,13 @@ class GroupListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func countTitleLen(title: String) -> Int {
-        return title.count
-    }
-    
     func setupView() {
         addSubview(cellBackgroundView)
         cellBackgroundView.addSubview(cellView)
-        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, achieveRateLabel, participantLabel].forEach {
+        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, achieveRateLabel, dayLabel, dayLeftLabel].forEach {
             cellView.addSubview($0)
         }
         
-        selectionStyle = .none
         layer.cornerRadius = 10
         backgroundColor = .white
         
@@ -108,7 +115,6 @@ class GroupListCell: UITableViewCell {
             make.trailing.equalTo(iconBackgroundView.snp.trailing).offset(-10)
             make.top.equalTo(iconBackgroundView.snp.top).offset(10)
             make.bottom.equalTo(iconBackgroundView.snp.bottom).offset(-10)
-            make.width.height.equalTo(30)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -119,22 +125,23 @@ class GroupListCell: UITableViewCell {
         achieveRateView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
             make.leading.equalTo(titleLabel.snp.leading)
-            make.width.equalTo(117)
+            make.width.equalTo(achieveLabelCount)
             make.height.equalTo(23)
         }
         
         achieveRateLabel.snp.makeConstraints { make in
-            make.leading.equalTo(achieveRateView.snp.leading).offset(7)
-            make.top.equalTo(achieveRateView.snp.top).offset(3)
+            make.center.equalTo(achieveRateView.snp.center)
+            make.height.equalTo(14)
         }
         
-        participantLabel.snp.makeConstraints { make in
+        dayLabel.snp.makeConstraints { make in
             make.top.equalTo(achieveRateLabel.snp.top)
             make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
         }
-    }
-    
-    private func isCellSelected(_ sender: Any) {
         
+        dayLeftLabel.snp.makeConstraints { make in
+            make.top.equalTo(achieveRateLabel.snp.top)
+            make.leading.equalTo(dayLabel.snp.trailing).offset(4)
+        }
     }
 }

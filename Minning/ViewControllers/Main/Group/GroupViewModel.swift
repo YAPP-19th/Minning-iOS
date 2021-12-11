@@ -15,6 +15,7 @@ final class GroupViewModel {
         case myGroup
         case groupList
     }
+    
     enum OnGoingTabType {
         case onGoing
         case ended
@@ -24,6 +25,8 @@ final class GroupViewModel {
         case now
         case done
     }
+    
+
     
     var titles: [[String]] = [
         ["명상 그룹", "확언하기 그룹", "시각화 그룹", "감사 일기 쓰기 그룹", "다이어리 작성 그룹"],
@@ -35,13 +38,14 @@ final class GroupViewModel {
     
     var cellColors: [UIColor] = [.cateRed100, .cateSky100, .cateGreen100, .catePurple100, .cateYellow100]
     
-    var cellIcons: [String] = ["🌤", "🌤", "🏃🏻‍♀️", "👩‍💻", "🏡"]
+    var cellIcons: [String] = ["🌤", "👩‍💻", "🏃🏻‍♀️", "🏡", "⏰"]
     
     var tabType: DataBinding<GroupTabType> = DataBinding(.myGroup)
     var goingTabType: DataBinding<OnGoingTabType> = DataBinding(.onGoing)
     var myGroupTabType: DataBinding<MyGroupTabType> = DataBinding(.now)
     var currentCategory: DataBinding<RoutineCategory?> = DataBinding(nil)
     var isCurrentCategoryAll: DataBinding<Bool> = DataBinding(true)
+
     
     private let coordinator: GroupCoordinator
     
