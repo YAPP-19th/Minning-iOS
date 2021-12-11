@@ -32,10 +32,7 @@ final class GroupDetailViewController: BaseViewController {
         return $0
     }(UIView())
     
-    private let ruleContainerView: UIView = {
-        $0.backgroundColor = .cateGreen100
-        return $0
-    }(UIView())
+    private let ruleContainerView = GroupRuleContainerView()
     
     private let groupPhotoContainerView: UIView = {
         $0.backgroundColor = .cateYellow100
@@ -124,10 +121,6 @@ final class GroupDetailViewController: BaseViewController {
         
         myInfoConatainerView.snp.makeConstraints { make in
             make.height.equalTo(198)
-        }
-        
-        ruleContainerView.snp.makeConstraints { make in
-            make.height.equalTo(170)
         }
         
         groupPhotoContainerView.snp.makeConstraints { make in
