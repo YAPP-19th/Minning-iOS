@@ -25,10 +25,7 @@ final class GroupDetailViewController: BaseViewController {
         return $0
     }(UIStackView())
     
-    private let groupTitleContainerView: UIView = {
-        $0.backgroundColor = .minningBlue100
-        return $0
-    }(UIView())
+    private let groupTitleContainerView = GroupTitleContainerView()
     
     private let myInfoConatainerView: UIView = {
         $0.backgroundColor = .primaryWhite
@@ -125,9 +122,9 @@ final class GroupDetailViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        groupTitleContainerView.snp.makeConstraints { make in
-            make.height.equalTo(282)
-        }
+//        groupTitleContainerView.snp.makeConstraints { make in
+//            make.height.equalTo(282)
+//        }
         
         myInfoConatainerView.snp.makeConstraints { make in
             make.height.equalTo(198)
