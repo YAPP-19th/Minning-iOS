@@ -31,10 +31,15 @@ final class GroupTitleContainerView: UIView {
     private let topContentView = UIView()
     private let bottomContentView = UIView()
     
-    private let titleImageView: UIImageView = {
+    private let titleImageViewContainer: UIView = {
         $0.layer.cornerRadius = 7
         $0.clipsToBounds = true
         $0.backgroundColor = .cateSky100
+        return $0
+    }(UIView())
+    
+    private let titleImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "categoryMiracleMorningIcon")?.withAlignmentRectInsets(UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10))
         return $0
     }(UIImageView())
     
@@ -113,16 +118,16 @@ final class GroupTitleContainerView: UIView {
         backgroundColor = .primaryWhite
         addSubview(titleContainerView)
         titleContainerView.addSubview(contentStackView)
+        titleImageViewContainer.addSubview(titleImageView)
+        percentLabelContainer.addSubview(percentLabel)
 
         [topContentView, bottomContentView].forEach {
             contentStackView.addArrangedSubview($0)
         }
         
-        [titleImageView, titleLabel, percentLabelContainer, participateLabel].forEach {
+        [titleImageViewContainer, titleLabel, percentLabelContainer, participateLabel].forEach {
             topContentView.addSubview($0)
         }
-        
-        percentLabelContainer.addSubview(percentLabel)
         
         [groupPercentTitleLabel, groupPercentValueLabel, myPercentTitleLabel, myPercentValueLabel, medalImageView].forEach {
             bottomContentView.addSubview($0)
@@ -139,15 +144,19 @@ final class GroupTitleContainerView: UIView {
             make.bottom.equalTo(-20)
         }
         
-        titleImageView.snp.makeConstraints { make in
+        titleImageViewContainer.snp.makeConstraints { make in
             make.top.equalTo(25)
             make.leading.equalTo(20)
             make.width.height.equalTo(50)
         }
         
+        titleImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(22)
-            make.leading.equalTo(titleImageView.snp.trailing).offset(16)
+            make.leading.equalTo(titleImageViewContainer.snp.trailing).offset(16)
             make.trailing.equalTo(-20)
         }
         
