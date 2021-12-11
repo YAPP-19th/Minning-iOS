@@ -65,6 +65,7 @@ final class AddDayView: UIView {
         layer.cornerRadius = 19
         clipsToBounds = true
         addSubview(dayLabel)
+        backgroundColor = .minningLightGray100
         
         dayLabel.text = day.label
         dayLabel.font = .font14P
@@ -81,10 +82,10 @@ final class AddDayView: UIView {
     private func isButtonSelected(_ sender: Any) {
         isSelected.toggle()
         if isSelected {
-            backgroundColor = .minningBlue100
+            backgroundColor = .minningDarkGray100
             dayLabel.textColor = .primaryWhite
         } else {
-            backgroundColor = .primaryWhite
+            backgroundColor = .minningLightGray100
             dayLabel.textColor = .minningGray100
         }
     }

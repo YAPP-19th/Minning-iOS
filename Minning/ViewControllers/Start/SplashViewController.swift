@@ -1,8 +1,8 @@
 //
 //  SplashViewController.swift
-//  OurApp
+//  Minning
 //
-//  Copyright © 2021 YappiOS1. All rights reserved.
+//  Copyright © 2021 Minning. All rights reserved.
 //
 
 import CommonSystem
@@ -44,7 +44,7 @@ class SplashViewController: BaseViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.viewModel.goToLogin()
+            self.viewModel.checkSplashState()
         })
     }
     

@@ -40,6 +40,8 @@ final class HomeViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        viewModel.getUserData()
     }
     
     override func setupViewLayout() {
@@ -72,6 +74,11 @@ final class HomeViewController: BaseViewController {
             guard let self = self else { return }
             self.routineView.tabType = type
             self.routineView.updateView()
+        }
+        
+        viewModel.myInfo.bind { [weak self] myInfo in
+            guard let self = self else { return }
+            self.profileView.profileData = myInfo
         }
     }
 }

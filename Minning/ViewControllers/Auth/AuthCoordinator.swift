@@ -13,7 +13,8 @@ protocol AuthRoute {
     func goToAuthHome()
     func goToPassword(animated: Bool, isLogin: Bool, email: String)
     func goToMain(asRoot: Bool)
-    func goToNickname(animated: Bool)
+    func goToNickname(animated: Bool, email: String?, password: String?,
+                      socialToken: String?, isSocial: Bool, socialType: SocialType?)
     func goToFindPassword()
     func goToEmailAuth()
     func goToNewPassword()
@@ -58,8 +59,12 @@ extension AuthCoordinator: AuthRoute {
         coordinator.gotoMain(asRoot: asRoot)
     }
     
-    func goToNickname(animated: Bool = false) {
-        let nicknameVC = dependencies.createNickname(self)
+    func goToNickname(animated: Bool = false,
+                      email: String?, password: String?,
+                      socialToken: String? = nil, isSocial: Bool = false, socialType: SocialType? = nil) {
+        let nicknameVC = dependencies.createNickname(self,
+                                                     email: email, password: password,
+                                                     socialToken: socialToken, isSocial: isSocial, socialType: socialType)
         navigationController.pushViewController(nicknameVC, animated: animated)
     }
     

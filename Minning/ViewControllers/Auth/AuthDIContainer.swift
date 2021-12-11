@@ -22,8 +22,11 @@ final class AuthDIContainer {
         return vc
     }
     
-    func createNickname(_ coordinator: AuthCoordinator) -> NicknameViewController {
-        let viewModel = NicknameViewModel(coordinator: coordinator)
+    func createNickname(_ coordinator: AuthCoordinator,
+                        email: String?, password: String?, socialToken: String?, isSocial: Bool, socialType: SocialType?) -> NicknameViewController {
+        let viewModel = NicknameViewModel(coordinator: coordinator,
+                                          email: email, password: password,
+                                          isSocial: isSocial, socialType: socialType, token: socialToken)
         let vc = NicknameViewController(viewModel: viewModel)
         return vc
     }

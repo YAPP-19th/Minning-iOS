@@ -24,16 +24,22 @@ final class MyRoutineContentCell: UITableViewCell {
         }
     }
     
+    private let itemTitleContainer: UIView = {
+        $0.backgroundColor = .primaryWhite
+        return $0
+    }(UIView())
+    
     private let itemTitleLabel: UILabel = {
         $0.font = .font14PMedium
         $0.textColor = .primaryBlack
+        $0.backgroundColor = .primaryWhite
         return $0
     }(UILabel())
     
     private let itemStackView: UIStackView = {
         $0.axis = .horizontal
         $0.distribution = .equalSpacing
-        $0.spacing = 6
+        $0.spacing = 2
         return $0
     }(UIStackView())
     
@@ -57,21 +63,31 @@ final class MyRoutineContentCell: UITableViewCell {
     }
     
     private func setupContentViewLayout() {
-        contentView.addSubview(itemTitleLabel)
-        contentView.addSubview(itemStackView)
+        backgroundColor = .clear
+        
+        [itemTitleContainer, itemStackView].forEach {
+            contentView.addSubview($0)
+        }
+        itemTitleContainer.addSubview(itemTitleLabel)
         
         for itemView in itemViewList {
             itemStackView.addArrangedSubview(itemView)
         }
         
         itemStackView.snp.makeConstraints { make in
-            make.centerY.trailing.equalToSuperview()
+            make.top.trailing.equalToSuperview()
+        }
+        
+        itemTitleContainer.snp.makeConstraints { make in
+            make.trailing.equalTo(itemStackView.snp.leading).offset(-2)
+            make.leading.top.equalToSuperview()
+            make.bottom.equalTo(-2)
         }
         
         itemTitleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.lessThanOrEqualTo(itemStackView.snp.leading).offset(-23)
             make.centerY.equalToSuperview()
+            make.leading.equalTo(4)
+            make.trailing.lessThanOrEqualTo(-4)
         }
     }
 }

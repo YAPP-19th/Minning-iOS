@@ -86,22 +86,22 @@ public struct CaptureAPIRequest: MinningAPIRequestable {
     }
     
     public static func doTodayMission(request: TodayMissionRequest,
-                                      completion: @escaping (Result<DoTodayMissionResponseModel, Error>) -> Void) {
+                                      completion: @escaping (Result<DoTodayMissionResponseModel, MinningAPIError>) -> Void) {
         performMultipart(.doTodayMission(request: request), completion: completion)
     }
     
     public static func deleteMyImages(ids: [Int64],
-                                      completion: @escaping (Result<DeleteCaptureResponseModel, Error>) ->  Void) {
+                                      completion: @escaping (Result<DeleteCaptureResponseModel, MinningAPIError>) -> Void) {
         perform(.deleteMyImages(ids: ids), completion: completion)
     }
     
     public static func getMyImages(missionId: Int64, page: Int32, recent: Int32, size: Int32,
-                                   completion: @escaping (Result<CaptureListResponseModel, Error>) -> Void) {
+                                   completion: @escaping (Result<CaptureListResponseModel, MinningAPIError>) -> Void) {
         perform(.getMyImages(missionId: missionId, page: page, recent: recent, size: size), completion: completion)
     }
     
     public static func getGroupImages(groupId: Int64, page: Int32, recent: Int32, size: Int32,
-                                   completion: @escaping (Result<CaptureListResponseModel, Error>) -> Void) {
+                                      completion: @escaping (Result<CaptureListResponseModel, MinningAPIError>) -> Void) {
         perform(.getGroupImages(groupId: groupId, page: page, recent: recent, size: size), completion: completion)
     }
 }
