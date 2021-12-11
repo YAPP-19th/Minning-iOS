@@ -30,11 +30,7 @@ final class GroupDetailViewController: BaseViewController {
     private let ruleContainerView = GroupRuleContainerView()
     private let groupPhotoPreviewContainerView = GroupPhotoPreviewContainerView()
     private let groupInfoContainerView = GroupInfoCollectionView()
-    
-    private let myPhotoConatinerView: UIView = {
-        $0.backgroundColor = .catePurple100
-        return $0
-    }(UIView())
+    private let groupPhotoContainerView = GroupPhotoContainerView()
     
     private let joinButton: PlainButton = {
         $0.setTitle("참여하기", for: .normal)
@@ -87,7 +83,7 @@ final class GroupDetailViewController: BaseViewController {
         }
         
         [groupTitleContainerView, myInfoConatainerView, ruleContainerView,
-         groupPhotoPreviewContainerView, groupInfoContainerView, myPhotoConatinerView].forEach {
+         groupPhotoPreviewContainerView, groupInfoContainerView, groupPhotoContainerView].forEach {
             contentStackView.addArrangedSubview($0)
         }
         
@@ -110,11 +106,7 @@ final class GroupDetailViewController: BaseViewController {
         contentStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        myPhotoConatinerView.snp.makeConstraints { make in
-            make.height.equalTo(520)
-        }
-        
+
         joinButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
