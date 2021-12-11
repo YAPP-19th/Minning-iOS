@@ -31,6 +31,7 @@ final class GroupDetailViewController: BaseViewController {
     private let groupPhotoPreviewContainerView = GroupPhotoPreviewContainerView()
     private let groupInfoContainerView = GroupInfoCollectionView()
     private let groupPhotoContainerView = GroupPhotoContainerView()
+    private let groupQuitView = GroupQuitView()
     
     private let joinButton: PlainButton = {
         $0.setTitle("참여하기", for: .normal)
@@ -83,7 +84,7 @@ final class GroupDetailViewController: BaseViewController {
         }
         
         [groupTitleContainerView, myInfoConatainerView, ruleContainerView,
-         groupPhotoPreviewContainerView, groupInfoContainerView, groupPhotoContainerView].forEach {
+         groupPhotoPreviewContainerView, groupInfoContainerView, groupPhotoContainerView, groupQuitView].forEach {
             contentStackView.addArrangedSubview($0)
         }
         
