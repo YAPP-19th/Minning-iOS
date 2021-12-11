@@ -26,12 +26,10 @@ final class GroupDetailViewController: BaseViewController {
     }(UIStackView())
     
     private let groupTitleContainerView = GroupTitleContainerView()
-    
     private let myInfoConatainerView = GroupMyInfoContainerView()
-    
     private let ruleContainerView = GroupRuleContainerView()
-    
     private let groupPhotoPreviewContainerView = GroupPhotoPreviewContainerView()
+    private let groupInfoContainerView = GroupInfoCollectionView()
     
     private let myPhotoConatinerView: UIView = {
         $0.backgroundColor = .catePurple100
@@ -89,7 +87,7 @@ final class GroupDetailViewController: BaseViewController {
         }
         
         [groupTitleContainerView, myInfoConatainerView, ruleContainerView,
-         groupPhotoPreviewContainerView, myPhotoConatinerView].forEach {
+         groupPhotoPreviewContainerView, groupInfoContainerView, myPhotoConatinerView].forEach {
             contentStackView.addArrangedSubview($0)
         }
         
