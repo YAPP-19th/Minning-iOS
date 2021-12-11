@@ -26,10 +26,12 @@ class GroupListCellViewController: UITableViewCell {
         
         self.selectionStyle = .none
         self.layer.cornerRadius = 10
-        self.backgroundColor = .white
+        self.backgroundColor = .minningLightGray100
         
         cellView.snp.makeConstraints { make in
             make.height.equalTo(112)
+            make.top.equalToSuperview().offset(6)
+            make.bottom.equalToSuperview().offset(-6)
         }
     }
     
@@ -40,7 +42,7 @@ class GroupListCellViewController: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 6, left: 0, bottom: 6, right: 0))
+        cellView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 6, left: 0, bottom: 6, right: 0))
     }
     
     private func isCellSelected(_ sender: Any) {

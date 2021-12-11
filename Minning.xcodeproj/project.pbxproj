@@ -20,9 +20,9 @@
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
 		95563F612764ADFE00F5F22A /* MyGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95563F602764ADFE00F5F22A /* MyGroupCellView.swift */; };
 		95563F672764CD4600F5F22A /* MyGroupCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95563F662764CD4600F5F22A /* MyGroupCategoryModel.swift */; };
-		95826625272D54D600E67EE3 /* OngoingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826624272D54D600E67EE3 /* OngoingView.swift */; };
+		95826625272D54D600E67EE3 /* GroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826624272D54D600E67EE3 /* GroupListView.swift */; };
 		95826627272D550400E67EE3 /* GroupListCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826626272D550400E67EE3 /* GroupListCellViewController.swift */; };
-		9582662B272D579300E67EE3 /* MygroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662A272D579300E67EE3 /* MygroupView.swift */; };
+		9582662B272D579300E67EE3 /* OnGoingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662A272D579300E67EE3 /* OnGoingView.swift */; };
 		95826630272D57DC00E67EE3 /* EndedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662F272D57DC00E67EE3 /* EndedView.swift */; };
 		95826632272D999B00E67EE3 /* GroupCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826631272D999B00E67EE3 /* GroupCategoryCell.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
@@ -366,9 +366,9 @@
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
 		95563F602764ADFE00F5F22A /* MyGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCellView.swift; sourceTree = "<group>"; };
 		95563F662764CD4600F5F22A /* MyGroupCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCategoryModel.swift; sourceTree = "<group>"; };
-		95826624272D54D600E67EE3 /* OngoingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingView.swift; sourceTree = "<group>"; };
+		95826624272D54D600E67EE3 /* GroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListView.swift; sourceTree = "<group>"; };
 		95826626272D550400E67EE3 /* GroupListCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCellViewController.swift; sourceTree = "<group>"; };
-		9582662A272D579300E67EE3 /* MygroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MygroupView.swift; sourceTree = "<group>"; };
+		9582662A272D579300E67EE3 /* OnGoingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingView.swift; sourceTree = "<group>"; };
 		9582662F272D57DC00E67EE3 /* EndedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedView.swift; sourceTree = "<group>"; };
 		95826631272D999B00E67EE3 /* GroupCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCategoryCell.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
@@ -605,8 +605,7 @@
 		95826623272D54BD00E67EE3 /* GroupList */ = {
 			isa = PBXGroup;
 			children = (
-				95826624272D54D600E67EE3 /* OngoingView.swift */,
-				9582662F272D57DC00E67EE3 /* EndedView.swift */,
+				95826624272D54D600E67EE3 /* GroupListView.swift */,
 			);
 			path = GroupList;
 			sourceTree = "<group>";
@@ -623,11 +622,12 @@
 		95826629272D577C00E67EE3 /* MyGroup */ = {
 			isa = PBXGroup;
 			children = (
-				9582662A272D579300E67EE3 /* MygroupView.swift */,
+				9582662A272D579300E67EE3 /* OnGoingView.swift */,
 				95563F662764CD4600F5F22A /* MyGroupCategoryModel.swift */,
 				95826626272D550400E67EE3 /* GroupListCellViewController.swift */,
 				95AAE0BB2755069300021635 /* GroupListCellViewModel.swift */,
 				95563F602764ADFE00F5F22A /* MyGroupCellView.swift */,
+				9582662F272D57DC00E67EE3 /* EndedView.swift */,
 			);
 			path = MyGroup;
 			sourceTree = "<group>";
@@ -1670,7 +1670,7 @@
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B08BEB6C272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
-				95826625272D54D600E67EE3 /* OngoingView.swift in Sources */,
+				95826625272D54D600E67EE3 /* GroupListView.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */,
 				B01C7772274D18C20032B329 /* CaptureAPIRequest.swift in Sources */,
@@ -1704,7 +1704,7 @@
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
-				9582662B272D579300E67EE3 /* MygroupView.swift in Sources */,
+				9582662B272D579300E67EE3 /* OnGoingView.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B08BEB81272A8E650078E00A /* NewPasswordViewModel.swift in Sources */,
 				83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */,

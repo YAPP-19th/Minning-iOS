@@ -72,8 +72,16 @@ final class GroupViewController: BaseViewController {
         return $0
     }(UIStackView())
     
-    private let myGroupView: UIView = MygroupView()
-    lazy var groupListTableView: UIView = {
+    private let contentView: UIView = {
+        $0.backgroundColor = .cateYellow100
+        return $0
+    }(UIView())
+    
+    private let onGoingView: UIView = OnGoingView()
+    private let endedView: UIView = EndedView()
+    private let wholeGroupView: UIView = GroupListView()
+    
+    lazy var groupBackgroundView: UIView = {
         $0.backgroundColor = .minningLightGray100
         return $0
     }(UIView())
@@ -102,14 +110,23 @@ final class GroupViewController: BaseViewController {
             
             self.subTabContainerView.isHidden = !(type == .myGroup)
             self.filterScrollView.isHidden = !(type == .groupList)
+            
+            self.wholeGroupView.isHidden = !(type == .groupList)
+            self.onGoingView.isHidden = !(type == .myGroup)
+            self.endedView.isHidden = true
         }
         
-
+        viewModel.myGroupTabType.bindAndFire { [weak self] type in
+            guard let `self` = self else { return }
+            self.onGoingView.isHidden = !(type == .now)
+            self.endedView.isHidden = !(type == .done)
+            self.wholeGroupView.isHidden = true
+        }
     }
     
     override func setupViewLayout() {
         view.backgroundColor = .minningLightGray100
-        [titleSectionContainerView, groupListTableView].forEach {
+        [titleSectionContainerView, groupBackgroundView].forEach {
             view.addSubview($0)
         }
         
@@ -117,7 +134,30 @@ final class GroupViewController: BaseViewController {
             titleSectionContainerView.addSubview($0)
         }
         
-        groupListTableView.addSubview(myGroupView)
+        groupBackgroundView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        [onGoingView, endedView, wholeGroupView].forEach {
+            contentView.addSubview($0)
+        }
+        
+        onGoingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        endedView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        wholeGroupView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         [subTabNowButton, subTabDoneButton].forEach {
             subTabContainerView.addSubview($0)
@@ -152,17 +192,17 @@ final class GroupViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-10)
         }
         
-        groupListTableView.snp.makeConstraints { make in
+        groupBackgroundView.snp.makeConstraints { make in
             make.top.equalTo(titleSectionContainerView.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
-        myGroupView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
+//        onGoingView.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//            make.top.bottom.leading.trailing.equalToSuperview()
+//        }
         
         // MARK: Sub Tab Section
         subTabContainerView.snp.makeConstraints { make in
@@ -198,7 +238,7 @@ final class GroupViewController: BaseViewController {
         setupFilterview()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            self.viewModel.showDetail()
+//            self.viewModel.showDetail()
         })
     }
     

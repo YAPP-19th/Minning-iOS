@@ -12,7 +12,7 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class MygroupView: UITableView, UITableViewDataSource, UITableViewDelegate {
+final class OnGoingView: UITableView, UITableViewDataSource, UITableViewDelegate {
     var groupTableView = UITableView()
     
     public init() {
