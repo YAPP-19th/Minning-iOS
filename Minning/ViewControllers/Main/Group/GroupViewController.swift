@@ -198,6 +198,7 @@ final class GroupViewController: BaseViewController {
     
     @objc
     private func onClickTabButton(_ sender: UIButton) {
+        pushViewController(CameraViewController())
         switch sender {
         case myGroupTabButton:
             viewModel.tabType.accept(.myGroup)
