@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
+		8316D6A72765D08A00041DAB /* RoutinePercentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316D6A62765D08A00041DAB /* RoutinePercentDetailView.swift */; };
 		8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */; };
 		8373F6F9272D581D008839FA /* PhotoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6F8272D581D008839FA /* PhotoGridViewController.swift */; };
 		8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FA272D60D8008839FA /* PhotoCell.swift */; };
@@ -130,8 +131,8 @@
 		B0280457270986D8009D642A /* MyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280455270986D8009D642A /* MyRoutineView.swift */; };
 		B0280459270986FB009D642A /* MonthGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280458270986FB009D642A /* MonthGraphView.swift */; };
 		B028045A270986FB009D642A /* MonthGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0280458270986FB009D642A /* MonthGraphView.swift */; };
-		B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareView.swift */; };
-		B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareView.swift */; };
+		B028045C2709871D009D642A /* RoutineCompareDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareDetailView.swift */; };
+		B028045D2709871D009D642A /* RoutineCompareDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028045B2709871D009D642A /* RoutineCompareDetailView.swift */; };
 		B070557C275A592700AB776F /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B070557B275A592700AB776F /* StartCoordinator.swift */; };
 		B070557D275A592700AB776F /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B070557B275A592700AB776F /* StartCoordinator.swift */; };
 		B0705582275A593100AB776F /* StartDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0705581275A593100AB776F /* StartDIContainer.swift */; };
@@ -351,6 +352,7 @@
 		691B4B28941CA43A46A62C49 /* Pods-OurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp.release.xcconfig"; path = "Target Support Files/Pods-OurApp/Pods-OurApp.release.xcconfig"; sourceTree = "<group>"; };
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8316D6A62765D08A00041DAB /* RoutinePercentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePercentDetailView.swift; sourceTree = "<group>"; };
 		8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCellSwipeView.swift; sourceTree = "<group>"; };
 		8373F6F8272D581D008839FA /* PhotoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewController.swift; sourceTree = "<group>"; };
 		8373F6FA272D60D8008839FA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
@@ -418,7 +420,7 @@
 		B0280452270986B5009D642A /* WeeklyPercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPercentView.swift; sourceTree = "<group>"; };
 		B0280455270986D8009D642A /* MyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineView.swift; sourceTree = "<group>"; };
 		B0280458270986FB009D642A /* MonthGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGraphView.swift; sourceTree = "<group>"; };
-		B028045B2709871D009D642A /* RoutineCompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCompareView.swift; sourceTree = "<group>"; };
+		B028045B2709871D009D642A /* RoutineCompareDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCompareDetailView.swift; sourceTree = "<group>"; };
 		B070557B275A592700AB776F /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		B0705581275A593100AB776F /* StartDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDIContainer.swift; sourceTree = "<group>"; };
 		B0705585275A59E900AB776F /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
@@ -806,9 +808,10 @@
 				83D2F6D9271C416E002947D3 /* WeeklyPercentView */,
 				B0ECF8762709930F0088C96E /* MyRoutineview */,
 				B0280458270986FB009D642A /* MonthGraphView.swift */,
-				B028045B2709871D009D642A /* RoutineCompareView.swift */,
+				B028045B2709871D009D642A /* RoutineCompareDetailView.swift */,
 				B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */,
 				95A8DDA5275741080087A343 /* ReportEmptyView.swift */,
+				8316D6A62765D08A00041DAB /* RoutinePercentDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1586,7 +1589,7 @@
 				B09041A1272D8E7900AE8623 /* ProfileSettingCell.swift in Sources */,
 				B0180EED26DCC52A008C6F3C /* AppCoordinator.swift in Sources */,
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
-				B028045D2709871D009D642A /* RoutineCompareView.swift in Sources */,
+				B028045D2709871D009D642A /* RoutineCompareDetailView.swift in Sources */,
 				B08BEB89272A8F400078E00A /* NoticeViewModel.swift in Sources */,
 				B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B097A316272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
@@ -1661,6 +1664,7 @@
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
 				B0705589275A59F200AB776F /* OnBoardingViewController.swift in Sources */,
+				8316D6A72765D08A00041DAB /* RoutinePercentDetailView.swift in Sources */,
 				B08BEB6F272A8C880078E00A /* FindPasswordViewModel.swift in Sources */,
 				B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
@@ -1722,7 +1726,7 @@
 				B01C776F274D15740032B329 /* GroupAPIRequest.swift in Sources */,
 				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B0ADFDEF2748849B003019E5 /* AuthAPIRequest.swift in Sources */,
-				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
+				B028045C2709871D009D642A /* RoutineCompareDetailView.swift in Sources */,
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
