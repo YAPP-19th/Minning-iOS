@@ -10,9 +10,9 @@ import DesignSystem
 import Foundation
 
 final class GroupDIContainer {
-    func createDetail(_ coordinator: GroupCoordinator) -> GroupDetailViewController {
+    func createOpenedGroupDetail(_ coordinator: GroupCoordinator) -> GroupDetailViewController {
         let viewModel = GroupDetailViewModel(coordinator: coordinator)
-        let detailVC = GroupDetailViewController(viewModel: viewModel)
+        let detailVC = GroupDetailViewController(viewModel: viewModel, viewType: .openedGroup)
         return detailVC
     }
     

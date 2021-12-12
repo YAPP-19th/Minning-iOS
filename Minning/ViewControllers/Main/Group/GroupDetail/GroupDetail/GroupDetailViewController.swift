@@ -8,13 +8,35 @@
 
 import CommonSystem
 import DesignSystem
-import Foundation
 import SharedAssets
 import SnapKit
 
 final class GroupDetailViewController: BaseViewController {
+    
+    enum GroupViewType {
+        case openedGroup, myGroup, closedGroup
+    }
+    
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
+    
+    private let scrollView: UIScrollView = {
+        $0.keyboardDismissMode = .interactive
+        return $0
+    }(UIScrollView())
+    
     private let contentView: UIView = UIView()
+    private let contentStackView: UIStackView = {
+        $0.axis = .vertical
+        return $0
+    }(UIStackView())
+    
+    private let groupTitleContainerView = GroupTitleContainerView()
+    private let myInfoConatainerView = GroupMyInfoContainerView()
+    private let ruleContainerView = GroupRuleContainerView()
+    private let groupPhotoPreviewContainerView = GroupPhotoPreviewContainerView()
+    private let groupInfoContainerView = GroupInfoCollectionView()
+    private let groupPhotoContainerView = GroupPhotoContainerView()
+    private let groupQuitView = GroupQuitView()
     
     private let joinButton: PlainButton = {
         $0.setTitle("참여하기", for: .normal)
@@ -22,10 +44,13 @@ final class GroupDetailViewController: BaseViewController {
         return $0
     }(PlainButton())
     
+    var viewType: GroupViewType?
+    
     private let viewModel: GroupDetailViewModel
     
-    public init(viewModel: GroupDetailViewModel) {
+    public init(viewModel: GroupDetailViewModel, viewType: GroupViewType) {
         self.viewModel = viewModel
+        self.viewType = viewType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,32 +81,61 @@ final class GroupDetailViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
-        view.backgroundColor = .primaryWhite
-        contentView.backgroundColor = .minningLightGray100
-        
-        [navigationBar, contentView].forEach {
+        [navigationBar, scrollView].forEach {
             view.addSubview($0)
         }
         
-        [joinButton].forEach {
+        scrollView.addSubview(contentView)
+        
+        [contentStackView, joinButton].forEach {
             contentView.addSubview($0)
         }
+        
+        setViewsByViewType()
         
         navigationBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
         }
         
-        contentView.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+                
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.centerX.equalToSuperview()
         }
         
+        contentStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
         joinButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
+        }
+    }
+    
+    private func setViewsByViewType() {
+        switch viewType {
+        case .openedGroup:
+            [groupTitleContainerView, ruleContainerView, groupPhotoPreviewContainerView, groupInfoContainerView].forEach {
+                contentStackView.addArrangedSubview($0)
+            }
+        case .myGroup:
+            [groupTitleContainerView, myInfoConatainerView, groupInfoContainerView, ruleContainerView, groupPhotoContainerView, groupQuitView].forEach {
+                contentStackView.addArrangedSubview($0)
+            }
+        case .closedGroup:
+            [groupTitleContainerView, myInfoConatainerView, groupPhotoContainerView, groupQuitView].forEach {
+                contentStackView.addArrangedSubview($0)
+            }
+        case .none:
+            break
         }
     }
     

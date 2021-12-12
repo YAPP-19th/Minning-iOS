@@ -244,12 +244,13 @@ final class GroupViewController: BaseViewController {
         setupFilterview()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            self.viewModel.showDetail()
+            self.viewModel.showOpenedGroupDetail()
         })
     }
     
     @objc
     private func onClickTabButton(_ sender: UIButton) {
+        pushViewController(CameraViewController())
         switch sender {
         case myGroupTabButton:
             viewModel.tabType.accept(.myGroup)

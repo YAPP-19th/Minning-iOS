@@ -10,8 +10,7 @@ import DesignSystem
 import Foundation
 
 protocol GroupRoute {
-    func showDetail()
-    func showJoinGroup(completion: (() -> Void)?)
+    func showOpenedGroupDetail()
     func showJoinGroup(completion: ((Bool) -> Void)?)
     func goToNewGroup()
     
@@ -41,9 +40,15 @@ class GroupCoordinator {
 }
 
 extension GroupCoordinator: GroupRoute {
+<<<<<<< HEAD
     func showJoinGroup(completion: (() -> Void)?) {
         let joinGroupVC = dependencies.createJoinGroup(self)
         joinGroupVC.modalPresentationStyle = .overCurrentContext
+=======
+    func showOpenedGroupDetail() {
+        let detailVC = dependencies.createOpenedGroupDetail(self)
+        navigationController.pushViewController(detailVC, animated: true)
+>>>>>>> 8cdcc141b312c69769917dd52cf874bd8664587a
     }
     
     func showJoinGroup(completion: ((Bool) -> Void)?) {
