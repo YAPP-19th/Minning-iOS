@@ -62,9 +62,12 @@ final class ProfileView: UIView {
     }(UIStackView())
     
     private let titleLabel: UILabel = {
+        let weekdayIndex = Date().get(.weekday)
+        let weekday = Day.allCases[weekdayIndex].korean
+        
         $0.font = .font20PExBold
         $0.textColor = .primaryBlack
-        $0.text = "9월 16일 (목)"
+        $0.text = Date().convertToSmallKoreanString() + "(\(weekday))"
         return $0
     }(UILabel())
     
