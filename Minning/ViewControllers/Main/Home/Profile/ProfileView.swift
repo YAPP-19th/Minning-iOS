@@ -33,6 +33,19 @@ final class ProfileView: UIView {
         }
     }
     
+    public var weeklyData: [RoutinePercentModel]? {
+        didSet {
+            guard let weeklyData = weeklyData else { return }
+            removeAllWeeklyData()
+            weeklyData.forEach { data in
+                let weeklyView = WeeklyView()
+                weeklyView.weeklyData = .init(date: data.date.convertToSmallDate(), progress: CGFloat(data.rate) * 0.01)
+                weeklyViewList.append(weeklyView)
+                weeklyDataStackView.addArrangedSubview(weeklyView)
+            }
+        }
+    }
+    
     private let profileImageButton: UIButton = {
         $0.backgroundColor = .primaryLightGray
         $0.layer.cornerRadius = 22
@@ -111,6 +124,13 @@ final class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func removeAllWeeklyData() {
+        weeklyDataStackView.arrangedSubviews.forEach {
+            weeklyDataStackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+    }
+    
     private func setupViewLayout() {
         backgroundColor = .primaryWhite
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -120,13 +140,6 @@ final class ProfileView: UIView {
          optionButtonStackView, leftArrowButton,
          rightArrowButton, weeklyDataStackView].forEach {
             addSubview($0)
-        }
-        
-        for idx in 0..<7 {
-            let view = WeeklyView()
-            view.weeklyData = WeeklyData(date: Date(), progress: CGFloat(idx) * 0.1)
-            view.isTextBold = idx == 6
-            weeklyDataStackView.addArrangedSubview(view)
         }
         
         [addButton, notiButton].forEach {

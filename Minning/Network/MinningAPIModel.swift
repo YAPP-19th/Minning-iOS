@@ -254,7 +254,7 @@ public struct RoutinePercentModel: Codable {
     public let fullyDone: Int
     public let partiallyDone: Int
     public let totalDone: Int
-    public let rate: String
+    public let rate: Int
     
 }
 

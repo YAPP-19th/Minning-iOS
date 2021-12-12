@@ -26,6 +26,7 @@ final class RoutineView: UIView {
     
     weak var delegate: RoutineViewDelegate?
     var tabType: HomeViewModel.RoutineTabType = .routine
+    var routines = [RoutineModel]()
     
     lazy var mainTableView: UITableView = {
         $0.separatorStyle = .none
@@ -50,6 +51,11 @@ final class RoutineView: UIView {
     }
     
     func updateView() {
+        mainTableView.reloadData()
+    }
+    
+    func updateViewWithRoutines(routines: [RoutineModel]) {
+        self.routines = routines
         mainTableView.reloadData()
     }
     
@@ -85,7 +91,7 @@ extension RoutineView: UITableViewDataSource {
         case .groupGuide:
             return 0 // 명언 작성 완료 후 노출
         case .routine:
-            return tabType == .routine ? 3 : .zero
+            return tabType == .routine ? routines.count : .zero
         case .review:
             return tabType == .routine ? .zero : 2
         case .footer:
@@ -117,6 +123,7 @@ extension RoutineView: UITableViewDataSource {
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: RoutineCell.identifier, for: indexPath) as? RoutineCell else {
                 return .init()
             }
+            cell.configure(routines[indexPath.row])
             return cell
         case .review:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as? ReviewCell else {
