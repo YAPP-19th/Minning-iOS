@@ -61,18 +61,17 @@ public struct SayingAPIRequest: MinningAPIRequestable {
         }
     }
     
-    public static func checkTodaySaying(completion: @escaping (Result<TodaySayingCheckResponseModel, Error>) -> Void) {
+    public static func checkTodaySaying(completion: @escaping (Result<TodaySayingCheckResponseModel, MinningAPIError>) -> Void) {
         perform(.checkTodaySaying, completion: completion)
     }
     
-    public static func getTodaySaying(completion: @escaping (Result<SayingResponseModel, Error>) -> Void) {
+    public static func getTodaySaying(completion: @escaping (Result<SayingResponseModel, MinningAPIError>) -> Void) {
         perform(.getTodaySaying, completion: completion)
     }
     
     public static func compareSaying(content: String,
                                      sayingId: Int64,
-                                     completion: @escaping (Result<SayingCompareResponseModel, Error>) -> Void) {
+                                     completion: @escaping (Result<SayingCompareResponseModel, MinningAPIError>) -> Void) {
         perform(.compareSayingContent(content: content, sayingId: sayingId), completion: completion)
     }
 }
-

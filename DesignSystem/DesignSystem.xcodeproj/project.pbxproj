@@ -15,6 +15,7 @@
 		B0180F9126DCCDBE008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0180F9226DCCDBE008C6F3C /* SharedAssets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; };
 		B0180F9326DCCDBE008C6F3C /* SharedAssets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B01992DC2760B36500FF3E96 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01992DB2760B36500FF3E96 /* UIView+Extensions.swift */; };
 		B02803D72706FFB3009D642A /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803D62706FFB3009D642A /* CircleProgressView.swift */; };
 		B028040227095BF3009D642A /* TopTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028040127095BF3009D642A /* TopTextButton.swift */; };
 		B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02804032709621F009D642A /* UILabel+Extensions.swift */; };
@@ -62,6 +63,7 @@
 		B0180F8B26DCCD22008C6F3C /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedAssets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B01992DB2760B36500FF3E96 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		B02803D62706FFB3009D642A /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		B028040127095BF3009D642A /* TopTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTextButton.swift; sourceTree = "<group>"; };
 		B02804032709621F009D642A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				B0FDEEDB2705585D00011FC4 /* UIFont+Extensions.swift */,
 				B02804032709621F009D642A /* UILabel+Extensions.swift */,
 				B0ECF8A4270AE3010088C96E /* UIImage+Extensions.swift */,
+				B01992DB2760B36500FF3E96 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				B0FDEEDA270552B100011FC4 /* PlainButton.swift in Sources */,
 				B08F0F322709F13500C1EBA5 /* DotCALayer.swift in Sources */,
 				B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */,
+				B01992DC2760B36500FF3E96 /* UIView+Extensions.swift in Sources */,
 				B028040227095BF3009D642A /* TopTextButton.swift in Sources */,
 				B028042127096C24009D642A /* MUIBarButtonItem.swift in Sources */,
 				B0ECF875270992630088C96E /* NonScrollTableView.swift in Sources */,
@@ -480,9 +484,10 @@
 			baseConfigurationReference = 99B40B3D17159F9D8FE2046D /* Pods-DesignSystem.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -509,9 +514,10 @@
 			baseConfigurationReference = 6D651C7FD7732D5510E3E80B /* Pods-DesignSystem.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6683XA59A4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

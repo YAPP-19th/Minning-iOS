@@ -43,12 +43,20 @@ final class MyPageViewController: BaseViewController {
         updateViewContent()
         
         navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
+        
+        viewModel.getUserData()
     }
     
     private func updateViewContent() {
         if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
             navBar.titleContent = "마이 페이지"
             navBar.removeDefaultShadowImage()
+        }
+    }
+    
+    override func bindViewModel() {
+        viewModel.myInfo.bind { _ in
+            self.myPageTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         }
     }
     
@@ -93,6 +101,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSettingCell.identifier) as? ProfileSettingCell {
+                cell.profileData = viewModel.myInfo.value
                 return cell
             }
         } else {
@@ -101,6 +110,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             case .push:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: SwitchSettingCell.identifier) as? SwitchSettingCell {
                     cell.rowItem = rowItem
+                    cell.delegate = self
                     cell.selectionStyle = .none
                     return cell
                 }
@@ -122,13 +132,21 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             case .logout:
                 viewModel.goToLogin()
             case .deleteAccount:
-                self.showAlert(title: "계정 삭제", message: "정말 이 계정을 삭제하시겠습니까?", okTitle: "삭제", handler: { _ in
-                    // 계정 삭제 로직 진행
-                    DebugLog("계정 삭제")
+                self.showAlert(title: "계정 삭제",
+                               message: "정말 이 계정을 삭제하시겠습니까?",
+                               okTitle: "삭제", handler: { [weak self] _ in
+                    guard let `self` = self else { return }
+                    self.viewModel.deleteUserData()
                 })
             default:
                 viewModel.goToSettingContent(type: rowItem.type)
             }
         }
+    }
+}
+
+extension MyPageViewController: SwitchSettingCellDelegate {
+    func onClickSwitch() {
+        viewModel.setPushEnable()
     }
 }

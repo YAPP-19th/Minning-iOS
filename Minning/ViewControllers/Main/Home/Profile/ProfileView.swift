@@ -23,6 +23,29 @@ protocol ProfileViewDelegate: AnyObject {
 final class ProfileView: UIView {
     weak var delegate: ProfileViewDelegate?
     
+    public var profileData: User? {
+        didSet {
+            if let profileUrl = profileData?.profileFullUrl {
+                downloadImage(from: profileUrl, completion: { image in
+                    self.profileImageButton.setImage(image, for: .normal)
+                })
+            }
+        }
+    }
+    
+    public var weeklyData: [RoutinePercentModel]? {
+        didSet {
+            guard let weeklyData = weeklyData else { return }
+            removeAllWeeklyData()
+            weeklyData.forEach { data in
+                let weeklyView = WeeklyView()
+                weeklyView.weeklyData = .init(date: data.date.convertToSmallDate(), progress: CGFloat(data.rate) * 0.01)
+                weeklyViewList.append(weeklyView)
+                weeklyDataStackView.addArrangedSubview(weeklyView)
+            }
+        }
+    }
+    
     private let profileImageButton: UIButton = {
         $0.backgroundColor = .primaryLightGray
         $0.layer.cornerRadius = 22
@@ -39,9 +62,12 @@ final class ProfileView: UIView {
     }(UIStackView())
     
     private let titleLabel: UILabel = {
+        let weekdayIndex = Date().get(.weekday)
+        let weekday = Day.allCases[weekdayIndex].korean
+        
         $0.font = .font20PExBold
         $0.textColor = .primaryBlack
-        $0.text = "9월 16일 (목)"
+        $0.text = Date().convertToSmallKoreanString() + "(\(weekday))"
         return $0
     }(UILabel())
     
@@ -101,6 +127,13 @@ final class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func removeAllWeeklyData() {
+        weeklyDataStackView.arrangedSubviews.forEach {
+            weeklyDataStackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+    }
+    
     private func setupViewLayout() {
         backgroundColor = .primaryWhite
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -110,13 +143,6 @@ final class ProfileView: UIView {
          optionButtonStackView, leftArrowButton,
          rightArrowButton, weeklyDataStackView].forEach {
             addSubview($0)
-        }
-        
-        for idx in 0..<7 {
-            let view = WeeklyView()
-            view.weeklyData = WeeklyData(date: Date(), progress: CGFloat(idx) * 0.1)
-            view.isTextBold = idx == 6
-            weeklyDataStackView.addArrangedSubview(view)
         }
         
         [addButton, notiButton].forEach {

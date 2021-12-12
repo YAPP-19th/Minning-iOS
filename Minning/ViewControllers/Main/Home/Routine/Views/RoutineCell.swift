@@ -27,12 +27,18 @@ final class RoutineCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewLayout()
-        setTempData()
         setViewAsDisable()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(_ routine: RoutineModel) {
+        categoryBarView.backgroundColor = routine.category.color
+        titleLabel.text = routine.title
+        descriptionLabel.text = routine.goal
+        alarmLabel.text = routine.startTime
     }
 
     private func setupViewLayout() {
@@ -100,14 +106,7 @@ final class RoutineCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-16)
         }
     }
-    
-    private func setTempData() {
-        categoryBarView.backgroundColor = .minningBlue100
-        titleLabel.text = "아침에 신문 읽기"
-        descriptionLabel.text = "시사경영 3개씩 매일매일 읽기"
-        alarmLabel.text = "7:00"
-    }
-    
+
     private func setViewAsDisable() {
         categoryBarView.backgroundColor = .grayB5B8BE
         titleLabel.textColor = .grayB5B8BE

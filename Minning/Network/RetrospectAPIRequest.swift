@@ -111,32 +111,32 @@ public struct RetrospectAPIRequest: MinningAPIRequestable {
     }
     
     public static func addRetrospect(request: RetrospectRequest,
-                                     completion: @escaping (Result<RetrospectResponseModel, Error>) -> Void) {
+                                     completion: @escaping (Result<RetrospectResponseModel, MinningAPIError>) -> Void) {
         performMultipart(.addRetrospect(request: request), completion: completion)
     }
     
     public static func modifyRetrospect(request: RetrospectRequest,
-                                        completion: @escaping (Result<RetrospectResponseModel, Error>) -> Void) {
+                                        completion: @escaping (Result<RetrospectResponseModel, MinningAPIError>) -> Void) {
         performMultipart(.modifyRetrospect(request: request), completion: completion)
     }
     
     public static func fetchSingleRetrospect(id: Int64,
-                                             completion: @escaping (Result<RetrospectResponseModel, Error>) -> Void) {
+                                             completion: @escaping (Result<RetrospectResponseModel, MinningAPIError>) -> Void) {
         perform(.fetchSingleRetrospect(id: id), completion: completion)
     }
     
     public static func retrospectListByDate(date: String,
-                                            completion: @escaping (Result<RetrospectListResponseModel, Error>) -> Void) {
+                                            completion: @escaping (Result<RetrospectListResponseModel, MinningAPIError>) -> Void) {
         perform(.fetchRetrospectByDate(date: date), completion: completion)
     }
     
     public static func deleteRetrospect(id: Int64,
-                                        completion: @escaping (Result<CommonAPIResponse, Error>) -> Void) {
+                                        completion: @escaping (Result<CommonAPIResponse, MinningAPIError>) -> Void) {
         perform(.deleteRetrospect(id: id), completion: completion)
     }
     
     public static func setRetrospectResult(request: RoutineResultRequest,
-                                           completion: @escaping (Result<RetrospectResponseModel, Error>) -> Void) {
+                                           completion: @escaping (Result<RetrospectResponseModel, MinningAPIError>) -> Void) {
         perform(.setRetrospectResult(request: request), completion: completion)
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
-import Foundation
+import CommonSystem
 import UIKit
 
 public enum SocialProcess: String, Codable {
@@ -28,13 +28,13 @@ public struct MyInfoModel: Codable {
     
     public let email: String
     public let nickname: String
-    public let profileUrl: String
+    public var profileUrl: String?
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         email = try values.decode(String.self, forKey: .email)
         nickname = try values.decode(String.self, forKey: .nickname)
-        profileUrl = try values.decode(String.self, forKey: .profile)
+        profileUrl = try values.decode(String?.self, forKey: .profile)
     }
     
     public func encode(to encoder: Encoder) throws { }
@@ -254,7 +254,7 @@ public struct RoutinePercentModel: Codable {
     public let fullyDone: Int
     public let partiallyDone: Int
     public let totalDone: Int
-    public let rate: String
+    public let rate: Int
     
 }
 

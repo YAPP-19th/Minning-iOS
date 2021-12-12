@@ -40,6 +40,10 @@ final class HomeViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        viewModel.getUserData()
+        viewModel.getWeeklyRate()
+        viewModel.getAllRoutinesByDay()
     }
     
     override func setupViewLayout() {
@@ -72,6 +76,21 @@ final class HomeViewController: BaseViewController {
             guard let self = self else { return }
             self.routineView.tabType = type
             self.routineView.updateView()
+        }
+        
+        viewModel.myInfo.bind { [weak self] myInfo in
+            guard let self = self else { return }
+            self.profileView.profileData = myInfo
+        }
+        
+        viewModel.weeklyRoutineRate.bind { [weak self] routineRates in
+            guard let self = self else { return }
+            self.profileView.weeklyData = routineRates
+        }
+        
+        viewModel.routines.bind { [weak self] routines in
+            guard let self = self else { return }
+            self.routineView.updateViewWithRoutines(routines: routines)
         }
     }
 }

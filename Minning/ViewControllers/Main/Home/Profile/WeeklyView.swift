@@ -29,7 +29,7 @@ public enum WeeklyText: Int {
     var title: String {
         switch self {
         case .sunday:
-            return "월"
+            return "일"
         case .monday:
             return "월"
         case .tuesday:
