@@ -31,8 +31,8 @@ final class GroupViewModel {
         self.coordinator = coordinator
     }
     
-    func showDetail() {
-        coordinator.showDetail()
+    func showOpenedGroupDetail() {
+        coordinator.showOpenedGroupDetail()
     }
     
     func goToNewGroup() {
