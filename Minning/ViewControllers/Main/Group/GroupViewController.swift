@@ -244,7 +244,7 @@ final class GroupViewController: BaseViewController {
         setupFilterview()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-//            self.viewModel.showDetail()
+            self.viewModel.showDetail()
         })
     }
     

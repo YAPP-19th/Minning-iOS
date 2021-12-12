@@ -16,20 +16,19 @@ final class SplashViewModel {
     }
     
     public func checkSplashState() {
-        goToMain()
-//        if AppConfiguration.shared.isFirstLaunch {
-//            AppConfiguration.shared.isFirstLaunch = false
-//            DebugLog("First Launch ==> OnBoarding")
-//            goToOnboarding()
-//        } else {
-//            if !TokenManager.shared.checkAccessTokenExpired(), AppConfiguration.shared.isAutoLogin {
-//                DebugLog("AccessToken Not Expired. Auto Login ==> Go to Main.")
-//                goToMain()
-//            }
-//            let deleteResult = TokenManager.shared.deleteAllTokenData()
-//            DebugLog("Go to Login ==> Token Delete Result: \(deleteResult)")
-//            goToLogin()
-//        }
+        if AppConfiguration.shared.isFirstLaunch {
+            AppConfiguration.shared.isFirstLaunch = false
+            DebugLog("First Launch ==> OnBoarding")
+            goToOnboarding()
+        } else {
+            if !TokenManager.shared.checkAccessTokenExpired(), AppConfiguration.shared.isAutoLogin {
+                DebugLog("AccessToken Not Expired. Auto Login ==> Go to Main.")
+                goToMain()
+            }
+            let deleteResult = TokenManager.shared.deleteAllTokenData()
+            DebugLog("Go to Login ==> Token Delete Result: \(deleteResult)")
+            goToLogin()
+        }
     }
     
     private func goToMain() {
