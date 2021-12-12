@@ -18,10 +18,10 @@
 		8373F76B2748BC4B008839FA /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
-		95563F612764ADFE00F5F22A /* MyGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95563F602764ADFE00F5F22A /* MyGroupCellView.swift */; };
+		95563F612764ADFE00F5F22A /* GroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95563F602764ADFE00F5F22A /* GroupCellView.swift */; };
 		95563F672764CD4600F5F22A /* MyGroupCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95563F662764CD4600F5F22A /* MyGroupCategoryModel.swift */; };
 		95826625272D54D600E67EE3 /* GroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826624272D54D600E67EE3 /* GroupListView.swift */; };
-		95826627272D550400E67EE3 /* GroupListCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826626272D550400E67EE3 /* GroupListCellViewController.swift */; };
+		95826627272D550400E67EE3 /* MyGroupCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826626272D550400E67EE3 /* MyGroupCellViewController.swift */; };
 		9582662B272D579300E67EE3 /* OnGoingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662A272D579300E67EE3 /* OnGoingView.swift */; };
 		95826630272D57DC00E67EE3 /* EndedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582662F272D57DC00E67EE3 /* EndedView.swift */; };
 		95826632272D999B00E67EE3 /* GroupCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95826631272D999B00E67EE3 /* GroupCategoryCell.swift */; };
@@ -29,6 +29,9 @@
 		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
 		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
 		9589B557271DF27300943BA3 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B556271DF27300943BA3 /* AddDayView.swift */; };
+		959F029C2765E3EF0019F60C /* GroupListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959F029B2765E3EF0019F60C /* GroupListModel.swift */; };
+		959F029E2765E5EC0019F60C /* GroupListCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959F029D2765E5EC0019F60C /* GroupListCellViewController.swift */; };
+		959F02A02765F1130019F60C /* EndedGroupCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959F029F2765F1130019F60C /* EndedGroupCellViewController.swift */; };
 		95A8DDA6275741080087A343 /* ReportEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8DDA5275741080087A343 /* ReportEmptyView.swift */; };
 		95AAE0BC2755069300021635 /* GroupListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AAE0BB2755069300021635 /* GroupListCellViewModel.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
@@ -364,10 +367,10 @@
 		8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
-		95563F602764ADFE00F5F22A /* MyGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCellView.swift; sourceTree = "<group>"; };
+		95563F602764ADFE00F5F22A /* GroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCellView.swift; sourceTree = "<group>"; };
 		95563F662764CD4600F5F22A /* MyGroupCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCategoryModel.swift; sourceTree = "<group>"; };
 		95826624272D54D600E67EE3 /* GroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListView.swift; sourceTree = "<group>"; };
-		95826626272D550400E67EE3 /* GroupListCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCellViewController.swift; sourceTree = "<group>"; };
+		95826626272D550400E67EE3 /* MyGroupCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCellViewController.swift; sourceTree = "<group>"; };
 		9582662A272D579300E67EE3 /* OnGoingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingView.swift; sourceTree = "<group>"; };
 		9582662F272D57DC00E67EE3 /* EndedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedView.swift; sourceTree = "<group>"; };
 		95826631272D999B00E67EE3 /* GroupCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCategoryCell.swift; sourceTree = "<group>"; };
@@ -375,6 +378,9 @@
 		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		9589B556271DF27300943BA3 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
+		959F029B2765E3EF0019F60C /* GroupListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListModel.swift; sourceTree = "<group>"; };
+		959F029D2765E5EC0019F60C /* GroupListCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCellViewController.swift; sourceTree = "<group>"; };
+		959F029F2765F1130019F60C /* EndedGroupCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedGroupCellViewController.swift; sourceTree = "<group>"; };
 		95A8DDA5275741080087A343 /* ReportEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEmptyView.swift; sourceTree = "<group>"; };
 		95AAE0BB2755069300021635 /* GroupListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCellViewModel.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -606,6 +612,8 @@
 			isa = PBXGroup;
 			children = (
 				95826624272D54D600E67EE3 /* GroupListView.swift */,
+				959F029B2765E3EF0019F60C /* GroupListModel.swift */,
+				959F029D2765E5EC0019F60C /* GroupListCellViewController.swift */,
 			);
 			path = GroupList;
 			sourceTree = "<group>";
@@ -613,6 +621,8 @@
 		95826628272D575600E67EE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				95AAE0BB2755069300021635 /* GroupListCellViewModel.swift */,
+				95563F602764ADFE00F5F22A /* GroupCellView.swift */,
 				95826629272D577C00E67EE3 /* MyGroup */,
 				95826623272D54BD00E67EE3 /* GroupList */,
 			);
@@ -622,12 +632,11 @@
 		95826629272D577C00E67EE3 /* MyGroup */ = {
 			isa = PBXGroup;
 			children = (
-				9582662A272D579300E67EE3 /* OnGoingView.swift */,
 				95563F662764CD4600F5F22A /* MyGroupCategoryModel.swift */,
-				95826626272D550400E67EE3 /* GroupListCellViewController.swift */,
-				95AAE0BB2755069300021635 /* GroupListCellViewModel.swift */,
-				95563F602764ADFE00F5F22A /* MyGroupCellView.swift */,
+				9582662A272D579300E67EE3 /* OnGoingView.swift */,
+				95826626272D550400E67EE3 /* MyGroupCellViewController.swift */,
 				9582662F272D57DC00E67EE3 /* EndedView.swift */,
+				959F029F2765F1130019F60C /* EndedGroupCellViewController.swift */,
 			);
 			path = MyGroup;
 			sourceTree = "<group>";
@@ -1663,6 +1672,7 @@
 				B01C7763274D00D00032B329 /* RetrospectAPIRequest.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
+				959F029C2765E3EF0019F60C /* GroupListModel.swift in Sources */,
 				B0ADFE0B274885E4003019E5 /* MinningAPIConstant.swift in Sources */,
 				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
 				B09041B4272E28A900AE8623 /* InquireViewModel.swift in Sources */,
@@ -1703,6 +1713,7 @@
 				B097A30F272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
+				959F02A02765F1130019F60C /* EndedGroupCellViewController.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				9582662B272D579300E67EE3 /* OnGoingView.swift in Sources */,
 				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
@@ -1755,13 +1766,14 @@
 				8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */,
 				B01C776F274D15740032B329 /* GroupAPIRequest.swift in Sources */,
 				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
-				95563F612764ADFE00F5F22A /* MyGroupCellView.swift in Sources */,
+				95563F612764ADFE00F5F22A /* GroupCellView.swift in Sources */,
 				B0ADFDEF2748849B003019E5 /* AuthAPIRequest.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareView.swift in Sources */,
 				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
-				95826627272D550400E67EE3 /* GroupListCellViewController.swift in Sources */,
+				95826627272D550400E67EE3 /* MyGroupCellViewController.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
+				959F029E2765E5EC0019F60C /* GroupListCellViewController.swift in Sources */,
 				8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */,
 				B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,

@@ -31,7 +31,7 @@ final class OnGoingView: UITableView, UITableViewDataSource, UITableViewDelegate
         
         updateTableView()
         
-        groupTableView.register(GroupListCellViewController.self, forCellReuseIdentifier: GroupListCellViewController.identifier)
+        groupTableView.register(MyGroupCellViewController.self, forCellReuseIdentifier: MyGroupCellViewController.identifier)
         groupTableView.dataSource = self
         groupTableView.delegate = self
         groupTableView.backgroundColor = .minningLightGray100
@@ -48,11 +48,11 @@ final class OnGoingView: UITableView, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = groupTableView.dequeueReusableCell(withIdentifier: GroupListCellViewController.identifier) as? GroupListCellViewController ?? GroupListCellViewController()
+        let cell = groupTableView.dequeueReusableCell(withIdentifier: MyGroupCellViewController.identifier) as? MyGroupCellViewController ?? MyGroupCellViewController()
         return cell
     }
     

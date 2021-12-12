@@ -10,8 +10,11 @@ import CommonSystem
 import DesignSystem
 import SharedAssets
 import SnapKit
+import CoreGraphics
 
-class MyGroupCellView: UIView {
+class GroupCellView: UIView {
+    var category: GroupListCellViewModel.MyGroupCategory
+    
     var cellBackgroundView: UIView = {
         $0.backgroundColor = .minningLightGray100
         return $0
@@ -51,7 +54,14 @@ class MyGroupCellView: UIView {
         return $0
     }(UILabel())
     
-    var achieveLabelCount: Int = 101
+    private var achieveLabelCount: Int = 101
+    
+    var groupListAchieveRateLabel: UILabel = {
+        $0.text = "평균 달성률 100%"
+        $0.textColor = .minningBlue100
+        $0.font = .font14P
+        return $0
+    }(UILabel())
     
     var participantLabel: UILabel = {
         $0.text = "27명 참여중"
@@ -74,9 +84,23 @@ class MyGroupCellView: UIView {
         return $0
     }(UILabel())
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(category: GroupListCellViewModel.MyGroupCategory) {
+        self.category = category
+        
+        super.init(frame: CGRect())
+        
         setupView()
+        if category ==  .myGroup {
+            groupListAchieveRateLabel.isHidden = true
+            participantLabel.isHidden = true
+            achieveLabelCount = 101
+            
+        } else if category == .groupList {
+            achieveRateLabel.isHidden = true
+            dayLabel.isHidden = true
+            dayLeftLabel.isHidden = true
+            achieveLabelCount = 113
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -86,7 +110,7 @@ class MyGroupCellView: UIView {
     func setupView() {
         addSubview(cellBackgroundView)
         cellBackgroundView.addSubview(cellView)
-        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, achieveRateLabel, dayLabel, dayLeftLabel].forEach {
+        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, achieveRateLabel, groupListAchieveRateLabel,  participantLabel, dayLabel, dayLeftLabel].forEach {
             cellView.addSubview($0)
         }
         
@@ -142,6 +166,16 @@ class MyGroupCellView: UIView {
         dayLeftLabel.snp.makeConstraints { make in
             make.top.equalTo(achieveRateLabel.snp.top)
             make.leading.equalTo(dayLabel.snp.trailing).offset(4)
+        }
+        
+        groupListAchieveRateLabel.snp.makeConstraints { make in
+            make.center.equalTo(achieveRateView.snp.center)
+            make.height.equalTo(14)
+        }
+        
+        participantLabel.snp.makeConstraints { make in
+            make.top.equalTo(achieveRateLabel.snp.top)
+            make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
         }
     }
 }
