@@ -13,7 +13,7 @@ final class EditOrderViewModel {
     let coordinator: HomeCoordinator
     var day: Day
     var routineList: [RoutineModel]
-    var isOrderEdited: Bool = false
+    var isOrderEdited: DataBinding<Bool> = DataBinding(false)
     
     init(coordinator: HomeCoordinator, day: Day, routineList: [RoutineModel]) {
         self.coordinator = coordinator
@@ -21,12 +21,12 @@ final class EditOrderViewModel {
         self.routineList = routineList
     }
     
-    public func patchRoutineSequence() {
+    public func patchRoutineSequence(completion: @escaping () -> Void) {
         let routineIdList = routineList.map { $0.id }
-        RoutineAPIRequest.modifyRoutineOrderByDay(day: day, routineIds: routineIdList) { [weak self] result in
+        RoutineAPIRequest.modifyRoutineOrderByDay(day: day, routineIds: routineIdList) { result in
             switch result {
             case .success(_):
-                self?.isOrderEdited = true
+                completion()
             case .failure(let error):
                 DebugLog(error.localizedDescription)
             }

@@ -13,7 +13,16 @@ import SharedAssets
 import SnapKit
 
 final class EditOrderViewController: BaseViewController {
-    lazy var mainTableView: UITableView = {
+    
+    private lazy var rightBarButton: UIBarButtonItem = {
+        $0.title = "완료"
+        $0.tintColor = .systemBlue
+        $0.addTargetForAction(target: self, action: #selector(onClickSaveButton(_:)))
+        $0.isEnabled = false
+        return $0
+    }(UIBarButtonItem())
+    
+    private lazy var mainTableView: UITableView = {
         $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.delegate = self
@@ -40,6 +49,7 @@ final class EditOrderViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.setRightBarButton(rightBarButton, animated: true)
         setupNavigationBar()
     }
     
@@ -64,7 +74,9 @@ final class EditOrderViewController: BaseViewController {
     
     @objc
     private func onClickSaveButton(_ sender: Any?) {
-        print("save")
+        viewModel.patchRoutineSequence {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     private func showDismissAlert() {
@@ -74,7 +86,9 @@ final class EditOrderViewController: BaseViewController {
     }
     
     override func bindViewModel() {
-        
+        viewModel.isOrderEdited.bind { [weak self] value in
+            self?.rightBarButton.isEnabled = value
+        }
     }
     
     override func setupViewLayout() {
@@ -105,9 +119,10 @@ extension EditOrderViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let tempDataToBeMoved = self.viewModel.routineList[sourceIndexPath.row]
-        self.viewModel.routineList.remove(at: sourceIndexPath.row)
-        self.viewModel.routineList.insert(tempDataToBeMoved, at: destinationIndexPath.row)
+        let tempDataToBeMoved = viewModel.routineList[sourceIndexPath.row]
+        viewModel.routineList.remove(at: sourceIndexPath.row)
+        viewModel.routineList.insert(tempDataToBeMoved, at: destinationIndexPath.row)
+        viewModel.isOrderEdited.accept(true)
     }
 }
 
