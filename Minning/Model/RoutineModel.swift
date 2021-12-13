@@ -83,6 +83,19 @@ public enum RoutineResult {
     case relax // 쉬었어요
     case failure // 못했어요
     
+    var title: String {
+        switch self {
+        case .done:
+            return "완료"
+        case .tried:
+            return "부분완료"
+        case .relax:
+            return ""
+        case .failure:
+            return "미완료"
+        }
+    }
+    
     var symbolOpacity: Float {
         switch self {
         case .done, .failure:
@@ -98,9 +111,9 @@ public enum RoutineResult {
         switch self {
         case .done:
             return UIImage(sharedNamed: "weekly_complete")
-        case .failure:
-            return UIImage(sharedNamed: "weekly_half")
         case .tried:
+            return UIImage(sharedNamed: "weekly_half")
+        case .failure:
             return UIImage(sharedNamed: "weekly_incomplete")
         case .relax:
             return nil
@@ -117,4 +130,12 @@ public struct Routine {
 public struct ReportRoutine {
     let category: RoutineCategory
     let percent: CGFloat
+    let routines: [MonthlyRoutine]
+}
+
+public struct MonthlyRoutine {
+    let title: String
+    let donePercent: CGFloat
+    let triedPercent: CGFloat
+    let failurePercent: CGFloat
 }
