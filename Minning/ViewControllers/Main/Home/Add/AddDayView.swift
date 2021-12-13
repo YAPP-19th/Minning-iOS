@@ -12,44 +12,16 @@ import SharedAssets
 import SnapKit
 
 final class AddDayView: UIView {
-    enum DayType {
-        case mon
-        case tue
-        case wed
-        case thu
-        case fri
-        case sat
-        case sun
-        
-        var label: String {
-            switch self {
-            case .mon:
-                return "월"
-            case .tue:
-                return "화"
-            case .wed:
-                return "수"
-            case .thu:
-                return "목"
-            case .fri:
-                return "금"
-            case .sat:
-                return "토"
-            case .sun:
-                return "일"
-            }
-        }
-    }
     
-    private let day: DayType
+    let day: Day
     
-    private var isSelected: Bool = false
+    var isSelected: Bool = false
     
     private let dayLabel: UILabel = {
         return $0
     }(UILabel())
     
-    init(day: DayType) {
+    init(day: Day) {
         self.day = day
         super.init(frame: .zero)
         setupView()
@@ -67,7 +39,7 @@ final class AddDayView: UIView {
         addSubview(dayLabel)
         backgroundColor = .minningLightGray100
         
-        dayLabel.text = day.label
+        dayLabel.text = day.korean
         dayLabel.font = .font14P
         dayLabel.textColor = .minningGray100
         

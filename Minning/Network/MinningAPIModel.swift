@@ -210,18 +210,18 @@ public struct RoutineModel: Codable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let categoryValue = try values.decode(String.self, forKey: .category)
+        let categoryValue = try values.decode(Int.self, forKey: .category)
         
         switch categoryValue {
-        case "건강":
-            category = .health
-        case "생활":
-            category = .life
-        case "자기개발":
-            category = .selfDev
-        case "미라클모닝":
+        case 0:
             category = .miracle
-        case "기타":
+        case 1:
+            category = .selfDev
+        case 2:
+            category = .health
+        case 3:
+            category = .life
+        case 4:
             category = .other
         default:
             category = .other
