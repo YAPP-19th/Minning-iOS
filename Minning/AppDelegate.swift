@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
     let appDIContainer = AppDIContainer()
+    let notificationCenter = UNUserNotificationCenter.current()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -47,6 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         window?.makeKeyAndVisible()
+        
+        // MARK: Notification 푸시 알림 설정
+        notificationCenter.delegate = self
+        
+        notificationCenter.requestAuthorization(options: [.alert]) { didAllow, error in
+            if !didAllow {
+                print("❗️User denied notifications request, \(String(describing: error))")
+            }
+        }
+        
+        sendNotification(hour: 18, minute: 22, category: NotificationModel.Category.routineAlert)
         
         return true
     }
@@ -97,4 +109,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
+    }
+    
+    func sendNotification(hour: Int, minute: Int, category: NotificationModel.Category) {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "노티 타이틀"
+        notificationContent.body = "노티 내용"
+        
+        var date = DateComponents()
+        date.hour = hour
+        date.minute = minute
+        date.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+        let request = UNNotificationRequest(identifier: "\(category)", content: notificationContent, trigger: trigger)
+        let identifier = "Local Notification"
+        
+        notificationCenter.add(request) { error in
+            if error != nil {
+                print("❗️Error occurs while adding notification request, \(String(describing: error))")
+            }
+        }
+        
+    }
 }
