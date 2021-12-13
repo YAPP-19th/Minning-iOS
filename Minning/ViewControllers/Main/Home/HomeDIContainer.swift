@@ -28,8 +28,8 @@ final class HomeDIContainer {
         return addVC
     }
     
-    func createEditOrder(_ coordinator: HomeCoordinator) -> EditOrderViewController {
-        let viewModel = EditOrderViewModel(coordinator: coordinator)
+    func createEditOrder(_ coordinator: HomeCoordinator, day: Day, routineList: [RoutineModel]) -> EditOrderViewController {
+        let viewModel = EditOrderViewModel(coordinator: coordinator, day: day, routineList: routineList)
         let editOrderVC = EditOrderViewController(viewModel: viewModel)
         return editOrderVC
     }

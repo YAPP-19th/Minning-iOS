@@ -11,10 +11,26 @@ import Foundation
 
 final class EditOrderViewModel {
     let coordinator: HomeCoordinator
-    var tempDataList = ["아침에 신문~", "모닝 커피", "달리기"]
+    var day: Day
+    var routineList: [RoutineModel]
+    var isOrderEdited: Bool = false
     
-    init(coordinator: HomeCoordinator) {
+    init(coordinator: HomeCoordinator, day: Day, routineList: [RoutineModel]) {
         self.coordinator = coordinator
+        self.day = day
+        self.routineList = routineList
+    }
+    
+    public func patchRoutineSequence() {
+        let routineIdList = routineList.map { $0.id }
+        RoutineAPIRequest.modifyRoutineOrderByDay(day: day, routineIds: routineIdList) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.isOrderEdited = true
+            case .failure(let error):
+                DebugLog(error.localizedDescription)
+            }
+        }
     }
     
     public func goToBack() {

@@ -100,14 +100,14 @@ extension EditOrderViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EditOrderCell.identifier, for: indexPath) as? EditOrderCell else {
             return .init()
         }
-        cell.configure(title: viewModel.tempDataList[indexPath.row])
+        cell.configure(viewModel.routineList[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let tempDataToBeMoved = self.viewModel.tempDataList[sourceIndexPath.row]
-        self.viewModel.tempDataList.remove(at: sourceIndexPath.row)
-        self.viewModel.tempDataList.insert(tempDataToBeMoved, at: destinationIndexPath.row)
+        let tempDataToBeMoved = self.viewModel.routineList[sourceIndexPath.row]
+        self.viewModel.routineList.remove(at: sourceIndexPath.row)
+        self.viewModel.routineList.insert(tempDataToBeMoved, at: destinationIndexPath.row)
     }
 }
 
