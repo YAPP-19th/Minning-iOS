@@ -45,15 +45,19 @@ final class RoutineCategoryView: UIView {
             }
             
             halfPieChart.dataSet = pieChartData
-            currentCategory = .miracle
+            currentRoutine = routineData.first
         }
     }
     
-    private var currentCategory: RoutineCategory = .miracle {
+    private lazy var currentRoutine: ReportRoutine? = routineData.first {
         didSet {
+            currentCategory = currentRoutine?.category ?? .miracle
             updateFilterView()
+            updateDetailRoutineStackView()
         }
     }
+    
+    private var currentCategory: RoutineCategory = .miracle
     
     private let sectionTitle: UILabel = {
         $0.font = .font20PBold
@@ -79,6 +83,7 @@ final class RoutineCategoryView: UIView {
         $0.pieTouchHandler = { index in
             DebugLog("Selected Index: \(RoutineCategory(rawValue: index)?.title ?? "nil")")
             self.currentCategory = RoutineCategory(rawValue: index) ?? .miracle
+            self.currentRoutine = self.routineData[index]
 //            self.updateCategoryDataView(reportRoutine: self.routineData[index])
         }
         return $0
@@ -134,6 +139,11 @@ final class RoutineCategoryView: UIView {
         return $0
     }(UILabel())
     
+    private let detailRoutineStackView: UIStackView = {
+        $0.axis = .vertical
+        return $0
+    }(UIStackView())
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPieData()
@@ -149,7 +159,8 @@ final class RoutineCategoryView: UIView {
         [sectionTitle, categoryContianerView,
          separator,
          filterScrollView,
-         selectedCategoryInfoView].forEach {
+         selectedCategoryInfoView,
+         detailRoutineStackView].forEach {
             addSubview($0)
         }
         [categoryLegendStackView, halfPieChart, minningImageView].forEach {
@@ -222,22 +233,28 @@ final class RoutineCategoryView: UIView {
             make.top.equalTo(filterScrollView.snp.bottom).offset(20)
             make.leading.equalTo(16)
             make.trailing.equalTo(-16)
-            make.bottom.equalTo(-20)
             make.height.equalTo(70)
         }
         
         selectedCategoryLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+
+        detailRoutineStackView.snp.makeConstraints { make in
+            make.top.equalTo(selectedCategoryInfoView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(-96)
+        }
     }
     
     private func setupPieData() {
         let sampleRoutineReportData: [ReportRoutine] = [
-            ReportRoutine(category: .miracle, percent: 33),
-            ReportRoutine(category: .selfDev, percent: 20),
-            ReportRoutine(category: .health, percent: 10),
-            ReportRoutine(category: .life, percent: 26),
-            ReportRoutine(category: .other, percent: 11)
+            ReportRoutine(category: .miracle, percent: 33, routines: [.init(title: "확언하기", donePercent: 90, triedPercent: 5, failurePercent: 5),
+                                                                        .init(title: "기상하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
+            ReportRoutine(category: .selfDev, percent: 20, routines: [.init(title: "자기개발하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
+            ReportRoutine(category: .health, percent: 10, routines: [.init(title: "건강하기", donePercent: 80, triedPercent: 5, failurePercent: 15)]),
+            ReportRoutine(category: .life, percent: 26, routines: [.init(title: "생활하기", donePercent: 80, triedPercent: 15, failurePercent: 5)]),
+            ReportRoutine(category: .other, percent: 11, routines: [.init(title: "코딩하기", donePercent: 10, triedPercent: 5, failurePercent: 85)])
         ]
         
         routineData = sampleRoutineReportData
@@ -274,6 +291,16 @@ final class RoutineCategoryView: UIView {
         }
     }
     
+    private func setDetailRoutineStackView() {
+        guard let currentRoutine = currentRoutine else {
+            return
+        }
+        currentRoutine.routines.forEach { routine in
+            let detailRoutineView = RoutineCompareDetailView(routine: routine)
+            detailRoutineStackView.addArrangedSubview(detailRoutineView)
+        }
+    }
+    
     private func updateFilterView() {
         tableFilterStackView.arrangedSubviews.enumerated().forEach { index, subView in
             if let filterButton = subView as? FilterButton {
@@ -294,9 +321,17 @@ final class RoutineCategoryView: UIView {
         selectedCategoryLabel.attributedText = valueAttrString
     }
     
+    private func updateDetailRoutineStackView() {
+        detailRoutineStackView.arrangedSubviews.forEach {
+            detailRoutineStackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+        setDetailRoutineStackView()
+    }
+    
     @objc
     private func onClickFilterButton(_ sender: FilterButton) {
-        currentCategory = sender.category
+        currentRoutine = routineData.first { $0.category == sender.category }
         updateFilterView()
         updateSelectedCategoryLabel(with: routineData[currentCategory.rawValue])
     }

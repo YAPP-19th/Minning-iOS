@@ -76,7 +76,6 @@ final class ReportViewController: BaseViewController {
     private let myRoutineView: MyRoutineView = MyRoutineView()
     private let monthGraphView: MonthGraphView = MonthGraphView()
     private let weeklyPercentView: WeeklyPercentView = WeeklyPercentView()
-    private let routineCompareView: RoutineCompareView = RoutineCompareView()
     private let routineCategoryView: RoutineCategoryView = RoutineCategoryView()
     
     private let viewModel: ReportViewModel
@@ -164,8 +163,7 @@ final class ReportViewController: BaseViewController {
         }
         
         [weeklyPercentView, myRoutineView,
-         monthGraphView, routineCategoryView,
-         routineCompareView].forEach {
+         monthGraphView, routineCategoryView].forEach {
             contentStackView.addArrangedSubview($0)
         }
         
@@ -199,7 +197,6 @@ final class ReportViewController: BaseViewController {
             self.myRoutineView.isHidden = !(type == .week)
             self.monthGraphView.isHidden = !(type == .month)
             self.weeklyPercentView.isHidden = !(type == .week)
-            self.routineCompareView.isHidden = !(type == .month)
             self.routineCategoryView.isHidden = !(type == .month)
             
             self.updateBubbleLabel()
