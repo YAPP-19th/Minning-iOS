@@ -69,13 +69,14 @@ final class EditOrderViewController: BaseViewController {
     
     @objc
     private func onClickBackButton(_ sender: Any?) {
+        if viewModel.isOrderEdited.value == false { viewModel.goToBack() }
         showDismissAlert()
     }
     
     @objc
     private func onClickSaveButton(_ sender: Any?) {
         viewModel.patchRoutineSequence {
-            self.navigationController?.popViewController(animated: true)
+            self.viewModel.goToBack()
         }
     }
     
