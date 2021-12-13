@@ -251,14 +251,12 @@ final class AddViewController: BaseViewController {
     }(UILabel())
     
     private let timePickerView: UIView = {
-        $0.isUserInteractionEnabled = true
         $0.backgroundColor = .gray767680
         $0.layer.cornerRadius = 6
         return $0
     }(UIView())
     
     private let timeLabel: UILabel = {
-        $0.isUserInteractionEnabled = true
         $0.text = "12 : 34"
         $0.font = .font22P
         return $0
@@ -304,8 +302,7 @@ final class AddViewController: BaseViewController {
         scrollContainerView.addSubview(stackView)
         
         scrollContainerView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(786).priority(250)
+            make.edges.equalTo(view.snp.edges)
         }
         
         stackView.snp.makeConstraints { make in
