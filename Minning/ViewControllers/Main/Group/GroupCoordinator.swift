@@ -40,9 +40,15 @@ class GroupCoordinator {
 }
 
 extension GroupCoordinator: GroupRoute {
+<<<<<<< HEAD
+    func showJoinGroup(completion: (() -> Void)?) {
+        let joinGroupVC = dependencies.createJoinGroup(self)
+        joinGroupVC.modalPresentationStyle = .overCurrentContext
+=======
     func showOpenedGroupDetail() {
         let detailVC = dependencies.createOpenedGroupDetail(self)
         navigationController.pushViewController(detailVC, animated: true)
+>>>>>>> 8cdcc141b312c69769917dd52cf874bd8664587a
     }
     
     func showJoinGroup(completion: ((Bool) -> Void)?) {
@@ -50,6 +56,12 @@ extension GroupCoordinator: GroupRoute {
         joinGroupVC.modalPresentationStyle = .overCurrentContext
         joinGroupVC.completion = completion
         navigationController.topViewController?.presentedViewController?.present(joinGroupVC, animated: false, completion: nil)
+    }
+    
+    func showDetail() {
+        let detailVC = dependencies.createDetail(self)
+        detailVC.modalPresentationStyle = .fullScreen
+        navigationController.topViewController?.present(detailVC, animated: true, completion: nil)
     }
     
     func goToPhotoGrid() {
@@ -65,9 +77,7 @@ extension GroupCoordinator: GroupRoute {
     }
     
     func goToNewGroup() {
-        let newGroupVC = dependencies.createNewGroup(self)
-        newGroupVC.hidesBottomBarWhenPushed = true
-        navigationController.pushViewController(newGroupVC, animated: true)
+        navigationController.topViewController?.presentedViewController
     }
     
     func goToBack() {

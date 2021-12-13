@@ -7,6 +7,7 @@
 //
 
 import CommonSystem
+import DesignSystem
 import Foundation
 
 final class GroupViewModel {
@@ -15,16 +16,22 @@ final class GroupViewModel {
         case groupList
     }
     
+//    enum OnGoingTabType {
+//        case onGoing
+//        case ended
+//    }
+    
     enum MyGroupTabType {
         case now
         case done
     }
     
     var tabType: DataBinding<GroupTabType> = DataBinding(.myGroup)
+//    var goingTabType: DataBinding<OnGoingTabType> = DataBinding(.onGoing)
     var myGroupTabType: DataBinding<MyGroupTabType> = DataBinding(.now)
     var currentCategory: DataBinding<RoutineCategory?> = DataBinding(nil)
     var isCurrentCategoryAll: DataBinding<Bool> = DataBinding(true)
-    
+
     private let coordinator: GroupCoordinator
     
     public init(coordinator: GroupCoordinator) {
@@ -35,7 +42,11 @@ final class GroupViewModel {
         coordinator.showOpenedGroupDetail()
     }
     
-    func goToNewGroup() {
-        coordinator.goToNewGroup()
+    func showMygroup() {
+        
+    }
+    
+    func showOngoingGroup() {
+        
     }
 }
