@@ -68,7 +68,9 @@ extension GroupCoordinator: GroupRoute {
         let newGroupVC = dependencies.createNewGroup(self)
         newGroupVC.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(newGroupVC, animated: true)
+        navigationController.topViewController?.presentedViewController
     }
+
     
     func goToBack() {
         navigationController.popViewController(animated: true)

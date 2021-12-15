@@ -5,12 +5,12 @@
 //  Created by denny on 2021/09/30.
 //  Copyright © 2021 Minning. All rights reserved.
 //
-
 import CommonSystem
 import DesignSystem
 import Foundation
 import SharedAssets
 import SnapKit
+import UIKit
 
 final class GroupViewController: BaseViewController {
     private let titleSectionContainerView: UIView = {
@@ -42,6 +42,7 @@ final class GroupViewController: BaseViewController {
     private let subTabNowButton: UIButton = {
         $0.setTitle("진행중 3", for: .normal)
         $0.titleLabel?.font = .font16PExBold
+        $0.setTitleColor(.primaryBlack, for: .normal)
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
@@ -49,9 +50,15 @@ final class GroupViewController: BaseViewController {
     private let subTabDoneButton: UIButton = {
         $0.setTitle("종료 5", for: .normal)
         $0.titleLabel?.font = .font16PExBold
+        $0.setTitleColor(.primaryBlack, for: .normal)
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
         return $0
     }(UIButton())
+    
+    private let newEndedGroupAlertImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "groupAlert")
+        return $0
+    }(UIImageView())
     
     private let filterScrollView: UIScrollView = {
         $0.bounces = false
@@ -70,10 +77,19 @@ final class GroupViewController: BaseViewController {
         return $0
     }(UIStackView())
     
-    lazy var groupListTableView: UITableView = {
-        $0.backgroundColor = .systemOrange
+    private let contentView: UIView = {
+        $0.backgroundColor = .cateYellow100
         return $0
-    }(UITableView())
+    }(UIView())
+    
+    private let onGoingView: UIView = OnGoingView()
+    private let endedView: UIView = EndedView()
+    private let wholeGroupView: UIView = GroupListView()
+    
+    lazy var groupBackgroundView: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
     
     private let viewModel: GroupViewModel
     
@@ -99,18 +115,25 @@ final class GroupViewController: BaseViewController {
             
             self.subTabContainerView.isHidden = !(type == .myGroup)
             self.filterScrollView.isHidden = !(type == .groupList)
+            
+            self.wholeGroupView.isHidden = !(type == .groupList)
+            self.onGoingView.isHidden = !(type == .myGroup)
+            self.endedView.isHidden = true
         }
         
         viewModel.myGroupTabType.bindAndFire { [weak self] type in
             guard let `self` = self else { return }
             self.subTabNowButton.setTitleColor(type == .now ? .primaryBlack : .minningGray100, for: .normal)
             self.subTabDoneButton.setTitleColor(type == .done ? .primaryBlack : .minningGray100, for: .normal)
+            self.onGoingView.isHidden = !(type == .now)
+            self.endedView.isHidden = !(type == .done)
+            self.wholeGroupView.isHidden = true
         }
     }
     
     override func setupViewLayout() {
         view.backgroundColor = .minningLightGray100
-        [titleSectionContainerView, groupListTableView].forEach {
+        [titleSectionContainerView, groupBackgroundView].forEach {
             view.addSubview($0)
         }
         
@@ -118,7 +141,32 @@ final class GroupViewController: BaseViewController {
             titleSectionContainerView.addSubview($0)
         }
         
-        [subTabNowButton, subTabDoneButton].forEach {
+        groupBackgroundView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        [onGoingView, endedView, wholeGroupView].forEach {
+            contentView.addSubview($0)
+        }
+        
+        onGoingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        endedView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        wholeGroupView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        [subTabNowButton, subTabDoneButton, newEndedGroupAlertImageView].forEach {
             subTabContainerView.addSubview($0)
         }
         
@@ -151,6 +199,13 @@ final class GroupViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-10)
         }
         
+        groupBackgroundView.snp.makeConstraints { make in
+            make.top.equalTo(titleSectionContainerView.snp.bottom).offset(12)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
         // MARK: Sub Tab Section
         subTabContainerView.snp.makeConstraints { make in
             make.height.equalTo(33)
@@ -164,6 +219,12 @@ final class GroupViewController: BaseViewController {
         subTabDoneButton.snp.makeConstraints { make in
             make.top.bottom.centerY.equalToSuperview()
             make.leading.equalTo(subTabNowButton.snp.trailing).offset(20)
+        }
+        
+        newEndedGroupAlertImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(2)
+            make.leading.equalTo(subTabDoneButton.snp.trailing).offset(2)
+            make.width.height.equalTo(4)
         }
         
         // MARK: Category Section
@@ -183,14 +244,7 @@ final class GroupViewController: BaseViewController {
         }
         
         setupFilterview()
-        
-        groupListTableView.snp.makeConstraints { make in
-            make.top.equalTo(titleSectionContainerView.snp.bottom)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.viewModel.showOpenedGroupDetail()
         })
@@ -208,6 +262,7 @@ final class GroupViewController: BaseViewController {
             viewModel.myGroupTabType.accept(.now)
         case subTabDoneButton:
             viewModel.myGroupTabType.accept(.done)
+            newEndedGroupAlertImageView.isHidden = true
         default:
             break
         }
@@ -232,7 +287,7 @@ final class GroupViewController: BaseViewController {
         filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
         filterStackView.addArrangedSubview(filterButton)
         filterStackView.addArrangedSubview(trailingSpacer)
-        
+    
         RoutineCategory.allCases.enumerated().forEach { index, category in
             let filterButton = FilterButton()
             filterButton.isSelected = viewModel.currentCategory.value == category
@@ -259,7 +314,7 @@ final class GroupViewController: BaseViewController {
             }
         }
     }
-    
+       
     @objc
     private func onClickFilterButton(_ sender: FilterButton) {
         if sender.isAll {

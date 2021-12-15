@@ -2,7 +2,7 @@
 //  NewGroupViewController.swift
 //  Minning
 //
-//  Created by denny on 2021/10/04.
+//  Created by 박지윤 on 2021/12/16.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 

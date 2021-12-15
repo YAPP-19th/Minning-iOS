@@ -10,30 +10,47 @@
 		124D665452088BB6A99DE581 /* Pods_MinningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C9243593633CFA06F61563 /* Pods_MinningTests.framework */; };
 		5805D0B62C8D0C15049A881E /* Pods_Minning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */; };
 		8316D6A72765D08A00041DAB /* RoutinePercentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316D6A62765D08A00041DAB /* RoutinePercentDetailView.swift */; };
-		8316D68A2765002300041DAB /* GroupQuitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316D6892765002300041DAB /* GroupQuitView.swift */; };
 		8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */; };
-		8373F6F9272D581D008839FA /* PhotoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6F8272D581D008839FA /* PhotoGridViewController.swift */; };
-		8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FA272D60D8008839FA /* PhotoCell.swift */; };
-		8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */; };
 		8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F71A2736BAEC008839FA /* GroupGuideCell.swift */; };
-		8373F7692748BC02008839FA /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7682748BC02008839FA /* PhotoDetailViewController.swift */; };
-		8373F76B2748BC4B008839FA /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */; };
-		8373F79327527F7F008839FA /* GroupTitleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F79227527F7F008839FA /* GroupTitleContainerView.swift */; };
-		8373F79D27649381008839FA /* GroupRuleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F79C27649381008839FA /* GroupRuleContainerView.swift */; };
-		8373F7A327649965008839FA /* GroupMyInfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7A227649965008839FA /* GroupMyInfoContainerView.swift */; };
-		8373F7A627649DAC008839FA /* GroupPhotoPreviewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7A527649DAC008839FA /* GroupPhotoPreviewContainerView.swift */; };
-		8373F7A82764A2A1008839FA /* GroupPhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7A72764A2A1008839FA /* GroupPhotoPreviewCell.swift */; };
-		8373F7AA2764B3EB008839FA /* GroupInfoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7A92764B3EB008839FA /* GroupInfoCollectionView.swift */; };
-		8373F7AC2764B97A008839FA /* GroupPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7AB2764B97A008839FA /* GroupPhotoContainerView.swift */; };
-		8373F7AE2764DE6C008839FA /* GroupPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373F7AD2764DE6C008839FA /* GroupPhotoCell.swift */; };
 		83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */; };
 		83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */; };
+		9546BF86276A368C00991762 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF5C276A368C00991762 /* PhotoCell.swift */; };
+		9546BF87276A368C00991762 /* PhotoGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF5D276A368C00991762 /* PhotoGridViewModel.swift */; };
+		9546BF88276A368C00991762 /* PhotoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF5E276A368C00991762 /* PhotoGridViewController.swift */; };
+		9546BF89276A368C00991762 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF60276A368C00991762 /* GroupDetailViewController.swift */; };
+		9546BF8A276A368C00991762 /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF61276A368C00991762 /* GroupDetailViewModel.swift */; };
+		9546BF8B276A368C00991762 /* GroupRuleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF63276A368C00991762 /* GroupRuleContainerView.swift */; };
+		9546BF8C276A368C00991762 /* GroupQuitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF64276A368C00991762 /* GroupQuitView.swift */; };
+		9546BF8D276A368C00991762 /* GroupTitleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF65276A368C00991762 /* GroupTitleContainerView.swift */; };
+		9546BF8E276A368C00991762 /* GroupPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF66276A368C00991762 /* GroupPhotoCell.swift */; };
+		9546BF8F276A368C00991762 /* GroupPhotoPreviewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF67276A368C00991762 /* GroupPhotoPreviewContainerView.swift */; };
+		9546BF90276A368C00991762 /* GroupPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF68276A368C00991762 /* GroupPhotoContainerView.swift */; };
+		9546BF91276A368C00991762 /* GroupInfoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF69276A368C00991762 /* GroupInfoCollectionView.swift */; };
+		9546BF92276A368C00991762 /* GroupPhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF6A276A368C00991762 /* GroupPhotoPreviewCell.swift */; };
+		9546BF93276A368C00991762 /* GroupMyInfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF6B276A368C00991762 /* GroupMyInfoContainerView.swift */; };
+		9546BF94276A368C00991762 /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF6D276A368C00991762 /* JoinGroupViewModel.swift */; };
+		9546BF95276A368C00991762 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF6F276A368C00991762 /* PreviewViewController.swift */; };
+		9546BF96276A368C00991762 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF70276A368C00991762 /* CameraViewController.swift */; };
+		9546BF97276A368C00991762 /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF71276A368C00991762 /* JoinGroupViewController.swift */; };
+		9546BF98276A368C00991762 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF73276A368C00991762 /* PhotoDetailViewController.swift */; };
+		9546BF99276A368C00991762 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF74276A368C00991762 /* PhotoDetailViewModel.swift */; };
+		9546BF9A276A368C00991762 /* GroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF79276A368C00991762 /* GroupCellView.swift */; };
+		9546BF9B276A368C00991762 /* GroupListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF7A276A368C00991762 /* GroupListCellViewModel.swift */; };
+		9546BF9C276A368C00991762 /* GroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF7C276A368C00991762 /* GroupListView.swift */; };
+		9546BF9D276A368C00991762 /* GroupListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF7D276A368C00991762 /* GroupListModel.swift */; };
+		9546BF9E276A368C00991762 /* GroupListCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF7E276A368C00991762 /* GroupListCellViewController.swift */; };
+		9546BF9F276A368C00991762 /* EndedGroupCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF80276A368C00991762 /* EndedGroupCellViewController.swift */; };
+		9546BFA0276A368C00991762 /* MyGroupCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF81276A368C00991762 /* MyGroupCellViewController.swift */; };
+		9546BFA1276A368C00991762 /* EndedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF82276A368C00991762 /* EndedView.swift */; };
+		9546BFA2276A368C00991762 /* MyGroupCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF83276A368C00991762 /* MyGroupCategoryModel.swift */; };
+		9546BFA3276A368C00991762 /* OnGoingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF84276A368C00991762 /* OnGoingView.swift */; };
+		9546BFA4276A368C00991762 /* GroupCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF85276A368C00991762 /* GroupCategoryCell.swift */; };
+		9546BFB6276A438B00991762 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BFB5276A438B00991762 /* NewGroupViewController.swift */; };
+		9546BFB8276A43A800991762 /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BFB7276A43A800991762 /* NewGroupViewModel.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
 		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
 		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
 		9589B557271DF27300943BA3 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B556271DF27300943BA3 /* AddDayView.swift */; };
-		95A20519275E43640047CA6D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A20518275E43640047CA6D /* CameraViewController.swift */; };
-		95A2051B275E43880047CA6D /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A2051A275E43880047CA6D /* PreviewViewController.swift */; };
 		95A8DDA6275741080087A343 /* ReportEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8DDA5275741080087A343 /* ReportEmptyView.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
@@ -270,20 +287,8 @@
 		B0ECF87F2709932E0088C96E /* MyRoutineContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */; };
 		B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */; };
 		B0ECF8822709960D0088C96E /* MyRoutineContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */; };
-		B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */; };
-		B0ECF88F270AD8350088C96E /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */; };
-		B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */; };
-		B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */; };
 		B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF893270AD8CC0088C96E /* GroupModel.swift */; };
 		B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF893270AD8CC0088C96E /* GroupModel.swift */; };
-		B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */; };
-		B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */; };
-		B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */; };
-		B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */; };
-		B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */; };
-		B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */; };
-		B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */; };
-		B0ECF8A3270AE0600088C96E /* JoinGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -364,30 +369,47 @@
 		7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning_MinningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8279E2A4435B85DB33E3B478 /* Pods-OurAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurAppTests.debug.xcconfig"; path = "Target Support Files/Pods-OurAppTests/Pods-OurAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8316D6A62765D08A00041DAB /* RoutinePercentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinePercentDetailView.swift; sourceTree = "<group>"; };
-		8316D6892765002300041DAB /* GroupQuitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupQuitView.swift; sourceTree = "<group>"; };
 		8373F6DA272D2243008839FA /* RoutineCellSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCellSwipeView.swift; sourceTree = "<group>"; };
-		8373F6F8272D581D008839FA /* PhotoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewController.swift; sourceTree = "<group>"; };
-		8373F6FA272D60D8008839FA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewModel.swift; sourceTree = "<group>"; };
 		8373F71A2736BAEC008839FA /* GroupGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGuideCell.swift; sourceTree = "<group>"; };
-		8373F7682748BC02008839FA /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
-		8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
-		8373F79227527F7F008839FA /* GroupTitleContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTitleContainerView.swift; sourceTree = "<group>"; };
-		8373F79C27649381008839FA /* GroupRuleContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRuleContainerView.swift; sourceTree = "<group>"; };
-		8373F7A227649965008839FA /* GroupMyInfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMyInfoContainerView.swift; sourceTree = "<group>"; };
-		8373F7A527649DAC008839FA /* GroupPhotoPreviewContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPhotoPreviewContainerView.swift; sourceTree = "<group>"; };
-		8373F7A72764A2A1008839FA /* GroupPhotoPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPhotoPreviewCell.swift; sourceTree = "<group>"; };
-		8373F7A92764B3EB008839FA /* GroupInfoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoCollectionView.swift; sourceTree = "<group>"; };
-		8373F7AB2764B97A008839FA /* GroupPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPhotoContainerView.swift; sourceTree = "<group>"; };
-		8373F7AD2764DE6C008839FA /* GroupPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPhotoCell.swift; sourceTree = "<group>"; };
 		83D2F6D4271BFEA2002947D3 /* EditOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderCell.swift; sourceTree = "<group>"; };
 		83D2F6DD271C41A0002947D3 /* WeeklyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyResultView.swift; sourceTree = "<group>"; };
+		9546BF5C276A368C00991762 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		9546BF5D276A368C00991762 /* PhotoGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridViewModel.swift; sourceTree = "<group>"; };
+		9546BF5E276A368C00991762 /* PhotoGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridViewController.swift; sourceTree = "<group>"; };
+		9546BF60276A368C00991762 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
+		9546BF61276A368C00991762 /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModel.swift; sourceTree = "<group>"; };
+		9546BF63276A368C00991762 /* GroupRuleContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupRuleContainerView.swift; sourceTree = "<group>"; };
+		9546BF64276A368C00991762 /* GroupQuitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupQuitView.swift; sourceTree = "<group>"; };
+		9546BF65276A368C00991762 /* GroupTitleContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTitleContainerView.swift; sourceTree = "<group>"; };
+		9546BF66276A368C00991762 /* GroupPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPhotoCell.swift; sourceTree = "<group>"; };
+		9546BF67276A368C00991762 /* GroupPhotoPreviewContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPhotoPreviewContainerView.swift; sourceTree = "<group>"; };
+		9546BF68276A368C00991762 /* GroupPhotoContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPhotoContainerView.swift; sourceTree = "<group>"; };
+		9546BF69276A368C00991762 /* GroupInfoCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfoCollectionView.swift; sourceTree = "<group>"; };
+		9546BF6A276A368C00991762 /* GroupPhotoPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPhotoPreviewCell.swift; sourceTree = "<group>"; };
+		9546BF6B276A368C00991762 /* GroupMyInfoContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMyInfoContainerView.swift; sourceTree = "<group>"; };
+		9546BF6D276A368C00991762 /* JoinGroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroupViewModel.swift; sourceTree = "<group>"; };
+		9546BF6F276A368C00991762 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		9546BF70276A368C00991762 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		9546BF71276A368C00991762 /* JoinGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
+		9546BF73276A368C00991762 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		9546BF74276A368C00991762 /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
+		9546BF79276A368C00991762 /* GroupCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCellView.swift; sourceTree = "<group>"; };
+		9546BF7A276A368C00991762 /* GroupListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListCellViewModel.swift; sourceTree = "<group>"; };
+		9546BF7C276A368C00991762 /* GroupListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListView.swift; sourceTree = "<group>"; };
+		9546BF7D276A368C00991762 /* GroupListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListModel.swift; sourceTree = "<group>"; };
+		9546BF7E276A368C00991762 /* GroupListCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListCellViewController.swift; sourceTree = "<group>"; };
+		9546BF80276A368C00991762 /* EndedGroupCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndedGroupCellViewController.swift; sourceTree = "<group>"; };
+		9546BF81276A368C00991762 /* MyGroupCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupCellViewController.swift; sourceTree = "<group>"; };
+		9546BF82276A368C00991762 /* EndedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndedView.swift; sourceTree = "<group>"; };
+		9546BF83276A368C00991762 /* MyGroupCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupCategoryModel.swift; sourceTree = "<group>"; };
+		9546BF84276A368C00991762 /* OnGoingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnGoingView.swift; sourceTree = "<group>"; };
+		9546BF85276A368C00991762 /* GroupCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCategoryCell.swift; sourceTree = "<group>"; };
+		9546BFB5276A438B00991762 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
+		9546BFB7276A43A800991762 /* NewGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModel.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
 		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		9589B556271DF27300943BA3 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
-		95A20518275E43640047CA6D /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		95A2051A275E43880047CA6D /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		95A8DDA5275741080087A343 /* ReportEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEmptyView.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -516,13 +538,7 @@
 		B0ECF87A270993260088C96E /* MyRoutineTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineTitleCell.swift; sourceTree = "<group>"; };
 		B0ECF87D2709932E0088C96E /* MyRoutineContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentCell.swift; sourceTree = "<group>"; };
 		B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutineContentItemView.swift; sourceTree = "<group>"; };
-		B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
-		B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModel.swift; sourceTree = "<group>"; };
 		B0ECF893270AD8CC0088C96E /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
-		B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
-		B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModel.swift; sourceTree = "<group>"; };
-		B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
-		B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewModel.swift; sourceTree = "<group>"; };
 		B6A5A7CC6938E672B3DF7DA0 /* Pods-Minning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning.release.xcconfig"; path = "Target Support Files/Pods-Minning/Pods-Minning.release.xcconfig"; sourceTree = "<group>"; };
 		C96E0F345A504DC74CA4CCDE /* Pods-OurApp-OurAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurApp-OurAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-OurApp-OurAppUITests/Pods-OurApp-OurAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDFD3BF712C8A5BCBC0E5AC /* Pods_Minning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -580,51 +596,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8373F6F4272D5800008839FA /* PhotoGrid */ = {
-			isa = PBXGroup;
-			children = (
-				8373F6F8272D581D008839FA /* PhotoGridViewController.swift */,
-				8373F6FA272D60D8008839FA /* PhotoCell.swift */,
-				8373F6FC272D632F008839FA /* PhotoGridViewModel.swift */,
-			);
-			path = PhotoGrid;
-			sourceTree = "<group>";
-		};
-		8373F7642748BBB1008839FA /* PhotoDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8373F7682748BC02008839FA /* PhotoDetailViewController.swift */,
-				8373F76A2748BC4B008839FA /* PhotoDetailViewModel.swift */,
-			);
-			path = PhotoDetail;
-			sourceTree = "<group>";
-		};
-		8373F78D27527F48008839FA /* GroupDetail */ = {
-			isa = PBXGroup;
-			children = (
-				B0ECF88D270AD8350088C96E /* GroupDetailViewController.swift */,
-				B0ECF890270AD83F0088C96E /* GroupDetailViewModel.swift */,
-				8373F79127527F53008839FA /* Views */,
-			);
-			path = GroupDetail;
-			sourceTree = "<group>";
-		};
-		8373F79127527F53008839FA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8373F79227527F7F008839FA /* GroupTitleContainerView.swift */,
-				8373F79C27649381008839FA /* GroupRuleContainerView.swift */,
-				8373F7A227649965008839FA /* GroupMyInfoContainerView.swift */,
-				8373F7A527649DAC008839FA /* GroupPhotoPreviewContainerView.swift */,
-				8373F7A72764A2A1008839FA /* GroupPhotoPreviewCell.swift */,
-				8373F7A92764B3EB008839FA /* GroupInfoCollectionView.swift */,
-				8373F7AB2764B97A008839FA /* GroupPhotoContainerView.swift */,
-				8373F7AD2764DE6C008839FA /* GroupPhotoCell.swift */,
-				8316D6892765002300041DAB /* GroupQuitView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		83D2F6D3271BFE91002947D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,13 +613,121 @@
 			path = WeeklyPercentView;
 			sourceTree = "<group>";
 		};
-		95A20514275E431D0047CA6D /* Camera */ = {
+		9546BF5A276A368C00991762 /* GroupDetail */ = {
 			isa = PBXGroup;
 			children = (
-				95A20518275E43640047CA6D /* CameraViewController.swift */,
-				95A2051A275E43880047CA6D /* PreviewViewController.swift */,
+				9546BF5B276A368C00991762 /* PhotoGrid */,
+				9546BF5F276A368C00991762 /* GroupDetail */,
+				9546BF6C276A368C00991762 /* JoinGroup */,
+				9546BF72276A368C00991762 /* PhotoDetail */,
+			);
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		9546BF5B276A368C00991762 /* PhotoGrid */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF5C276A368C00991762 /* PhotoCell.swift */,
+				9546BF5D276A368C00991762 /* PhotoGridViewModel.swift */,
+				9546BF5E276A368C00991762 /* PhotoGridViewController.swift */,
+			);
+			path = PhotoGrid;
+			sourceTree = "<group>";
+		};
+		9546BF5F276A368C00991762 /* GroupDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF60276A368C00991762 /* GroupDetailViewController.swift */,
+				9546BF61276A368C00991762 /* GroupDetailViewModel.swift */,
+				9546BF62276A368C00991762 /* Views */,
+			);
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		9546BF62276A368C00991762 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF63276A368C00991762 /* GroupRuleContainerView.swift */,
+				9546BF64276A368C00991762 /* GroupQuitView.swift */,
+				9546BF65276A368C00991762 /* GroupTitleContainerView.swift */,
+				9546BF66276A368C00991762 /* GroupPhotoCell.swift */,
+				9546BF67276A368C00991762 /* GroupPhotoPreviewContainerView.swift */,
+				9546BF68276A368C00991762 /* GroupPhotoContainerView.swift */,
+				9546BF69276A368C00991762 /* GroupInfoCollectionView.swift */,
+				9546BF6A276A368C00991762 /* GroupPhotoPreviewCell.swift */,
+				9546BF6B276A368C00991762 /* GroupMyInfoContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9546BF6C276A368C00991762 /* JoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF6D276A368C00991762 /* JoinGroupViewModel.swift */,
+				9546BF6E276A368C00991762 /* Camera */,
+				9546BF71276A368C00991762 /* JoinGroupViewController.swift */,
+			);
+			path = JoinGroup;
+			sourceTree = "<group>";
+		};
+		9546BF6E276A368C00991762 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF6F276A368C00991762 /* PreviewViewController.swift */,
+				9546BF70276A368C00991762 /* CameraViewController.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		9546BF72276A368C00991762 /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF73276A368C00991762 /* PhotoDetailViewController.swift */,
+				9546BF74276A368C00991762 /* PhotoDetailViewModel.swift */,
+			);
+			path = PhotoDetail;
+			sourceTree = "<group>";
+		};
+		9546BF78276A368C00991762 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF79276A368C00991762 /* GroupCellView.swift */,
+				9546BF7A276A368C00991762 /* GroupListCellViewModel.swift */,
+				9546BF7B276A368C00991762 /* GroupList */,
+				9546BF7F276A368C00991762 /* MyGroup */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9546BF7B276A368C00991762 /* GroupList */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF7C276A368C00991762 /* GroupListView.swift */,
+				9546BF7D276A368C00991762 /* GroupListModel.swift */,
+				9546BF7E276A368C00991762 /* GroupListCellViewController.swift */,
+			);
+			path = GroupList;
+			sourceTree = "<group>";
+		};
+		9546BF7F276A368C00991762 /* MyGroup */ = {
+			isa = PBXGroup;
+			children = (
+				9546BF80276A368C00991762 /* EndedGroupCellViewController.swift */,
+				9546BF81276A368C00991762 /* MyGroupCellViewController.swift */,
+				9546BF82276A368C00991762 /* EndedView.swift */,
+				9546BF83276A368C00991762 /* MyGroupCategoryModel.swift */,
+				9546BF84276A368C00991762 /* OnGoingView.swift */,
+			);
+			path = MyGroup;
+			sourceTree = "<group>";
+		};
+		9546BFB4276A436F00991762 /* NewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				9546BFB5276A438B00991762 /* NewGroupViewController.swift */,
+				9546BFB7276A43A800991762 /* NewGroupViewModel.swift */,
+			);
+			path = NewGroup;
 			sourceTree = "<group>";
 		};
 		A8CEA31FF1A9DB2BC92C9FE2 /* Pods */ = {
@@ -1070,8 +1149,10 @@
 		B0AD5A6C2705D77700CC07B0 /* Group */ = {
 			isa = PBXGroup;
 			children = (
-				B0ECF896270AD9EE0088C96E /* NewGroup */,
-				B0ECF889270AD8200088C96E /* GroupDetail */,
+				9546BFB4276A436F00991762 /* NewGroup */,
+				9546BF85276A368C00991762 /* GroupCategoryCell.swift */,
+				9546BF5A276A368C00991762 /* GroupDetail */,
+				9546BF78276A368C00991762 /* Views */,
 				B0AD5A702705D79300CC07B0 /* GroupViewController.swift */,
 				B0AD5A792705DBFA00CC07B0 /* GroupViewModel.swift */,
 				B02803A72706DD6E009D642A /* GroupDIContainer.swift */,
@@ -1172,36 +1253,6 @@
 				B0ECF8802709960D0088C96E /* MyRoutineContentItemView.swift */,
 			);
 			path = MyRoutineview;
-			sourceTree = "<group>";
-		};
-		B0ECF889270AD8200088C96E /* GroupDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8373F78D27527F48008839FA /* GroupDetail */,
-				8373F7642748BBB1008839FA /* PhotoDetail */,
-				8373F6F4272D5800008839FA /* PhotoGrid */,
-				B0ECF89D270AE0440088C96E /* JoinGroup */,
-			);
-			path = GroupDetail;
-			sourceTree = "<group>";
-		};
-		B0ECF896270AD9EE0088C96E /* NewGroup */ = {
-			isa = PBXGroup;
-			children = (
-				B0ECF897270AD9FF0088C96E /* NewGroupViewController.swift */,
-				B0ECF89A270ADA060088C96E /* NewGroupViewModel.swift */,
-			);
-			path = NewGroup;
-			sourceTree = "<group>";
-		};
-		B0ECF89D270AE0440088C96E /* JoinGroup */ = {
-			isa = PBXGroup;
-			children = (
-				95A20514275E431D0047CA6D /* Camera */,
-				B0ECF89E270AE0580088C96E /* JoinGroupViewController.swift */,
-				B0ECF8A1270AE0600088C96E /* JoinGroupViewModel.swift */,
-			);
-			path = JoinGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1556,7 +1607,6 @@
 				B01C7767274D08500032B329 /* RoutineAPIRequest.swift in Sources */,
 				B0AD5A782705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74772705BAE200854190 /* LoginViewController.swift in Sources */,
-				B0ECF899270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
 				B02803872706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08BEB7E272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,
 				B01C776D274D12CD0032B329 /* SayingAPIRequest.swift in Sources */,
@@ -1566,7 +1616,6 @@
 				B0180EF026DCC551008C6F3C /* AppDIContainer.swift in Sources */,
 				B0ECF87F2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
 				B08BEB66272A8B510078E00A /* MyPageViewController.swift in Sources */,
-				B0ECF8A3270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
 				B09041B1272E26EA00AE8623 /* LargeContentsViewModel.swift in Sources */,
 				B08BEB8C272A8F470078E00A /* NoticeViewController.swift in Sources */,
 				B08BEB6D272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
@@ -1590,7 +1639,6 @@
 				B09041BC272E2A7B00AE8623 /* VersionViewModel.swift in Sources */,
 				B08BEB7B272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */,
 				B0180ED626DCC307008C6F3C /* MainCoordinator.swift in Sources */,
-				B0ECF88F270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
 				B01C7770274D15740032B329 /* GroupAPIRequest.swift in Sources */,
 				B08E74812705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B0ADFE0C274885E4003019E5 /* MinningAPIConstant.swift in Sources */,
@@ -1609,7 +1657,6 @@
 				B08BEB85272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0ECF895270AD8CC0088C96E /* GroupModel.swift in Sources */,
 				B097A310272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
-				B0ECF8A0270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B028039A2706D7E5009D642A /* PhraseViewController.swift in Sources */,
 				B02803F627085447009D642A /* RecommendViewController.swift in Sources */,
 				B02803A62706DCBF009D642A /* ReportCoordinator.swift in Sources */,
@@ -1633,7 +1680,6 @@
 				B0ECF87C270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
 				B02803B92706F92C009D642A /* ProfileView.swift in Sources */,
 				B02803FD27085604009D642A /* NotificationViewController.swift in Sources */,
-				B0ECF89C270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B09041B8272E28B000AE8623 /* InquireViewController.swift in Sources */,
 				B02803A02706D809009D642A /* PhraseViewModel.swift in Sources */,
 				B02803AC2706DD75009D642A /* GroupCoordinator.swift in Sources */,
@@ -1648,7 +1694,6 @@
 				B0280441270975F4009D642A /* PhotoSelectView.swift in Sources */,
 				B028045D2709871D009D642A /* RoutineCompareDetailView.swift in Sources */,
 				B08BEB89272A8F400078E00A /* NoticeViewModel.swift in Sources */,
-				B0ECF892270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
 				B097A316272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
 				B0AD5A6F2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E527085139009D642A /* ReviewViewModel.swift in Sources */,
@@ -1669,19 +1714,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9546BF97276A368C00991762 /* JoinGroupViewController.swift in Sources */,
+				9546BF9C276A368C00991762 /* GroupListView.swift in Sources */,
 				B0E1D25D270BEB5A006995C5 /* NotificationModel.swift in Sources */,
 				B02803F1270851AD009D642A /* AddViewModel.swift in Sources */,
 				B01C775D274CFE000032B329 /* AccountAPIRequest.swift in Sources */,
+				9546BF9D276A368C00991762 /* GroupListModel.swift in Sources */,
 				B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
 				B070557C275A592700AB776F /* StartCoordinator.swift in Sources */,
-				8373F7692748BC02008839FA /* PhotoDetailViewController.swift in Sources */,
 				B09041AD272E26E300AE8623 /* LargeContentsViewController.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
-				8373F6F9272D581D008839FA /* PhotoGridViewController.swift in Sources */,
 				9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */,
+				9546BF95276A368C00991762 /* PreviewViewController.swift in Sources */,
 				B09041BE272E2A8200AE8623 /* VersionViewController.swift in Sources */,
-				B0ECF898270AD9FF0088C96E /* NewGroupViewController.swift in Sources */,
+				9546BF9A276A368C00991762 /* GroupCellView.swift in Sources */,
 				B08BEB7A272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08BEB65272A8B510078E00A /* MyPageViewController.swift in Sources */,
@@ -1692,16 +1739,17 @@
 				B09041A0272D8E7900AE8623 /* ProfileSettingCell.swift in Sources */,
 				95A8DDA6275741080087A343 /* ReportEmptyView.swift in Sources */,
 				B01C7763274D00D00032B329 /* RetrospectAPIRequest.swift in Sources */,
-				95A2051B275E43880047CA6D /* PreviewViewController.swift in Sources */,
 				B0180EEF26DCC551008C6F3C /* AppDIContainer.swift in Sources */,
+				9546BF8D276A368C00991762 /* GroupTitleContainerView.swift in Sources */,
 				B0C281EF271FAF1D00F032AD /* RoutineCategoryView.swift in Sources */,
 				B0ADFE0B274885E4003019E5 /* MinningAPIConstant.swift in Sources */,
 				B0ECF87E2709932E0088C96E /* MyRoutineContentCell.swift in Sources */,
+				9546BF86276A368C00991762 /* PhotoCell.swift in Sources */,
 				B09041B4272E28A900AE8623 /* InquireViewModel.swift in Sources */,
-				B0ECF8A2270AE0600088C96E /* JoinGroupViewModel.swift in Sources */,
 				B02803832706A784009D642A /* NicknameViewController.swift in Sources */,
 				B0180ECD26DCC103008C6F3C /* AppConfiguration.swift in Sources */,
 				B08BEB6C272A8C7E0078E00A /* FindPasswordViewController.swift in Sources */,
+				9546BF92276A368C00991762 /* GroupPhotoPreviewCell.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */,
 				B01C7772274D18C20032B329 /* CaptureAPIRequest.swift in Sources */,
@@ -1709,52 +1757,58 @@
 				B01C7775274D18CA0032B329 /* MissionAPIRequest.swift in Sources */,
 				B02803E727085141009D642A /* EditOrderViewController.swift in Sources */,
 				B02803EE270851A7009D642A /* AddViewController.swift in Sources */,
-				8373F7AA2764B3EB008839FA /* GroupInfoCollectionView.swift in Sources */,
 				B0AD5A5B2705D66400CC07B0 /* BaseViewController.swift in Sources */,
 				B01C7766274D08500032B329 /* RoutineAPIRequest.swift in Sources */,
+				9546BFA4276A368C00991762 /* GroupCategoryCell.swift in Sources */,
+				9546BF88276A368C00991762 /* PhotoGridViewController.swift in Sources */,
 				B09041B0272E26EA00AE8623 /* LargeContentsViewModel.swift in Sources */,
 				B0ADFE6E274B1461003019E5 /* TokenManager.swift in Sources */,
 				B08BEB73272A8CE30078E00A /* EmailAuthViewModel.swift in Sources */,
 				B09041A9272D925D00AE8623 /* SettingModel.swift in Sources */,
 				B0180F0226DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
-				8373F79D27649381008839FA /* GroupRuleContainerView.swift in Sources */,
+				9546BF90276A368C00991762 /* GroupPhotoContainerView.swift in Sources */,
+				9546BF96276A368C00991762 /* CameraViewController.swift in Sources */,
 				B0ADFE6B274B10AC003019E5 /* MinningAPIModel.swift in Sources */,
 				B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B08BEB76272A8CEE0078E00A /* EmailAuthViewController.swift in Sources */,
 				B0180EFB26DCC604008C6F3C /* SplashViewController.swift in Sources */,
 				B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */,
 				B0705589275A59F200AB776F /* OnBoardingViewController.swift in Sources */,
+				9546BF89276A368C00991762 /* GroupDetailViewController.swift in Sources */,
 				8316D6A72765D08A00041DAB /* RoutinePercentDetailView.swift in Sources */,
+				9546BF8A276A368C00991762 /* GroupDetailViewModel.swift in Sources */,
 				B08BEB6F272A8C880078E00A /* FindPasswordViewModel.swift in Sources */,
-				8373F7AE2764DE6C008839FA /* GroupPhotoCell.swift in Sources */,
-				B0ECF88E270AD8350088C96E /* GroupDetailViewController.swift in Sources */,
+				9546BF91276A368C00991762 /* GroupInfoCollectionView.swift in Sources */,
 				B08E74802705BC9D00854190 /* LoginViewModel.swift in Sources */,
 				B097A313272233F900E0A479 /* RoutineCell.swift in Sources */,
 				B0ADFE4327488AFF003019E5 /* MinningProperty.swift in Sources */,
+				9546BFA3276A368C00991762 /* OnGoingView.swift in Sources */,
 				B02803A82706DD6E009D642A /* GroupDIContainer.swift in Sources */,
 				B0280459270986FB009D642A /* MonthGraphView.swift in Sources */,
 				B08E74A32705C83900854190 /* PasswordViewController.swift in Sources */,
 				B097A30F272233F900E0A479 /* RoutineFooterCell.swift in Sources */,
 				B0AD5A652705D6C300CC07B0 /* MainTabBarViewController.swift in Sources */,
 				B02803BB2706FF45009D642A /* WeeklyView.swift in Sources */,
+				9546BF87276A368C00991762 /* PhotoGridViewModel.swift in Sources */,
 				B0ECF894270AD8CC0088C96E /* GroupModel.swift in Sources */,
-				B0ECF89F270AE0580088C96E /* JoinGroupViewController.swift in Sources */,
 				B08BEB81272A8E650078E00A /* NewPasswordViewModel.swift in Sources */,
-				8373F79327527F7F008839FA /* GroupTitleContainerView.swift in Sources */,
 				83D2F6D5271BFEA2002947D3 /* EditOrderCell.swift in Sources */,
+				9546BFA0276A368C00991762 /* MyGroupCellViewController.swift in Sources */,
 				B02803992706D7E5009D642A /* PhraseViewController.swift in Sources */,
+				9546BF9F276A368C00991762 /* EndedGroupCellViewController.swift in Sources */,
 				B02803F527085447009D642A /* RecommendViewController.swift in Sources */,
+				9546BF8E276A368C00991762 /* GroupPhotoCell.swift in Sources */,
 				B02803A52706DCBF009D642A /* ReportCoordinator.swift in Sources */,
-				8373F76B2748BC4B008839FA /* PhotoDetailViewModel.swift in Sources */,
+				9546BFB6276A438B00991762 /* NewGroupViewController.swift in Sources */,
 				B01992A0275FA56200FF3E96 /* MinningAPIError.swift in Sources */,
 				B0180EFE26DCC60A008C6F3C /* SplashViewModel.swift in Sources */,
 				B028043D270972B5009D642A /* RoutineModel.swift in Sources */,
 				B0D16DF326DA57F200A8E52B /* AppDelegate.swift in Sources */,
-				8316D68A2765002300041DAB /* GroupQuitView.swift in Sources */,
+				9546BF99276A368C00991762 /* PhotoDetailViewModel.swift in Sources */,
 				B08BEB68272A8B5A0078E00A /* MyPageViewModel.swift in Sources */,
+				9546BF9B276A368C00991762 /* GroupListCellViewModel.swift in Sources */,
 				B0AD5A712705D79300CC07B0 /* GroupViewController.swift in Sources */,
 				B0D16DFD26DA57F200A8E52B /* OurApp.xcdatamodeld in Sources */,
-				8373F7AC2764B97A008839FA /* GroupPhotoContainerView.swift in Sources */,
 				9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */,
 				B08BEB84272A8E770078E00A /* NewPasswordViewController.swift in Sources */,
 				B0AD5A692705D74000CC07B0 /* HomeViewController.swift in Sources */,
@@ -1766,19 +1820,20 @@
 				B08E74A72705C84700854190 /* PasswordViewModel.swift in Sources */,
 				B01C7769274D0ECB0032B329 /* ReportAPIRequest.swift in Sources */,
 				B0ECF8812709960D0088C96E /* MyRoutineContentItemView.swift in Sources */,
-				95A20519275E43640047CA6D /* CameraViewController.swift in Sources */,
 				B0705582275A593100AB776F /* StartDIContainer.swift in Sources */,
 				B08BEB88272A8F400078E00A /* NoticeViewModel.swift in Sources */,
+				9546BF93276A368C00991762 /* GroupMyInfoContainerView.swift in Sources */,
 				B0ECF87B270993260088C96E /* MyRoutineTitleCell.swift in Sources */,
-				8373F7A82764A2A1008839FA /* GroupPhotoPreviewCell.swift in Sources */,
+				9546BFB8276A43A800991762 /* NewGroupViewModel.swift in Sources */,
+				9546BF8F276A368C00991762 /* GroupPhotoPreviewContainerView.swift in Sources */,
+				9546BF9E276A368C00991762 /* GroupListCellViewController.swift in Sources */,
 				B02803B82706F92C009D642A /* ProfileView.swift in Sources */,
-				8373F7A327649965008839FA /* GroupMyInfoContainerView.swift in Sources */,
 				B02803FC27085604009D642A /* NotificationViewController.swift in Sources */,
-				B0ECF89B270ADA060088C96E /* NewGroupViewModel.swift in Sources */,
 				B09041A3272D905A00AE8623 /* NormalSettingCell.swift in Sources */,
 				B097A3182722340400E0A479 /* RoutineView.swift in Sources */,
 				B028039F2706D809009D642A /* PhraseViewModel.swift in Sources */,
 				9589B557271DF27300943BA3 /* AddDayView.swift in Sources */,
+				9546BFA1276A368C00991762 /* EndedView.swift in Sources */,
 				B02803AB2706DD75009D642A /* GroupCoordinator.swift in Sources */,
 				B0904199272D8CC400AE8623 /* NoticeItemCell.swift in Sources */,
 				B08E747C2705BBAA00854190 /* AuthDIContainer.swift in Sources */,
@@ -1788,27 +1843,28 @@
 				B097A315272233F900E0A479 /* PhraseGuideCell.swift in Sources */,
 				8373F6DB272D2243008839FA /* RoutineCellSwipeView.swift in Sources */,
 				B08BEB7D272A8DF90078E00A /* ResetPasswordViewController.swift in Sources */,
+				9546BFA2276A368C00991762 /* MyGroupCategoryModel.swift in Sources */,
 				B0280440270975F4009D642A /* PhotoSelectView.swift in Sources */,
-				8373F6FD272D632F008839FA /* PhotoGridViewModel.swift in Sources */,
 				B01C776F274D15740032B329 /* GroupAPIRequest.swift in Sources */,
 				B097A311272233F900E0A479 /* ReviewCell.swift in Sources */,
 				B0ADFDEF2748849B003019E5 /* AuthAPIRequest.swift in Sources */,
 				B028045C2709871D009D642A /* RoutineCompareDetailView.swift in Sources */,
-				B0ECF891270AD83F0088C96E /* GroupDetailViewModel.swift in Sources */,
+				9546BF98276A368C00991762 /* PhotoDetailViewController.swift in Sources */,
 				B0AD5A6E2705D78100CC07B0 /* ReportViewController.swift in Sources */,
 				B02803E427085139009D642A /* ReviewViewModel.swift in Sources */,
-				8373F6FB272D60D8008839FA /* PhotoCell.swift in Sources */,
 				B0E1D257270BE8CB006995C5 /* NotificationItemCell.swift in Sources */,
 				B02803FF2708561C009D642A /* NotificationViewModel.swift in Sources */,
 				83D2F6DE271C41A0002947D3 /* WeeklyResultView.swift in Sources */,
-				8373F7A627649DAC008839FA /* GroupPhotoPreviewContainerView.swift in Sources */,
 				B0ADFE4F27489211003019E5 /* MinningRequest.swift in Sources */,
 				B01992D527609E8F00FF3E96 /* UserModel.swift in Sources */,
 				B0AD5A7A2705DBFA00CC07B0 /* GroupViewModel.swift in Sources */,
 				B028038F2706D785009D642A /* HomeDIContainer.swift in Sources */,
 				B0705586275A59E900AB776F /* OnBoardingViewModel.swift in Sources */,
 				B09041BB272E2A7B00AE8623 /* VersionViewModel.swift in Sources */,
+				9546BF8B276A368C00991762 /* GroupRuleContainerView.swift in Sources */,
+				9546BF94276A368C00991762 /* JoinGroupViewModel.swift in Sources */,
 				B02803F82708544F009D642A /* RecommendViewModel.swift in Sources */,
+				9546BF8C276A368C00991762 /* GroupQuitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,6 @@ final class RecommendViewController: BaseViewController, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViewLayout()
     }
     
