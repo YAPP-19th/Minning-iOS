@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        // MARK: Notification 푸시 알림 설정
+        // MARK: - Notification 푸시 알림 설정
         notificationCenter.delegate = self
         
         notificationCenter.requestAuthorization(options: [.alert]) { didAllow, error in

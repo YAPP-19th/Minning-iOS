@@ -21,4 +21,5 @@ public struct NotificationModel {
         case monthReport
         case longtimeNoSee
     }
+    
 }
