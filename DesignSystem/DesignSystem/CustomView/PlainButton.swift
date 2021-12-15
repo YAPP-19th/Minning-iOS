@@ -93,11 +93,11 @@ public class PlainButton: UIButton {
     
     private func updateLeftIcon() {
         if #available (iOS 15.0, *) {
-//            var config = UIButton.Configuration.plain()
-//            config.image = plainButtonType.leftIcon
-//            config.imagePlacement = .leading
-//            config.imagePadding = 6
-//            configuration = config
+            var config = UIButton.Configuration.plain()
+            config.image = plainButtonType.leftIcon
+            config.imagePlacement = .leading
+            config.imagePadding = 6
+            configuration = config
         } else {
             self.setImage(plainButtonType.leftIcon, for: .normal)
             self.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)

@@ -16,6 +16,12 @@ final class GroupDIContainer {
         return detailVC
     }
     
+    func createNewGroup(_ coordinator: GroupCoordinator) -> NewGroupViewController {
+        let viewModel = NewGroupViewModel(coordinator: coordinator)
+        let newGroupVC = NewGroupViewController(viewModel: viewModel)
+        return newGroupVC
+    }
+    
     func createJoinGroup(_ coordinator: GroupCoordinator) -> JoinGroupViewController {
         let viewModel = JoinGroupViewModel(coordinator: coordinator)
         let joinGroupVC = JoinGroupViewController(viewModel: viewModel)
