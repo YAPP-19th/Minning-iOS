@@ -123,6 +123,8 @@ final class GroupViewController: BaseViewController {
         
         viewModel.myGroupTabType.bindAndFire { [weak self] type in
             guard let `self` = self else { return }
+            self.subTabNowButton.setTitleColor(type == .now ? .primaryBlack : .minningGray100, for: .normal)
+            self.subTabDoneButton.setTitleColor(type == .done ? .primaryBlack : .minningGray100, for: .normal)
             self.onGoingView.isHidden = !(type == .now)
             self.endedView.isHidden = !(type == .done)
             self.wholeGroupView.isHidden = true

@@ -49,4 +49,8 @@ final class GroupViewModel {
     func showOngoingGroup() {
         
     }
+    
+    func goToNewGroup() {
+        coordinator.goToNewGroup()
+    }
 }
