@@ -150,7 +150,7 @@ final class GroupDetailViewController: BaseViewController {
     
     @objc
     private func onClickCloseButton(_ sender: Any?) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
