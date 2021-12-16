@@ -212,21 +212,8 @@ public struct RoutineModel: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let categoryValue = try values.decode(Int.self, forKey: .category)
         
-        switch categoryValue {
-        case 0:
-            category = .miracle
-        case 1:
-            category = .selfDev
-        case 2:
-            category = .health
-        case 3:
-            category = .life
-        case 4:
-            category = .other
-        default:
-            category = .other
-        }
-        
+        category = RoutineCategory(rawValue: categoryValue) ?? .other
+
         let daysValue = try values.decode([String].self, forKey: .days)
         var dayList: [Day] = []
         

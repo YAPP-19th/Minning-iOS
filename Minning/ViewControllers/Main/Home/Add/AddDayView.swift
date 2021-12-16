@@ -17,7 +17,10 @@ final class AddDayView: UIView {
     
     var isSelected: Bool = false
     
-    private let dayLabel: UILabel = {
+    private lazy var dayLabel: UILabel = {
+        $0.text = day.korean
+        $0.font = .font14P
+        $0.textColor = .minningGray100
         return $0
     }(UILabel())
     
@@ -38,10 +41,6 @@ final class AddDayView: UIView {
         clipsToBounds = true
         addSubview(dayLabel)
         backgroundColor = .minningLightGray100
-        
-        dayLabel.text = day.korean
-        dayLabel.font = .font14P
-        dayLabel.textColor = .minningGray100
         
         dayLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
