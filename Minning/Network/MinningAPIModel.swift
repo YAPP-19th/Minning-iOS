@@ -197,6 +197,7 @@ public struct RoutineModel: Codable {
         case days
         case goal
         case id
+        case result
         case startTime
         case title
     }
@@ -205,6 +206,7 @@ public struct RoutineModel: Codable {
     public let days: [Day]
     public let goal: String
     public let id: Int64
+    public let result: RoutineResult
     public let startTime: String
     public let title: String
     
@@ -222,6 +224,10 @@ public struct RoutineModel: Codable {
         }
         
         days = dayList
+        
+        let resultValue = try values.decode(String.self, forKey: .result)
+        result = RoutineResult(rawValue: resultValue) ?? .failure
+        
         goal = try values.decode(String.self, forKey: .goal)
         id = try values.decode(Int64.self, forKey: .id)
         startTime = try values.decode(String.self, forKey: .startTime)

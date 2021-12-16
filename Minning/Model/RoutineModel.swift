@@ -77,11 +77,11 @@ public enum RoutineCategory: Int, CaseIterable {
     }
 }
 
-public enum RoutineResult {
-    case done // 다했어요
-    case tried // 시도했어요
+public enum RoutineResult: String {
+    case done = "DONE" // 다했어요
+    case tried = "TRY" // 시도했어요
     case relax // 쉬었어요
-    case failure // 못했어요
+    case failure = "NOT" // 못했어요
     
     var title: String {
         switch self {
