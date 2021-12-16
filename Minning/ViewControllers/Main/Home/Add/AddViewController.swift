@@ -11,6 +11,7 @@ import DesignSystem
 import Foundation
 import SharedAssets
 import SnapKit
+import UIKit
 
 final class AddViewController: BaseViewController {
     private let routineAlarmTableView = UITableView()
@@ -156,6 +157,91 @@ final class AddViewController: BaseViewController {
         return $0
     }(AddCategoryView(category: .etc))
     
+    lazy var morningEmptyView: UIView = {
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(miracleButtonSelected)))
+        return $0
+    }(UIView())
+    
+    lazy var morningSelectedView: UIView = {
+        $0.backgroundColor = UIColor.primaryBlack040
+        $0.isUserInteractionEnabled = true
+        return $0
+    }(UIView())
+    
+    lazy var morningSelectedImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "checkmark")
+        return $0
+    }(UIImageView())
+    
+    lazy var selfImproveEmptyView: UIView = {
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selfImproveButtonSelected)))
+        return $0
+    }(UIView())
+    
+    lazy var selfImproveSelectedView: UIView = {
+        $0.backgroundColor = UIColor.primaryBlack040
+        $0.isUserInteractionEnabled = true
+        return $0
+    }(UIView())
+    
+    lazy var selfImproveSelectedImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "checkmark")
+        return $0
+    }(UIImageView())
+    
+    lazy var healthEmptyView: UIView = {
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(healthButtonSelected)))
+        return $0
+    }(UIView())
+    
+    lazy var healthSelectedView: UIView = {
+        $0.backgroundColor = UIColor.primaryBlack040
+        $0.isUserInteractionEnabled = true
+        return $0
+    }(UIView())
+    
+    lazy var healthSelectedImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "checkmark")
+        return $0
+    }(UIImageView())
+    
+    lazy var lifeEmptyView: UIView = {
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(lifeButtonSelected)))
+        return $0
+    }(UIView())
+    
+    lazy var lifeSelectedView: UIView = {
+        $0.backgroundColor = UIColor.primaryBlack040
+        $0.isUserInteractionEnabled = true
+        return $0
+    }(UIView())
+    
+    lazy var lifeSelectedImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "checkmark")
+        return $0
+    }(UIImageView())
+    
+    lazy var etcEmptyView: UIView = {
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(etcButtonSelected)))
+        return $0
+    }(UIView())
+    
+    lazy var etcSelectedView: UIView = {
+        $0.backgroundColor = UIColor.primaryBlack040
+        $0.isUserInteractionEnabled = true
+        return $0
+    }(UIView())
+    
+    lazy var etcSelectedImageView: UIImageView = {
+        $0.image = UIImage(sharedNamed: "checkmark")
+        return $0
+    }(UIImageView())
+    
     private let gapLine: UIView = {
         $0.backgroundColor = .minningLightGray100
         return $0
@@ -275,10 +361,6 @@ final class AddViewController: BaseViewController {
         return $0
     }(UISwitch())
     
-    override func bindViewModel() {
-        
-    }
-    
     init(viewModel: AddViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -391,29 +473,119 @@ final class AddViewController: BaseViewController {
             make.height.equalTo(65)
         }
         
+        morningView.addSubview(morningEmptyView)
+        morningSelectedView.addSubview(morningSelectedImageView)
+        morningEmptyView.addSubview(morningSelectedView)
+        morningSelectedView.isHidden = true
+        
         morningView.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.height.equalTo(65)
         }
         
+        morningEmptyView.snp.makeConstraints { make in
+            make.edges.equalTo(morningView)
+        }
+        morningSelectedView.snp.makeConstraints { make in
+            make.edges.equalTo(morningEmptyView)
+        }
+        
+        morningSelectedImageView.snp.makeConstraints { make in
+            make.center.equalTo(morningEmptyView)
+            make.height.equalTo(14.19)
+            make.width.equalTo(14.3)
+        }
+        
+        selfImproveView.addSubview(selfImproveEmptyView)
+        selfImproveSelectedView.addSubview(selfImproveSelectedImageView)
+        selfImproveEmptyView.addSubview(selfImproveSelectedView)
+        selfImproveSelectedView.isHidden = true
+
         selfImproveView.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.height.equalTo(65)
         }
+        
+        selfImproveEmptyView.snp.makeConstraints { make in
+            make.edges.equalTo(selfImproveView)
+        }
+        selfImproveSelectedView.snp.makeConstraints { make in
+            make.edges.equalTo(selfImproveEmptyView)
+        }
+        
+        selfImproveSelectedImageView.snp.makeConstraints { make in
+            make.center.equalTo(selfImproveEmptyView)
+            make.height.equalTo(14.19)
+            make.width.equalTo(14.3)
+        }
+        
+        healthView.addSubview(healthEmptyView)
+        healthSelectedView.addSubview(healthSelectedImageView)
+        healthEmptyView.addSubview(healthSelectedView)
+        healthSelectedView.isHidden = true
         
         healthView.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.height.equalTo(65)
         }
         
+        healthEmptyView.snp.makeConstraints { make in
+            make.edges.equalTo(healthView)
+        }
+        healthSelectedView.snp.makeConstraints { make in
+            make.edges.equalTo(healthEmptyView)
+        }
+        
+        healthSelectedImageView.snp.makeConstraints { make in
+            make.center.equalTo(healthEmptyView)
+            make.height.equalTo(14.19)
+            make.width.equalTo(14.3)
+        }
+        
+        lifeView.addSubview(lifeEmptyView)
+        lifeSelectedView.addSubview(lifeSelectedImageView)
+        lifeEmptyView.addSubview(lifeSelectedView)
+        lifeSelectedView.isHidden = true
+        
         lifeView.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.height.equalTo(65)
         }
         
+        lifeEmptyView.snp.makeConstraints { make in
+            make.edges.equalTo(lifeView)
+        }
+        lifeSelectedView.snp.makeConstraints { make in
+            make.edges.equalTo(lifeEmptyView)
+        }
+        
+        lifeSelectedImageView.snp.makeConstraints { make in
+            make.center.equalTo(lifeEmptyView)
+            make.height.equalTo(14.19)
+            make.width.equalTo(14.3)
+        }
+        
+        etcView.addSubview(etcEmptyView)
+        etcSelectedView.addSubview(etcSelectedImageView)
+        etcEmptyView.addSubview(etcSelectedView)
+        etcSelectedView.isHidden = true
+        
         etcView.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.height.equalTo(65)
+        }
+        
+        etcEmptyView.snp.makeConstraints { make in
+            make.edges.equalTo(etcView)
+        }
+        etcSelectedView.snp.makeConstraints { make in
+            make.edges.equalTo(etcEmptyView)
+        }
+        
+        etcSelectedImageView.snp.makeConstraints { make in
+            make.center.equalTo(etcEmptyView)
+            make.height.equalTo(14.19)
+            make.width.equalTo(14.3)
         }
         
         trailingEmptyView.snp.makeConstraints { make in
@@ -589,6 +761,51 @@ final class AddViewController: BaseViewController {
     @objc
     private func isRecommendButtonPressed() {
         viewModel.coordinator.goToRecommend()
+    }
+    
+    @objc
+    private func miracleButtonSelected(_ sender: Any) {
+        morningSelectedView.isHidden = false
+        selfImproveSelectedView.isHidden = true
+        healthSelectedView.isHidden = true
+        lifeSelectedView.isHidden = true
+        etcSelectedView.isHidden = true
+    }
+    
+    @objc
+    private func selfImproveButtonSelected(_ sender: Any) {
+        morningSelectedView.isHidden = true
+        selfImproveSelectedView.isHidden = false
+        healthSelectedView.isHidden = true
+        lifeSelectedView.isHidden = true
+        etcSelectedView.isHidden = true
+    }
+    
+    @objc
+    private func healthButtonSelected(_ sender: Any) {
+        morningSelectedView.isHidden = true
+        selfImproveSelectedView.isHidden = true
+        healthSelectedView.isHidden = false
+        lifeSelectedView.isHidden = true
+        etcSelectedView.isHidden = true
+    }
+    
+    @objc
+    private func lifeButtonSelected(_ sender: Any) {
+        morningSelectedView.isHidden = true
+        selfImproveSelectedView.isHidden = true
+        healthSelectedView.isHidden = true
+        lifeSelectedView.isHidden = false
+        etcSelectedView.isHidden = true
+    }
+    
+    @objc
+    private func etcButtonSelected(_ sender: Any) {
+        morningSelectedView.isHidden = true
+        selfImproveSelectedView.isHidden = true
+        healthSelectedView.isHidden = true
+        lifeSelectedView.isHidden = true
+        etcSelectedView.isHidden = false
     }
     
     @objc
