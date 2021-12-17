@@ -11,9 +11,10 @@ import Foundation
 
 final class PhraseViewModel {
     var isContentValid: DataBinding<Bool> = DataBinding(false)
-    var phraseContent: DataBinding<String> = DataBinding("새로운 일을 시작하는 용기속에 당신의 천재성, 능력과 기적이 모두 숨어 있다.")
+    var phraseContent: DataBinding<String> = DataBinding("")
     var userInputContent: DataBinding<String> = DataBinding("")
     
+    private var sayingId: Int64?
     let coordinator: HomeCoordinator
     
     init(coordinator: HomeCoordinator) {
@@ -27,5 +28,33 @@ final class PhraseViewModel {
     func setUserContent(content: String) {
         userInputContent.accept(content)
         updateValidation()
+    }
+    
+    func getTodayPhrase() {
+        SayingAPIRequest.getTodaySaying(completion: { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(let response):
+                self.sayingId = response.data.id
+                self.phraseContent.accept(response.data.content)
+            case .failure(let error):
+                ErrorLog(error.defaultError.localizedDescription)
+            }
+        })
+    }
+    
+    func checkPhraseValidation() {
+        SayingAPIRequest.compareSaying(content: userInputContent.value,
+                                       sayingId: sayingId ?? 0,
+                                       completion: { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(let response):
+                DebugLog("Result: \(response.data.result)")
+                self.isContentValid.accept(response.data.result)
+            case .failure(let error):
+                ErrorLog(error.defaultError.localizedDescription)
+            }
+        })
     }
 }

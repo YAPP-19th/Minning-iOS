@@ -21,6 +21,7 @@ final class PhraseViewController: BaseViewController {
     
     private let postButton: TopTextButton = {
         $0.setTitle("저장", for: .normal)
+        $0.addTarget(self, action: #selector(onClickSaveButton(_:)), for: .touchUpInside)
         return $0
     }(TopTextButton())
     
@@ -67,8 +68,14 @@ final class PhraseViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc
+    private func onClickSaveButton(_ sender: TopTextButton) {
+        viewModel.checkPhraseValidation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getTodayPhrase()
     }
     
     override func setupViewLayout() {

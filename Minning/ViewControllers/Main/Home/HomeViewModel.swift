@@ -23,7 +23,7 @@ final class HomeViewModel {
     var routines: DataBinding<[RoutineModel]> = DataBinding([])
     
     private var selectedDay: Day {
-        Day.allCases[selectedDate.value.get(.weekday)]
+        Day.allCases[selectedDate.value.get(.weekday) - 1]
     }
     
     public init(coordinator: HomeCoordinator) {

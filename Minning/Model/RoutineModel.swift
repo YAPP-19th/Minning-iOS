@@ -10,16 +10,18 @@ import DesignSystem
 import Foundation
 
 public enum Day: String, CaseIterable {
+    case sun = "SUN"
     case mon = "MON"
     case tue = "TUE"
     case wed = "WED"
     case thu = "THU"
     case fri = "FRI"
     case sat = "SAT"
-    case sun = "SUN"
     
     var korean: String {
         switch self {
+        case .sun:
+            return "일"
         case .mon:
             return "월"
         case .tue:
@@ -32,8 +34,6 @@ public enum Day: String, CaseIterable {
             return "금"
         case .sat:
             return "토"
-        case .sun:
-            return "일"
         }
     }
 }
