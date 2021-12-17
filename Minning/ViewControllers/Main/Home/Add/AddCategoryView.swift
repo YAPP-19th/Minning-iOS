@@ -67,7 +67,7 @@ final class AddCategoryView: UIView {
     
     private let category: CategoryType
     
-    var isSelected: Bool
+    private var isSelected: Bool = false
     
     private let categoryIconImageView: UIImageView = {
         return $0
@@ -89,9 +89,8 @@ final class AddCategoryView: UIView {
         return $0
     }(UILabel())
     
-    init(category: CategoryType, isSelected: Bool) {
+    init(category: CategoryType) {
         self.category = category
-        self.isSelected = isSelected
         super.init(frame: .zero)
         setupView()
     }
@@ -145,8 +144,7 @@ final class AddCategoryView: UIView {
     
     @objc
     private func isButtonSelected(_ sender: Any) {
-//        isSelected.toggle()
-        print(isSelected)
-        categorySelectedView.isHidden = isSelected
+        isSelected.toggle()
+        categorySelectedView.isHidden = !isSelected
     }
 }

@@ -137,26 +137,24 @@ final class AddViewController: BaseViewController {
     }(UIView())
     
     private let morningView: AddCategoryView = {
-        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(categoryIsSelected(sender:))))
-        $0.isUserInteractionEnabled = true
         return $0
-    }(AddCategoryView(category: .miracleMorning, isSelected: false))
+    }(AddCategoryView(category: .miracleMorning))
     
     private let selfImproveView: AddCategoryView = {
         return $0
-    }(AddCategoryView(category: .selfImprove, isSelected: false))
+    }(AddCategoryView(category: .selfImprove))
     
     private let healthView: AddCategoryView = {
         return $0
-    }(AddCategoryView(category: .health, isSelected: false))
+    }(AddCategoryView(category: .health))
     
     private let lifeView: AddCategoryView = {
         return $0
-    }(AddCategoryView(category: .life, isSelected: false))
+    }(AddCategoryView(category: .life))
     
     private let etcView: AddCategoryView = {
         return $0
-    }(AddCategoryView(category: .etc, isSelected: false))
+    }(AddCategoryView(category: .etc))
     
     private let gapLine: UIView = {
         $0.backgroundColor = .minningLightGray100
@@ -288,83 +286,6 @@ final class AddViewController: BaseViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
-            navBar.titleContent = "루틴 추가하기"
-            navBar.removeDefaultShadowImage()
-        }
-        
-        navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
-        navigationItem.setRightBarButton(rightBarButton, animated: true)
-    }
-    
-    @objc
-    private func onClickBackButton(_ sender: Any?) {
-        viewModel.goToBack()
-    }
-    
-    @objc
-    private func completePressed() {
-        
-    }
-    
-    @objc
-    private func isRecommendButtonPressed() {
-        viewModel.coordinator.goToRecommend()
-    }
-    
-    @objc
-    private func categoryIsSelected(sender: AddCategoryView) {
-        morningView.isSelected = (sender == morningView)
-        selfImproveView.isSelected = (sender == selfImproveView)
-        healthView.isSelected = (sender == healthView)
-        lifeView.isSelected = (sender == lifeView)
-        etcView.isSelected = (sender == etcView)
-    }
-    
-    @objc
-    private func timePressed(_ sender: Any) {
-        let alert = UIAlertController(title: "시간 선택", message: "알림 받을 시간을 선택해주세요", preferredStyle: .actionSheet)
-        alert.view.addSubview(timePicker)
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        
-        alert.addAction(UIAlertAction(title: "선택완료", style: .default, handler: { _ in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH : mm"
-            self.timeLabel.text = formatter.string(from: self.timePicker.date)
-        }))
-        
-        alert.view.tintColor = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.00)
-        
-        alert.view.snp.makeConstraints { make in
-            make.height.equalTo(350)
-        }
-        timePicker.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(180)
-        }
-        present(alert, animated: true, completion: nil)
-    }
-    
-    @objc
-    private func datePickerPressed() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-        let time = dateFormatter.string(from: timePicker.date)
-        print(time)
     }
     
     override func setupViewLayout() {
@@ -636,5 +557,71 @@ final class AddViewController: BaseViewController {
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
+            navBar.titleContent = "루틴 추가하기"
+            navBar.removeDefaultShadowImage()
+        }
+        
+        navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
+        navigationItem.setRightBarButton(rightBarButton, animated: true)
+    }
+    
+    @objc
+    private func onClickBackButton(_ sender: Any?) {
+        viewModel.goToBack()
+    }
+    
+    @objc
+    private func completePressed() {
+        
+    }
+    
+    @objc
+    private func isRecommendButtonPressed() {
+        viewModel.coordinator.goToRecommend()
+    }
+    
+    @objc
+    private func timePressed(_ sender: Any) {
+        let alert = UIAlertController(title: "시간 선택", message: "알림 받을 시간을 선택해주세요", preferredStyle: .actionSheet)
+        alert.view.addSubview(timePicker)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "선택완료", style: .default, handler: { _ in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH : mm"
+            self.timeLabel.text = formatter.string(from: self.timePicker.date)
+        }))
+        
+        alert.view.tintColor = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.00)
+        
+        alert.view.snp.makeConstraints { make in
+            make.height.equalTo(350)
+        }
+        timePicker.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(50)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(180)
+        }
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func datePickerPressed() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .long
+        let time = dateFormatter.string(from: timePicker.date)
+        print(time)
     }
 }
