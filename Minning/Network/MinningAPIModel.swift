@@ -197,6 +197,7 @@ public struct RoutineModel: Codable {
         case days
         case goal
         case id
+        case result
         case startTime
         case title
     }
@@ -205,28 +206,16 @@ public struct RoutineModel: Codable {
     public let days: [Day]
     public let goal: String
     public let id: Int64
+    public let result: RoutineResult
     public let startTime: String
     public let title: String
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let categoryValue = try values.decode(String.self, forKey: .category)
+        let categoryValue = try values.decode(Int.self, forKey: .category)
         
-        switch categoryValue {
-        case "건강":
-            category = .health
-        case "생활":
-            category = .life
-        case "자기개발":
-            category = .selfDev
-        case "미라클모닝":
-            category = .miracle
-        case "기타":
-            category = .other
-        default:
-            category = .other
-        }
-        
+        category = RoutineCategory(rawValue: categoryValue) ?? .other
+
         let daysValue = try values.decode([String].self, forKey: .days)
         var dayList: [Day] = []
         
@@ -235,6 +224,10 @@ public struct RoutineModel: Codable {
         }
         
         days = dayList
+        
+        let resultValue = try values.decode(String.self, forKey: .result)
+        result = RoutineResult(rawValue: resultValue) ?? .failure
+        
         goal = try values.decode(String.self, forKey: .goal)
         id = try values.decode(Int64.self, forKey: .id)
         startTime = try values.decode(String.self, forKey: .startTime)

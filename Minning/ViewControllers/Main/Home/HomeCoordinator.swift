@@ -14,7 +14,7 @@ protocol HomeRoute {
     func goToRecommend()
     func goToAdd()
     func goToReview()
-    func goToEditOrder()
+    func goToEditOrder(day: Day, routineList: [RoutineModel])
     func goToNotification()
     func goToMyPage()
     func goToNotice()
@@ -69,8 +69,8 @@ extension HomeCoordinator: HomeRoute {
         navigationController.topViewController?.present(reviewVC, animated: true, completion: nil)
     }
     
-    func goToEditOrder() {
-        let editVC = dependencies.createEditOrder(self)
+    func goToEditOrder(day: Day, routineList: [RoutineModel]) {
+        let editVC = dependencies.createEditOrder(self, day: day, routineList: routineList)
         navigationController.pushViewController(editVC, animated: true)
     }
     

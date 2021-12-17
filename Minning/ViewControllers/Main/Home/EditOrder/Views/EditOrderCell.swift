@@ -30,9 +30,10 @@ final class EditOrderCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(title: String) {
+    func configure(_ routine: RoutineModel) {
         setTempData()
-        titleLabel.text = title
+        titleLabel.text = routine.title
+        categoryBarView.backgroundColor = routine.category.color
     }
     
     private func setupViewLayout() {

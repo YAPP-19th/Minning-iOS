@@ -22,6 +22,10 @@ final class HomeViewModel {
     var tabType: DataBinding<RoutineTabType> = DataBinding(.routine)
     var routines: DataBinding<[RoutineModel]> = DataBinding([])
     
+    private var selectedDay: Day {
+        Day.allCases[selectedDate.value.get(.weekday)]
+    }
+    
     public init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
     }
@@ -52,8 +56,7 @@ final class HomeViewModel {
     }
     
     public func getAllRoutinesByDay() {
-        let index = selectedDate.value.get(.weekday)
-        RoutineAPIRequest.routineListByDay(day: Day.allCases[index]) { result in
+        RoutineAPIRequest.routineListByDay(day: selectedDay) { result in
             switch result {
             case .success(let response):
                 self.routines.accept(response.data)
@@ -84,7 +87,7 @@ final class HomeViewModel {
     }
     
     public func goToEditOrder() {
-        coordinator.goToEditOrder()
+        coordinator.goToEditOrder(day: selectedDay, routineList: routines.value)
     }
     
     public func goToReview() {

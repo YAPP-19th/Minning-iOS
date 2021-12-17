@@ -31,7 +31,7 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
         var requestURL: URL {
             switch self {
             case .addRoutine:
-                return MinningAPIConstant.routineURL
+                return MinningAPIConstant.routineURL.appendingPathComponent("")
             case let .fetchSingleRoutine(id):
                 return MinningAPIConstant.routineURL.appendingPathComponent("\(id)")
             case let .deleteRoutine(id):
@@ -68,7 +68,7 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
             var parameters: [String: Any] = [:]
             switch self {
             case let .addRoutine(request):
-                parameters["category"] = request.category.title
+                parameters["category"] = request.category.rawValue
                 parameters["days"] = request.days.map { $0.rawValue }
                 parameters["goal"] = request.goal
                 parameters["startTime"] = request.startTime

@@ -63,7 +63,7 @@ final class ProfileView: UIView {
     
     private let titleLabel: UILabel = {
         let weekdayIndex = Date().get(.weekday)
-        let weekday = Day.allCases[weekdayIndex].korean
+        let weekday: String = WeeklyText(rawValue: weekdayIndex)?.title ?? ""
         
         $0.font = .font20PExBold
         $0.textColor = .primaryBlack

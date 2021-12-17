@@ -16,9 +16,10 @@ final class AddViewController: BaseViewController {
     private let routineAlarmTableView = UITableView()
     private let viewModel: AddViewModel
     
-    private let rightBarButton: UIBarButtonItem = {
+    private lazy var rightBarButton: UIBarButtonItem = {
         $0.title = "완료"
         $0.tintColor = .systemBlue
+        $0.addTargetForAction(target: self, action: #selector(onClickCompleteButton(_:)))
         return $0
     }(UIBarButtonItem())
     
@@ -582,8 +583,17 @@ final class AddViewController: BaseViewController {
     }
     
     @objc
-    private func completePressed() {
+    private func onClickCompleteButton(_ sender: Any) {
+        let selectedDays = getSelectedDays()
+        let selectedCategory = RoutineCategory.selfDev
+        guard let title = writeRoutineNameTextField.text,
+              let goal = writeGoalNameTextField.text,
+              let time = timeLabel.text?.replacingOccurrences(of: " ", with: "") else { return }
+        if selectedDays.isEmpty { return }
         
+        viewModel.postAddRoutine(title: title, goal: goal, category: selectedCategory, days: selectedDays, time: time) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc
@@ -623,5 +633,13 @@ final class AddViewController: BaseViewController {
         dateFormatter.timeStyle = .long
         let time = dateFormatter.string(from: timePicker.date)
         print(time)
+    }
+    
+    private func getSelectedDays() -> [Day] {
+        var selectedDays = [Day]()
+        [monView, tueView, wedView, thuView, friView, satView, sunView].forEach {
+            if $0.isSelected { selectedDays.append($0.day) }
+        }
+        return selectedDays
     }
 }
