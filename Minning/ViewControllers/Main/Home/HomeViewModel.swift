@@ -22,6 +22,7 @@ final class HomeViewModel {
     var tabType: DataBinding<RoutineTabType> = DataBinding(.routine)
     var routines: DataBinding<[RoutineModel]> = DataBinding([])
     var retrospects: DataBinding<[RetrospectModel]> = DataBinding([])
+    var checkTodaySaying: DataBinding<Bool> = DataBinding(false)
     
     private var selectedDay: Day {
         Day.allCases[selectedDate.value.get(.weekday) - 1]
@@ -72,6 +73,17 @@ final class HomeViewModel {
             switch result {
             case .success(let response):
                 self.retrospects.accept(response.data)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func getSayingCheck() {
+        SayingAPIRequest.checkTodaySaying { result in
+            switch result {
+            case .success(let data):
+                self.checkTodaySaying.accept(data.data.result)
             case .failure(let error):
                 ErrorLog(error.localizedDescription)
             }

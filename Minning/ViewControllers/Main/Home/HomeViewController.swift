@@ -42,6 +42,7 @@ final class HomeViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         viewModel.getUserData()
+        viewModel.getSayingCheck()
         viewModel.getWeeklyRate()
         viewModel.getAllRoutinesByDay()
         viewModel.getAllRetrospectByDay()
@@ -82,6 +83,11 @@ final class HomeViewController: BaseViewController {
         viewModel.myInfo.bind { [weak self] myInfo in
             guard let self = self else { return }
             self.profileView.profileData = myInfo
+        }
+        
+        viewModel.checkTodaySaying.bind { [weak self] todaySaying in
+            guard let self = self else { return }
+            self.routineView.updateViewWithTodaySaying(checkSaying: todaySaying)
         }
         
         viewModel.weeklyRoutineRate.bind { [weak self] routineRates in
@@ -125,9 +131,13 @@ extension HomeViewController: RoutineViewDelegate {
         case .groupGuide:
             viewModel.goToMyGroup()
         case .routine:
-            showAlert(title: routineAlertTitle, message: routineAlertText) { _ in
-                self.viewModel.showPhraseModally()
-                return
+            if viewModel.checkTodaySaying.value {
+                // show modify routine view
+            } else {
+                showAlert(title: routineAlertTitle, message: routineAlertText) { _ in
+                    self.viewModel.showPhraseModally()
+                    return
+                }
             }
         case .review:
             viewModel.goToReview()

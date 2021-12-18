@@ -28,6 +28,7 @@ final class RoutineView: UIView {
     var tabType: HomeViewModel.RoutineTabType = .routine
     var routines = [RoutineModel]()
     var retrospects = [RetrospectModel]()
+    var checkSaying: Bool = false
     
     lazy var mainTableView: UITableView = {
         $0.separatorStyle = .none
@@ -52,6 +53,11 @@ final class RoutineView: UIView {
     }
     
     func updateView() {
+        mainTableView.reloadData()
+    }
+    
+    func updateViewWithTodaySaying(checkSaying: Bool) {
+        self.checkSaying = checkSaying
         mainTableView.reloadData()
     }
     
@@ -93,9 +99,9 @@ extension RoutineView: UITableViewDataSource {
         case .header:
             return 1
         case .phraseGuide:
-            return tabType == .routine ? 1 : .zero
+            return tabType == .routine && !checkSaying ? 1 : .zero
         case .groupGuide:
-            return 0 // 명언 작성 완료 후 노출
+            return checkSaying ? 1 : .zero
         case .routine:
             return tabType == .routine ? routines.count : .zero
         case .review:
@@ -129,7 +135,7 @@ extension RoutineView: UITableViewDataSource {
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: RoutineCell.identifier, for: indexPath) as? RoutineCell else {
                 return .init()
             }
-            cell.configure(routines[indexPath.row])
+            cell.configure(routines[indexPath.row], isEnabled: checkSaying)
             return cell
         case .review:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as? ReviewCell else {
@@ -171,32 +177,32 @@ extension RoutineView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard indexPath.section == TableViewSection.routine.rawValue else { return nil }
-        return nil
-//
-//        let completeAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
-//            print("complete")
-//            completion(true)
-//        }
-//        completeAction.backgroundColor = .minningLightGray100
-//        completeAction.image = convertSwipeViewToImage(action: .complete)
-//
-//        let halfAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
-//            print("half")
-//            completion(true)
-//        }
-//        halfAction.backgroundColor = .minningLightGray100
-//        halfAction.image = convertSwipeViewToImage(action: .half)
-//
-//        let dismissAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
-//            print("dismiss")
-//            completion(true)
-//        }
-//        dismissAction.backgroundColor = .minningLightGray100
-//        dismissAction.image = convertSwipeViewToImage(action: .dismiss)
-//
-//        return .init(actions: [halfAction, completeAction])
-//
-//        return .init(actions: [dismissAction])
+        guard checkSaying else { return nil }
+
+        let completeAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
+            print("complete")
+            completion(true)
+        }
+        completeAction.backgroundColor = .minningLightGray100
+        completeAction.image = convertSwipeViewToImage(action: .complete)
+
+        let halfAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
+            print("half")
+            completion(true)
+        }
+        halfAction.backgroundColor = .minningLightGray100
+        halfAction.image = convertSwipeViewToImage(action: .half)
+
+        let dismissAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
+            print("dismiss")
+            completion(true)
+        }
+        dismissAction.backgroundColor = .minningLightGray100
+        dismissAction.image = convertSwipeViewToImage(action: .dismiss)
+
+        return .init(actions: [halfAction, completeAction])
+
+        return .init(actions: [dismissAction])
     }
     
     private func convertSwipeViewToImage(action: RoutineCellSwipeView.Action) -> UIImage {

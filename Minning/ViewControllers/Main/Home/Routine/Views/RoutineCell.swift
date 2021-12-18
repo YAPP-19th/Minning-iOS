@@ -27,18 +27,23 @@ final class RoutineCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewLayout()
-        setViewAsDisable()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ routine: RoutineModel) {
+    func configure(_ routine: RoutineModel, isEnabled: Bool) {
+        lockImageView.isHidden = true
         categoryBarView.backgroundColor = routine.category.color
         titleLabel.text = routine.title
         descriptionLabel.text = routine.goal
         alarmLabel.text = routine.startTime
+        
+        if !isEnabled {
+            setViewAsDisable()
+            return
+        }
     }
 
     private func setupViewLayout() {
@@ -108,6 +113,7 @@ final class RoutineCell: UITableViewCell {
     }
 
     private func setViewAsDisable() {
+        lockImageView.isHidden = false
         categoryBarView.backgroundColor = .grayB5B8BE
         titleLabel.textColor = .grayB5B8BE
         descriptionLabel.textColor = .grayB5B8BE
