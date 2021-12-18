@@ -12,11 +12,12 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class EndedView: UITableView, UITableViewDataSource, UITableViewDelegate {
+final class EndedView: UIView, UITableViewDataSource, UITableViewDelegate {
     var groupTableView = UITableView()
     
     public init() {
-        super.init(frame: .zero, style: .plain)
+//        super.init(frame: .zero, style: .plain)
+        super.init(frame: .zero)
         setUpView()
         updateTableView()
     }
@@ -42,6 +43,12 @@ final class EndedView: UITableView, UITableViewDataSource, UITableViewDelegate {
             make.leading.trailing.top.bottom.equalToSuperview()
         }
     }
+    
+//    private func isGroupEnded() {
+//        let bottomSheetVC = BottomSheetViewController()
+//        bottomSheetVC.modalPresentationStyle = .overFullScreen
+//        self.present(bottomSheetVC, animated: false, completion: nil)
+//    }
     
     private func updateTableView() {
         groupTableView.reloadData()
