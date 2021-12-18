@@ -93,13 +93,13 @@ class GroupCellView: UIView {
         if category ==  .myGroup {
             groupListAchieveRateLabel.isHidden = true
             participantLabel.isHidden = true
-            achieveLabelCount = 101
+            achieveLabelCount = 99
             
         } else if category == .groupList {
             achieveRateLabel.isHidden = true
             dayLabel.isHidden = true
             dayLeftLabel.isHidden = true
-            achieveLabelCount = 113
+            achieveLabelCount = 111
         }
     }
     
@@ -149,7 +149,7 @@ class GroupCellView: UIView {
         achieveRateView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
             make.leading.equalTo(titleLabel.snp.leading)
-            make.width.equalTo(achieveLabelCount)
+            make.width.equalTo(achieveLabelCount + 5)
             make.height.equalTo(23)
         }
         
@@ -159,22 +159,23 @@ class GroupCellView: UIView {
         }
         
         dayLabel.snp.makeConstraints { make in
-            make.top.equalTo(achieveRateLabel.snp.top)
+            make.centerY.equalTo(achieveRateLabel.snp.centerY)
             make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
         }
         
         dayLeftLabel.snp.makeConstraints { make in
-            make.top.equalTo(achieveRateLabel.snp.top)
+            make.centerY.equalTo(achieveRateLabel.snp.centerY)
             make.leading.equalTo(dayLabel.snp.trailing).offset(4)
         }
         
         groupListAchieveRateLabel.snp.makeConstraints { make in
             make.center.equalTo(achieveRateView.snp.center)
             make.height.equalTo(14)
+//            make.width.equalTo(110)
         }
         
         participantLabel.snp.makeConstraints { make in
-            make.top.equalTo(achieveRateLabel.snp.top)
+            make.centerY.equalTo(achieveRateLabel.snp.centerY)
             make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
         }
     }

@@ -12,11 +12,11 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class OnGoingView: UITableView, UITableViewDataSource, UITableViewDelegate {
+final class OnGoingView: UIView, UITableViewDataSource, UITableViewDelegate {
     var groupTableView = UITableView()
-    
-    public init() {
-        super.init(frame: .zero, style: .plain)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setUpView()
         updateTableView()
     }
