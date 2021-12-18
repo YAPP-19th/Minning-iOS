@@ -131,6 +131,91 @@ final class GroupViewController: BaseViewController {
         }
     }
     
+    @objc
+    private func onClickTabButton(_ sender: UIButton) {
+//        pushViewController(CameraViewController())
+        switch sender {
+        case myGroupTabButton:
+            viewModel.tabType.accept(.myGroup)
+        case groupListTabButton:
+            viewModel.tabType.accept(.groupList)
+        case subTabNowButton:
+            viewModel.myGroupTabType.accept(.now)
+        case subTabDoneButton:
+            viewModel.myGroupTabType.accept(.done)
+            newEndedGroupAlertImageView.isHidden = true
+//            updateEndedGroupBottomSheet()
+        default:
+            break
+        }
+    }
+    
+    private func setupFilterview() {
+        let leadingSpacer = UIView()
+        let trailingSpacer = UIView()
+        [leadingSpacer, trailingSpacer].forEach {
+            $0.snp.makeConstraints { make in
+                make.width.equalTo(16)
+            }
+        }
+        
+        filterStackView.addArrangedSubview(leadingSpacer)
+        filterStackView.setCustomSpacing(0, after: leadingSpacer)
+        
+        let filterButton = FilterButton()
+        filterButton.isSelected = viewModel.isCurrentCategoryAll.value
+        filterButton.isAll = true
+        filterButton.setTitle("전체", for: .normal)
+        filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
+        filterStackView.addArrangedSubview(filterButton)
+        filterStackView.addArrangedSubview(trailingSpacer)
+    
+        RoutineCategory.allCases.enumerated().forEach { index, category in
+            let filterButton = FilterButton()
+            filterButton.isSelected = viewModel.currentCategory.value == category
+            filterButton.category = category
+            filterButton.setTitle(category.title, for: .normal)
+            filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
+            filterStackView.addArrangedSubview(filterButton)
+            
+            if index == RoutineCategory.allCases.count - 1 {
+                filterStackView.addArrangedSubview(trailingSpacer)
+                filterStackView.setCustomSpacing(0, after: filterButton)
+            }
+        }
+    }
+    
+    private func updateFilterView() {
+        filterStackView.arrangedSubviews.forEach { subView in
+            if let filterButton = subView as? FilterButton {
+                if filterButton.isAll {
+                    filterButton.isSelected = viewModel.isCurrentCategoryAll.value
+                } else {
+                    filterButton.isSelected = filterButton.category == viewModel.currentCategory.value
+                }
+            }
+        }
+    }
+    
+    private func updateEndedGroupBottomSheet() {
+        let bottomSheetVC = BottomSheetViewController()
+        bottomSheetVC.modalPresentationStyle = .overFullScreen
+        present(bottomSheetVC, animated: true, completion: nil)
+    }
+       
+    @objc
+    private func onClickFilterButton(_ sender: FilterButton) {
+        if sender.isAll {
+            viewModel.isCurrentCategoryAll.accept(true)
+            viewModel.currentCategory.accept(nil)
+        } else {
+            viewModel.isCurrentCategoryAll.accept(false)
+            viewModel.currentCategory.accept(sender.category)
+        }
+        
+        updateFilterView()
+    }
+    
     override func setupViewLayout() {
         view.backgroundColor = .minningLightGray100
         [titleSectionContainerView, groupBackgroundView].forEach {
@@ -248,83 +333,5 @@ final class GroupViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.viewModel.showOpenedGroupDetail()
         })
-    }
-    
-    @objc
-    private func onClickTabButton(_ sender: UIButton) {
-        pushViewController(CameraViewController())
-        switch sender {
-        case myGroupTabButton:
-            viewModel.tabType.accept(.myGroup)
-        case groupListTabButton:
-            viewModel.tabType.accept(.groupList)
-        case subTabNowButton:
-            viewModel.myGroupTabType.accept(.now)
-        case subTabDoneButton:
-            viewModel.myGroupTabType.accept(.done)
-            newEndedGroupAlertImageView.isHidden = true
-        default:
-            break
-        }
-    }
-    
-    private func setupFilterview() {
-        let leadingSpacer = UIView()
-        let trailingSpacer = UIView()
-        [leadingSpacer, trailingSpacer].forEach {
-            $0.snp.makeConstraints { make in
-                make.width.equalTo(16)
-            }
-        }
-        
-        filterStackView.addArrangedSubview(leadingSpacer)
-        filterStackView.setCustomSpacing(0, after: leadingSpacer)
-        
-        let filterButton = FilterButton()
-        filterButton.isSelected = viewModel.isCurrentCategoryAll.value
-        filterButton.isAll = true
-        filterButton.setTitle("전체", for: .normal)
-        filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
-        filterStackView.addArrangedSubview(filterButton)
-        filterStackView.addArrangedSubview(trailingSpacer)
-    
-        RoutineCategory.allCases.enumerated().forEach { index, category in
-            let filterButton = FilterButton()
-            filterButton.isSelected = viewModel.currentCategory.value == category
-            filterButton.category = category
-            filterButton.setTitle(category.title, for: .normal)
-            filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
-            filterStackView.addArrangedSubview(filterButton)
-            
-            if index == RoutineCategory.allCases.count - 1 {
-                filterStackView.addArrangedSubview(trailingSpacer)
-                filterStackView.setCustomSpacing(0, after: filterButton)
-            }
-        }
-    }
-    
-    private func updateFilterView() {
-        filterStackView.arrangedSubviews.forEach { subView in
-            if let filterButton = subView as? FilterButton {
-                if filterButton.isAll {
-                    filterButton.isSelected = viewModel.isCurrentCategoryAll.value
-                } else {
-                    filterButton.isSelected = filterButton.category == viewModel.currentCategory.value
-                }
-            }
-        }
-    }
-       
-    @objc
-    private func onClickFilterButton(_ sender: FilterButton) {
-        if sender.isAll {
-            viewModel.isCurrentCategoryAll.accept(true)
-            viewModel.currentCategory.accept(nil)
-        } else {
-            viewModel.isCurrentCategoryAll.accept(false)
-            viewModel.currentCategory.accept(sender.category)
-        }
-        
-        updateFilterView()
     }
 }
