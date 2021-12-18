@@ -122,7 +122,7 @@ extension HomeViewController: ProfileViewDelegate {
 }
 
 extension HomeViewController: RoutineViewDelegate {
-    func didSelectSection(_ section: RoutineView.TableViewSection) {
+    func didSelectSection(_ section: RoutineView.TableViewSection, _ index: Int?) {
         switch section {
         case .header:
             return
@@ -140,7 +140,9 @@ extension HomeViewController: RoutineViewDelegate {
                 }
             }
         case .review:
-            viewModel.goToReview()
+            if let index = index {
+                viewModel.showReviewFullModally(retrospect: viewModel.retrospects.value[index])
+            }
         case .footer:
             return
         }

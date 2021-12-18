@@ -118,16 +118,12 @@ final class HomeViewModel {
         coordinator.goToPhrase()
     }
     
-    public func showReviewFullModally() {
-        coordinator.goToReview()
+    public func showReviewFullModally(retrospect: RetrospectModel) {
+        coordinator.goToReview(retrospect: retrospect)
     }
     
     public func goToEditOrder() {
         coordinator.goToEditOrder(day: selectedDay, routineList: routines.value)
-    }
-    
-    public func goToReview() {
-        coordinator.goToReview()
     }
     
     public func goToMyGroup() {

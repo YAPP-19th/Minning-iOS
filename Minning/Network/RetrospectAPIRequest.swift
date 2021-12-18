@@ -34,7 +34,7 @@ public struct RetrospectAPIRequest: MinningAPIRequestable {
         var requestURL: URL {
             switch self {
             case .addRetrospect:
-                return MinningAPIConstant.retrospectURL
+                return MinningAPIConstant.retrospectURL.appendingPathComponent("")
             case .modifyRetrospect:
                 return MinningAPIConstant.retrospectURL
             case let .fetchSingleRetrospect(id):

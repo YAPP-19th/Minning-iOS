@@ -19,11 +19,21 @@ final class ReviewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewLayout()
-        setTempData()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(_ retrospect: RetrospectModel) {
+        categoryBarView.backgroundColor = retrospect.routine.category.color
+        titleLabel.text = retrospect.routine.title
+        
+        if let content = retrospect.content {
+            descriptionLabel.text = content
+        } else {
+            descriptionLabel.text = "피드백을 적어주세요"
+        }
     }
     
     private func setupViewLayout() {
@@ -73,11 +83,5 @@ final class ReviewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-5)
             make.centerY.equalToSuperview()
         }
-    }
-    
-    private func setTempData() {
-        categoryBarView.backgroundColor = .minningBlue100
-        titleLabel.text = "아침에 신문 읽기"
-        descriptionLabel.text = "신문 읽을 시간이 없어서 매번 고민했는데 미라클모닝을 어쩌구저쩌구 파이팅!"
     }
 }

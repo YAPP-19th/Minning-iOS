@@ -8,7 +8,7 @@
 
 import CommonSystem
 import DesignSystem
-import Foundation
+import Photos
 import SharedAssets
 import SnapKit
 
@@ -55,6 +55,8 @@ final class ReviewViewController: BaseViewController {
         return $0
     }(UIButton())
     
+    private let imagePicker = UIImagePickerController()
+    
     init(viewModel: ReviewViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -67,12 +69,13 @@ final class ReviewViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        imagePicker.delegate = self
     }
     
     override func bindViewModel() {
-        viewModel.routimeItem.bindAndFire { [weak self] routine in
+        viewModel.retrospect.bindAndFire { [weak self] retrospect in
             guard let `self` = self else { return }
-            self.titleLabel.text = routine?.title
+            self.titleLabel.text = retrospect?.content
         }
     }
     
@@ -152,20 +155,35 @@ final class ReviewViewController: BaseViewController {
     
     @objc
     private func onClickPostButton(_ sender: Any?) {
-        DebugLog("Did Click Post Button")
+        guard let image = resize(image: selectedPhotoImageView.image, newWidth: 500) else { return }
+        viewModel.postRetrospect(content: feedbackTextView.text, image: image) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc
     private func onClickSelectPhotoFromLibrary(_ sender: Any?) {
-        DebugLog("Did Click Select Photo Button")
-        showSelectedPhotoImageView()
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @objc
     private func onClickDismissPhotoButton(_ sender: Any?) {
-        DebugLog("Did Click Dismiss Photo Button")
         hideSelectedPhotoImageView()
     }
+    
+    func resize(image: UIImage?, newWidth: CGFloat) -> UIImage? {
+        guard let image = image else { return nil }
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        let size = CGSize(width: newWidth, height: newHeight)
+        let render = UIGraphicsImageRenderer(size: size)
+        let renderedImage = render.image { _ in
+            image.draw(in: CGRect(origin: .zero, size: size))
+        }
+        return renderedImage
+    }
+
 }
 
 extension ReviewViewController: UITextViewDelegate {
@@ -185,5 +203,15 @@ extension ReviewViewController: UITextViewDelegate {
             textView.text = viewModel.feedbackPlaceholder
             textView.textColor = .minningGray100
         }
+    }
+}
+
+extension ReviewViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedPhotoImageView.image = image
+            showSelectedPhotoImageView()
+        }
+        dismiss(animated: true, completion: nil)
     }
 }

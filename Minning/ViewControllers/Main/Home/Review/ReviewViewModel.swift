@@ -8,18 +8,30 @@
 
 import CommonSystem
 import Foundation
+import UIKit
 
 final class ReviewViewModel {
-    var routimeItem: DataBinding<Routine?> = DataBinding(nil)
+    var retrospect: DataBinding<RetrospectModel?> = DataBinding(nil)
     var feedbackContent: DataBinding<String> = DataBinding("")
     
     let feedbackPlaceholder: String = "피드백을 적어주세요!"
     let coordinator: HomeCoordinator
     
-    init(coordinator: HomeCoordinator) {
+    init(coordinator: HomeCoordinator, retrospect: RetrospectModel) {
         self.coordinator = coordinator
-        
-        // SAMPLE
-        routimeItem.accept(Routine(title: "아침에 신문읽기", category: .life, result: .tried))
+        self.retrospect.accept(retrospect)
+    }
+    
+    func postRetrospect(content: String, image: UIImage?, completion: @escaping () -> Void) {
+        guard let retrospect = retrospect.value else { return }
+        let request = RetrospectRequest(content: content, date: retrospect.date, image: image, routineId: retrospect.routine.id)
+        RetrospectAPIRequest.addRetrospect(request: request) { result in
+            switch result {
+            case .success(_):
+                completion()
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
     }
 }

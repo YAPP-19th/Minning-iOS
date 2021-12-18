@@ -9,7 +9,7 @@
 import SnapKit
 
 protocol RoutineViewDelegate: AnyObject {
-    func didSelectSection(_ section: RoutineView.TableViewSection)
+    func didSelectSection(_ section: RoutineView.TableViewSection, _ index: Int?)
     func didSelectEditOrder()
     func didSelectTab(_ tabType: HomeViewModel.RoutineTabType)
     func updateRoutineResult(routineId: Int64, result: RoutineResult)
@@ -85,7 +85,7 @@ final class RoutineView: UIView {
 extension RoutineView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let section = TableViewSection(rawValue: indexPath.section) {
-            delegate?.didSelectSection(section)
+            delegate?.didSelectSection(section, indexPath.row)
         }
     }
 }
@@ -102,13 +102,13 @@ extension RoutineView: UITableViewDataSource {
         case .phraseGuide:
             return tabType == .routine && !checkSaying ? 1 : .zero
         case .groupGuide:
-            return checkSaying ? 1 : .zero
+            return tabType == .routine && checkSaying ? 1 : .zero
         case .routine:
             return tabType == .routine ? routines.count : .zero
         case .review:
             return tabType == .routine ? .zero : retrospects.count
         case .footer:
-            return 1
+            return tabType == .routine ? 1 : .zero
         default:
             return 0
         }
@@ -142,6 +142,7 @@ extension RoutineView: UITableViewDataSource {
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath) as? ReviewCell else {
                 return .init()
             }
+            cell.configure(retrospects[indexPath.row])
             return cell
         case .footer:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: RoutineFooterCell.identifier, for: indexPath) as? RoutineFooterCell else {
