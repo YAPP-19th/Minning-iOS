@@ -12,6 +12,7 @@ protocol RoutineViewDelegate: AnyObject {
     func didSelectSection(_ section: RoutineView.TableViewSection)
     func didSelectEditOrder()
     func didSelectTab(_ tabType: HomeViewModel.RoutineTabType)
+    func updateRoutineResult(routineId: Int64, result: RoutineResult)
 }
 
 final class RoutineView: UIView {
@@ -179,30 +180,35 @@ extension RoutineView: UITableViewDataSource {
         guard indexPath.section == TableViewSection.routine.rawValue else { return nil }
         guard checkSaying else { return nil }
 
-        let completeAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
-            print("complete")
+        let completeAction = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, completion) in
+            guard let self = self else { return }
+            self.delegate?.updateRoutineResult(routineId: self.routines[indexPath.row].id, result: .done)
             completion(true)
         }
         completeAction.backgroundColor = .minningLightGray100
         completeAction.image = convertSwipeViewToImage(action: .complete)
 
-        let halfAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
-            print("half")
+        let halfAction = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, completion) in
+            guard let self = self else { return }
+            self.delegate?.updateRoutineResult(routineId: self.routines[indexPath.row].id, result: .tried)
             completion(true)
         }
         halfAction.backgroundColor = .minningLightGray100
         halfAction.image = convertSwipeViewToImage(action: .half)
 
-        let dismissAction = UIContextualAction(style: .normal, title: "") { (_, _, completion) in
-            print("dismiss")
+        let dismissAction = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, completion) in
+            guard let self = self else { return }
+            self.delegate?.updateRoutineResult(routineId: self.routines[indexPath.row].id, result: .failure)
             completion(true)
         }
         dismissAction.backgroundColor = .minningLightGray100
         dismissAction.image = convertSwipeViewToImage(action: .dismiss)
 
-        return .init(actions: [halfAction, completeAction])
-
-        return .init(actions: [dismissAction])
+        if routines[indexPath.row].result == .done || routines[indexPath.row].result == .tried {
+            return .init(actions: [dismissAction])
+        } else {
+            return .init(actions: [halfAction, completeAction])
+        }
     }
     
     private func convertSwipeViewToImage(action: RoutineCellSwipeView.Action) -> UIImage {

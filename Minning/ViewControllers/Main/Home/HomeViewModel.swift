@@ -90,6 +90,18 @@ final class HomeViewModel {
         }
     }
     
+    public func postRoutineResult(routineId: Int64, result: RoutineResult) {
+        RetrospectAPIRequest.setRetrospectResult(request: .init(date: selectedDate.value.convertToSmallString(), result: result.rawValue, routineId: routineId)) { result in
+            switch result {
+            case .success(_):
+                self.getAllRoutinesByDay()
+                self.getAllRetrospectByDay()
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
     public func goToMyPage() {
         coordinator.goToMyPage()
     }

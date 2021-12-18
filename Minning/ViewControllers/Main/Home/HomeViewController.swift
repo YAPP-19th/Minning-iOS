@@ -153,4 +153,8 @@ extension HomeViewController: RoutineViewDelegate {
     func didSelectTab(_ tabType: HomeViewModel.RoutineTabType) {
         viewModel.tabType.accept(tabType)
     }
+    
+    func updateRoutineResult(routineId: Int64, result: RoutineResult) {
+        viewModel.postRoutineResult(routineId: routineId, result: result)
+    }
 }
