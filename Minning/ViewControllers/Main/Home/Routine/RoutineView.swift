@@ -27,6 +27,7 @@ final class RoutineView: UIView {
     weak var delegate: RoutineViewDelegate?
     var tabType: HomeViewModel.RoutineTabType = .routine
     var routines = [RoutineModel]()
+    var retrospects = [RetrospectModel]()
     
     lazy var mainTableView: UITableView = {
         $0.separatorStyle = .none
@@ -56,6 +57,11 @@ final class RoutineView: UIView {
     
     func updateViewWithRoutines(routines: [RoutineModel]) {
         self.routines = routines
+        mainTableView.reloadData()
+    }
+    
+    func updateViewWithRetrospects(retrospects: [RetrospectModel]) {
+        self.retrospects = retrospects
         mainTableView.reloadData()
     }
     
@@ -93,7 +99,7 @@ extension RoutineView: UITableViewDataSource {
         case .routine:
             return tabType == .routine ? routines.count : .zero
         case .review:
-            return tabType == .routine ? .zero : 2
+            return tabType == .routine ? .zero : retrospects.count
         case .footer:
             return 1
         default:

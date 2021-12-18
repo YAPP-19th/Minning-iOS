@@ -44,6 +44,7 @@ final class HomeViewController: BaseViewController {
         viewModel.getUserData()
         viewModel.getWeeklyRate()
         viewModel.getAllRoutinesByDay()
+        viewModel.getAllRetrospectByDay()
     }
     
     override func setupViewLayout() {
@@ -91,6 +92,11 @@ final class HomeViewController: BaseViewController {
         viewModel.routines.bind { [weak self] routines in
             guard let self = self else { return }
             self.routineView.updateViewWithRoutines(routines: routines)
+        }
+        
+        viewModel.retrospects.bind { [weak self] retrospects in
+            guard let self = self else { return }
+            self.routineView.updateViewWithRetrospects(retrospects: retrospects)
         }
     }
 }
