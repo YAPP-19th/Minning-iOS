@@ -75,7 +75,12 @@ final class ReviewViewController: BaseViewController {
     override func bindViewModel() {
         viewModel.retrospect.bindAndFire { [weak self] retrospect in
             guard let `self` = self else { return }
-            self.titleLabel.text = retrospect?.content
+            self.titleLabel.text = retrospect?.routine.title
+            self.feedbackTextView.text = retrospect?.content
+            if let url = URL(string: retrospect?.imageUrl ?? ""), let data = try? Data(contentsOf: url) {
+                self.selectedPhotoImageView.image = UIImage(data: data)
+                self.selectedPhotoImageView.isHidden = false
+            }
         }
     }
     

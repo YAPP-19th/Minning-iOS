@@ -14,7 +14,11 @@ final class ReviewCell: UITableViewCell {
     private let categoryBarView = UIView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private let reviewImageView = UIImageView()
+    private let reviewImageView: UIImageView = {
+        $0.layer.cornerRadius = 7
+        $0.clipsToBounds = true
+        return $0
+    }(UIImageView())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,6 +32,11 @@ final class ReviewCell: UITableViewCell {
     func configure(_ retrospect: RetrospectModel) {
         categoryBarView.backgroundColor = retrospect.routine.category.color
         titleLabel.text = retrospect.routine.title
+        if let url = URL(string: retrospect.imageUrl ?? ""), let data = try? Data(contentsOf: url) {
+            self.reviewImageView.image = UIImage(data: data)
+        } else {
+            self.reviewImageView.image = nil
+        }
         
         if let content = retrospect.content {
             descriptionLabel.text = content
@@ -57,7 +66,6 @@ final class ReviewCell: UITableViewCell {
         titleLabel.font = .font16PBold
         descriptionLabel.font = .font14PMedium
         descriptionLabel.textColor = .minningDarkGray100
-        reviewImageView.layer.cornerRadius = 7
         
         contentView.snp.makeConstraints { make in
             make.leading.equalTo(16)
