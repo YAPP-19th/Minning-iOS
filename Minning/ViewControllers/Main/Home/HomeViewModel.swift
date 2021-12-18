@@ -57,7 +57,7 @@ final class HomeViewModel {
     }
     
     public func getAllRoutinesByDay() {
-        RoutineAPIRequest.routineListByDay(day: selectedDay) { result in
+        RoutineAPIRequest.routineListByDay(date: selectedDate.value.convertToSmallString()) { result in
             switch result {
             case .success(let response):
                 self.routines.accept(response.data)
