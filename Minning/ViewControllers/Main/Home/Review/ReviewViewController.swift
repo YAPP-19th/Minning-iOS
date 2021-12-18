@@ -155,8 +155,7 @@ final class ReviewViewController: BaseViewController {
     
     @objc
     private func onClickPostButton(_ sender: Any?) {
-        guard let image = resize(image: selectedPhotoImageView.image, newWidth: 500) else { return }
-        viewModel.postRetrospect(content: feedbackTextView.text, image: image) {
+        viewModel.postRetrospect(content: feedbackTextView.text, image: selectedPhotoImageView.image) {
             self.dismiss(animated: true, completion: nil)
         }
     }
