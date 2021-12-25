@@ -13,46 +13,55 @@ import SharedAssets
 import SnapKit
 
 final class EndedView: UIView, UITableViewDataSource, UITableViewDelegate {
-    var groupTableView = UITableView()
+    var groups = [MissionModel]()
+    
+    lazy var mainTableView: UITableView = {
+        $0.separatorStyle = .none
+        $0.delegate = self
+        $0.dataSource = self
+        $0.layer.cornerRadius = 10
+        $0.backgroundColor = .minningLightGray100
+        $0.register(EndedGroupTableViewCell.self, forCellReuseIdentifier: EndedGroupTableViewCell.identifier)
+        return $0
+    }(UITableView())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpView()
-        updateTableView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateEndedViewWithGroups(groupDetails: [MissionModel]) {
+        self.groups = groupDetails
+        mainTableView.reloadData()
+    }
+    
     private func setUpView() {
         backgroundColor = .minningLightGray100
-        addSubview(groupTableView)
+        addSubview(mainTableView)
         
-        updateTableView()
-        
-        groupTableView.register(EndedGroupCellViewController.self, forCellReuseIdentifier: EndedGroupCellViewController.identifier)
-        groupTableView.dataSource = self
-        groupTableView.delegate = self
-        groupTableView.backgroundColor = .minningLightGray100
-        groupTableView.separatorStyle = .none
-        
-        groupTableView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.leading.trailing.top.bottom.equalToSuperview()
+        mainTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
     private func updateTableView() {
-        groupTableView.reloadData()
+        mainTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = groupTableView.dequeueReusableCell(withIdentifier: EndedGroupCellViewController.identifier) as? EndedGroupCellViewController ?? EndedGroupCellViewController()
+        guard let cell = mainTableView.dequeueReusableCell(withIdentifier: EndedGroupTableViewCell.identifier, for: indexPath) as? EndedGroupTableViewCell
+        else {
+            return .init()
+        }
+        cell.configure(groups[indexPath.row])
         return cell
     }
     

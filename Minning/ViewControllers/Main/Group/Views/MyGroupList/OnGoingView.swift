@@ -13,46 +13,52 @@ import SharedAssets
 import SnapKit
 
 final class OnGoingView: UIView, UITableViewDataSource, UITableViewDelegate {
-    var groupTableView = UITableView()
+    var ongoingGroups = [MissionModel]()
+    
+    lazy var mainTableView: UITableView = {
+        $0.separatorStyle = .none
+        $0.delegate = self
+        $0.dataSource = self
+        $0.layer.cornerRadius = 10
+        $0.backgroundColor = .minningLightGray100
+        $0.register(OngoingTableViewCell.self, forCellReuseIdentifier: OngoingTableViewCell.identifier)
+        return $0
+    }(UITableView())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpView()
-        updateTableView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func updateOnGoingViewWithGroups(groupDetails: [MissionModel]) {
+        self.ongoingGroups = groupDetails
+        mainTableView.reloadData()
+    }
     
     private func setUpView() {
         backgroundColor = .minningLightGray100
-        addSubview(groupTableView)
+        addSubview(mainTableView)
         
-        updateTableView()
-        
-        groupTableView.register(MyGroupCellViewController.self, forCellReuseIdentifier: MyGroupCellViewController.identifier)
-        groupTableView.dataSource = self
-        groupTableView.delegate = self
-        groupTableView.backgroundColor = .minningLightGray100
-        groupTableView.separatorStyle = .none
-        
-        groupTableView.snp.makeConstraints { make in
+        mainTableView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.leading.trailing.top.bottom.equalToSuperview()
         }
     }
-    
-    private func updateTableView() {
-        groupTableView.reloadData()
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return ongoingGroups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = groupTableView.dequeueReusableCell(withIdentifier: MyGroupCellViewController.identifier) as? MyGroupCellViewController ?? MyGroupCellViewController()
+        guard let cell = mainTableView.dequeueReusableCell(withIdentifier: OngoingTableViewCell.identifier, for: indexPath) as? OngoingTableViewCell
+        else {
+            return .init()
+        }
+        cell.configure(ongoingGroups[indexPath.row])
         return cell
     }
     

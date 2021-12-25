@@ -71,7 +71,6 @@ extension GroupCoordinator: GroupRoute {
         navigationController.topViewController?.presentedViewController
     }
 
-    
     func goToBack() {
         navigationController.popViewController(animated: true)
     }

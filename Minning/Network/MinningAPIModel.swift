@@ -375,6 +375,7 @@ public struct GroupResponseModel: Codable {
 
 public struct GroupModel: Codable {
     enum CodingKeys: String, CodingKey {
+        case category
         case id
         case image
         case participant
@@ -382,19 +383,21 @@ public struct GroupModel: Codable {
         case title
     }
     
+    public let category: Int32
     public let id: Int64
-    public let imageUrl: String
-    public let participant: Int
-    public let rate: Int
+    public let imageUrl: String?
+    public let participant: Int32
+    public let rate: Int32?
     public let title: String
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        category = try values.decode(Int32.self, forKey: .category)
         id = try values.decode(Int64.self, forKey: .id)
-        imageUrl = try values.decode(String.self, forKey: .image)
+        imageUrl = try values.decode(String?.self, forKey: .image)
         title = try values.decode(String.self, forKey: .title)
-        participant = try values.decode(Int.self, forKey: .participant)
-        rate = try values.decode(Int.self, forKey: .rate)
+        participant = try values.decode(Int32.self, forKey: .participant)
+        rate = try values.decode(Int32?.self, forKey: .rate)
     }
     
     public func encode(to encoder: Encoder) throws { }
@@ -510,24 +513,27 @@ public struct MissionListResponseModel: Codable {
 public struct MissionModel: Codable {
     enum CodingKeys: String, CodingKey {
         case achievementRate
+        case category
         case image
         case period
         case title
         case weeks
     }
     
-    public let achievementRate: Int
-    public let imageUrl: String
-    public let period: Int
+    public let achievementRate: Int32?
+    public let category: Int32
+    public let imageUrl: String?
+    public let period: Int32
     public let title: String
     public let weeks: [Day]
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        achievementRate = try values.decode(Int.self, forKey: .achievementRate)
-        imageUrl = try values.decode(String.self, forKey: .image)
-        period = try values.decode(Int.self, forKey: .period)
+        achievementRate = try values.decode(Int32?.self, forKey: .achievementRate)
+        category = try values.decode(Int32.self, forKey: .category)
+        imageUrl = try values.decode(String?.self, forKey: .image)
+        period = try values.decode(Int32.self, forKey: .period)
         title = try values.decode(String.self, forKey: .title)
         
         let weeksValue = try values.decode([String].self, forKey: .weeks)

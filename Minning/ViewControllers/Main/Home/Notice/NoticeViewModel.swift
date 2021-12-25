@@ -33,4 +33,5 @@ final class NoticeViewModel {
     public func goToBack() {
         coordinator.goToBack()
     }
+
 }

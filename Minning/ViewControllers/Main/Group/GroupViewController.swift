@@ -5,6 +5,7 @@
 //  Created by denny on 2021/09/30.
 //  Copyright © 2021 Minning. All rights reserved.
 //
+
 import CommonSystem
 import DesignSystem
 import Foundation
@@ -39,8 +40,10 @@ final class GroupViewController: BaseViewController {
     
     private let subTabContainerView: UIView = UIView()
     
+    private var ongoingCount: Int = 0
+    private var endedCount: Int = 0
+    
     private let subTabNowButton: UIButton = {
-        $0.setTitle("진행중 3", for: .normal)
         $0.titleLabel?.font = .font16PExBold
         $0.setTitleColor(.primaryBlack, for: .normal)
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
@@ -48,7 +51,6 @@ final class GroupViewController: BaseViewController {
     }(UIButton())
     
     private let subTabDoneButton: UIButton = {
-        $0.setTitle("종료 5", for: .normal)
         $0.titleLabel?.font = .font16PExBold
         $0.setTitleColor(.primaryBlack, for: .normal)
         $0.addTarget(self, action: #selector(onClickTabButton(_:)), for: .touchUpInside)
@@ -78,13 +80,13 @@ final class GroupViewController: BaseViewController {
     }(UIStackView())
     
     private let contentView: UIView = {
-        $0.backgroundColor = .cateYellow100
+        $0.backgroundColor = .minningLightGray100
         return $0
     }(UIView())
     
-    private let onGoingView: UIView = OnGoingView()
-    private let endedView: UIView = EndedView()
-    private let wholeGroupView: UIView = GroupListView()
+    private let onGoingView: OnGoingView = OnGoingView()
+    private let endedView: EndedView = EndedView()
+    private let wholeGroupView: GroupListCellView = GroupListCellView()
     
     lazy var groupBackgroundView: UIView = {
         $0.backgroundColor = .minningLightGray100
@@ -105,6 +107,10 @@ final class GroupViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        viewModel.showOngoingGroup()
+        viewModel.showEndedGroup()
+        viewModel.getAllGroups()
     }
     
     override func bindViewModel() {
@@ -128,6 +134,21 @@ final class GroupViewController: BaseViewController {
             self.onGoingView.isHidden = !(type == .now)
             self.endedView.isHidden = !(type == .done)
             self.wholeGroupView.isHidden = true
+        }
+        
+        viewModel.missionGroupList.bind { [weak self] groups in
+            guard let `self` = self else { return }
+            self.onGoingView.updateOnGoingViewWithGroups(groupDetails: groups)
+        }
+        
+        viewModel.missionGroupList.bind { [weak self] groups in
+            guard let `self` = self else { return }
+            self.endedView.updateEndedViewWithGroups(groupDetails: groups)
+        }
+        
+        viewModel.groups.bind { [weak self] groups in
+            guard let self = self else { return }
+            self.wholeGroupView.updateViewWithGroups(groupDetails: groups)
         }
     }
     
@@ -169,6 +190,12 @@ final class GroupViewController: BaseViewController {
         [subTabNowButton, subTabDoneButton, newEndedGroupAlertImageView].forEach {
             subTabContainerView.addSubview($0)
         }
+        
+        ongoingCount = viewModel.ongoingGroupsCount
+        endedCount = viewModel.endedGroupsCount
+        
+        subTabNowButton.setTitle("진행중 \(ongoingCount)", for: .normal)
+        subTabDoneButton.setTitle("종료 \(endedCount)", for: .normal)
         
         subTitleStackView.addArrangedSubview(subTabContainerView)
         subTitleStackView.addArrangedSubview(filterScrollView)

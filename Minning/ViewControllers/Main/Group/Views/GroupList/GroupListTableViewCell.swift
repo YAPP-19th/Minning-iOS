@@ -1,8 +1,8 @@
 //
-//  MyGroupCellView.swift
+//  GroupListCellViewController.swift
 //  Minning
 //
-//  Created by 박지윤 on 2021/12/11.
+//  Created by 박지윤 on 2021/12/12.
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
@@ -10,10 +10,9 @@ import CommonSystem
 import DesignSystem
 import SharedAssets
 import SnapKit
-import CoreGraphics
 
-class GroupCellView: UIView {
-    var category: GroupListCellViewModel.MyGroupCategory
+final class GroupListTableViewCell: UITableViewCell {
+    static let identifier = "GroupListCell"
     
     var cellBackgroundView: UIView = {
         $0.backgroundColor = .minningLightGray100
@@ -36,7 +35,6 @@ class GroupCellView: UIView {
     }(UIImageView())
     
     var titleLabel: UILabel = {
-        $0.text = "새벽 독서 그룹"
         $0.font = .font18PBold
         return $0
     }(UILabel())
@@ -47,70 +45,91 @@ class GroupCellView: UIView {
         return $0
     }(UIView())
     
-    var achieveRateLabel: UILabel = {
-        $0.text = "내 달성률 100%"
-        $0.textColor = .minningBlue100
-        $0.font = .font14P
-        return $0
-    }(UILabel())
-    
-    private var achieveLabelCount: Int = 101
+    private var achieveLabelCount: Int = 106
     
     var groupListAchieveRateLabel: UILabel = {
-        $0.text = "평균 달성률 100%"
         $0.textColor = .minningBlue100
         $0.font = .font14P
         return $0
     }(UILabel())
     
     var participantLabel: UILabel = {
-        $0.text = "27명 참여중"
         $0.textColor = .minningDarkGray100
         $0.font = .font14P
         return $0
     }(UILabel())
     
-    var dayLabel: UILabel = {
-        $0.text = "월, 수, 목"
-        $0.textColor = .minningDarkGray100
-        $0.font = .font14P
-        return $0
-    }(UILabel())
-    
-    var dayLeftLabel: UILabel = {
-        $0.text = "D-7"
-        $0.textColor = .minningDarkGray100
-        $0.font = .font14P
-        return $0
-    }(UILabel())
-    
-    init(category: GroupListCellViewModel.MyGroupCategory) {
-        self.category = category
-        
-        super.init(frame: CGRect())
-        
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
-        if category ==  .myGroup {
-            groupListAchieveRateLabel.isHidden = true
-            participantLabel.isHidden = true
-            achieveLabelCount = 99
-            
-        } else if category == .groupList {
-            achieveRateLabel.isHidden = true
-            dayLabel.isHidden = true
-            dayLeftLabel.isHidden = true
-            achieveLabelCount = 111
-        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
+    func configure(_ groups: GroupModel) {
+        titleLabel.text = groups.title
+        groupListAchieveRateLabel.text = {
+            if groups.rate == nil {
+                return "평균 달성률 0%"
+            } else {
+                return "평균 달성률 \(groups.rate)%"
+            }
+        }()
+        iconImageView.image = {
+            switch groups.category {
+            case 0:
+                return UIImage(sharedNamed: "categoryMiracleMorningIcon")
+            case 1:
+                return UIImage(sharedNamed: "categorySelfImproveIcon")
+            case 2:
+                return UIImage(sharedNamed: "categoryExcerciseIcon")
+            case 3:
+                return UIImage(sharedNamed: "categoryLifeIcon")
+            case 4:
+                return UIImage(sharedNamed: "categoryWakeUp")
+            default:
+                return UIImage(sharedNamed: "categoryEctIcon")
+            }
+        }()
+        iconBackgroundView.backgroundColor = {
+            switch groups.category {
+            case 0:
+                return .cateSky100
+            case 1:
+                return .cateRed100
+            case 2:
+                return .cateGreen100
+            case 3:
+                return .cateYellow100
+            case 4:
+                return .minningBlue100
+            default:
+                return .cateSky100
+            }
+        }()
+        
+        participantLabel.text = "\(groups.participant)명 참여중"
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cellView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 6, left: 0, bottom: 6, right: 0))
+    }
+    
+    private func isCellSelected(_ sender: Any) {
+        
+    }
+    
+    private func setupView() {
+        self.selectionStyle = .none
+        self.layer.cornerRadius = 10
+        self.backgroundColor = .minningLightGray100
+        
         addSubview(cellBackgroundView)
         cellBackgroundView.addSubview(cellView)
-        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, achieveRateLabel, groupListAchieveRateLabel,  participantLabel, dayLabel, dayLeftLabel].forEach {
+        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, groupListAchieveRateLabel, participantLabel].forEach {
             cellView.addSubview($0)
         }
         
@@ -153,29 +172,18 @@ class GroupCellView: UIView {
             make.height.equalTo(23)
         }
         
-        achieveRateLabel.snp.makeConstraints { make in
-            make.center.equalTo(achieveRateView.snp.center)
-            make.height.equalTo(14)
-        }
-        
-        dayLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(achieveRateLabel.snp.centerY)
-            make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
-        }
-        
-        dayLeftLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(achieveRateLabel.snp.centerY)
-            make.leading.equalTo(dayLabel.snp.trailing).offset(4)
-        }
-        
         groupListAchieveRateLabel.snp.makeConstraints { make in
             make.center.equalTo(achieveRateView.snp.center)
             make.height.equalTo(14)
-//            make.width.equalTo(110)
+        }
+        
+        achieveRateView.snp.makeConstraints { make in
+            make.centerY.equalTo(achieveRateView.snp.centerY)
+            make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
         }
         
         participantLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(achieveRateLabel.snp.centerY)
+            make.top.equalTo(groupListAchieveRateLabel.snp.top)
             make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
         }
     }
