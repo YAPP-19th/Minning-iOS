@@ -12,9 +12,31 @@ final class RoutineCell: UITableViewCell {
     static let identifier = "RoutineCell"
     
     private let categoryBarView = UIView()
-    private let titleLabel = UILabel()
-    private let descriptionLabel = UILabel()
-    private let completeLabel = UILabel()
+    private let titleLabel: UILabel = {
+        $0.textColor = .primaryBlack
+        $0.font = .font16PBold
+        return $0
+    }(UILabel())
+    private let titleCompleteLabel: UILabel = {
+        $0.textColor = .primaryBlack
+        $0.font = .font16PBold
+        return $0
+    }(UILabel())
+    private let descriptionLabel: UILabel = {
+        $0.font = .font14PMedium
+        $0.textColor = .minningDarkGray100
+        return $0
+    }(UILabel())
+    private let descriptionCompleteLabel: UILabel = {
+        $0.font = .font14PMedium
+        $0.textColor = .minningDarkGray100
+        return $0
+    }(UILabel())
+    private let completeLabel: UILabel = {
+        $0.font = .font12P
+        $0.textColor = .minningBlue100
+        return $0
+    }(UILabel())
     private let lockImageView = UIImageView()
     private let alarmImageView = UIImageView()
     private let alarmLabel = UILabel()
@@ -23,6 +45,9 @@ final class RoutineCell: UITableViewCell {
         $0.spacing = 4
         return $0
     }(UIStackView())
+    
+    private var titleString: String?
+    private var descriptionString: String?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,15 +59,25 @@ final class RoutineCell: UITableViewCell {
     }
     
     func configure(_ routine: RoutineModel, isEnabled: Bool) {
+        titleString = routine.title
+        descriptionString = routine.goal
+        
         lockImageView.isHidden = true
         categoryBarView.backgroundColor = routine.category.color
-        titleLabel.text = routine.title
-        descriptionLabel.text = routine.goal
+        titleLabel.text = titleString
+        descriptionLabel.text = descriptionString
+        let titleAttString = NSMutableAttributedString(string: titleString ?? "")
+        titleAttString.addAttribute(.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: .init(location: 0, length: titleAttString.length))
+        titleCompleteLabel.attributedText = titleAttString
+        let descAttString = NSMutableAttributedString(string: descriptionString ?? "")
+        descAttString.addAttribute(.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: .init(location: 0, length: descAttString.length))
+        descriptionCompleteLabel.attributedText = descAttString
         alarmLabel.text = routine.startTime
-        
         if !isEnabled {
             setViewAsDisable()
             return
+        } else {
+            setViewWithResult(routine.result)
         }
     }
 
@@ -60,20 +95,14 @@ final class RoutineCell: UITableViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05).cgColor
         
-        [categoryBarView, titleLabel, descriptionLabel, completeLabel, lockImageView, alarmStackView].forEach {
+        [categoryBarView, titleLabel, titleCompleteLabel, descriptionLabel, descriptionCompleteLabel, completeLabel, lockImageView, alarmStackView].forEach {
             contentView.addSubview($0)
         }
         [alarmImageView, alarmLabel].forEach {
             alarmStackView.addArrangedSubview($0)
         }
-        
-        titleLabel.font = .font16PBold
-        descriptionLabel.font = .font14PMedium
-        descriptionLabel.textColor = .minningDarkGray100
-        completeLabel.font = .font12P
-        completeLabel.textColor = .minningBlue100
         lockImageView.image = UIImage(sharedNamed: "lock.png")
-        alarmImageView.image = UIImage(sharedNamed: "alarm_enable.png")
+        alarmImageView.image = UIImage(sharedNamed: "alarm_enable.png")?.withRenderingMode(.alwaysTemplate)
         alarmLabel.font = .font12P
         
         contentView.snp.makeConstraints { make in
@@ -90,7 +119,15 @@ final class RoutineCell: UITableViewCell {
             make.top.equalTo(16)
             make.leading.equalTo(categoryBarView.snp.trailing).offset(12)
         }
+        titleCompleteLabel.snp.makeConstraints { make in
+            make.top.equalTo(16)
+            make.leading.equalTo(categoryBarView.snp.trailing).offset(12)
+        }
         descriptionLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(-14)
+            make.leading.equalTo(titleLabel.snp.leading)
+        }
+        descriptionCompleteLabel.snp.makeConstraints { make in
             make.bottom.equalTo(-14)
             make.leading.equalTo(titleLabel.snp.leading)
         }
@@ -119,5 +156,36 @@ final class RoutineCell: UITableViewCell {
         descriptionLabel.textColor = .grayB5B8BE
         alarmImageView.image = UIImage(sharedNamed: "alarm_disable.png")
         alarmLabel.textColor = .grayB5B8BE
+    }
+    
+    private func setViewWithResult(_ result: RoutineResult) {
+        switch result {
+        case .done:
+            titleLabel.isHidden = true
+            titleCompleteLabel.isHidden = false
+            descriptionLabel.isHidden = true
+            descriptionCompleteLabel.isHidden = false
+            completeLabel.isHidden = false
+            completeLabel.text = result.title
+            alarmLabel.textColor = .minningDarkGray100
+            alarmImageView.tintColor = .minningDarkGray100
+        case .tried:
+            titleLabel.isHidden = false
+            titleCompleteLabel.isHidden = true
+            descriptionLabel.isHidden = false
+            descriptionCompleteLabel.isHidden = true
+            completeLabel.isHidden = false
+            completeLabel.text = result.title
+            alarmImageView.tintColor = .primaryBlack
+        case .failure:
+            titleLabel.isHidden = false
+            titleCompleteLabel.isHidden = true
+            descriptionLabel.isHidden = false
+            descriptionCompleteLabel.isHidden = true
+            completeLabel.isHidden = true
+            alarmImageView.tintColor = .primaryBlack
+        case .relax:
+            return
+        }
     }
 }
