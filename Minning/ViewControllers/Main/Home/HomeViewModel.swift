@@ -94,6 +94,7 @@ final class HomeViewModel {
         RetrospectAPIRequest.setRetrospectResult(request: .init(date: selectedDate.value.convertToSmallString(), result: result.rawValue, routineId: routineId)) { result in
             switch result {
             case .success(_):
+                self.getWeeklyRate()
                 self.getAllRoutinesByDay()
                 self.getAllRetrospectByDay()
             case .failure(let error):
