@@ -16,6 +16,12 @@ public struct RetrospectRequest {
     let routineId: Int64
 }
 
+public struct RetrospectModifyRequest {
+    let content: String
+    let image: UIImage?
+    let retrospectId: Int64
+}
+
 public struct RoutineResultRequest {
     let date: String
     let result: String
@@ -25,7 +31,7 @@ public struct RoutineResultRequest {
 public struct RetrospectAPIRequest: MinningAPIRequestable {
     enum RequestType: APIRouteable {
         case addRetrospect(request: RetrospectRequest)
-        case modifyRetrospect(request: RetrospectRequest)
+        case modifyRetrospect(request: RetrospectModifyRequest)
         case fetchSingleRetrospect(id: Int64)
         case deleteRetrospect(id: Int64)
         case fetchRetrospectByDate(date: String)
@@ -36,7 +42,7 @@ public struct RetrospectAPIRequest: MinningAPIRequestable {
             case .addRetrospect:
                 return MinningAPIConstant.retrospectURL.appendingPathComponent("")
             case .modifyRetrospect:
-                return MinningAPIConstant.retrospectURL
+                return MinningAPIConstant.retrospectURL.appendingPathComponent("")
             case let .fetchSingleRetrospect(id):
                 return MinningAPIConstant.retrospectURL.appendingPathComponent("\(id)")
             case let .deleteRetrospect(id):
@@ -86,7 +92,7 @@ public struct RetrospectAPIRequest: MinningAPIRequestable {
                 return parameters
             case let .modifyRetrospect(request):
                 parameters["content"] = request.content
-                parameters["routineId"] = request.routineId
+                parameters["retrospectId"] = request.retrospectId
                 return parameters
             case .fetchSingleRetrospect, .deleteRetrospect, .fetchRetrospectByDate:
                 return nil
@@ -115,7 +121,7 @@ public struct RetrospectAPIRequest: MinningAPIRequestable {
         performMultipart(.addRetrospect(request: request), completion: completion)
     }
     
-    public static func modifyRetrospect(request: RetrospectRequest,
+    public static func modifyRetrospect(request: RetrospectModifyRequest,
                                         completion: @escaping (Result<RetrospectResponseModel, MinningAPIError>) -> Void) {
         performMultipart(.modifyRetrospect(request: request), completion: completion)
     }
