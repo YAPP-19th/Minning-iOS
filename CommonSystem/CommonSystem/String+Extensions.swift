@@ -27,4 +27,14 @@ public extension String {
         let date: Date = dateFormatter.date(from: self)!
         return date
     }
+    
+    func convertToSmallDate(format: String) -> Date {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = NSTimeZone(name: "KST") as TimeZone?
+
+        let date: Date = dateFormatter.date(from: self)!
+        return date
+    }
 }
