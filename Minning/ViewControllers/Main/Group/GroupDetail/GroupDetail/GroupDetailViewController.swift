@@ -70,7 +70,6 @@ final class GroupDetailViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.getGroupDetail()
-        viewModel.groupItem.accept(Group(title: "새벽 운동 그룹"))
     }
     
     override func bindViewModel() {

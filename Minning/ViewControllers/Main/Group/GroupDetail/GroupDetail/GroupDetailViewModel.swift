@@ -10,7 +10,7 @@ import CommonSystem
 import Foundation
 
 final class GroupDetailViewModel {
-    var groupItem: DataBinding<Group?> = DataBinding(nil)
+
     var groupDetail: DataBinding<GroupDetailModel?> = DataBinding(nil)
     private let coordinator: GroupCoordinator
     
@@ -40,15 +40,5 @@ final class GroupDetailViewModel {
             }
         }
     }
-    
-//    func getMissionDetail() {
-//        MissionAPIRequest.getMissionDetail(missionId: 1) { result in
-//            switch result {
-//            case .success(let data):
-//                print(data)
-//            case .failure(let error):
-//                ErrorLog(error.localizedDescription)
-//            }
-//        }
-//    }
+
 }
