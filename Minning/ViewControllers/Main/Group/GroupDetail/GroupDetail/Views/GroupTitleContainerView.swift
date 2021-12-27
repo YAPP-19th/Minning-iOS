@@ -117,6 +117,20 @@ final class GroupTitleContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateOpenedView(title: String, rate: Int?, participant: Int?) {
+        titleLabel.text = title + " 그룹"
+        if let rate = rate {
+            percentLabel.text = "평균 달성률 \(rate)%"
+        } else {
+            percentLabelContainer.isHidden = true
+        }
+        if let participant = participant {
+            participateLabel.text = "\(participant)명 참여중"
+        } else {
+            participateLabel.isHidden = true
+        }
+    }
+    
     private func setupView() {
         backgroundColor = .primaryWhite
         addSubview(titleContainerView)

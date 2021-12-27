@@ -74,9 +74,12 @@ final class GroupDetailViewController: BaseViewController {
     }
     
     override func bindViewModel() {
-        viewModel.groupItem.bind { [weak self] group in
-            guard let `self` = self else { return }
-            self.navigationBar.titleContent = group?.title ?? ""
+        viewModel.groupDetail.bind { [weak self] groupDetail in
+            guard let `self` = self, let groupDetail = groupDetail else { return }
+            self.navigationBar.titleContent = groupDetail.title + " 그룹"
+            self.groupTitleContainerView.updateOpenedView(title: groupDetail.title, rate: groupDetail.rate, participant: groupDetail.participant)
+            self.ruleContainerView.updateView(shoot: groupDetail.shoot, beginTime: groupDetail.beginTime, endTime: groupDetail.endTime)
+            self.groupInfoContainerView.updateView(description: groupDetail.description, recommend: groupDetail.recommend)
         }
     }
     

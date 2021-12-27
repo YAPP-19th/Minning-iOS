@@ -11,6 +11,7 @@ import Foundation
 
 final class GroupDetailViewModel {
     var groupItem: DataBinding<Group?> = DataBinding(nil)
+    var groupDetail: DataBinding<GroupDetailModel?> = DataBinding(nil)
     private let coordinator: GroupCoordinator
     
     public init(coordinator: GroupCoordinator) {
@@ -33,7 +34,7 @@ final class GroupDetailViewModel {
         GroupAPIRequest.getGroupDetail(groupId: 1) { result in
             switch result {
             case .success(let data):
-                print(data)
+                self.groupDetail.accept(data.data)
             case .failure(let error):
                 ErrorLog(error.localizedDescription)
             }

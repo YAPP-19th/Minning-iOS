@@ -72,6 +72,13 @@ final class GroupRuleContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateView(shoot: String, beginTime: String, endTime: String) {
+        pictureValueLabel.text = shoot
+        let beginHour = beginTime.convertToSmallDate(format: "HH:mm:ss").get(.hour)
+        let endHour = endTime.convertToSmallDate(format: "HH:mm:ss").get(.hour)
+        ruleValueLabel.text = "오전 \(beginHour)시~\(endHour)시 사이 업로드"
+    }
+    
     private func setupView() {
         backgroundColor = .primaryWhite
         [titleLabel, pictureImageView, pictureTitleLabel, pictureValueLabel, ruleImageView, ruleTitleLabel, ruleValueLabel, separatorView].forEach {

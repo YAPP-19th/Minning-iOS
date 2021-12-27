@@ -57,6 +57,11 @@ final class GroupInfoCollectionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateView(description: String, recommend: String) {
+        groupInfoLabel.text = description
+        descriptionLabel.text = recommend
+    }
+    
     private func setupView() {
         [groupInfoTitleLabel, groupInfoLabel, descriptionTitleLabel, descriptionLabel, separatorView].forEach {
             addSubview($0)
