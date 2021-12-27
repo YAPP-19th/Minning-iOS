@@ -11,11 +11,11 @@ import DesignSystem
 import SharedAssets
 import SnapKit
 
+enum GroupViewType {
+    case openedGroup, myGroup, closedGroup
+}
+
 final class GroupDetailViewController: BaseViewController {
-    
-    enum GroupViewType {
-        case openedGroup, myGroup, closedGroup
-    }
     
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
     
@@ -30,7 +30,7 @@ final class GroupDetailViewController: BaseViewController {
         return $0
     }(UIStackView())
     
-    private let groupTitleContainerView = GroupTitleContainerView()
+    private lazy var groupTitleContainerView = GroupTitleContainerView(viewType: viewType ?? .openedGroup)
     private let myInfoConatainerView = GroupMyInfoContainerView()
     private let ruleContainerView = GroupRuleContainerView()
     private let groupPhotoPreviewContainerView = GroupPhotoPreviewContainerView()
@@ -69,7 +69,7 @@ final class GroupDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // SAMPLE
+        viewModel.getGroupDetail()
         viewModel.groupItem.accept(Group(title: "새벽 운동 그룹"))
     }
     

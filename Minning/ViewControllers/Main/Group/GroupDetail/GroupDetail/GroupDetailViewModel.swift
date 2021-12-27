@@ -28,4 +28,26 @@ final class GroupDetailViewModel {
     func goToPhotoGrid() {
         coordinator.goToPhotoGrid()
     }
+    
+    func getGroupDetail() {
+        GroupAPIRequest.getGroupDetail(groupId: 1) { result in
+            switch result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
+//    func getMissionDetail() {
+//        MissionAPIRequest.getMissionDetail(missionId: 1) { result in
+//            switch result {
+//            case .success(let data):
+//                print(data)
+//            case .failure(let error):
+//                ErrorLog(error.localizedDescription)
+//            }
+//        }
+//    }
 }

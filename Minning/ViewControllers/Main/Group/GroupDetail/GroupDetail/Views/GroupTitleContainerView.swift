@@ -104,9 +104,12 @@ final class GroupTitleContainerView: UIView {
         $0.image = UIImage(sharedNamed: "medal_gold")
         return $0
     }(UIImageView())
+    
+    private let viewType: GroupViewType
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewType: GroupViewType) {
+        self.viewType = viewType
+        super.init(frame: .zero)
         setupView()
     }
     
@@ -204,6 +207,15 @@ final class GroupTitleContainerView: UIView {
             make.height.equalTo(17)
             make.centerY.equalTo(myPercentValueLabel)
             make.trailing.equalTo(myPercentValueLabel.snp.leading).offset(-8)
+        }
+        
+        switch viewType {
+        case .openedGroup:
+            bottomContentView.isHidden = true
+        case .myGroup:
+            percentLabelContainer.isHidden = true
+        case .closedGroup:
+            medalImageView.isHidden = true
         }
     }
     
