@@ -25,9 +25,12 @@ final class GroupViewModel {
     var tabType: DataBinding<GroupTabType> = DataBinding(.myGroup)
     var myGroupTabType: DataBinding<MyGroupTabType> = DataBinding(.now)
     var currentCategory: DataBinding<RoutineCategory?> = DataBinding(nil)
+    var currentGroupCategory: DataBinding<GroupCategory?> = DataBinding(nil)
     var isCurrentCategoryAll: DataBinding<Bool> = DataBinding(true)
     var groups: DataBinding<[GroupModel]> = DataBinding([])
-    var missionGroupList: DataBinding<[MissionModel]> = DataBinding([])
+    var groupsByCategory: DataBinding<[GroupModel]> = DataBinding([])
+    var ongoingGroupList: DataBinding<[MissionModel]> = DataBinding([])
+    var endedGroupList: DataBinding<[MissionModel]> = DataBinding([])
     
     public var ongoingGroupsCount: Int = 0
     public var endedGroupsCount: Int = 0
@@ -49,8 +52,9 @@ final class GroupViewModel {
             guard let `self` = self else { return }
             switch result {
             case .success(let response):
-                self.missionGroupList.accept(response.data)
+                self.ongoingGroupList.accept(response.data)
                 self.ongoingGroupsCount = response.data.count
+                
             case .failure(let error):
                 ErrorLog(error.localizedDescription)
             }
@@ -62,7 +66,7 @@ final class GroupViewModel {
             guard let `self` = self else { return }
             switch result {
             case .success(let response):
-                self.missionGroupList.accept(response.data)
+                self.endedGroupList.accept(response.data)
                 self.endedGroupsCount = response.data.count
             case .failure(let error):
                 ErrorLog(error.localizedDescription)
@@ -75,6 +79,18 @@ final class GroupViewModel {
             switch result {
             case .success(let response):
                 self.groups.accept(response.data)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func getGroupsFromCategory(category: Int32) {
+        GroupAPIRequest.getGroupListByCategory(category: category) { result in
+            switch result {
+            case .success(let response):
+                print(response.data)
+                self.groupsByCategory.accept(response.data)
             case .failure(let error):
                 ErrorLog(error.localizedDescription)
             }

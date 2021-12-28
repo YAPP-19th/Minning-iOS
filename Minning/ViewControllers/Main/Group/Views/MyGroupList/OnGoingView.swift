@@ -37,6 +37,7 @@ final class OnGoingView: UIView, UITableViewDataSource, UITableViewDelegate {
     func updateOnGoingViewWithGroups(groupDetails: [MissionModel]) {
         self.ongoingGroups = groupDetails
         mainTableView.reloadData()
+        print("updateONGOINGVIEW, \(ongoingGroups.description)")
     }
     
     private func setUpView() {
@@ -45,7 +46,6 @@ final class OnGoingView: UIView, UITableViewDataSource, UITableViewDelegate {
         
         mainTableView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.leading.trailing.top.bottom.equalToSuperview()
         }
     }
 
@@ -59,6 +59,7 @@ final class OnGoingView: UIView, UITableViewDataSource, UITableViewDelegate {
             return .init()
         }
         cell.configure(ongoingGroups[indexPath.row])
+        print(ongoingGroups[indexPath.row])
         return cell
     }
     

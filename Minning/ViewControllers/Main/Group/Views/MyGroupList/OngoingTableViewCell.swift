@@ -76,11 +76,12 @@ class OngoingTableViewCell: UITableViewCell {
     
     func configure(_ groups: MissionModel) {
         titleLabel.text = groups.title
+        print(groups.title)
         personalAchieveRateLabel.text = {
             if groups.achievementRate == nil {
                 return "내 달성률 0%"
             } else {
-                return "내 달성률 \(groups.achievementRate)"
+                return "내 달성률 \(groups.achievementRate!)"
             }
         }()
         iconImageView.image = {
@@ -97,6 +98,22 @@ class OngoingTableViewCell: UITableViewCell {
                 return UIImage(sharedNamed: "categoryWakeUp")
             default:
                 return UIImage(sharedNamed: "categoryEctIcon")
+            }
+        }()
+        iconBackgroundView.backgroundColor = {
+            switch groups.category {
+            case 0:
+                return .cateSky100
+            case 1:
+                return .cateRed100
+            case 2:
+                return .cateGreen100
+            case 3:
+                return .cateYellow100
+            case 4:
+                return .minningBlue100
+            default:
+                return .cateSky100
             }
         }()
 
@@ -117,11 +134,6 @@ class OngoingTableViewCell: UITableViewCell {
         
         dayLeftLabel.text = "D-\(groups.period)"
 
-        
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
     }
     
     private func isCellSelected(_ sender: Any) {
@@ -135,7 +147,7 @@ class OngoingTableViewCell: UITableViewCell {
         
         addSubview(cellBackgroundView)
         cellBackgroundView.addSubview(cellView)
-        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, personalAchieveRateLabel,  dayLabel, dayLeftLabel].forEach {
+        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, personalAchieveRateLabel, dayLabel, dayLeftLabel].forEach {
             cellView.addSubview($0)
         }
         

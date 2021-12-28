@@ -12,7 +12,7 @@ import CommonSystem
 public struct GroupAPIRequest: MinningAPIRequestable {
     enum RequestType: APIRouteable {
         case groupList
-        case groupListByCategory(category: RoutineCategory)
+        case groupListByCategory(category: Int32)
         case groupDetail(id: Int64)
         
         var requestURL: URL {
@@ -20,7 +20,7 @@ public struct GroupAPIRequest: MinningAPIRequestable {
             case .groupList:
                 return MinningAPIConstant.groupURL
             case let .groupListByCategory(category):
-                return MinningAPIConstant.groupURL.appendingPathComponent("category").appendingPathComponent("\(category.title)")
+                return MinningAPIConstant.groupURL.appendingPathComponent("category").appendingPathComponent("\(category)")
             case let .groupDetail(id):
                 return MinningAPIConstant.groupURL.appendingPathComponent("detail").appendingPathComponent("\(id)")
             }
@@ -47,7 +47,7 @@ public struct GroupAPIRequest: MinningAPIRequestable {
         perform(.groupList, completion: completion)
     }
     
-    public static func getGroupListByCategory(category: RoutineCategory,
+    public static func getGroupListByCategory(category: Int32,
                                               completion: @escaping (Result<GroupResponseModel, MinningAPIError>) -> Void) {
         perform(.groupListByCategory(category: category), completion: completion)
     }

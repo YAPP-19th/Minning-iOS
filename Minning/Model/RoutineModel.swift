@@ -77,6 +77,45 @@ public enum RoutineCategory: Int, CaseIterable {
     }
 }
 
+public enum GroupCategory: Int32, CaseIterable {
+    // 미라클모닝, 자기개발, 건강, 생활, 기타
+    case miracle = 0
+    case selfDev
+    case health
+    case life
+    case wakeup
+    
+    var color: UIColor {
+        switch self {
+        case .health:
+            return .cateGreen100
+        case .life:
+            return .cateYellow100
+        case .selfDev:
+            return .cateRed100
+        case .miracle:
+            return .cateSky100
+        case .wakeup:
+            return .minningBlue100
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .health:
+            return "건강"
+        case .life:
+            return "생활"
+        case .selfDev:
+            return "자기개발"
+        case .miracle:
+            return "미라클모닝"
+        case .wakeup:
+            return "기상"
+        }
+    }
+}
+
 public enum RoutineResult: String {
     case done = "DONE" // 다했어요
     case tried = "TRY" // 시도했어요

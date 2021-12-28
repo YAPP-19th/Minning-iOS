@@ -37,6 +37,7 @@ final class EndedView: UIView, UITableViewDataSource, UITableViewDelegate {
     func updateEndedViewWithGroups(groupDetails: [MissionModel]) {
         self.groups = groupDetails
         mainTableView.reloadData()
+        print("updateENDEDVIEW, \(groups.description)")
     }
     
     private func setUpView() {
@@ -47,11 +48,7 @@ final class EndedView: UIView, UITableViewDataSource, UITableViewDelegate {
             make.edges.equalToSuperview()
         }
     }
-    
-    private func updateTableView() {
-        mainTableView.reloadData()
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }
@@ -62,6 +59,7 @@ final class EndedView: UIView, UITableViewDataSource, UITableViewDelegate {
             return .init()
         }
         cell.configure(groups[indexPath.row])
+        print(groups[indexPath.row])
         return cell
     }
     

@@ -13,6 +13,33 @@ import SharedAssets
 import SnapKit
 import UIKit
 
+final class GroupFilterButton: UIButton {
+    public var isAll: Bool = false
+    public var category: GroupCategory = .miracle
+    
+    public override var isSelected: Bool {
+        didSet {
+            backgroundColor = isSelected ? .blue67A4FF : .minningLightGray100
+            setTitleColor(isSelected ? .primaryWhite : .gray787C84, for: .normal)
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        layer.cornerRadius = 5
+        contentEdgeInsets = UIEdgeInsets(top: 7, left: 12, bottom: 7, right: 12)
+        titleLabel?.font = .font16P
+    }
+}
+
 final class GroupViewController: BaseViewController {
     private let titleSectionContainerView: UIView = {
         $0.backgroundColor = .primaryWhite
@@ -107,10 +134,9 @@ final class GroupViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
+
         viewModel.showOngoingGroup()
         viewModel.showEndedGroup()
-        viewModel.getAllGroups()
     }
     
     override func bindViewModel() {
@@ -136,20 +162,16 @@ final class GroupViewController: BaseViewController {
             self.wholeGroupView.isHidden = true
         }
         
-        viewModel.missionGroupList.bind { [weak self] groups in
+        viewModel.ongoingGroupList.bind { [weak self] groups in
             guard let `self` = self else { return }
             self.onGoingView.updateOnGoingViewWithGroups(groupDetails: groups)
         }
         
-        viewModel.missionGroupList.bind { [weak self] groups in
+        viewModel.endedGroupList.bind { [weak self] groups in
             guard let `self` = self else { return }
             self.endedView.updateEndedViewWithGroups(groupDetails: groups)
         }
-        
-        viewModel.groups.bind { [weak self] groups in
-            guard let self = self else { return }
-            self.wholeGroupView.updateViewWithGroups(groupDetails: groups)
-        }
+    
     }
     
     override func setupViewLayout() {
@@ -283,6 +305,7 @@ final class GroupViewController: BaseViewController {
         switch sender {
         case myGroupTabButton:
             viewModel.tabType.accept(.myGroup)
+            viewModel.myGroupTabType.accept(.now)
         case groupListTabButton:
             viewModel.tabType.accept(.groupList)
         case subTabNowButton:
@@ -307,7 +330,7 @@ final class GroupViewController: BaseViewController {
         filterStackView.addArrangedSubview(leadingSpacer)
         filterStackView.setCustomSpacing(0, after: leadingSpacer)
         
-        let filterButton = FilterButton()
+        let filterButton = GroupFilterButton()
         filterButton.isSelected = viewModel.isCurrentCategoryAll.value
         filterButton.isAll = true
         filterButton.setTitle("전체", for: .normal)
@@ -315,9 +338,9 @@ final class GroupViewController: BaseViewController {
         filterStackView.addArrangedSubview(filterButton)
         filterStackView.addArrangedSubview(trailingSpacer)
     
-        RoutineCategory.allCases.enumerated().forEach { index, category in
-            let filterButton = FilterButton()
-            filterButton.isSelected = viewModel.currentCategory.value == category
+        GroupCategory.allCases.enumerated().forEach { index, category in
+            let filterButton = GroupFilterButton()
+            filterButton.isSelected = viewModel.currentGroupCategory.value == category
             filterButton.category = category
             filterButton.setTitle(category.title, for: .normal)
             filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
@@ -332,24 +355,40 @@ final class GroupViewController: BaseViewController {
     
     private func updateFilterView() {
         filterStackView.arrangedSubviews.forEach { subView in
-            if let filterButton = subView as? FilterButton {
+            if let filterButton = subView as? GroupFilterButton {
                 if filterButton.isAll {
                     filterButton.isSelected = viewModel.isCurrentCategoryAll.value
+                    viewModel.groups.bind { [weak self] groups in
+                        guard let self = self else { return }
+                        self.wholeGroupView.updateViewWithGroups(groupDetails: groups)
+                    }
                 } else {
-                    filterButton.isSelected = filterButton.category == viewModel.currentCategory.value
+                    filterButton.isSelected = filterButton.category == viewModel.currentGroupCategory.value
+                    viewModel.groups.bind { [weak self] groups in
+                        guard let self = self else { return }
+                        self.wholeGroupView.updateViewWithGroups(groupDetails: groups)
+                    }
                 }
             }
         }
+        // 카테고리 뷰 보여주기
+
+    }
+    
+    private func updateSelectedCategoryLabel(with category: GroupCategory) {
+        
     }
        
     @objc
-    private func onClickFilterButton(_ sender: FilterButton) {
+    private func onClickFilterButton(_ sender: GroupFilterButton) {
         if sender.isAll {
             viewModel.isCurrentCategoryAll.accept(true)
             viewModel.currentCategory.accept(nil)
+            viewModel.getAllGroups()
         } else {
             viewModel.isCurrentCategoryAll.accept(false)
-            viewModel.currentCategory.accept(sender.category)
+            viewModel.currentGroupCategory.accept(sender.category)
+            viewModel.getGroupsFromCategory(category: sender.category.rawValue)
         }
         
         updateFilterView()

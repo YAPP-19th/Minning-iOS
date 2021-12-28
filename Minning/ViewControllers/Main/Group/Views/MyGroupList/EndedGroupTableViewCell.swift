@@ -8,7 +8,6 @@
 
 import CommonSystem
 import DesignSystem
-import Foundation
 import SharedAssets
 import SnapKit
 
@@ -36,7 +35,6 @@ class EndedGroupTableViewCell: UITableViewCell {
     }(UIImageView())
     
     var titleLabel: UILabel = {
-        $0.text = "새벽 독서 그룹"
         $0.font = .font18PBold
         return $0
     }(UILabel())
@@ -50,25 +48,16 @@ class EndedGroupTableViewCell: UITableViewCell {
     private var achieveLabelCount: Int = 101
     
     var personalAchieveRateLabel: UILabel = {
-        $0.text = "내 달성률 100%"
         $0.textColor = .minningBlue100
         $0.font = .font14P
         return $0
     }(UILabel())
     
     var dayLabel: UILabel = {
-            $0.text = "월, 수, 목"
             $0.textColor = .minningDarkGray100
             $0.font = .font14P
             return $0
         }(UILabel())
-        
-    var dayLeftLabel: UILabel = {
-        $0.text = "D-7"
-        $0.textColor = .minningDarkGray100
-        $0.font = .font14P
-        return $0
-    }(UILabel())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -81,11 +70,12 @@ class EndedGroupTableViewCell: UITableViewCell {
     
     func configure(_ groups: MissionModel) {
         titleLabel.text = groups.title
+        print(groups.title)
         personalAchieveRateLabel.text = {
             if groups.achievementRate == nil {
                 return "내 달성률 0%"
             } else {
-                return "내 달성률 \(groups.achievementRate)"
+                return "내 달성률 \(groups.achievementRate!)%"
             }
         }()
         iconImageView.image = {
@@ -102,6 +92,22 @@ class EndedGroupTableViewCell: UITableViewCell {
                 return UIImage(sharedNamed: "categoryWakeUp")
             default:
                 return UIImage(sharedNamed: "categoryEctIcon")
+            }
+        }()
+        iconBackgroundView.backgroundColor = {
+            switch groups.category {
+            case 0:
+                return .cateSky100
+            case 1:
+                return .cateRed100
+            case 2:
+                return .cateGreen100
+            case 3:
+                return .cateYellow100
+            case 4:
+                return .minningBlue100
+            default:
+                return .cateSky100
             }
         }()
 
@@ -132,7 +138,7 @@ class EndedGroupTableViewCell: UITableViewCell {
         
         addSubview(cellBackgroundView)
         cellBackgroundView.addSubview(cellView)
-        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, personalAchieveRateLabel,  dayLabel, dayLeftLabel].forEach {
+        [iconBackgroundView, iconImageView, titleLabel, achieveRateView, personalAchieveRateLabel, dayLabel].forEach {
             cellView.addSubview($0)
         }
         
@@ -171,7 +177,7 @@ class EndedGroupTableViewCell: UITableViewCell {
         achieveRateView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(3)
             make.leading.equalTo(titleLabel.snp.leading)
-            make.width.equalTo(achieveLabelCount + 5)
+            make.width.equalTo(achieveLabelCount)
             make.height.equalTo(23)
         }
         
@@ -183,11 +189,6 @@ class EndedGroupTableViewCell: UITableViewCell {
         dayLabel.snp.makeConstraints { make in
             make.top.equalTo(personalAchieveRateLabel.snp.top)
             make.leading.equalTo(achieveRateView.snp.trailing).offset(8)
-        }
-        
-        dayLeftLabel.snp.makeConstraints { make in
-            make.top.equalTo(personalAchieveRateLabel.snp.top)
-            make.leading.equalTo(dayLabel.snp.trailing).offset(4)
         }
     }
     
