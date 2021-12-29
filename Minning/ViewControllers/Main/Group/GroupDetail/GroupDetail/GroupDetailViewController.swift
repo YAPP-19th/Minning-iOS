@@ -11,11 +11,11 @@ import DesignSystem
 import SharedAssets
 import SnapKit
 
+enum GroupViewType {
+    case openedGroup, myGroup, closedGroup
+}
+
 final class GroupDetailViewController: BaseViewController {
-    
-    enum GroupViewType {
-        case openedGroup, myGroup, closedGroup
-    }
     
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
     
@@ -30,7 +30,7 @@ final class GroupDetailViewController: BaseViewController {
         return $0
     }(UIStackView())
     
-    private let groupTitleContainerView = GroupTitleContainerView()
+    private lazy var groupTitleContainerView = GroupTitleContainerView(viewType: viewType ?? .openedGroup)
     private let myInfoConatainerView = GroupMyInfoContainerView()
     private let ruleContainerView = GroupRuleContainerView()
     private let groupPhotoPreviewContainerView = GroupPhotoPreviewContainerView()
@@ -69,14 +69,22 @@ final class GroupDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // SAMPLE
-        viewModel.groupItem.accept(Group(title: "새벽 운동 그룹"))
+        tabBarController?.tabBar.isHidden = true
+        viewModel.getGroupDetail()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func bindViewModel() {
-        viewModel.groupItem.bind { [weak self] group in
-            guard let `self` = self else { return }
-            self.navigationBar.titleContent = group?.title ?? ""
+        viewModel.groupDetail.bind { [weak self] groupDetail in
+            guard let `self` = self, let groupDetail = groupDetail else { return }
+            self.navigationBar.titleContent = groupDetail.title + " 그룹"
+            self.groupTitleContainerView.updateOpenedView(title: groupDetail.title, rate: groupDetail.rate, participant: groupDetail.participant)
+            self.ruleContainerView.updateView(shoot: groupDetail.shoot, beginTime: groupDetail.beginTime, endTime: groupDetail.endTime)
+            self.groupInfoContainerView.updateView(description: groupDetail.description, recommend: groupDetail.recommend)
         }
     }
     
@@ -150,7 +158,7 @@ final class GroupDetailViewController: BaseViewController {
     
     @objc
     private func onClickCloseButton(_ sender: Any?) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
