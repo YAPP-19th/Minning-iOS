@@ -14,16 +14,35 @@ final class ReviewCell: UITableViewCell {
     private let categoryBarView = UIView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private let reviewImageView = UIImageView()
+    private let reviewImageView: UIImageView = {
+        $0.layer.cornerRadius = 7
+        $0.clipsToBounds = true
+        return $0
+    }(UIImageView())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewLayout()
-        setTempData()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(_ retrospect: RetrospectModel) {
+        categoryBarView.backgroundColor = retrospect.routine.category.color
+        titleLabel.text = retrospect.routine.title
+        if let url = URL(string: retrospect.imageUrl ?? ""), let data = try? Data(contentsOf: url) {
+            self.reviewImageView.image = UIImage(data: data)
+        } else {
+            self.reviewImageView.image = nil
+        }
+        
+        if let content = retrospect.content {
+            descriptionLabel.text = content
+        } else {
+            descriptionLabel.text = "피드백을 적어주세요"
+        }
     }
     
     private func setupViewLayout() {
@@ -47,7 +66,6 @@ final class ReviewCell: UITableViewCell {
         titleLabel.font = .font16PBold
         descriptionLabel.font = .font14PMedium
         descriptionLabel.textColor = .minningDarkGray100
-        reviewImageView.layer.cornerRadius = 7
         
         contentView.snp.makeConstraints { make in
             make.leading.equalTo(16)
@@ -73,11 +91,5 @@ final class ReviewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-5)
             make.centerY.equalToSuperview()
         }
-    }
-    
-    private func setTempData() {
-        categoryBarView.backgroundColor = .minningBlue100
-        titleLabel.text = "아침에 신문 읽기"
-        descriptionLabel.text = "신문 읽을 시간이 없어서 매번 고민했는데 미라클모닝을 어쩌구저쩌구 파이팅!"
     }
 }

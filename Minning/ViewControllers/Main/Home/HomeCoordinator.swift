@@ -13,7 +13,7 @@ protocol HomeRoute {
     func goToPhrase()
     func goToRecommend()
     func goToAdd()
-    func goToReview()
+    func goToReview(retrospect: RetrospectModel)
     func goToEditOrder(day: Day, routineList: [RoutineModel])
     func goToNotification()
     func goToMyPage()
@@ -63,8 +63,8 @@ extension HomeCoordinator: HomeRoute {
         navigationController.pushViewController(addVC, animated: true)
     }
     
-    func goToReview() {
-        let reviewVC = dependencies.createReview(self)
+    func goToReview(retrospect: RetrospectModel) {
+        let reviewVC = dependencies.createReview(self, retrospect: retrospect)
         reviewVC.modalPresentationStyle = .fullScreen
         navigationController.topViewController?.present(reviewVC, animated: true, completion: nil)
     }

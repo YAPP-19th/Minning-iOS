@@ -8,9 +8,10 @@
 
 import CommonSystem
 import DesignSystem
-import Foundation
+import Photos
 import SharedAssets
 import SnapKit
+import UIKit
 
 final class ReviewViewController: BaseViewController {
     private let navigationBar: PlainUINavigationBar = PlainUINavigationBar()
@@ -55,6 +56,10 @@ final class ReviewViewController: BaseViewController {
         return $0
     }(UIButton())
     
+    private let imagePicker = UIImagePickerController()
+    
+    private let textBarButton = MUIBarButtonItem(title: "작성", style: .plain, target: self, action: #selector(onClickPostButton(_:)))
+    
     init(viewModel: ReviewViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -67,12 +72,32 @@ final class ReviewViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        imagePicker.delegate = self
     }
     
     override func bindViewModel() {
-        viewModel.routimeItem.bindAndFire { [weak self] routine in
+        viewModel.retrospect.bindAndFire { [weak self] retrospect in
             guard let `self` = self else { return }
-            self.titleLabel.text = routine?.title
+            self.titleLabel.text = retrospect?.routine.title
+            self.feedbackTextView.text = retrospect?.content
+            if let url = URL(string: retrospect?.imageUrl ?? ""), let data = try? Data(contentsOf: url) {
+                self.selectedPhotoImageView.image = UIImage(data: data)
+                self.selectedPhotoImageView.isHidden = false
+            }
+        }
+        
+        viewModel.enableEdit.bindAndFire { [weak self] enableEdit in
+            guard let `self` = self else { return }
+            self.selectedPhotoImageView.isUserInteractionEnabled = enableEdit
+            self.dismissPhotoButton.isHidden = !enableEdit
+            self.feedbackTextView.isEditable = enableEdit
+            if enableEdit {
+                self.textBarButton.title = "작성"
+                self.textBarButton.image = nil
+            } else {
+                self.textBarButton.image = UIImage(sharedNamed: "edit_bar_button")
+                self.textBarButton.title = nil
+            }
         }
     }
     
@@ -81,7 +106,6 @@ final class ReviewViewController: BaseViewController {
         navigationBar.removeDefaultShadowImage()
         
         let navigationItem = UINavigationItem()
-        let textBarButton = MUIBarButtonItem(title: "작성", style: .plain, target: self, action: #selector(onClickPostButton(_:)))
         textBarButton.textFont = .font16PBold
         
         navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "close"), style: .plain, target: self, action: #selector(onClickCloseButton(_:))))
@@ -152,20 +176,64 @@ final class ReviewViewController: BaseViewController {
     
     @objc
     private func onClickPostButton(_ sender: Any?) {
-        DebugLog("Did Click Post Button")
+        if viewModel.enableEdit.value == true {
+            if viewModel.isEdited == true {
+                viewModel.modifyRetrospect(content: feedbackTextView.text, image: selectedPhotoImageView.image) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                viewModel.postRetrospect(content: self.feedbackTextView.text, image: self.selectedPhotoImageView.image) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        } else {
+            let editActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            editActionSheet.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+                self?.showDeleteAlert()
+            }))
+            editActionSheet.addAction(UIAlertAction(title: "수정", style: .default, handler: { [weak self] _ in
+                self?.viewModel.enableEdit.accept(true)
+                self?.viewModel.isEdited = true
+            }))
+            editActionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(editActionSheet, animated: true, completion: nil)
+        }
     }
-    
+
     @objc
     private func onClickSelectPhotoFromLibrary(_ sender: Any?) {
-        DebugLog("Did Click Select Photo Button")
-        showSelectedPhotoImageView()
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @objc
     private func onClickDismissPhotoButton(_ sender: Any?) {
-        DebugLog("Did Click Dismiss Photo Button")
         hideSelectedPhotoImageView()
     }
+    
+    func showDeleteAlert() {
+        let deleteAlert = UIAlertController(title: "글 삭제", message: "정말 이 글을 삭제하시겠습니까?", preferredStyle: .alert)
+        deleteAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        deleteAlert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.removeRetrospect {
+                self?.dismiss(animated: true)
+            }
+        }))
+        present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    func resize(image: UIImage?, newWidth: CGFloat) -> UIImage? {
+        guard let image = image else { return nil }
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        let size = CGSize(width: newWidth, height: newHeight)
+        let render = UIGraphicsImageRenderer(size: size)
+        let renderedImage = render.image { _ in
+            image.draw(in: CGRect(origin: .zero, size: size))
+        }
+        return renderedImage
+    }
+
 }
 
 extension ReviewViewController: UITextViewDelegate {
@@ -185,5 +253,15 @@ extension ReviewViewController: UITextViewDelegate {
             textView.text = viewModel.feedbackPlaceholder
             textView.textColor = .minningGray100
         }
+    }
+}
+
+extension ReviewViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedPhotoImageView.image = image
+            showSelectedPhotoImageView()
+        }
+        dismiss(animated: true, completion: nil)
     }
 }

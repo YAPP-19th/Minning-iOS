@@ -161,17 +161,17 @@ public struct RetrospectModel: Codable {
         case routine
     }
     
-    public let content: String
+    public let content: String?
     public let date: String
     public let id: Int64
-    public let imageUrl: String
+    public let imageUrl: String?
     public let result: String
     public let routine: RoutineModel
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        imageUrl = try values.decode(String.self, forKey: .image)
-        content = try values.decode(String.self, forKey: .content)
+        imageUrl = try values.decode(String?.self, forKey: .image)
+        content = try values.decode(String?.self, forKey: .content)
         id = try values.decode(Int64.self, forKey: .id)
         result = try values.decode(String.self, forKey: .result)
         routine = try values.decode(RoutineModel.self, forKey: .routine)
