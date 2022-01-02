@@ -12,4 +12,14 @@ public struct NotificationModel {
     let title: String
     let description: String
     let date: Date
+    
+    enum Category {
+        case routineAlert
+        case groupAlert
+        case groupEnded
+        case weekReport
+        case monthReport
+        case longtimeNoSee
+    }
+    
 }

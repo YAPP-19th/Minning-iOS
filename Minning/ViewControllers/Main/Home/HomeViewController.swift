@@ -42,8 +42,10 @@ final class HomeViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         viewModel.getUserData()
+        viewModel.getSayingCheck()
         viewModel.getWeeklyRate()
         viewModel.getAllRoutinesByDay()
+        viewModel.getAllRetrospectByDay()
     }
     
     override func setupViewLayout() {
@@ -83,6 +85,11 @@ final class HomeViewController: BaseViewController {
             self.profileView.profileData = myInfo
         }
         
+        viewModel.checkTodaySaying.bind { [weak self] todaySaying in
+            guard let self = self else { return }
+            self.routineView.updateViewWithTodaySaying(checkSaying: todaySaying)
+        }
+        
         viewModel.weeklyRoutineRate.bind { [weak self] routineRates in
             guard let self = self else { return }
             self.profileView.weeklyData = routineRates
@@ -91,6 +98,11 @@ final class HomeViewController: BaseViewController {
         viewModel.routines.bind { [weak self] routines in
             guard let self = self else { return }
             self.routineView.updateViewWithRoutines(routines: routines)
+        }
+        
+        viewModel.retrospects.bind { [weak self] retrospects in
+            guard let self = self else { return }
+            self.routineView.updateViewWithRetrospects(retrospects: retrospects)
         }
     }
 }
@@ -110,7 +122,7 @@ extension HomeViewController: ProfileViewDelegate {
 }
 
 extension HomeViewController: RoutineViewDelegate {
-    func didSelectSection(_ section: RoutineView.TableViewSection) {
+    func didSelectSection(_ section: RoutineView.TableViewSection, _ index: Int?) {
         switch section {
         case .header:
             return
@@ -119,12 +131,18 @@ extension HomeViewController: RoutineViewDelegate {
         case .groupGuide:
             viewModel.goToMyGroup()
         case .routine:
-            showAlert(title: routineAlertTitle, message: routineAlertText) { _ in
-                self.viewModel.showPhraseModally()
-                return
+            if viewModel.checkTodaySaying.value {
+                // show modify routine view
+            } else {
+                showAlert(title: routineAlertTitle, message: routineAlertText) { _ in
+                    self.viewModel.showPhraseModally()
+                    return
+                }
             }
         case .review:
-            viewModel.goToReview()
+            if let index = index {
+                viewModel.showReviewFullModally(retrospect: viewModel.retrospects.value[index])
+            }
         case .footer:
             return
         }
@@ -136,5 +154,9 @@ extension HomeViewController: RoutineViewDelegate {
     
     func didSelectTab(_ tabType: HomeViewModel.RoutineTabType) {
         viewModel.tabType.accept(tabType)
+    }
+    
+    func updateRoutineResult(routineId: Int64, result: RoutineResult) {
+        viewModel.postRoutineResult(routineId: routineId, result: result)
     }
 }

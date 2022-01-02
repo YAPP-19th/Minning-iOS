@@ -161,17 +161,17 @@ public struct RetrospectModel: Codable {
         case routine
     }
     
-    public let content: String
+    public let content: String?
     public let date: String
     public let id: Int64
-    public let imageUrl: String
+    public let imageUrl: String?
     public let result: String
     public let routine: RoutineModel
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        imageUrl = try values.decode(String.self, forKey: .image)
-        content = try values.decode(String.self, forKey: .content)
+        imageUrl = try values.decode(String?.self, forKey: .image)
+        content = try values.decode(String?.self, forKey: .content)
         id = try values.decode(Int64.self, forKey: .id)
         result = try values.decode(String.self, forKey: .result)
         routine = try values.decode(RoutineModel.self, forKey: .routine)
@@ -404,7 +404,7 @@ public struct GroupModel: Codable {
 }
 
 public struct GroupDetailResponseModel: Codable {
-    public let date: GroupDetailModel
+    public let data: GroupDetailModel
     public let message: CommonAPIResponse
 }
 
@@ -413,6 +413,8 @@ public struct GroupDetailModel: Codable {
         case beginTime
         case endTime
         case category
+        case description
+        case recommend
         case id
         case participant
         case rate
@@ -420,41 +422,30 @@ public struct GroupDetailModel: Codable {
         case title
     }
     
-    public let beginTime: TimeModel
-    public let endTime: TimeModel
+    public let beginTime: String
+    public let endTime: String
     public let category: RoutineCategory
+    public let description: String
+    public let recommend: String
     public let id: Int64
-    public let participant: Int
-    public let rate: Int
+    public var participant: Int?
+    public var rate: Int?
     public let shoot: String
     public let title: String
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let categoryValue = try values.decode(String.self, forKey: .category)
-        
-        switch categoryValue {
-        case "건강":
-            category = .health
-        case "생활":
-            category = .life
-        case "자기개발":
-            category = .selfDev
-        case "미라클모닝":
-            category = .miracle
-        case "기타":
-            category = .other
-        default:
-            category = .other
-        }
-        
+        let categoryValue = try values.decode(Int.self, forKey: .category)
+        category = RoutineCategory(rawValue: categoryValue) ?? .other
         title = try values.decode(String.self, forKey: .title)
         shoot = try values.decode(String.self, forKey: .shoot)
-        beginTime = try values.decode(TimeModel.self, forKey: .beginTime)
-        endTime = try values.decode(TimeModel.self, forKey: .endTime)
+        beginTime = try values.decode(String.self, forKey: .beginTime)
+        endTime = try values.decode(String.self, forKey: .endTime)
+        description = try values.decode(String.self, forKey: .description)
+        recommend = try values.decode(String.self, forKey: .recommend)
         id = try values.decode(Int64.self, forKey: .id)
-        participant = try values.decode(Int.self, forKey: .participant)
-        rate = try values.decode(Int.self, forKey: .rate)
+        participant = try values.decode(Int?.self, forKey: .participant)
+        rate = try values.decode(Int?.self, forKey: .rate)
     }
     
     public func encode(to encoder: Encoder) throws { }

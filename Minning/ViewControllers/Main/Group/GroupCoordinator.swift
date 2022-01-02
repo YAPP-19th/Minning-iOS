@@ -49,7 +49,7 @@ extension GroupCoordinator: GroupRoute {
         let joinGroupVC = dependencies.createJoinGroup(self)
         joinGroupVC.modalPresentationStyle = .overCurrentContext
         joinGroupVC.completion = completion
-        navigationController.topViewController?.presentedViewController?.present(joinGroupVC, animated: false, completion: nil)
+        navigationController.topViewController?.present(joinGroupVC, animated: false, completion: nil)
     }
     
     func goToPhotoGrid() {

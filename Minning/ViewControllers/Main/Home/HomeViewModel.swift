@@ -21,6 +21,8 @@ final class HomeViewModel {
     var selectedDate: DataBinding<Date> = DataBinding(Date())
     var tabType: DataBinding<RoutineTabType> = DataBinding(.routine)
     var routines: DataBinding<[RoutineModel]> = DataBinding([])
+    var retrospects: DataBinding<[RetrospectModel]> = DataBinding([])
+    var checkTodaySaying: DataBinding<Bool> = DataBinding(false)
     
     private var selectedDay: Day {
         Day.allCases[selectedDate.value.get(.weekday) - 1]
@@ -56,10 +58,45 @@ final class HomeViewModel {
     }
     
     public func getAllRoutinesByDay() {
-        RoutineAPIRequest.routineListByDay(day: selectedDay) { result in
+        RoutineAPIRequest.routineListByDay(date: selectedDate.value.convertToSmallString()) { result in
             switch result {
             case .success(let response):
                 self.routines.accept(response.data)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func getAllRetrospectByDay() {
+        RetrospectAPIRequest.retrospectListByDate(date: selectedDate.value.convertToSmallString()) { result in
+            switch result {
+            case .success(let response):
+                self.retrospects.accept(response.data)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func getSayingCheck() {
+        SayingAPIRequest.checkTodaySaying { result in
+            switch result {
+            case .success(let data):
+                self.checkTodaySaying.accept(data.data.result)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func postRoutineResult(routineId: Int64, result: RoutineResult) {
+        RetrospectAPIRequest.setRetrospectResult(request: .init(date: selectedDate.value.convertToSmallString(), result: result.rawValue, routineId: routineId)) { result in
+            switch result {
+            case .success(_):
+                self.getWeeklyRate()
+                self.getAllRoutinesByDay()
+                self.getAllRetrospectByDay()
             case .failure(let error):
                 ErrorLog(error.localizedDescription)
             }
@@ -82,16 +119,12 @@ final class HomeViewModel {
         coordinator.goToPhrase()
     }
     
-    public func showReviewFullModally() {
-        coordinator.goToReview()
+    public func showReviewFullModally(retrospect: RetrospectModel) {
+        coordinator.goToReview(retrospect: retrospect)
     }
     
     public func goToEditOrder() {
         coordinator.goToEditOrder(day: selectedDay, routineList: routines.value)
-    }
-    
-    public func goToReview() {
-        coordinator.goToReview()
     }
     
     public func goToMyGroup() {

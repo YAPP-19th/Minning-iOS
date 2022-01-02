@@ -22,8 +22,8 @@ final class HomeDIContainer {
         return addVC
     }
     
-    func createReview(_ coordinator: HomeCoordinator) -> ReviewViewController {
-        let viewModel = ReviewViewModel(coordinator: coordinator)
+    func createReview(_ coordinator: HomeCoordinator, retrospect: RetrospectModel) -> ReviewViewController {
+        let viewModel = ReviewViewModel(coordinator: coordinator, retrospect: retrospect)
         let addVC = ReviewViewController(viewModel: viewModel)
         return addVC
     }
