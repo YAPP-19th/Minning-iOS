@@ -16,7 +16,6 @@ final class EndedView: UIView, UITableViewDataSource, UITableViewDelegate {
     var groupTableView = UITableView()
     
     public init() {
-//        super.init(frame: .zero, style: .plain)
         super.init(frame: .zero)
         setUpView()
         updateTableView()
