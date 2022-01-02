@@ -128,6 +128,11 @@ extension HomeViewController: ProfileViewDelegate {
         viewModel.updateSelectedWeek(isForward: true)
     }
     
+    func didSelectWeeklyView(date: Date) {
+        viewModel.selectedDate.accept(date)
+        viewModel.getAllRoutinesByDay()
+        viewModel.getAllRetrospectByDay()
+    }
 }
 
 extension HomeViewController: RoutineViewDelegate {

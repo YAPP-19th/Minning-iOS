@@ -22,6 +22,8 @@ protocol ProfileViewDelegate: AnyObject {
     func didSelectLeftArrow()
     
     func didSelectRightArrow()
+    
+    func didSelectWeeklyView(date: Date)
 }
 
 final class ProfileView: UIView {
@@ -43,6 +45,7 @@ final class ProfileView: UIView {
             removeAllWeeklyData()
             weeklyData.forEach { data in
                 let weeklyView = WeeklyView()
+                weeklyView.delegate = self
                 weeklyView.weeklyData = .init(date: data.date.convertToSmallDate(), progress: CGFloat(data.rate) * 0.01)
                 weeklyViewList.append(weeklyView)
                 weeklyDataStackView.addArrangedSubview(weeklyView)
@@ -205,5 +208,11 @@ final class ProfileView: UIView {
             make.trailing.equalTo(rightArrowButton.snp.leading).offset(-15)
             make.bottom.equalToSuperview().offset(-27)
         }
+    }
+}
+
+extension ProfileView: WeeklyViewDelegate {
+    func weeklyViewTapped(date: Date) {
+        delegate?.didSelectWeeklyView(date: date)
     }
 }
