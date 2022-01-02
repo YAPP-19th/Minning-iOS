@@ -51,6 +51,8 @@
 		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
 		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
 		9589B557271DF27300943BA3 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B556271DF27300943BA3 /* AddDayView.swift */; };
+		95A311AA277C30560016B08C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95A311A8277C30560016B08C /* CoreDataModel.xcdatamodeld */; };
+		95A311AC277C30BB0016B08C /* GroupCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A311AB277C30BB0016B08C /* GroupCoreDataManager.swift */; };
 		95A8DDA6275741080087A343 /* ReportEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8DDA5275741080087A343 /* ReportEmptyView.swift */; };
 		95B7D48C276DC79D0062DCA4 /* partyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D48B276DC79D0062DCA4 /* partyLottie.json */; };
 		95B7D48D276DC79D0062DCA4 /* partyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D48B276DC79D0062DCA4 /* partyLottie.json */; };
@@ -413,6 +415,8 @@
 		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		9589B556271DF27300943BA3 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
+		95A311A9277C30560016B08C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		95A311AB277C30BB0016B08C /* GroupCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoreDataManager.swift; sourceTree = "<group>"; };
 		95A8DDA5275741080087A343 /* ReportEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEmptyView.swift; sourceTree = "<group>"; };
 		95B7D48B276DC79D0062DCA4 /* partyLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = partyLottie.json; path = ../../../../../Downloads/partyLottie.json; sourceTree = "<group>"; };
 		95B9289B276CD1E2002D31E7 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -736,12 +740,22 @@
 			path = NewGroup;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		95B7D487276DC7810062DCA4 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
 				95B7D48B276DC79D0062DCA4 /* partyLottie.json */,
 			);
 			path = Lottie;
+=======
+		95A311A4277C304A0016B08C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				95A311A8277C30560016B08C /* CoreDataModel.xcdatamodeld */,
+				95A311AB277C30BB0016B08C /* GroupCoreDataManager.swift */,
+			);
+			path = CoreData;
+>>>>>>> b47087f53c527063fe5387e1f420e04f68be459a
 			sourceTree = "<group>";
 		};
 		A8CEA31FF1A9DB2BC92C9FE2 /* Pods */ = {
@@ -1226,6 +1240,7 @@
 		B0D16DF126DA57F200A8E52B /* Minning */ = {
 			isa = PBXGroup;
 			children = (
+				95A311A4277C304A0016B08C /* CoreData */,
 				B0ADFDCE27488250003019E5 /* Network */,
 				B091BA562736BDF6006F3E2A /* Minning.entitlements */,
 				B028043B270972AB009D642A /* Model */,
@@ -1750,6 +1765,7 @@
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
 				B08BEB65272A8B510078E00A /* MyPageViewController.swift in Sources */,
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
+				95A311AC277C30BB0016B08C /* GroupCoreDataManager.swift in Sources */,
 				B09041A6272D91FD00AE8623 /* SwitchSettingCell.swift in Sources */,
 				B08BEB8B272A8F470078E00A /* NoticeViewController.swift in Sources */,
 				B02803A22706DCB5009D642A /* ReportDIContainer.swift in Sources */,
@@ -1769,6 +1785,7 @@
 				9546BF92276A368C00991762 /* GroupPhotoPreviewCell.swift in Sources */,
 				B0AD5A742705DBCC00CC07B0 /* HomeViewModel.swift in Sources */,
 				8373F71B2736BAEC008839FA /* GroupGuideCell.swift in Sources */,
+				95A311AA277C30560016B08C /* CoreDataModel.xcdatamodeld in Sources */,
 				B01C7772274D18C20032B329 /* CaptureAPIRequest.swift in Sources */,
 				B0280456270986D8009D642A /* MyRoutineView.swift in Sources */,
 				B01C7775274D18CA0032B329 /* MissionAPIRequest.swift in Sources */,
@@ -2097,9 +2114,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Minning/Minning.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6683XA59A4;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = M79H9K226Y;
 				INFOPLIST_FILE = Minning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2109,6 +2126,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.denny.Minning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Minning iOS Provisioning Profile";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2122,8 +2140,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Minning/Minning.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6683XA59A4;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = M79H9K226Y;
 				INFOPLIST_FILE = Minning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2132,6 +2151,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.denny.Minning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Minning iOS Provisioning Profile";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = REAL;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2277,6 +2297,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		95A311A8277C30560016B08C /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				95A311A9277C30560016B08C /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 95A311A9277C30560016B08C /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		B0D16DFB26DA57F200A8E52B /* OurApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
