@@ -119,6 +119,15 @@ extension HomeViewController: ProfileViewDelegate {
     func didSelectProfile() {
         viewModel.goToMyPage()
     }
+    
+    func didSelectLeftArrow() {
+        viewModel.updateSelectedWeek(isForward: false)
+    }
+    
+    func didSelectRightArrow() {
+        viewModel.updateSelectedWeek(isForward: true)
+    }
+    
 }
 
 extension HomeViewController: RoutineViewDelegate {

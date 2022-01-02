@@ -18,6 +18,10 @@ protocol ProfileViewDelegate: AnyObject {
     func didSelectNoti()
     
     func didSelectProfile()
+    
+    func didSelectLeftArrow()
+    
+    func didSelectRightArrow()
 }
 
 final class ProfileView: UIView {
@@ -93,11 +97,13 @@ final class ProfileView: UIView {
     
     private let leftArrowButton: ImageButton = {
         $0.setImage(UIImage(sharedNamed: "arrow_left"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickLeftArrowButton(_:)), for: .touchUpInside)
         return $0
     }(ImageButton())
     
     private let rightArrowButton: ImageButton = {
         $0.setImage(UIImage(sharedNamed: "arrow_right"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickRightArrowButton(_:)), for: .touchUpInside)
         return $0
     }(ImageButton())
     
@@ -116,6 +122,16 @@ final class ProfileView: UIView {
         default:
             break
         }
+    }
+    
+    @objc
+    private func onClickLeftArrowButton(_ sender: Any) {
+        delegate?.didSelectLeftArrow()
+    }
+    
+    @objc
+    private func onClickRightArrowButton(_ sender: Any) {
+        delegate?.didSelectRightArrow()
     }
     
     override init(frame: CGRect) {

@@ -44,8 +44,8 @@ final class HomeViewModel {
     }
     
     public func getWeeklyRate() {
-        let index = Calendar.current.component(.weekday, from: Date())
-        let startDay = Date(timeIntervalSinceNow: -(Double(86400 * ((index + 5) % 7))))
+        let index = Calendar.current.component(.weekday, from: selectedDate.value)
+        let startDay = Date(timeInterval: -(Double(86400 * ((index + 5) % 7))), since: selectedDate.value)
         
         RoutineAPIRequest.getRoutinePercentPerWeek(date: startDay.convertToSmallString()) { result in
             switch result {
@@ -129,5 +129,14 @@ final class HomeViewModel {
     
     public func goToMyGroup() {
         coordinator.goToMyGroup()
+    }
+    
+    public func updateSelectedWeek(isForward: Bool) {
+        let value = selectedDate.value
+        let updateValue = Date(timeInterval: isForward ? 86400 * 7 : 86400 * -7, since: value)
+        selectedDate.accept(updateValue)
+        getWeeklyRate()
+        getAllRoutinesByDay()
+        getAllRetrospectByDay()
     }
 }
