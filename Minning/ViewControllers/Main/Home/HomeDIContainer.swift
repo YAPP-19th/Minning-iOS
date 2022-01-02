@@ -22,14 +22,14 @@ final class HomeDIContainer {
         return addVC
     }
     
-    func createReview(_ coordinator: HomeCoordinator) -> ReviewViewController {
-        let viewModel = ReviewViewModel(coordinator: coordinator)
+    func createReview(_ coordinator: HomeCoordinator, retrospect: RetrospectModel) -> ReviewViewController {
+        let viewModel = ReviewViewModel(coordinator: coordinator, retrospect: retrospect)
         let addVC = ReviewViewController(viewModel: viewModel)
         return addVC
     }
     
-    func createEditOrder(_ coordinator: HomeCoordinator) -> EditOrderViewController {
-        let viewModel = EditOrderViewModel(coordinator: coordinator)
+    func createEditOrder(_ coordinator: HomeCoordinator, day: Day, routineList: [RoutineModel]) -> EditOrderViewController {
+        let viewModel = EditOrderViewModel(coordinator: coordinator, day: day, routineList: routineList)
         let editOrderVC = EditOrderViewController(viewModel: viewModel)
         return editOrderVC
     }

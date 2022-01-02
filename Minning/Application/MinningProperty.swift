@@ -9,5 +9,5 @@
 import Foundation
 
 public final class MinningProperty {
-    public static let apiRouteURL: String = "http://34.64.231.177:8000/api/v1"
+    public static let apiRouteURL: String = "http://34.64.188.164:8000/api/v1"
 }

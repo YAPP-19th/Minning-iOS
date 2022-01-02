@@ -25,13 +25,13 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
         case deleteRoutine(id: Int64)
         case modifyRoutine(id: Int64, request: RoutineRequest)
         case fetchPercentPerWeek(date: String)
-        case fetchAllByDay(day: Day)
+        case fetchAllByDay(date: String)
         case modifyRoutineOrder(day: Day, ids: [Int64])
         
         var requestURL: URL {
             switch self {
             case .addRoutine:
-                return MinningAPIConstant.routineURL
+                return MinningAPIConstant.routineURL.appendingPathComponent("")
             case let .fetchSingleRoutine(id):
                 return MinningAPIConstant.routineURL.appendingPathComponent("\(id)")
             case let .deleteRoutine(id):
@@ -40,8 +40,10 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
                 return MinningAPIConstant.routineURL.appendingPathComponent("\(id)")
             case let .fetchPercentPerWeek(date):
                 return MinningAPIConstant.routineURL.appendingPathComponent("\(date)").appendingPathComponent("rate")
-            case let .fetchAllByDay(day):
-                return MinningAPIConstant.routineURL.appendingPathComponent("day").appendingPathComponent("\(day.rawValue)")
+            case let .fetchAllByDay(date):
+                return MinningAPIConstant.routineURL
+                    .appendingPathComponent("day")
+                    .appendingPathComponent("\(date)")
             case let .modifyRoutineOrder(day, _):
                 return MinningAPIConstant.routineURL.appendingPathComponent("sequence").appendingPathComponent("\(day.rawValue)")
             }
@@ -68,7 +70,7 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
             var parameters: [String: Any] = [:]
             switch self {
             case let .addRoutine(request):
-                parameters["category"] = request.category.title
+                parameters["category"] = request.category.rawValue
                 parameters["days"] = request.days.map { $0.rawValue }
                 parameters["goal"] = request.goal
                 parameters["startTime"] = request.startTime
@@ -124,8 +126,8 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
         perform(.fetchPercentPerWeek(date: date), completion: completion)
     }
     
-    public static func routineListByDay(day: Day, completion: @escaping (Result<RoutineListResponseModel, MinningAPIError>) -> Void) {
-        perform(.fetchAllByDay(day: day), completion: completion)
+    public static func routineListByDay(date: String, completion: @escaping (Result<RoutineListResponseModel, MinningAPIError>) -> Void) {
+        perform(.fetchAllByDay(date: date), completion: completion)
     }
     
     public static func modifyRoutineOrderByDay(day: Day,

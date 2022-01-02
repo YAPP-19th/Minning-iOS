@@ -104,14 +104,31 @@ final class GroupTitleContainerView: UIView {
         $0.image = UIImage(sharedNamed: "medal_gold")
         return $0
     }(UIImageView())
+    
+    private let viewType: GroupViewType
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewType: GroupViewType) {
+        self.viewType = viewType
+        super.init(frame: .zero)
         setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateOpenedView(title: String, rate: Int?, participant: Int?) {
+        titleLabel.text = title + " 그룹"
+        if let rate = rate {
+            percentLabel.text = "평균 달성률 \(rate)%"
+        } else {
+            percentLabelContainer.isHidden = true
+        }
+        if let participant = participant {
+            participateLabel.text = "\(participant)명 참여중"
+        } else {
+            participateLabel.isHidden = true
+        }
     }
     
     private func setupView() {
@@ -204,6 +221,15 @@ final class GroupTitleContainerView: UIView {
             make.height.equalTo(17)
             make.centerY.equalTo(myPercentValueLabel)
             make.trailing.equalTo(myPercentValueLabel.snp.leading).offset(-8)
+        }
+        
+        switch viewType {
+        case .openedGroup:
+            bottomContentView.isHidden = true
+        case .myGroup:
+            percentLabelContainer.isHidden = true
+        case .closedGroup:
+            medalImageView.isHidden = true
         }
     }
     

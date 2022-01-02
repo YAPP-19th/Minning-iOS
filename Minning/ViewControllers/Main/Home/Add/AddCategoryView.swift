@@ -124,27 +124,5 @@ final class AddCategoryView: UIView {
             make.top.equalTo(categoryIconImageView.snp.bottom).offset(6)
             make.centerX.equalToSuperview()
         }
-        
-        categorySelectedView.addSubview(categorySelectedImageView)
-        
-        addSubview(categorySelectedView)
-        
-        categorySelectedView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        categorySelectedImageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.height.equalTo(14.19)
-            make.width.equalTo(14.3)
-        }
-        
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(isButtonSelected(_:))))
-    }
-    
-    @objc
-    private func isButtonSelected(_ sender: Any) {
-        isSelected.toggle()
-        categorySelectedView.isHidden = !isSelected
     }
 }

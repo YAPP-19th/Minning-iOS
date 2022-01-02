@@ -740,14 +740,12 @@
 			path = NewGroup;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		95B7D487276DC7810062DCA4 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
 				95B7D48B276DC79D0062DCA4 /* partyLottie.json */,
 			);
 			path = Lottie;
-=======
 		95A311A4277C304A0016B08C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -755,7 +753,6 @@
 				95A311AB277C30BB0016B08C /* GroupCoreDataManager.swift */,
 			);
 			path = CoreData;
->>>>>>> b47087f53c527063fe5387e1f420e04f68be459a
 			sourceTree = "<group>";
 		};
 		A8CEA31FF1A9DB2BC92C9FE2 /* Pods */ = {
@@ -2125,7 +2122,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.denny.Minning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				PROVISIONING_PROFILE_SPECIFIER = "Minning iOS Provisioning Profile";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_VERSION = 5.0;

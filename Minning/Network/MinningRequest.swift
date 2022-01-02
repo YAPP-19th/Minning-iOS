@@ -110,7 +110,7 @@ extension MinningAPIRequestable {
         let multipartFormData: MultipartFormData = MultipartFormData()
         if let parameters = request.parameters {
             parameters.forEach { parameter in
-                if let data = parameter.value as? Data {
+                if let data = ("\(parameter.value)".data(using: .utf8)) {
                     multipartFormData.append(data, withName: parameter.key)
                 }
             }
