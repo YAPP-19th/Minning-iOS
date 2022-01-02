@@ -150,6 +150,11 @@ final class RoutineCell: UITableViewCell {
     }
 
     private func setViewAsDisable() {
+        titleLabel.isHidden = false
+        titleCompleteLabel.isHidden = true
+        descriptionLabel.isHidden = false
+        descriptionCompleteLabel.isHidden = true
+        completeLabel.isHidden = true
         lockImageView.isHidden = false
         categoryBarView.backgroundColor = .grayB5B8BE
         titleLabel.textColor = .grayB5B8BE
