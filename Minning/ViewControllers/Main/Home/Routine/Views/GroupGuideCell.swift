@@ -44,6 +44,18 @@ final class GroupGuideCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(missionCount: Int, successedMissionCount: Int) {
+        countLabel.text = "\(successedMissionCount)/\(missionCount)"
+        
+        let targetString = "\(successedMissionCount)개"
+        let fullText = "\(targetString)의 그룹 인증 사진을 찍었어요!"
+        let range = (fullText as NSString).range(of: targetString)
+        let valueAttrString = NSMutableAttributedString(string: fullText)
+        valueAttrString.addAttributes([.font: UIFont.font16PBold,
+                                       .foregroundColor: UIColor.minningBlue100], range: range)
+        titleLabel.attributedText = valueAttrString
+    }
+    
     private func setupViewLayout() {
         selectionStyle = .none
         backgroundColor = .clear

@@ -46,6 +46,7 @@ final class HomeViewController: BaseViewController {
         viewModel.getWeeklyRate()
         viewModel.getAllRoutinesByDay()
         viewModel.getAllRetrospectByDay()
+        viewModel.getMissionInfo()
     }
     
     override func setupViewLayout() {
@@ -103,6 +104,11 @@ final class HomeViewController: BaseViewController {
         viewModel.retrospects.bind { [weak self] retrospects in
             guard let self = self else { return }
             self.routineView.updateViewWithRetrospects(retrospects: retrospects)
+        }
+        
+        viewModel.missions.bind { [weak self] missions in
+            guard let self = self else { return }
+            self.routineView.updateViewWithMissions(missions: missions)
         }
     }
 }

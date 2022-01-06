@@ -23,6 +23,7 @@ final class HomeViewModel {
     var routines: DataBinding<[RoutineModel]> = DataBinding([])
     var retrospects: DataBinding<[RetrospectModel]> = DataBinding([])
     var checkTodaySaying: DataBinding<Bool> = DataBinding(false)
+    var missions: DataBinding<[MissionModel]> = DataBinding([])
     
     private var selectedDay: Day {
         Day.allCases[selectedDate.value.get(.weekday) - 1]
@@ -97,6 +98,17 @@ final class HomeViewModel {
                 self.getWeeklyRate()
                 self.getAllRoutinesByDay()
                 self.getAllRetrospectByDay()
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func getMissionInfo() {
+        MissionAPIRequest.getMissionList { result in
+            switch result {
+            case .success(let response):
+                self.missions.accept(response.data)
             case .failure(let error):
                 ErrorLog(error.localizedDescription)
             }
