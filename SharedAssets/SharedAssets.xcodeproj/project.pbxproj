@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95B7D486276DC5BF0062DCA4 /* partyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D485276DC5BF0062DCA4 /* partyLottie.json */; };
 		B0180F5026DCCBA0008C6F3C /* SharedAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = B0180F4E26DCCBA0008C6F3C /* SharedAssets.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0180F9726DCCDC5008C6F3C /* CommonSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F9626DCCDC5008C6F3C /* CommonSystem.framework */; };
 		B0180F9826DCCDC5008C6F3C /* CommonSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F9626DCCDC5008C6F3C /* CommonSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		53324054F9C6EC8B02DE584F /* libPods-SharedAssets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SharedAssets.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95B7D485276DC5BF0062DCA4 /* partyLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = partyLottie.json; path = ../../../../Downloads/partyLottie.json; sourceTree = "<group>"; };
 		B0180F4B26DCCBA0008C6F3C /* SharedAssets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SharedAssets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0180F4E26DCCBA0008C6F3C /* SharedAssets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedAssets.h; sourceTree = "<group>"; };
 		B0180F4F26DCCBA0008C6F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		B0180F4D26DCCBA0008C6F3C /* SharedAssets */ = {
 			isa = PBXGroup;
 			children = (
+				95B7D485276DC5BF0062DCA4 /* partyLottie.json */,
 				B0A1309726DE0AE700BB1E28 /* Colors */,
 				B0A1309626DE0AE200BB1E28 /* Images */,
 				B0180FA226DCCF50008C6F3C /* Strings */,
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0A1309B26DE0AFB00BB1E28 /* ImageSet.xcassets in Resources */,
+				95B7D486276DC5BF0062DCA4 /* partyLottie.json in Resources */,
 				B0A1309926DE0AF200BB1E28 /* ColorSet.xcassets in Resources */,
 				B0180FAC26DCCFCF008C6F3C /* Localizable.strings in Resources */,
 			);
