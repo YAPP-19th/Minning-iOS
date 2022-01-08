@@ -75,6 +75,16 @@ final class ReviewViewController: BaseViewController {
         imagePicker.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func bindViewModel() {
         viewModel.retrospect.bindAndFire { [weak self] retrospect in
             guard let `self` = self else { return }
@@ -108,7 +118,7 @@ final class ReviewViewController: BaseViewController {
         let navigationItem = UINavigationItem()
         textBarButton.textFont = .font16PBold
         
-        navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "close"), style: .plain, target: self, action: #selector(onClickCloseButton(_:))))
+        navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickCloseButton(_:))))
         navigationItem.setRightPlainBarButtonItem(textBarButton, animated: false)
         navigationBar.setItems([navigationItem], animated: false)
     }
@@ -171,7 +181,7 @@ final class ReviewViewController: BaseViewController {
     
     @objc
     private func onClickCloseButton(_ sender: Any?) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc
@@ -179,11 +189,11 @@ final class ReviewViewController: BaseViewController {
         if viewModel.enableEdit.value == true {
             if viewModel.isEdited == true {
                 viewModel.modifyRetrospect(content: feedbackTextView.text, image: selectedPhotoImageView.image) {
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
             } else {
                 viewModel.postRetrospect(content: self.feedbackTextView.text, image: self.selectedPhotoImageView.image) {
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         } else {

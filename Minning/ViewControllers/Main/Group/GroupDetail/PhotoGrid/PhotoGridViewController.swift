@@ -98,7 +98,7 @@ final class PhotoGridViewController: BaseViewController {
         
         let navigationItem = UINavigationItem()
         
-        navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "close"), style: .plain, target: self, action: #selector(onClickCloseButton(_:))))
+        navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickCloseButton(_:))))
         navigationItem.setRightPlainBarButtonItems([rightBarButton])
         navigationBar.setItems([navigationItem], animated: false)
         navigationBar.titleContent = "그룹"

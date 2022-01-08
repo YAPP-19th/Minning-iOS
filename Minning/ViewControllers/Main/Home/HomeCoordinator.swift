@@ -66,7 +66,7 @@ extension HomeCoordinator: HomeRoute {
     func goToReview(retrospect: RetrospectModel) {
         let reviewVC = dependencies.createReview(self, retrospect: retrospect)
         reviewVC.modalPresentationStyle = .fullScreen
-        navigationController.topViewController?.present(reviewVC, animated: true, completion: nil)
+        navigationController.pushViewController(reviewVC, animated: true)
     }
     
     func goToEditOrder(day: Day, routineList: [RoutineModel]) {
