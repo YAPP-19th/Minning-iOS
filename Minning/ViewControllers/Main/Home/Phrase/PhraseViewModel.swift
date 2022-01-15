@@ -43,7 +43,7 @@ final class PhraseViewModel {
         })
     }
     
-    func checkPhraseValidation() {
+    func checkPhraseValidation(completion: @escaping () -> Void) {
         SayingAPIRequest.compareSaying(content: userInputContent.value,
                                        sayingId: sayingId ?? 0,
                                        completion: { [weak self] result in
@@ -52,6 +52,7 @@ final class PhraseViewModel {
             case .success(let response):
                 DebugLog("Result: \(response.data.result)")
                 self.isContentValid.accept(response.data.result)
+                completion()
             case .failure(let error):
                 ErrorLog(error.defaultError.localizedDescription)
             }
