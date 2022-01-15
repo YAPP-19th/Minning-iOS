@@ -45,7 +45,9 @@ final class PasswordViewModel {
     private let coordinator: AuthCoordinator
     
     public let emailValue: String
+    public var hintMessage: DataBinding<String?> = DataBinding(nil)
     public var passwordValue: DataBinding<String?> = DataBinding(nil)
+    public var isPass: DataBinding<Bool> = DataBinding(false)
     public var socialType: DataBinding<SocialType> = DataBinding(.email)
     public var passwordViewType: DataBinding<PasswordViewType> = DataBinding(.login)
     
@@ -90,9 +92,13 @@ final class PasswordViewModel {
                     }
                 case .failure(let error):
                     ErrorLog(error.localizedDescription)
+                    self.isPass.accept(false)
+                    self.hintMessage.accept("잘못된 비밀번호입니다.")
                 }
             })
         } else {
+            isPass.accept(false)
+            hintMessage.accept("비밀번호를 입력해주세요.")
             ErrorLog("Password를 입력해주세요.")
         }
     }

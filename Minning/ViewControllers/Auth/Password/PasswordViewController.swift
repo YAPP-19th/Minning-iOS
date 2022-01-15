@@ -73,7 +73,6 @@ final class PasswordViewController: BaseViewController {
     @objc
     private func onClickLoginButon(_ sender: PlainButton) {
         if viewModel.passwordViewType.value == .login {
-//            viewModel.goToMain()
             viewModel.processLogin()
         } else {
             viewModel.goToNickname()
@@ -83,7 +82,24 @@ final class PasswordViewController: BaseViewController {
     @objc
     private func textFieldDidChange(_ sender: PlainTextField) {
         loginButton.isActive = sender.text?.count ?? 0 > 0
-        viewModel.passwordValue.accept(sender.text)
+        if viewModel.passwordViewType.value == .signUp {
+            checkPasswordCondition(password: sender.text ?? "")
+        } else {
+            viewModel.passwordValue.accept(sender.text)
+        }
+    }
+    
+    private func checkPasswordCondition(password: String) {
+        let pattern = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{8,50}"
+        let regex = try? NSRegularExpression(pattern: pattern)
+        if let _ = regex?.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.count)) {
+            // 있는경우
+            viewModel.hintMessage.accept("올바른 비밀번호입니다")
+            viewModel.isPass.accept(true)
+        } else {
+            viewModel.hintMessage.accept("영문, 숫자, 특수문자 포함 8자리 이상")
+            viewModel.isPass.accept(false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +118,7 @@ final class PasswordViewController: BaseViewController {
         }
         
         loginButton.buttonContent = viewModel.passwordViewType.value.buttonContent
+        loginButton.isEnabled = viewModel.isPass.value
         loginTextField.placeholder = viewModel.passwordViewType.value.textFieldHint
         findPasswordButton.isHidden = !(viewModel.passwordViewType.value == .login)
     }
@@ -129,6 +146,16 @@ final class PasswordViewController: BaseViewController {
     }
     
     override func bindViewModel() {
+        viewModel.hintMessage.bind { [weak self] message in
+            guard let `self` = self else { return }
+            self.hintLabel.text = message
+        }
+        
+        viewModel.isPass.bindAndFire { [weak self] isPass in
+            guard let `self` = self else { return }
+            self.hintLabel.textColor = isPass ? .primaryBlue030 : .primaryRed
+        }
+        
         viewModel.passwordViewType.bind { [weak self] _ in
             guard let `self` = self else { return }
             self.updateViewContent()

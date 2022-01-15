@@ -28,7 +28,7 @@ final class NicknameViewController: BaseViewController {
     
     private let hintLabel: UILabel = {
         $0.font = .font16PMedium
-        $0.text = "샘플 힌트 텍스트입니다"
+        $0.text = "6자리 이하로 작성해주세요"
         $0.textColor = .primaryRed
         return $0
     }(UILabel())
@@ -84,7 +84,11 @@ final class NicknameViewController: BaseViewController {
     }
     
     override func bindViewModel() {
-        
+        viewModel.nickname.bind { [weak self] nameValue in
+            guard let `self` = self else { return }
+            self.hintLabel.textColor = nameValue.count > 5 ? .primaryBlue030 : .primaryRed
+            self.hintLabel.text = nameValue.count > 5 ? "사용 가능한 닉네임입니다" : "6자리 이하로 작성해주세요"
+        }
     }
     
     override func setupViewLayout() {

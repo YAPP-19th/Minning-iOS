@@ -60,6 +60,7 @@ public class PlainTextField: UITextField {
     
     private func setupView() {
         self.font = .font16PMedium
+        self.textColor = .primaryBlack
         self.rightView = clearButton
         self.rightViewMode = .always
         

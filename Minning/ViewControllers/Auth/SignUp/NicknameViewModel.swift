@@ -20,6 +20,9 @@ final class NicknameViewModel {
     
     public var nickname: DataBinding<String> = DataBinding("")
     
+    public var hintMessage: DataBinding<String?> = DataBinding(nil)
+    public var isPass: DataBinding<Bool> = DataBinding(false)
+    
     public init(coordinator: AuthCoordinator,
                 email: String?, password: String?,
                 isSocial: Bool, socialType: SocialType? = nil, token: String? = nil) {

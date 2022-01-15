@@ -35,7 +35,7 @@ final class LoginViewController: BaseViewController {
     
     private let hintLabel: UILabel = {
         $0.font = .font16PMedium
-        $0.text = "샘플 힌트 텍스트입니다"
+        $0.text = ""
         $0.textColor = .primaryRed
         return $0
     }(UILabel())
