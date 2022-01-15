@@ -69,7 +69,8 @@ class BottomSheetViewController: UIViewController {
     
     private func playAnimation() {
         animationView.frame = view.bounds
-        animationView.animation = Animation.named("partyLottie")
+        #warning("Lottie 파일 추가 후에 주석 해제!!")
+//        animationView.animation = Animation.named("partyLottie")
         animationView.contentMode = .scaleAspectFit
         animationView.animationSpeed = 1.3
         animationView.play()

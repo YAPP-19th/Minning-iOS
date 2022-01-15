@@ -54,8 +54,6 @@
 		95A311AA277C30560016B08C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95A311A8277C30560016B08C /* CoreDataModel.xcdatamodeld */; };
 		95A311AC277C30BB0016B08C /* GroupCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A311AB277C30BB0016B08C /* GroupCoreDataManager.swift */; };
 		95A8DDA6275741080087A343 /* ReportEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A8DDA5275741080087A343 /* ReportEmptyView.swift */; };
-		95B7D48C276DC79D0062DCA4 /* partyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D48B276DC79D0062DCA4 /* partyLottie.json */; };
-		95B7D48D276DC79D0062DCA4 /* partyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D48B276DC79D0062DCA4 /* partyLottie.json */; };
 		95B9289C276CD1E3002D31E7 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9289B276CD1E2002D31E7 /* BottomSheetViewController.swift */; };
 		9BAB7BE0CF8C280AD5B155B4 /* Pods_Minning_MinningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7377B4BF2A5062E206B5EC35 /* Pods_Minning_MinningUITests.framework */; };
 		B014273126DCBA9800DE11E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014273026DCBA9800DE11E0 /* MainCoordinator.swift */; };
@@ -418,7 +416,6 @@
 		95A311A9277C30560016B08C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		95A311AB277C30BB0016B08C /* GroupCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoreDataManager.swift; sourceTree = "<group>"; };
 		95A8DDA5275741080087A343 /* ReportEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEmptyView.swift; sourceTree = "<group>"; };
-		95B7D48B276DC79D0062DCA4 /* partyLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = partyLottie.json; path = ../../../../../Downloads/partyLottie.json; sourceTree = "<group>"; };
 		95B9289B276CD1E2002D31E7 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		975B90C40CC40E15C50781FD /* Pods-MinningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinningTests.debug.xcconfig"; path = "Target Support Files/Pods-MinningTests/Pods-MinningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A047CF140C0431A3FAD1B16 /* Pods-Minning-MinningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minning-MinningUITests.debug.xcconfig"; path = "Target Support Files/Pods-Minning-MinningUITests/Pods-Minning-MinningUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -740,12 +737,6 @@
 			path = NewGroup;
 			sourceTree = "<group>";
 		};
-		95B7D487276DC7810062DCA4 /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				95B7D48B276DC79D0062DCA4 /* partyLottie.json */,
-			);
-			path = Lottie;
 		95A311A4277C304A0016B08C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,7 +768,6 @@
 		B0180ECB26DCC0FA008C6F3C /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				95B7D487276DC7810062DCA4 /* Lottie */,
 				B0180ECC26DCC103008C6F3C /* AppConfiguration.swift */,
 				B0180EEB26DCC52A008C6F3C /* AppCoordinator.swift */,
 				B0180EEE26DCC551008C6F3C /* AppDIContainer.swift */,
@@ -1453,7 +1443,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0180EEA26DCC33C008C6F3C /* Key.plist in Resources */,
-				95B7D48D276DC79D0062DCA4 /* partyLottie.json in Resources */,
 				B0180EDD26DCC307008C6F3C /* LaunchScreen.storyboard in Resources */,
 				B0180EDE26DCC307008C6F3C /* Assets.xcassets in Resources */,
 			);
@@ -1464,7 +1453,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D16E0226DA57F400A8E52B /* LaunchScreen.storyboard in Resources */,
-				95B7D48C276DC79D0062DCA4 /* partyLottie.json in Resources */,
 				B0D16DFF26DA57F400A8E52B /* Assets.xcassets in Resources */,
 				B0180ED026DCC2F1008C6F3C /* Key.plist in Resources */,
 			);
