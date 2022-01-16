@@ -624,6 +624,7 @@
 		9504AADF279336C300FA7D7A /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
+				9562F9392793996700546EEA /* partyLottie.json */,
 			);
 			path = Lotties;
 			sourceTree = "<group>";
@@ -1237,7 +1238,6 @@
 		B0D16DF126DA57F200A8E52B /* Minning */ = {
 			isa = PBXGroup;
 			children = (
-				9562F9392793996700546EEA /* partyLottie.json */,
 				95A311A4277C304A0016B08C /* CoreData */,
 				B0ADFDCE27488250003019E5 /* Network */,
 				B091BA562736BDF6006F3E2A /* Minning.entitlements */,
