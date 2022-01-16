@@ -47,6 +47,7 @@
 		9546BFA4276A368C00991762 /* GroupCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BF85276A368C00991762 /* GroupCategoryCell.swift */; };
 		9546BFB6276A438B00991762 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BFB5276A438B00991762 /* NewGroupViewController.swift */; };
 		9546BFB8276A43A800991762 /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BFB7276A43A800991762 /* NewGroupViewModel.swift */; };
+		9562F93A2793996700546EEA /* partyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 9562F9392793996700546EEA /* partyLottie.json */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
 		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
 		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
@@ -409,6 +410,7 @@
 		9546BF85276A368C00991762 /* GroupCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCategoryCell.swift; sourceTree = "<group>"; };
 		9546BFB5276A438B00991762 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		9546BFB7276A43A800991762 /* NewGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModel.swift; sourceTree = "<group>"; };
+		9562F9392793996700546EEA /* partyLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = partyLottie.json; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
 		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
@@ -619,6 +621,13 @@
 			path = WeeklyPercentView;
 			sourceTree = "<group>";
 		};
+		9504AADF279336C300FA7D7A /* Lotties */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lotties;
+			sourceTree = "<group>";
+		};
 		9546BF5A276A368C00991762 /* GroupDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,6 +777,7 @@
 		B0180ECB26DCC0FA008C6F3C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				9504AADF279336C300FA7D7A /* Lotties */,
 				B0180ECC26DCC103008C6F3C /* AppConfiguration.swift */,
 				B0180EEB26DCC52A008C6F3C /* AppCoordinator.swift */,
 				B0180EEE26DCC551008C6F3C /* AppDIContainer.swift */,
@@ -1227,6 +1237,7 @@
 		B0D16DF126DA57F200A8E52B /* Minning */ = {
 			isa = PBXGroup;
 			children = (
+				9562F9392793996700546EEA /* partyLottie.json */,
 				95A311A4277C304A0016B08C /* CoreData */,
 				B0ADFDCE27488250003019E5 /* Network */,
 				B091BA562736BDF6006F3E2A /* Minning.entitlements */,
@@ -1453,6 +1464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D16E0226DA57F400A8E52B /* LaunchScreen.storyboard in Resources */,
+				9562F93A2793996700546EEA /* partyLottie.json in Resources */,
 				B0D16DFF26DA57F400A8E52B /* Assets.xcassets in Resources */,
 				B0180ED026DCC2F1008C6F3C /* Key.plist in Resources */,
 			);
