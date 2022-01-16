@@ -69,8 +69,7 @@ class BottomSheetViewController: UIViewController {
     
     private func playAnimation() {
         animationView.frame = view.bounds
-        #warning("Lottie 파일 추가 후에 주석 해제!!")
-//        animationView.animation = Animation.named("partyLottie")
+        animationView.animation = Animation.named("partyLottie")
         animationView.contentMode = .scaleAspectFit
         animationView.animationSpeed = 1.3
         animationView.play()
@@ -87,14 +86,15 @@ class BottomSheetViewController: UIViewController {
         dimmedView.addSubview(animationView)
                 
         dimmedView.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top)
+            make.top.equalTo(view.snp.top).offset(-1000)
             make.leading.equalTo(view.snp.leading)
             make.trailing.equalTo(view.snp.trailing)
             make.bottom.equalTo(view.snp.bottom)
         }
         
         animationView.snp.makeConstraints { make in
-            make.center.equalTo(dimmedView.snp.center)
+            make.centerY.equalTo(view.snp.centerY)
+            make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(view.snp.width)
             make.height.equalTo(view.frame.height/2)
         }
