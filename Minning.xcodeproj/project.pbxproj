@@ -48,6 +48,7 @@
 		9546BFB6276A438B00991762 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BFB5276A438B00991762 /* NewGroupViewController.swift */; };
 		9546BFB8276A43A800991762 /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546BFB7276A43A800991762 /* NewGroupViewModel.swift */; };
 		9562F93A2793996700546EEA /* partyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 9562F9392793996700546EEA /* partyLottie.json */; };
+		957FE949279D9A060000818B /* ReportArriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FE948279D9A060000818B /* ReportArriveViewController.swift */; };
 		9589B54C271C403B00943BA3 /* RecommendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54B271C403B00943BA3 /* RecommendViewCell.swift */; };
 		9589B550271C99E600943BA3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B54F271C99E600943BA3 /* AddCategoryView.swift */; };
 		9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589B551271CB70200943BA3 /* RecommendCell.swift */; };
@@ -411,6 +412,7 @@
 		9546BFB5276A438B00991762 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		9546BFB7276A43A800991762 /* NewGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModel.swift; sourceTree = "<group>"; };
 		9562F9392793996700546EEA /* partyLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = partyLottie.json; sourceTree = "<group>"; };
+		957FE948279D9A060000818B /* ReportArriveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportArriveViewController.swift; sourceTree = "<group>"; };
 		9589B54B271C403B00943BA3 /* RecommendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewCell.swift; sourceTree = "<group>"; };
 		9589B54F271C99E600943BA3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		9589B551271CB70200943BA3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
@@ -975,6 +977,7 @@
 				B0C281EE271FAF1D00F032AD /* RoutineCategoryView.swift */,
 				95A8DDA5275741080087A343 /* ReportEmptyView.swift */,
 				8316D6A62765D08A00041DAB /* RoutinePercentDetailView.swift */,
+				957FE948279D9A060000818B /* ReportArriveViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1754,6 +1757,7 @@
 				B09041AD272E26E300AE8623 /* LargeContentsViewController.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
 				B08E74762705BAE200854190 /* LoginViewController.swift in Sources */,
+				957FE949279D9A060000818B /* ReportArriveViewController.swift in Sources */,
 				9589B552271CB70200943BA3 /* RecommendCell.swift in Sources */,
 				9546BF95276A368C00991762 /* PreviewViewController.swift in Sources */,
 				B09041BE272E2A8200AE8623 /* VersionViewController.swift in Sources */,
