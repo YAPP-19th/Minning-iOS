@@ -72,6 +72,8 @@ final class ReportViewController: BaseViewController {
         return $0
     }(UILabel())
     
+    private let reportArriveVC = ReportArriveViewController()
+    
     // MARK: Report Content View
     private let myRoutineView: MyRoutineView = MyRoutineView()
     private let monthGraphView: MonthGraphView = MonthGraphView()
@@ -107,6 +109,9 @@ final class ReportViewController: BaseViewController {
     }
     
     override func setupViewLayout() {
+        WarningLog("매주 수요일마다 reportArriveVC present 하는 조건 추가하기")
+        present(reportArriveVC, animated: true, completion: nil)
+        
         view.backgroundColor = .primaryWhite
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickBackground(_:))))

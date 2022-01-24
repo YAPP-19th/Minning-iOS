@@ -45,9 +45,9 @@ struct MinningAPIConstant {
     }
     
     #if DEBUG
-    static let mainURL = URL(string: "http://34.64.231.177:8000/api/v1")!
+    static let mainURL = URL(string: "http://34.64.188.164:8000/api/v1")!
     #else
-    static let mainURL = URL(string: "http://34.64.231.177:8000/api/v1")!
+    static let mainURL = URL(string: "http://34.64.188.164:8000/api/v1")!
     #endif
 
 }
