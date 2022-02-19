@@ -70,7 +70,9 @@ final class PhraseViewController: BaseViewController {
     
     @objc
     private func onClickSaveButton(_ sender: TopTextButton) {
-        viewModel.checkPhraseValidation()
+        viewModel.checkPhraseValidation {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {

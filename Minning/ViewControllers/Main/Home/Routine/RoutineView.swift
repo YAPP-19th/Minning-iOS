@@ -30,6 +30,8 @@ final class RoutineView: UIView {
     var routines = [RoutineModel]()
     var retrospects = [RetrospectModel]()
     var checkSaying: Bool = false
+    var missionCount: Int = 0
+    var successedMissionCount: Int = 0
     
     lazy var mainTableView: UITableView = {
         $0.separatorStyle = .none
@@ -70,6 +72,12 @@ final class RoutineView: UIView {
     func updateViewWithRetrospects(retrospects: [RetrospectModel]) {
         self.retrospects = retrospects
         mainTableView.reloadData()
+    }
+    
+    func updateViewWithMissions(missions: [MissionModel]) {
+        missionCount = missions.count
+        successedMissionCount = missions.filter { $0.todayCertificate == true }.count
+        if checkSaying { mainTableView.reloadData() }
     }
     
     private func setupViewLayout() {
@@ -131,6 +139,7 @@ extension RoutineView: UITableViewDataSource {
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: GroupGuideCell.identifier, for: indexPath) as? GroupGuideCell else {
                 return .init()
             }
+            cell.configure(missionCount: missionCount, successedMissionCount: successedMissionCount)
             return cell
         case .routine:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: RoutineCell.identifier, for: indexPath) as? RoutineCell else {

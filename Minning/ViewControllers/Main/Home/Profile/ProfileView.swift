@@ -18,6 +18,12 @@ protocol ProfileViewDelegate: AnyObject {
     func didSelectNoti()
     
     func didSelectProfile()
+    
+    func didSelectLeftArrow()
+    
+    func didSelectRightArrow()
+    
+    func didSelectWeeklyView(date: Date)
 }
 
 final class ProfileView: UIView {
@@ -39,6 +45,7 @@ final class ProfileView: UIView {
             removeAllWeeklyData()
             weeklyData.forEach { data in
                 let weeklyView = WeeklyView()
+                weeklyView.delegate = self
                 weeklyView.weeklyData = .init(date: data.date.convertToSmallDate(), progress: CGFloat(data.rate) * 0.01)
                 weeklyViewList.append(weeklyView)
                 weeklyDataStackView.addArrangedSubview(weeklyView)
@@ -93,11 +100,13 @@ final class ProfileView: UIView {
     
     private let leftArrowButton: ImageButton = {
         $0.setImage(UIImage(sharedNamed: "arrow_left"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickLeftArrowButton(_:)), for: .touchUpInside)
         return $0
     }(ImageButton())
     
     private let rightArrowButton: ImageButton = {
         $0.setImage(UIImage(sharedNamed: "arrow_right"), for: .normal)
+        $0.addTarget(self, action: #selector(onClickRightArrowButton(_:)), for: .touchUpInside)
         return $0
     }(ImageButton())
     
@@ -116,6 +125,16 @@ final class ProfileView: UIView {
         default:
             break
         }
+    }
+    
+    @objc
+    private func onClickLeftArrowButton(_ sender: Any) {
+        delegate?.didSelectLeftArrow()
+    }
+    
+    @objc
+    private func onClickRightArrowButton(_ sender: Any) {
+        delegate?.didSelectRightArrow()
     }
     
     override init(frame: CGRect) {
@@ -189,5 +208,11 @@ final class ProfileView: UIView {
             make.trailing.equalTo(rightArrowButton.snp.leading).offset(-15)
             make.bottom.equalToSuperview().offset(-27)
         }
+    }
+}
+
+extension ProfileView: WeeklyViewDelegate {
+    func weeklyViewTapped(date: Date) {
+        delegate?.didSelectWeeklyView(date: date)
     }
 }

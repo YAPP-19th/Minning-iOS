@@ -23,6 +23,7 @@ final class HomeViewModel {
     var routines: DataBinding<[RoutineModel]> = DataBinding([])
     var retrospects: DataBinding<[RetrospectModel]> = DataBinding([])
     var checkTodaySaying: DataBinding<Bool> = DataBinding(false)
+    var missions: DataBinding<[MissionModel]> = DataBinding([])
     
     private var selectedDay: Day {
         Day.allCases[selectedDate.value.get(.weekday) - 1]
@@ -44,8 +45,8 @@ final class HomeViewModel {
     }
     
     public func getWeeklyRate() {
-        let index = Calendar.current.component(.weekday, from: Date())
-        let startDay = Date(timeIntervalSinceNow: -(Double(86400 * ((index + 5) % 7))))
+        let index = Calendar.current.component(.weekday, from: selectedDate.value)
+        let startDay = Date(timeInterval: -(Double(86400 * ((index + 5) % 7))), since: selectedDate.value)
         
         RoutineAPIRequest.getRoutinePercentPerWeek(date: startDay.convertToSmallString()) { result in
             switch result {
@@ -103,6 +104,17 @@ final class HomeViewModel {
         }
     }
     
+    public func getMissionInfo() {
+        MissionAPIRequest.getMissionList { result in
+            switch result {
+            case .success(let response):
+                self.missions.accept(response.data)
+            case .failure(let error):
+                ErrorLog(error.localizedDescription)
+            }
+        }
+    }
+    
     public func goToMyPage() {
         coordinator.goToMyPage()
     }
@@ -129,5 +141,14 @@ final class HomeViewModel {
     
     public func goToMyGroup() {
         coordinator.goToMyGroup()
+    }
+    
+    public func updateSelectedWeek(isForward: Bool) {
+        let value = selectedDate.value
+        let updateValue = Date(timeInterval: isForward ? 86400 * 7 : 86400 * -7, since: value)
+        selectedDate.accept(updateValue)
+        getWeeklyRate()
+        getAllRoutinesByDay()
+        getAllRetrospectByDay()
     }
 }

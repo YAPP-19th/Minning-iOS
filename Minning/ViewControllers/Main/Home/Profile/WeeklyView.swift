@@ -46,6 +46,10 @@ public enum WeeklyText: Int {
     }
 }
 
+protocol WeeklyViewDelegate: AnyObject {
+    func weeklyViewTapped(date: Date)
+}
+
 final class WeeklyView: UIView {
     private let dateLabel: UILabel = {
         $0.font = .font12P
@@ -83,16 +87,28 @@ final class WeeklyView: UIView {
         }
     }
     
+    weak var delegate: WeeklyViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewLayout()
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickWeeklyView(_:))))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc
+    private func onClickWeeklyView(_ sender: Any) {
+        if let data = weeklyData {
+            delegate?.weeklyViewTapped(date: data.date)
+        }
+    }
+    
     private func setupViewLayout() {
+        isUserInteractionEnabled = true
+        
         [dateLabel, progressView].forEach {
             addSubview($0)
         }

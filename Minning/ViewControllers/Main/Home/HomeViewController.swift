@@ -46,6 +46,7 @@ final class HomeViewController: BaseViewController {
         viewModel.getWeeklyRate()
         viewModel.getAllRoutinesByDay()
         viewModel.getAllRetrospectByDay()
+        viewModel.getMissionInfo()
     }
     
     override func setupViewLayout() {
@@ -104,6 +105,11 @@ final class HomeViewController: BaseViewController {
             guard let self = self else { return }
             self.routineView.updateViewWithRetrospects(retrospects: retrospects)
         }
+        
+        viewModel.missions.bind { [weak self] missions in
+            guard let self = self else { return }
+            self.routineView.updateViewWithMissions(missions: missions)
+        }
     }
 }
 
@@ -118,6 +124,20 @@ extension HomeViewController: ProfileViewDelegate {
     
     func didSelectProfile() {
         viewModel.goToMyPage()
+    }
+    
+    func didSelectLeftArrow() {
+        viewModel.updateSelectedWeek(isForward: false)
+    }
+    
+    func didSelectRightArrow() {
+        viewModel.updateSelectedWeek(isForward: true)
+    }
+    
+    func didSelectWeeklyView(date: Date) {
+        viewModel.selectedDate.accept(date)
+        viewModel.getAllRoutinesByDay()
+        viewModel.getAllRetrospectByDay()
     }
 }
 

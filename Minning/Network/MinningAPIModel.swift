@@ -501,25 +501,31 @@ public struct MissionListResponseModel: Codable {
 public struct MissionModel: Codable {
     enum CodingKeys: String, CodingKey {
         case achievementRate
+        case category
         case image
         case period
         case title
+        case todayCertificate
         case weeks
     }
     
-    public let achievementRate: Int
-    public let imageUrl: String
-    public let period: Int
+    public let achievementRate: Int32?
+    public let category: Int32
+    public let imageUrl: String?
+    public let period: Int32
     public let title: String
+    public let todayCertificate: Bool
     public let weeks: [Day]
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        achievementRate = try values.decode(Int.self, forKey: .achievementRate)
-        imageUrl = try values.decode(String.self, forKey: .image)
-        period = try values.decode(Int.self, forKey: .period)
+        achievementRate = try values.decode(Int32?.self, forKey: .achievementRate)
+        category = try values.decode(Int32.self, forKey: .category)
+        imageUrl = try values.decode(String?.self, forKey: .image)
+        period = try values.decode(Int32.self, forKey: .period)
         title = try values.decode(String.self, forKey: .title)
+        todayCertificate = try values.decode(Bool.self, forKey: .todayCertificate)
         
         let weeksValue = try values.decode([String].self, forKey: .weeks)
         weeks = weeksValue.map { Day(rawValue: $0)! }
