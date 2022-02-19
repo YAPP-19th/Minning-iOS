@@ -9,24 +9,58 @@
 import Foundation
 
 public extension Date {
+    func dateTypeToString() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return formatter.string(from: self)
+    }
+    
+    func dateTypeToKoreanString() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "MM월 dd일"
+        
+        return formatter.string(from: self)
+    }
+    
+    func dateTypeToKoreanDate() -> Date? {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return formatter.date(from: self.dateTypeToString())
+    }
+    
+    func startOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+    }
+    
+    func endOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+    }
+    
     static func createDate(year: Int, month: Int, day: Int,
                            hour: Int = 0, minute: Int = 0, seconds: Int = 0) -> Date? {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter.date(from: "\(year)-\(month)-\(day) \(hour):\(minute):\(seconds)")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.date(from: "\(year)-\(month)-\(day)")
     }
     
     func weeklySEDateList() -> [(Date, Date)]? {
         var result: [(Date, Date)] = []
         var startOfWeekDay: Int = 0
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.locale = Locale(identifier: "ko")
-
+        let calendar = Calendar.current
+        
         let components = calendar.dateComponents([.year, .month], from: self)
 
-        if let startOfMonth = calendar.date(from: components),
+        if let startOfMonth = calendar.date(from: components)?.dateTypeToKoreanDate(),
            let nextMonth = calendar.date(byAdding: .month, value: +1, to: startOfMonth),
-           let endOfMonth = calendar.date(byAdding: .day, value: -1, to: nextMonth) {
+           let endOfMonth = calendar.date(byAdding: .day, value: -1, to: nextMonth)?.dateTypeToKoreanDate() {
             let comp1 = calendar.dateComponents([.day, .weekday], from: startOfMonth)
             let comp2 = calendar.dateComponents([.day, .weekday], from: endOfMonth)
             
@@ -37,8 +71,7 @@ public extension Date {
             var tempList: [Date] = []
             
             for day in comp1.day!...comp2.day! {
-                let dayDate = Date.createDate(year: yearValue ?? 0, month: monthValue ?? 0, day: day) ?? Date()
-                
+                let dayDate = Date.createDate(year: yearValue ?? 0, month: monthValue ?? 0, day: day)?.dateTypeToKoreanDate() ?? Date()
                 let dayWeekDay = dayDate.get(.weekday)
                 if dayWeekDay == startOfWeekDay || day == comp2.day ?? 0 {
                     if day == comp2.day ?? 0 {

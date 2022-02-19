@@ -16,6 +16,7 @@
 		B0180F9226DCCDBE008C6F3C /* SharedAssets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; };
 		B0180F9326DCCDBE008C6F3C /* SharedAssets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B01992DC2760B36500FF3E96 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01992DB2760B36500FF3E96 /* UIView+Extensions.swift */; };
+		B025E6BD27C136B5006814D3 /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025E6BC27C136B5006814D3 /* PickerButton.swift */; };
 		B02803D72706FFB3009D642A /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803D62706FFB3009D642A /* CircleProgressView.swift */; };
 		B028040227095BF3009D642A /* TopTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028040127095BF3009D642A /* TopTextButton.swift */; };
 		B02804042709621F009D642A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02804032709621F009D642A /* UILabel+Extensions.swift */; };
@@ -64,6 +65,7 @@
 		B0180F8E26DCCDBE008C6F3C /* CommonSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0180F8F26DCCDBE008C6F3C /* SharedAssets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedAssets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B01992DB2760B36500FF3E96 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		B025E6BC27C136B5006814D3 /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		B02803D62706FFB3009D642A /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		B028040127095BF3009D642A /* TopTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTextButton.swift; sourceTree = "<group>"; };
 		B02804032709621F009D642A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				B028046127098803009D642A /* ComboButton.swift */,
 				B0ECF874270992630088C96E /* NonScrollTableView.swift */,
 				B034C6C52736853400CA4512 /* PlainSmallButton.swift */,
+				B025E6BC27C136B5006814D3 /* PickerButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				B08E74AE2705CBCB00854190 /* PlainUINavigationBar.swift in Sources */,
 				B01992DC2760B36500FF3E96 /* UIView+Extensions.swift in Sources */,
 				B028040227095BF3009D642A /* TopTextButton.swift in Sources */,
+				B025E6BD27C136B5006814D3 /* PickerButton.swift in Sources */,
 				B028042127096C24009D642A /* MUIBarButtonItem.swift in Sources */,
 				B0ECF875270992630088C96E /* NonScrollTableView.swift in Sources */,
 				B04A4BFC271C1FF5004CE8CD /* HalfPieDataSet.swift in Sources */,

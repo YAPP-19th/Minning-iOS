@@ -12,7 +12,7 @@ import Foundation
 import SharedAssets
 import SnapKit
 
-final class ReportViewController: BaseViewController {
+final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     private let weekTabButton: UIButton = {
         $0.setTitle("주", for: .normal)
         $0.titleLabel?.font = .font20PExBold
@@ -27,7 +27,7 @@ final class ReportViewController: BaseViewController {
         return $0
     }(UIButton())
     
-    private let dataComboButton: ComboButton = {
+    private lazy var dataComboButton: ComboButton = {
         $0.comboContent = "9월 0일 - 9월 00일"
         $0.addTarget(self, action: #selector(onClickComboButton(_:)), for: .touchUpInside)
         return $0
@@ -72,6 +72,15 @@ final class ReportViewController: BaseViewController {
         return $0
     }(UILabel())
     
+    private lazy var weekPickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 220)
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        return pickerView
+    }()
+    
+    private let weekChooserAlert = UIAlertController(title: "주 선택", message: nil, preferredStyle: .actionSheet)
     private let reportArriveVC = ReportArriveViewController()
     
     // MARK: Report Content View
@@ -103,7 +112,16 @@ final class ReportViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewModel.datePickerList = Date().weeklySEDateList() ?? []
+        if let weeklyDateTuple = Date().weeklySEDateList()?.first {
+            dataComboButton.comboContent = "\(weeklyDateTuple.0.dateTypeToKoreanString()) - \(weeklyDateTuple.1.dateTypeToKoreanString())"
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -120,6 +138,21 @@ final class ReportViewController: BaseViewController {
          dataComboButton, percentGuideButton, scrollView, bubbleTriagleView, bubbleView].forEach {
             view.addSubview($0)
         }
+        
+        weekChooserAlert.view.addSubview(weekPickerView)
+        weekChooserAlert.view.snp.makeConstraints { make in
+            make.height.equalTo(300)
+        }
+        
+        weekPickerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-30)
+            make.top.equalToSuperview()
+        }
+        
+        weekChooserAlert.addAction(UIAlertAction(title: "선택 완료", style: .default, handler: { _ in
+            self.dataComboButton.comboContent = "\(self.viewModel.selectedWeek?.0.dateTypeToKoreanString() ?? "") - \(self.viewModel.selectedWeek?.1.dateTypeToKoreanString() ?? "")"
+        }))
         
         weekTabButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(19)
@@ -211,6 +244,7 @@ final class ReportViewController: BaseViewController {
     @objc
     private func onClickComboButton(_ sender: UIButton) {
         DebugLog("Did Click Combo Button")
+        present(weekChooserAlert, animated: true, completion: nil)
     }
     
     @objc
@@ -230,8 +264,28 @@ final class ReportViewController: BaseViewController {
     private func updateBubbleLabel() {
         bubbleLabel.text = viewModel.tabType.value == .week ? "매주 수요일마다 주 리포트가 갱신됩니다" : "매월 첫째주에 월 리포트가 갱신됩니다"
     }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow: Int) {
+        DebugLog("Selected Week : \(viewModel.datePickerList[titleForRow].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[titleForRow].1.dateTypeToKoreanString())")
+    }
 }
 
-extension ReportViewController: UIScrollViewDelegate {
+extension ReportViewController: UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.datePickerList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(viewModel.datePickerList[row].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[row].1.dateTypeToKoreanString())"
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        DebugLog("Selected Week : \(viewModel.datePickerList[row].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[row].1.dateTypeToKoreanString())")
+        viewModel.selectedWeek = viewModel.datePickerList[row]
+    }
 }

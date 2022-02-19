@@ -24,10 +24,11 @@ final class SplashViewModel {
             if !TokenManager.shared.checkAccessTokenExpired(), AppConfiguration.shared.isAutoLogin {
                 DebugLog("AccessToken Not Expired. Auto Login ==> Go to Main.")
                 goToMain()
+            } else {
+                let deleteResult = TokenManager.shared.deleteAllTokenData()
+                DebugLog("Go to Login ==> Token Delete Result: \(deleteResult)")
+                goToLogin()
             }
-            let deleteResult = TokenManager.shared.deleteAllTokenData()
-            DebugLog("Go to Login ==> Token Delete Result: \(deleteResult)")
-            goToLogin()
         }
     }
     

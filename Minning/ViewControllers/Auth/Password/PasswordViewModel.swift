@@ -88,6 +88,7 @@ final class PasswordViewModel {
                     
                     if setAccessTokenResult && setRefreshTokenResult && setExpiredInResult {
                         DebugLog("Move To Main")
+                        AppConfiguration.shared.isAutoLogin = true
                         self.goToMain()
                     }
                 case .failure(let error):

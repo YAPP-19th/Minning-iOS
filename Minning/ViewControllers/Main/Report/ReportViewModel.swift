@@ -17,6 +17,8 @@ final class ReportViewModel {
     
     var tabType: DataBinding<ReportTabType> = DataBinding(.week)
     private let coordinator: MainCoordinator
+    var datePickerList: [(Date, Date)] = []
+    var selectedWeek: (Date, Date)?
     
     public init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
