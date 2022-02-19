@@ -152,7 +152,7 @@ final class PasswordViewController: BaseViewController {
         
         viewModel.isPass.bindAndFire { [weak self] isPass in
             guard let `self` = self else { return }
-            self.hintLabel.textColor = isPass ? .primaryBlue030 : .primaryRed
+            self.hintLabel.textColor = isPass ? .minningBlue100 : .primaryRed
             self.loginButton.isActive = isPass
         }
         

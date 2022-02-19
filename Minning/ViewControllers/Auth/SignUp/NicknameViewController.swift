@@ -68,7 +68,7 @@ final class NicknameViewController: BaseViewController {
         if let nickname = sender.text {
             viewModel.nickname.accept(nickname)
         }
-        signUpButton.isActive = sender.text?.count ?? 0 > 0
+//        signUpButton.isActive = sender.text?.count ?? 0 > 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,8 +86,9 @@ final class NicknameViewController: BaseViewController {
     override func bindViewModel() {
         viewModel.nickname.bind { [weak self] nameValue in
             guard let `self` = self else { return }
-            self.hintLabel.textColor = nameValue.count > 5 ? .primaryBlue030 : .primaryRed
-            self.hintLabel.text = nameValue.count > 5 ? "사용 가능한 닉네임입니다" : "6자리 이하로 작성해주세요"
+            self.hintLabel.textColor = nameValue.count > 5 ? .primaryRed : .minningBlue100
+            self.hintLabel.text = nameValue.count > 5 ? "6자리 이하로 작성해주세요" : "사용 가능한 닉네임입니다"
+            self.signUpButton.isActive = !(nameValue.count > 5) && nameValue.count > 0
         }
     }
     
