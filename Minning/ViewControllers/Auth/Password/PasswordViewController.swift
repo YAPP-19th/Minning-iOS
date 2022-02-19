@@ -28,7 +28,7 @@ final class PasswordViewController: BaseViewController {
     
     private let hintLabel: UILabel = {
         $0.font = .font16PMedium
-        $0.text = "샘플 힌트 텍스트입니다"
+        $0.text = "영문, 숫자, 특수문자 포함 8자리 이상"
         $0.textColor = .primaryRed
         return $0
     }(UILabel())
@@ -82,10 +82,10 @@ final class PasswordViewController: BaseViewController {
     @objc
     private func textFieldDidChange(_ sender: PlainTextField) {
         loginButton.isActive = sender.text?.count ?? 0 > 0
+        viewModel.passwordValue.accept(sender.text)
+        
         if viewModel.passwordViewType.value == .signUp {
             checkPasswordCondition(password: sender.text ?? "")
-        } else {
-            viewModel.passwordValue.accept(sender.text)
         }
     }
     
@@ -93,7 +93,6 @@ final class PasswordViewController: BaseViewController {
         let pattern = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{8,50}"
         let regex = try? NSRegularExpression(pattern: pattern)
         if let _ = regex?.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.count)) {
-            // 있는경우
             viewModel.hintMessage.accept("올바른 비밀번호입니다")
             viewModel.isPass.accept(true)
         } else {
@@ -154,6 +153,7 @@ final class PasswordViewController: BaseViewController {
         viewModel.isPass.bindAndFire { [weak self] isPass in
             guard let `self` = self else { return }
             self.hintLabel.textColor = isPass ? .primaryBlue030 : .primaryRed
+            self.loginButton.isActive = isPass
         }
         
         viewModel.passwordViewType.bind { [weak self] _ in

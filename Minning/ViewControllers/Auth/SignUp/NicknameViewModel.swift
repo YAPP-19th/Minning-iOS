@@ -51,6 +51,7 @@ final class NicknameViewModel {
     }
     
     private func processEmailSignUp() {
+        DebugLog("Email Signup Start: Email(\(email)), Password(\(password))")
         if let email = email,
            let password = password {
             let request = SignUpRequest(email: email, nickname: nickname.value,
