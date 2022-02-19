@@ -13,6 +13,7 @@ protocol HomeRoute {
     func goToPhrase()
     func goToRecommend()
     func goToAdd()
+    func goToModifyRoutine(id: Int64, title: String, goal: String, category: RoutineCategory, days: [Day])
     func goToReview(retrospect: RetrospectModel)
     func goToEditOrder(day: Day, routineList: [RoutineModel])
     func goToNotification()
@@ -61,6 +62,11 @@ extension HomeCoordinator: HomeRoute {
     func goToAdd() {
         let addVC = dependencies.createAdd(self)
         navigationController.pushViewController(addVC, animated: true)
+    }
+    
+    func goToModifyRoutine(id: Int64, title: String, goal: String, category: RoutineCategory, days: [Day]) {
+        let modifyVC = dependencies.createModify(self, id: id, title: title, goal: goal, category: category, days: days)
+        navigationController.pushViewController(modifyVC, animated: true)
     }
     
     func goToReview(retrospect: RetrospectModel) {

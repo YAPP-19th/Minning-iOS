@@ -589,6 +589,9 @@ final class AddViewController: BaseViewController {
         
         stackView.setCustomSpacing(40.0, after: routineStackView)
         
+        if viewModel.routineId != nil {
+            setModifyView()
+        }
     }
     
     override func viewDidLoad() {
@@ -600,7 +603,7 @@ final class AddViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         
         if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
-            navBar.titleContent = "루틴 추가하기"
+            navBar.titleContent = viewModel.routineId != nil ? "루틴 추가하기" : "루틴 수정하기"
             navBar.removeDefaultShadowImage()
         }
         
@@ -613,6 +616,45 @@ final class AddViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func setModifyView() {
+        writeRoutineNameTextField.text = viewModel.title
+        writeGoalNameTextField.text = viewModel.goal
+        if let category = viewModel.selectedCategoryIndex {
+            switch category {
+            case 0:
+                morningSelectedView.isHidden = false
+            case 1:
+                selfImproveSelectedView.isHidden = false
+            case 2:
+                healthSelectedView.isHidden = false
+            case 3:
+                lifeSelectedView.isHidden = false
+            case 4:
+                etcSelectedView.isHidden = false
+            default:
+                break
+            }
+        }
+        viewModel.selectedDays.forEach { day in
+            switch day {
+            case .mon:
+                monView.isSelected = true
+            case .tue:
+                tueView.isSelected = true
+            case .wed:
+                wedView.isSelected = true
+            case .thu:
+                thuView.isSelected = true
+            case .fri:
+                friView.isSelected = true
+            case .sat:
+                satView.isSelected = true
+            case .sun:
+                sunView.isSelected = true
+            }
+        }
     }
     
     @objc
@@ -628,8 +670,14 @@ final class AddViewController: BaseViewController {
               let goal = writeGoalNameTextField.text else { return }
         if selectedDays.isEmpty { return }
 
-        viewModel.postAddRoutine(title: title, goal: goal, category: selectedCategory, days: selectedDays) {
-            self.navigationController?.popViewController(animated: true)
+        if viewModel.routineId != nil {
+            viewModel.patchModifyRoutine(title: title, goal: goal, category: selectedCategory, days: selectedDays) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            viewModel.postAddRoutine(title: title, goal: goal, category: selectedCategory, days: selectedDays) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     

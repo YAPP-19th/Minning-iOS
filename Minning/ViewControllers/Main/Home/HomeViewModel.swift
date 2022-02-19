@@ -123,6 +123,11 @@ final class HomeViewModel {
         coordinator.goToAdd()
     }
     
+    public func goToModifyRoutine(with index: Int) {
+        let routine = routines.value[index]
+        coordinator.goToModifyRoutine(id: routine.id, title: routine.title, goal: routine.goal, category: routine.category, days: routine.days)
+    }
+    
     public func goToNotification() {
         coordinator.goToNotification()
     }

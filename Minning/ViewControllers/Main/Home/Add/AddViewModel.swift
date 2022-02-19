@@ -12,6 +12,9 @@ import Foundation
 final class AddViewModel {
     let coordinator: HomeCoordinator
     
+    var routineId: Int64?
+    var title: String?
+    var goal: String?
     var selectedCategoryIndex: Int?
     var selectedDays = [Day]()
     
@@ -22,7 +25,19 @@ final class AddViewModel {
     public func postAddRoutine(title: String, goal: String, category: RoutineCategory, days: [Day], completion: @escaping () -> Void) {
         RoutineAPIRequest.addRoutine(request: .init(category: category, days: days, goal: goal, startTime: "00:00", title: title)) { result in
             switch result {
-            case .success(let data):
+            case .success(_):
+                completion()
+            case .failure(let error):
+                DebugLog(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func patchModifyRoutine(title: String, goal: String, category: RoutineCategory, days: [Day], completion: @escaping () -> Void) {
+        guard let id = routineId else { return }
+        RoutineAPIRequest.modifyRoutine(routineId: id, request: .init(category: category, days: days, goal: goal, startTime: "00:00", title: title)) { result in
+            switch result {
+            case .success(_):
                 completion()
             case .failure(let error):
                 DebugLog(error.localizedDescription)

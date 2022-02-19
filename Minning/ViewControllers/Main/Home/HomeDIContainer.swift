@@ -22,6 +22,17 @@ final class HomeDIContainer {
         return addVC
     }
     
+    func createModify(_ coordinator: HomeCoordinator, id: Int64, title: String, goal: String, category: RoutineCategory, days: [Day]) -> AddViewController {
+        let viewModel = AddViewModel(coordinator: coordinator)
+        viewModel.routineId = id
+        viewModel.title = title
+        viewModel.goal = goal
+        viewModel.selectedCategoryIndex = category.rawValue
+        viewModel.selectedDays = days
+        let modifyVC = AddViewController(viewModel: viewModel)
+        return modifyVC
+    }
+    
     func createReview(_ coordinator: HomeCoordinator, retrospect: RetrospectModel) -> ReviewViewController {
         let viewModel = ReviewViewModel(coordinator: coordinator, retrospect: retrospect)
         let addVC = ReviewViewController(viewModel: viewModel)

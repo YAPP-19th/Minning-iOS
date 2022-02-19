@@ -15,7 +15,17 @@ final class AddDayView: UIView {
     
     let day: Day
     
-    var isSelected: Bool = false
+    var isSelected: Bool = false {
+        didSet {
+            if isSelected {
+                backgroundColor = .minningDarkGray100
+                dayLabel.textColor = .primaryWhite
+            } else {
+                backgroundColor = .minningLightGray100
+                dayLabel.textColor = .minningGray100
+            }
+        }
+    }
     
     private lazy var dayLabel: UILabel = {
         $0.text = day.korean
