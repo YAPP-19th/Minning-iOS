@@ -19,8 +19,8 @@ final class AddViewModel {
         self.coordinator = coordinator
     }
     
-    public func postAddRoutine(title: String, goal: String, category: RoutineCategory, days: [Day], time: String, completion: @escaping () -> Void) {
-        RoutineAPIRequest.addRoutine(request: .init(category: category, days: days, goal: goal, startTime: time, title: title)) { result in
+    public func postAddRoutine(title: String, goal: String, category: RoutineCategory, days: [Day], completion: @escaping () -> Void) {
+        RoutineAPIRequest.addRoutine(request: .init(category: category, days: days, goal: goal, startTime: "00:00", title: title)) { result in
             switch result {
             case .success(let data):
                 completion()

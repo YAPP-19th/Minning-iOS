@@ -38,13 +38,6 @@ final class RoutineCell: UITableViewCell {
         return $0
     }(UILabel())
     private let lockImageView = UIImageView()
-    private let alarmImageView = UIImageView()
-    private let alarmLabel = UILabel()
-    private let alarmStackView: UIStackView = {
-        $0.axis = .horizontal
-        $0.spacing = 4
-        return $0
-    }(UIStackView())
     
     private var titleString: String?
     private var descriptionString: String?
@@ -72,7 +65,6 @@ final class RoutineCell: UITableViewCell {
         let descAttString = NSMutableAttributedString(string: descriptionString ?? "")
         descAttString.addAttribute(.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: .init(location: 0, length: descAttString.length))
         descriptionCompleteLabel.attributedText = descAttString
-        alarmLabel.text = routine.startTime
         if !isEnabled {
             setViewAsDisable()
             return
@@ -95,15 +87,10 @@ final class RoutineCell: UITableViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05).cgColor
         
-        [categoryBarView, titleLabel, titleCompleteLabel, descriptionLabel, descriptionCompleteLabel, completeLabel, lockImageView, alarmStackView].forEach {
+        [categoryBarView, titleLabel, titleCompleteLabel, descriptionLabel, descriptionCompleteLabel, completeLabel, lockImageView].forEach {
             contentView.addSubview($0)
         }
-        [alarmImageView, alarmLabel].forEach {
-            alarmStackView.addArrangedSubview($0)
-        }
         lockImageView.image = UIImage(sharedNamed: "lock.png")
-        alarmImageView.image = UIImage(sharedNamed: "alarm_enable.png")?.withRenderingMode(.alwaysTemplate)
-        alarmLabel.font = .font12P
         
         contentView.snp.makeConstraints { make in
             make.leading.equalTo(16)
@@ -139,14 +126,6 @@ final class RoutineCell: UITableViewCell {
             make.center.equalToSuperview()
             make.width.height.equalTo(20)
         }
-        alarmImageView.snp.makeConstraints { make in
-            make.width.equalTo(10)
-            make.height.equalTo(11)
-        }
-        alarmStackView.snp.makeConstraints { make in
-            make.top.equalTo(18)
-            make.trailing.equalToSuperview().offset(-16)
-        }
     }
 
     private func setViewAsDisable() {
@@ -159,8 +138,6 @@ final class RoutineCell: UITableViewCell {
         categoryBarView.backgroundColor = .grayB5B8BE
         titleLabel.textColor = .grayB5B8BE
         descriptionLabel.textColor = .grayB5B8BE
-        alarmImageView.image = UIImage(sharedNamed: "alarm_disable.png")
-        alarmLabel.textColor = .grayB5B8BE
     }
     
     private func setViewWithResult(_ result: RoutineResult) {
@@ -172,8 +149,6 @@ final class RoutineCell: UITableViewCell {
             descriptionCompleteLabel.isHidden = false
             completeLabel.isHidden = false
             completeLabel.text = result.title
-            alarmLabel.textColor = .minningDarkGray100
-            alarmImageView.tintColor = .minningDarkGray100
         case .tried:
             titleLabel.isHidden = false
             titleCompleteLabel.isHidden = true
@@ -181,14 +156,12 @@ final class RoutineCell: UITableViewCell {
             descriptionCompleteLabel.isHidden = true
             completeLabel.isHidden = false
             completeLabel.text = result.title
-            alarmImageView.tintColor = .primaryBlack
         case .failure:
             titleLabel.isHidden = false
             titleCompleteLabel.isHidden = true
             descriptionLabel.isHidden = false
             descriptionCompleteLabel.isHidden = true
             completeLabel.isHidden = true
-            alarmImageView.tintColor = .primaryBlack
         case .relax:
             return
         }
