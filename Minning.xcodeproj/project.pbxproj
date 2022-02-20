@@ -112,6 +112,9 @@
 		B01C7776274D18CA0032B329 /* MissionAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7774274D18CA0032B329 /* MissionAPIRequest.swift */; };
 		B025E6C327C20FA4006814D3 /* NoticeAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025E6C227C20FA4006814D3 /* NoticeAPIRequest.swift */; };
 		B025E6C827C20FF7006814D3 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025E6C727C20FF7006814D3 /* NoticeModel.swift */; };
+		B025E6D027C21704006814D3 /* personalInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = B025E6CE27C21704006814D3 /* personalInfo.txt */; };
+		B025E6D127C21704006814D3 /* agreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = B025E6CF27C21704006814D3 /* agreement.txt */; };
+		B025E6D327C21864006814D3 /* ServiceInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025E6D227C21864006814D3 /* ServiceInfoData.swift */; };
 		B02803832706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803842706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803852706A7A8009D642A /* NicknameViewModel.swift */; };
@@ -451,6 +454,9 @@
 		B01C7774274D18CA0032B329 /* MissionAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionAPIRequest.swift; sourceTree = "<group>"; };
 		B025E6C227C20FA4006814D3 /* NoticeAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPIRequest.swift; sourceTree = "<group>"; };
 		B025E6C727C20FF7006814D3 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
+		B025E6CE27C21704006814D3 /* personalInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = personalInfo.txt; sourceTree = "<group>"; };
+		B025E6CF27C21704006814D3 /* agreement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = agreement.txt; sourceTree = "<group>"; };
+		B025E6D227C21864006814D3 /* ServiceInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInfoData.swift; sourceTree = "<group>"; };
 		B02803822706A784009D642A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		B02803852706A7A8009D642A /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		B028038E2706D785009D642A /* HomeDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDIContainer.swift; sourceTree = "<group>"; };
@@ -791,6 +797,7 @@
 				B0AD5A5A2705D66400CC07B0 /* BaseViewController.swift */,
 				B0ADFE4227488AFF003019E5 /* MinningProperty.swift */,
 				B0ADFE6D274B1461003019E5 /* TokenManager.swift */,
+				B025E6D227C21864006814D3 /* ServiceInfoData.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -877,6 +884,15 @@
 				B0180F7A26DCCC1F008C6F3C /* CommonSystem.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B025E6CD27C216EC006814D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B025E6CF27C21704006814D3 /* agreement.txt */,
+				B025E6CE27C21704006814D3 /* personalInfo.txt */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B028037E2706A772009D642A /* SignUp */ = {
@@ -1247,6 +1263,7 @@
 		B0D16DF126DA57F200A8E52B /* Minning */ = {
 			isa = PBXGroup;
 			children = (
+				B025E6CD27C216EC006814D3 /* Resources */,
 				95A311A4277C304A0016B08C /* CoreData */,
 				B0ADFDCE27488250003019E5 /* Network */,
 				B091BA562736BDF6006F3E2A /* Minning.entitlements */,
@@ -1474,6 +1491,8 @@
 			files = (
 				B0D16E0226DA57F400A8E52B /* LaunchScreen.storyboard in Resources */,
 				9562F93A2793996700546EEA /* partyLottie.json in Resources */,
+				B025E6D027C21704006814D3 /* personalInfo.txt in Resources */,
+				B025E6D127C21704006814D3 /* agreement.txt in Resources */,
 				B0D16DFF26DA57F400A8E52B /* Assets.xcassets in Resources */,
 				B0180ED026DCC2F1008C6F3C /* Key.plist in Resources */,
 			);
@@ -1811,6 +1830,7 @@
 				B0180F0226DCC82C008C6F3C /* MainDIContainer.swift in Sources */,
 				9546BF90276A368C00991762 /* GroupPhotoContainerView.swift in Sources */,
 				9546BF96276A368C00991762 /* CameraViewController.swift in Sources */,
+				B025E6D327C21864006814D3 /* ServiceInfoData.swift in Sources */,
 				B0ADFE6B274B10AC003019E5 /* MinningAPIModel.swift in Sources */,
 				B02803EA27085149009D642A /* EditOrderViewModel.swift in Sources */,
 				B08BEB76272A8CEE0078E00A /* EmailAuthViewController.swift in Sources */,

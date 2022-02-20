@@ -11,6 +11,7 @@ import Foundation
 
 final class LargeContentsViewModel {
     var contentType: DataBinding<MyPageSettingRowItem.RowType> = DataBinding(.agreement)
+    var largeContent: DataBinding<String> = DataBinding("")
     private let coordinator: HomeCoordinator
     
     public init(coordinator: HomeCoordinator, contentType: MyPageSettingRowItem.RowType) {
@@ -20,5 +21,13 @@ final class LargeContentsViewModel {
     
     public func goToBack() {
         coordinator.goToBack()
+    }
+    
+    public func getLargeContentData() {
+        if contentType.value == .agreement {
+            largeContent.accept(ServiceInfoData.loadContentIntoString(name: "agreement"))
+        } else if contentType.value == .personalInfo {
+            largeContent.accept(ServiceInfoData.loadContentIntoString(name: "personalInfo"))
+        }
     }
 }
