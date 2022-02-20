@@ -40,6 +40,10 @@ struct MinningAPIConstant {
         return mainURL.appendingPathComponent("/routine")
     }
     
+    static var noticeURL: URL {
+        return mainURL.appendingPathComponent("/notice")
+    }
+    
     static var groupURL: URL {
         return mainURL.appendingPathComponent("/group")
     }

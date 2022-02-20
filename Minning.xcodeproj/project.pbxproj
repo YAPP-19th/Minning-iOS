@@ -110,6 +110,8 @@
 		B01C7773274D18C20032B329 /* CaptureAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7771274D18C20032B329 /* CaptureAPIRequest.swift */; };
 		B01C7775274D18CA0032B329 /* MissionAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7774274D18CA0032B329 /* MissionAPIRequest.swift */; };
 		B01C7776274D18CA0032B329 /* MissionAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C7774274D18CA0032B329 /* MissionAPIRequest.swift */; };
+		B025E6C327C20FA4006814D3 /* NoticeAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025E6C227C20FA4006814D3 /* NoticeAPIRequest.swift */; };
+		B025E6C827C20FF7006814D3 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025E6C727C20FF7006814D3 /* NoticeModel.swift */; };
 		B02803832706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803842706A784009D642A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803822706A784009D642A /* NicknameViewController.swift */; };
 		B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02803852706A7A8009D642A /* NicknameViewModel.swift */; };
@@ -447,6 +449,8 @@
 		B01C776E274D15740032B329 /* GroupAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPIRequest.swift; sourceTree = "<group>"; };
 		B01C7771274D18C20032B329 /* CaptureAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureAPIRequest.swift; sourceTree = "<group>"; };
 		B01C7774274D18CA0032B329 /* MissionAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionAPIRequest.swift; sourceTree = "<group>"; };
+		B025E6C227C20FA4006814D3 /* NoticeAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPIRequest.swift; sourceTree = "<group>"; };
+		B025E6C727C20FF7006814D3 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
 		B02803822706A784009D642A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		B02803852706A7A8009D642A /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		B028038E2706D785009D642A /* HomeDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDIContainer.swift; sourceTree = "<group>"; };
@@ -963,6 +967,7 @@
 				B0E1D25C270BEB5A006995C5 /* NotificationModel.swift */,
 				B09041A8272D925D00AE8623 /* SettingModel.swift */,
 				B01992D427609E8F00FF3E96 /* UserModel.swift */,
+				B025E6C727C20FF7006814D3 /* NoticeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1208,6 +1213,7 @@
 				B01C7771274D18C20032B329 /* CaptureAPIRequest.swift */,
 				B01C7774274D18CA0032B329 /* MissionAPIRequest.swift */,
 				B019929F275FA56200FF3E96 /* MinningAPIError.swift */,
+				B025E6C227C20FA4006814D3 /* NoticeAPIRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1753,6 +1759,7 @@
 				B01C775D274CFE000032B329 /* AccountAPIRequest.swift in Sources */,
 				9546BF9D276A368C00991762 /* GroupListModel.swift in Sources */,
 				B097A30D272233F900E0A479 /* RoutineHeaderView.swift in Sources */,
+				B025E6C827C20FF7006814D3 /* NoticeModel.swift in Sources */,
 				B070557C275A592700AB776F /* StartCoordinator.swift in Sources */,
 				B09041AD272E26E300AE8623 /* LargeContentsViewController.swift in Sources */,
 				B0AD5A772705DBEE00CC07B0 /* ReportViewModel.swift in Sources */,
@@ -1764,6 +1771,7 @@
 				9546BF9A276A368C00991762 /* GroupCellView.swift in Sources */,
 				B08BEB7A272A8DEA0078E00A /* ResetPasswordViewModel.swift in Sources */,
 				B02803862706A7A8009D642A /* NicknameViewModel.swift in Sources */,
+				B025E6C327C20FA4006814D3 /* NoticeAPIRequest.swift in Sources */,
 				B08BEB65272A8B510078E00A /* MyPageViewController.swift in Sources */,
 				B08E74792705BBA300854190 /* AuthCoordinator.swift in Sources */,
 				95A311AC277C30BB0016B08C /* GroupCoreDataManager.swift in Sources */,

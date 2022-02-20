@@ -605,3 +605,38 @@ public struct MissionDetailModel: Codable {
     
     public func encode(to encoder: Encoder) throws { }
 }
+
+public struct NoticeResponseModel: Codable {
+    public let data: [NoticeModel]
+    public let message: CommonAPIResponse
+}
+
+public struct NoticeDetailResponseModel: Codable {
+    public let data: NoticeModel
+    public let message: CommonAPIResponse
+}
+
+public struct NoticeModel: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case content
+        case createdAt
+        case title
+    }
+    
+    public let id: Int
+    public let title: String
+    public let createdAt: String
+    public let content: String
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try values.decode(Int.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        createdAt = try values.decode(String.self, forKey: .createdAt)
+        content = try values.decode(String.self, forKey: .content)
+    }
+    
+    public func encode(to encoder: Encoder) throws { }
+}
