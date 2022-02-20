@@ -19,18 +19,30 @@ final class NoticeViewModel {
         self.coordinator = coordinator
     }
     
-    func createSampleDate() {
-        for _ in 0..<5 {
-            var list = sampleNotiList.value
-            let notification = NotificationModel(title: "공지 제목입니다",
-                                                 description: "공지 내용이 나오는 부분입니다",
-                                                 date: Date())
-            list.append(notification)
-            sampleNotiList.accept(list)
-        }
-    }
+//    func createSampleDate() {
+//        for _ in 0..<5 {
+//            var list = sampleNotiList.value
+//            let notification = NotificationModel(title: "공지 제목입니다",
+//                                                 description: "공지 내용이 나오는 부분입니다",
+//                                                 date: Date())
+//            list.append(notification)
+//            sampleNotiList.accept(list)
+//        }
+//    }
     
     public func goToBack() {
         coordinator.goToBack()
+    }
+    
+    func getNoticeList() {
+        NoticeAPIRequest.getNoticeList { [weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .success(let list):
+                self.sampleNotiList.accept(list.data.map { NotificationModel(title: $0.title, description: $0.content, date: Date()) })
+            case .failure(let error):
+                break
+            }
+        }
     }
 }

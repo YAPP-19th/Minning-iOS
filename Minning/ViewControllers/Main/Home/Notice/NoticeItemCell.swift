@@ -50,7 +50,8 @@ final class NoticeItemCell: UITableViewCell {
         didSet {
             titleLabel.text = item?.title
             descriptionLabel.text = item?.description
-            dateLabel.text = item?.date.convertToSmallKoreanString()
+            dateLabel.text = ""
+//            dateLabel.text = item?.date.convertToSmallKoreanString()
         }
     }
     

@@ -35,7 +35,7 @@ final class NoticeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.createSampleDate()
+        viewModel.getNoticeList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
