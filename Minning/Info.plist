@@ -8,6 +8,7 @@
 	<string>미닝이 사용자의 카메라에 접근합니다.</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>mailto</string>
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
 	</array>

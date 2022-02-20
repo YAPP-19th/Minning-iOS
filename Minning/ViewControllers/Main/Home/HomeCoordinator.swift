@@ -6,6 +6,7 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
+import CommonSystem
 import DesignSystem
 import Foundation
 
@@ -105,9 +106,16 @@ extension HomeCoordinator: HomeRoute {
     }
     
     func goToInquire() {
-        let inquireVC = dependencies.createInquire(self)
-        inquireVC.hidesBottomBarWhenPushed = true
-        navigationController.pushViewController(inquireVC, animated: true)
+        let emailString = "mailto:minning.information@gmail.com"
+        if let emailUrl = URL(string: emailString),
+            UIApplication.shared.canOpenURL(emailUrl) {
+            UIApplication.shared.open(emailUrl, options: [:], completionHandler: { isSuccess in
+                DebugLog("Email URL Open Result: \(isSuccess)")
+            })
+        }
+//        let inquireVC = dependencies.createInquire(self)
+//        inquireVC.hidesBottomBarWhenPushed = true
+//        navigationController.pushViewController(inquireVC, animated: true)
     }
     
     func goToVersion() {

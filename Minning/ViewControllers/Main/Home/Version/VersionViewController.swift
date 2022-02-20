@@ -42,7 +42,7 @@ final class VersionViewController: BaseViewController {
         label.font = .font16P
         label.textAlignment = .center
         label.textColor = .minningDarkGray100
-        label.text = "최신 버전"
+        label.text = "현재 버전"
         return label
     }()
     

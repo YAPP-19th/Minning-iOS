@@ -18,6 +18,7 @@ final class NormalSettingCell: UITableViewCell {
     public var rowItem: MyPageSettingRowItem? {
         didSet {
             titleLabel.text = rowItem?.title
+            titleLabel.textColor = rowItem?.type == .deleteAccount ? .minningDarkGray100 : .primaryBlack
         }
     }
     
