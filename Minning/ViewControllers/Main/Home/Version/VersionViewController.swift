@@ -13,6 +13,44 @@ import SharedAssets
 import SnapKit
 
 final class VersionViewController: BaseViewController {
+    private lazy var versionLogoView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(sharedNamed: "versionInfoLogo")
+        return imageView
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "미닝"
+        label.textAlignment = .center
+        label.font = .font20PBold
+        label.textColor = .minningBlue100
+        return label
+    }()
+    
+    private lazy var recentVersionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font16P
+        label.textAlignment = .center
+        label.textColor = .minningDarkGray100
+        label.text = "최신 버전"
+        return label
+    }()
+    
+    private lazy var curVersionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font16P
+        label.textAlignment = .center
+        label.textColor = .minningDarkGray100
+        label.text = "최신 버전"
+        return label
+    }()
+    
+    private lazy var infoContainerView: UIView = {
+        let containerView = UIView()
+        return containerView
+    }()
+    
     private let viewModel: VersionViewModel
     
     public init(viewModel: VersionViewModel) {
@@ -31,6 +69,39 @@ final class VersionViewController: BaseViewController {
         updateViewContent()
         
         navigationItem.setLeftPlainBarButtonItem(UIBarButtonItem(image: UIImage(sharedNamed: "backArrow"), style: .plain, target: self, action: #selector(onClickBackButton(_:))))
+    }
+    
+    override func setupViewLayout() {
+        view.backgroundColor = .minningLightGray100
+        view.addSubview(infoContainerView)
+        
+        [versionLogoView, titleLabel, recentVersionLabel, curVersionLabel].forEach {
+            infoContainerView.addSubview($0)
+        }
+        
+        infoContainerView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        versionLogoView.snp.makeConstraints { make in
+            make.top.centerX.equalToSuperview()
+            make.height.equalTo(110)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(versionLogoView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        recentVersionLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        curVersionLabel.snp.makeConstraints { make in
+            make.top.equalTo(recentVersionLabel.snp.bottom).offset(16)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     private func updateViewContent() {
