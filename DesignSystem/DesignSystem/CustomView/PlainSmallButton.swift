@@ -6,14 +6,21 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
-import Foundation
+import CommonSystem
 import SnapKit
 import UIKit
 
 public class PlainSmallButton: UIButton {
-    public override var isSelected: Bool {
+    public var isButtonSelected: Bool = false {
         didSet {
+            DebugLog("isButtonSelected: \(isButtonSelected)")
             updateButtonStatus()
+        }
+    }
+    
+    public override var isHighlighted: Bool {
+        didSet {
+            DebugLog("isHighlighted: \(isHighlighted)")
         }
     }
     
@@ -45,7 +52,8 @@ public class PlainSmallButton: UIButton {
     }
     
     private func updateButtonStatus() {
-        backgroundColor = isSelected ? .minningBlue100 : .minningLightGray100
-        titleLabel?.textColor = isSelected ? .primaryWhite : .minningDarkGray100
+//        setBackgroundImage(UIImage(color: isSelected ? .minningDarkGray100 : .minningLightGray100), for: .normal)
+        backgroundColor = isButtonSelected ? .minningDarkGray100 : .minningLightGray100
+        titleLabel?.textColor = isButtonSelected ? .primaryWhite : .minningDarkGray100
     }
 }

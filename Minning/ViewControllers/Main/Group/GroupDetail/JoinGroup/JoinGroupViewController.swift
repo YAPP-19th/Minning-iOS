@@ -89,10 +89,27 @@ final class JoinGroupViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showUpJoinGroupView(completion: nil)
+        
+        updatePeriodButtons()
+        updateDayButtons()
+        updateNotiButtons()
     }
     
     override func bindViewModel() {
+        viewModel.selectedPeriod.bind { [weak self] periodIndex in
+            guard let `self` = self else { return }
+            self.updatePeriodButtons()
+        }
         
+        viewModel.selectedDay.bind { [weak self] periodIndex in
+            guard let `self` = self else { return }
+            self.updateDayButtons()
+        }
+        
+        viewModel.selectedNoti.bind { [weak self] periodIndex in
+            guard let `self` = self else { return }
+            self.updateNotiButtons()
+        }
     }
     
     override func setupViewLayout() {
@@ -170,35 +187,91 @@ final class JoinGroupViewController: BaseViewController {
     }
     
     private func setupItemButtons() {
-        let periodSymbols = ["1주", "2주", "1달", "2달", "4달"]
-        let daySymbols = ["월", "화", "수", "목", "금", "토", "일"]
-        let notiSymbols = ["오전 5시", "오전 6시", "오전 7시"]
-        
-        for symbol in periodSymbols {
+        for symbol in viewModel.periodSymbols {
             let button = PlainSmallButton()
             button.cornerRadius = 7
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
             button.title = symbol
-            button.isSelected = true
+            button.isButtonSelected = false
+            button.addTarget(self, action: #selector(updatePeriodButtons), for: .touchUpInside)
+            
             periodStackView.addArrangedSubview(button)
         }
         
-        for symbol in daySymbols {
+        for symbol in viewModel.daySymbols {
             let button = PlainSmallButton()
             button.cornerRadius = 19
             button.title = symbol
-            button.isSelected = true
+            button.isButtonSelected = false
+            button.addTarget(self, action: #selector(updateDayButtons), for: .touchUpInside)
             button.snp.makeConstraints { make in
                 make.width.height.equalTo(38)
             }
             dayStackView.addArrangedSubview(button)
         }
         
-        for symbol in notiSymbols {
+        for symbol in viewModel.notiSymbols {
             let button = PlainSmallButton()
             button.cornerRadius = 7
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
             button.title = symbol
-            button.isSelected = true
+            button.isButtonSelected = false
+            button.addTarget(self, action: #selector(updateNotiButtons), for: .touchUpInside)
             notiStackView.addArrangedSubview(button)
+        }
+    }
+    
+    @objc
+    private func updatePeriodButtons() {
+        if let index = viewModel.selectedPeriod.value {
+            periodStackView.subviews.enumerated().forEach { pIndex, view in
+                if let periodView = view as? PlainSmallButton {
+                    periodView.isButtonSelected = index == pIndex
+//                    periodView.backgroundColor = (index == pIndex) ? .minningDarkGray100 : .minningLightGray100
+                }
+            }
+        } else {
+            periodStackView.subviews.forEach { view in
+                if let periodView = view as? PlainSmallButton {
+                    periodView.isButtonSelected = false
+                }
+            }
+        }
+    }
+    
+    @objc
+    private func updateDayButtons() {
+        if let index = viewModel.selectedDay.value {
+            dayStackView.subviews.enumerated().forEach { dIndex, view in
+                if let dayView = view as? PlainSmallButton {
+                    dayView.isButtonSelected = index == dIndex
+//                    dayView.backgroundColor = (index == dIndex) ? .minningDarkGray100 : .minningLightGray100
+                }
+            }
+        } else {
+            dayStackView.subviews.forEach { view in
+                if let dayView = view as? PlainSmallButton {
+                    dayView.isButtonSelected = false
+                }
+            }
+        }
+    }
+    
+    @objc
+    private func updateNotiButtons() {
+        if let index = viewModel.selectedNoti.value {
+            notiStackView.subviews.enumerated().forEach { nIndex, view in
+                if let notiView = view as? PlainSmallButton {
+                    notiView.isButtonSelected = index == nIndex
+//                    notiView.backgroundColor = (index == nIndex) ? .minningDarkGray100 : .minningLightGray100
+                }
+            }
+        } else {
+            notiStackView.subviews.forEach { view in
+                if let notiView = view as? PlainSmallButton {
+                    notiView.isButtonSelected = false
+                }
+            }
         }
     }
     

@@ -5,6 +5,7 @@
 //  Copyright © 2021 Minning. All rights reserved.
 //
 
+import CommonSystem
 import CoreData
 import DesignSystem
 import KakaoSDKAuth
@@ -54,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         notificationCenter.requestAuthorization(options: [.alert]) { didAllow, error in
             if !didAllow {
-                print("❗️User denied notifications request, \(String(describing: error))")
+                ErrorLog("❗️User denied notifications request, \(String(describing: error))")
             }
         }
         
@@ -104,7 +105,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert])
     }
     
@@ -124,7 +127,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         notificationCenter.add(request) { error in
             if error != nil {
-                print("❗️Error occurs while adding notification request, \(String(describing: error))")
+                ErrorLog("❗️Error occurs while adding notification request, \(String(describing: error))")
             }
         }
         
