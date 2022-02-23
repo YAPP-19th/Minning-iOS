@@ -253,7 +253,7 @@ public struct RoutinePercentModel: Codable {
 
 public struct ReportMonthModel: Codable {
     public let resultByCategory: [ReportMonthDataModel]
-    public let weakRateList: [Int]
+    public let weekRateList: [Int]
 }
 
 public struct ReportMonthDataModel: Codable {
@@ -314,34 +314,39 @@ public struct ReportModel: Codable {
     }
     
     public let category: RoutineCategory
-    public let fullyDoneRate: String
-    public let notDoneRate: String
-    public let partiallyDoneRate: String
+    public let fullyDoneRate: Int
+    public let notDoneRate: Int
+    public let partiallyDoneRate: Int
     public let title: String
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let categoryValue = try values.decode(String.self, forKey: .category)
+        let categoryValue = try values.decode(Int.self, forKey: .category)
+        DebugLog("1")
         
         switch categoryValue {
-        case "건강":
-            category = .health
-        case "생활":
-            category = .life
-        case "자기개발":
-            category = .selfDev
-        case "미라클모닝":
+        case 0:
             category = .miracle
-        case "기타":
+        case 1:
+            category = .selfDev
+        case 2:
+            category = .health
+        case 3:
+            category = .life
+        case 4:
             category = .other
         default:
             category = .other
         }
         
-        fullyDoneRate = try values.decode(String.self, forKey: .fullyDoneRate)
-        notDoneRate = try values.decode(String.self, forKey: .notDoneRate)
-        partiallyDoneRate = try values.decode(String.self, forKey: .partiallyDoneRate)
+        fullyDoneRate = try values.decode(Int.self, forKey: .fullyDoneRate)
+        DebugLog("2")
+        notDoneRate = try values.decode(Int.self, forKey: .notDoneRate)
+        DebugLog("3")
+        partiallyDoneRate = try values.decode(Int.self, forKey: .partiallyDoneRate)
+        DebugLog("4")
         title = try values.decode(String.self, forKey: .title)
+        DebugLog("5")
     }
     
     public func encode(to encoder: Encoder) throws { }

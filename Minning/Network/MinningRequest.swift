@@ -93,8 +93,10 @@ extension MinningAPIRequestable {
                 
                 switch response.result {
                 case .success(let response):
+                    DebugLog("Success")
                     completion(.success(response))
                 case .failure(let error):
+                    DebugLog("Failure")
                     do {
                         if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
                             completion(.failure(.defaultData(error: error, status: json["status"] as? String ?? "nil", msg: json["msg"] as? String ?? "nil")))

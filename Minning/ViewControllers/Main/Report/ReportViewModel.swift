@@ -65,7 +65,10 @@ final class ReportViewModel {
     public func getWeeklyReportData() {
         if let selectedWeek = selectedWeek {
             // year-month-day: ex 2022-02-22
-            let lastDateString = "\(selectedWeek.1.get(.year))-\(selectedWeek.1.get(.month))-\(selectedWeek.1.get(.day))"
+            let month = selectedWeek.1.get(.month) < 10 ? "0\(selectedWeek.1.get(.month))" : "\(selectedWeek.1.get(.month))"
+            let day = selectedWeek.1.get(.day) < 10 ? "0\(selectedWeek.1.get(.day))" : "\(selectedWeek.1.get(.day))"
+            
+            let lastDateString = "\(selectedWeek.1.get(.year))-\(month)-\(day)"
             ReportAPIRequest.weeklyReport(lastDate: lastDateString, completion: { [weak self] result in
                 guard let `self` = self else { return }
                 switch result {
@@ -74,7 +77,6 @@ final class ReportViewModel {
                 case .failure(let error):
                     ErrorLog("\(error.status), \(error.msg)")
                     self.reportWeekModel.accept(nil)
-//                    ErrorLog(error.defaultError.localizedDescription)
                 }
             })
         }

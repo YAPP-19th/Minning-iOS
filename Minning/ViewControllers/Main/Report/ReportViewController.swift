@@ -284,7 +284,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
                 self.view.backgroundColor = .primaryWhite
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
-                self.monthGraphView.valueList = model.weakRateList
+                self.monthGraphView.valueList = model.weekRateList
             } else {
                 self.view.backgroundColor = .minningLightGray100
                 self.emptyView.isHidden = false
@@ -321,6 +321,12 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
             }
             
             self.updateBubbleLabel()
+            
+            if type == .week {
+                self.viewModel.getWeeklyReportData()
+            } else {
+                self.viewModel.getMonthlyReportData()
+            }
         }
     }
     
