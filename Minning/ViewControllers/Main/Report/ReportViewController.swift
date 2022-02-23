@@ -267,13 +267,11 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
             guard let `self` = self else { return }
             
             if let model = weekModel {
-//                self.dataComboButton.isHidden = false
-//                self.percentGuideButton.isHidden = false
+                self.view.backgroundColor = .primaryWhite
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
             } else {
-//                self.dataComboButton.isHidden = true
-//                self.percentGuideButton.isHidden = true
+                self.view.backgroundColor = .minningLightGray100
                 self.emptyView.isHidden = false
                 self.contentStackView.isHidden = true
             }
@@ -283,14 +281,12 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
             guard let `self` = self else { return }
             
             if let model = monthModel {
-//                self.dataComboButton.isHidden = false
-//                self.percentGuideButton.isHidden = false
+                self.view.backgroundColor = .primaryWhite
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
                 self.monthGraphView.valueList = model.weakRateList
             } else {
-//                self.dataComboButton.isHidden = true
-//                self.percentGuideButton.isHidden = true
+                self.view.backgroundColor = .minningLightGray100
                 self.emptyView.isHidden = false
                 self.contentStackView.isHidden = true
             }
