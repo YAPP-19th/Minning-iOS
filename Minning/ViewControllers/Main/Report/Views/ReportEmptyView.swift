@@ -49,7 +49,7 @@ final class ReportEmptyView: UIView {
             make.top.equalTo(self.snp.top).offset(138)
             make.center.equalToSuperview()
             make.width.equalTo(209)
-            make.height.equalTo(105)
+//            make.height.equalTo(105)
         }
         
         contentLabel.snp.makeConstraints { make in

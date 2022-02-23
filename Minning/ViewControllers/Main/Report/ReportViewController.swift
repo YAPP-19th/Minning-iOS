@@ -147,7 +147,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickBackground(_:))))
         
         [weekTabButton, monthTabButton,
-         dataComboButton, percentGuideButton, scrollView, bubbleTriagleView, bubbleView].forEach {
+         dataComboButton, percentGuideButton, scrollView, bubbleTriagleView, bubbleView, emptyView].forEach {
             view.addSubview($0)
         }
         
@@ -208,6 +208,13 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
             make.width.height.equalTo(44)
         }
         
+        emptyView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(63)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
         scrollView.delegate = self
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(dataComboButton.snp.bottom).offset(20)
@@ -218,16 +225,11 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.addSubview(contentView)
         contentView.addSubview(contentStackView)
-        contentView.addSubview(emptyView)
         
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.equalToSuperview().priority(250)
             make.width.equalToSuperview()
-        }
-        
-        emptyView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
         }
         
         contentStackView.snp.makeConstraints { make in
@@ -265,9 +267,13 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
             guard let `self` = self else { return }
             
             if let model = weekModel {
+//                self.dataComboButton.isHidden = false
+//                self.percentGuideButton.isHidden = false
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
             } else {
+//                self.dataComboButton.isHidden = true
+//                self.percentGuideButton.isHidden = true
                 self.emptyView.isHidden = false
                 self.contentStackView.isHidden = true
             }
@@ -277,10 +283,14 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
             guard let `self` = self else { return }
             
             if let model = monthModel {
+//                self.dataComboButton.isHidden = false
+//                self.percentGuideButton.isHidden = false
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
                 self.monthGraphView.valueList = model.weakRateList
             } else {
+//                self.dataComboButton.isHidden = true
+//                self.percentGuideButton.isHidden = true
                 self.emptyView.isHidden = false
                 self.contentStackView.isHidden = true
             }
