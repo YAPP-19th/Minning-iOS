@@ -46,12 +46,15 @@ final class FilterButton: UIButton {
 final class RoutineCategoryView: UIView {
     public var routineData: [ReportRoutine] = [] {
         didSet {
+            DebugLog("RoutineData: \(routineData.debugDescription)")
             var pieChartData: [PieChartData] = []
             routineData.forEach {
+                DebugLog("Rate: \($0.percent)")
                 pieChartData.append(PieChartData(value: $0.percent, color: $0.category.color))
             }
             
             halfPieChart.dataSet = pieChartData
+            DebugLog("pieChartData.debugDescription : \(pieChartData.debugDescription)")
             currentRoutine = routineData.first
         }
     }
@@ -92,7 +95,6 @@ final class RoutineCategoryView: UIView {
     lazy var halfPieChart: HalfPieChart = {
         $0.backgroundColor = .clear
         $0.pieTouchHandler = { index in
-            DebugLog("Selected Index: \(RoutineCategory(rawValue: index)?.title ?? "nil")")
             self.currentCategory = RoutineCategory(rawValue: index) ?? .miracle
             self.currentRoutine = self.routineData[index]
 //            self.updateCategoryDataView(reportRoutine: self.routineData[index])
@@ -157,7 +159,6 @@ final class RoutineCategoryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        setupPieData()
         setupView()
     }
     
@@ -257,19 +258,6 @@ final class RoutineCategoryView: UIView {
             make.bottom.equalTo(-96)
         }
     }
-    
-//    private func setupPieData() {
-//        let sampleRoutineReportData: [ReportRoutine] = [
-//            ReportRoutine(category: .miracle, percent: 33, routines: [.init(title: "확언하기", donePercent: 90, triedPercent: 5, failurePercent: 5),
-//                                                                        .init(title: "기상하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
-//            ReportRoutine(category: .selfDev, percent: 20, routines: [.init(title: "자기개발하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
-//            ReportRoutine(category: .health, percent: 10, routines: [.init(title: "건강하기", donePercent: 80, triedPercent: 5, failurePercent: 15)]),
-//            ReportRoutine(category: .life, percent: 26, routines: [.init(title: "생활하기", donePercent: 80, triedPercent: 15, failurePercent: 5)]),
-//            ReportRoutine(category: .other, percent: 11, routines: [.init(title: "코딩하기", donePercent: 10, triedPercent: 5, failurePercent: 85)])
-//        ]
-//
-//        routineData = sampleRoutineReportData
-//    }
     
     private func setupFilterview() {
         let leadingSpacer = UIView()
