@@ -42,7 +42,7 @@ public struct ReportAPIRequest: MinningAPIRequestable {
     }
     
     public static func monthlyReport(year: Int, month: Int,
-                                     completion: @escaping (Result<ReportResponseModel, MinningAPIError>) -> Void) {
+                                     completion: @escaping (Result<ReportMonthResponseModel, MinningAPIError>) -> Void) {
         perform(.monthlyReport(year: year, month: month), completion: completion)
     }
     

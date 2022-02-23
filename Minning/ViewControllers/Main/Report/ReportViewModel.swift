@@ -16,6 +16,10 @@ final class ReportViewModel {
     }
     
     var tabType: DataBinding<ReportTabType> = DataBinding(.week)
+    
+    var reportMonthModel: DataBinding<ReportMonthModel?> = DataBinding(nil)
+    var reportWeekModel: DataBinding<ReportWeekModel?> = DataBinding(nil) // TODO
+    
     private let coordinator: MainCoordinator
     
     var monthList: [Int] = []
@@ -38,13 +42,41 @@ final class ReportViewModel {
         for month in 1..<(todayMonth + 1) {
             monthList.append(month)
         }
-    }
-    
-    public func getWeeklyReportData() {
         
+        selectedMonth = monthList.first
     }
     
     public func getMonthlyReportData() {
-        
+        if let selectedMonth = selectedMonth {
+            ReportAPIRequest.monthlyReport(year: Date().get(.year), month: selectedMonth, completion: { [weak self] result in
+                guard let `self` = self else { return }
+                switch result {
+                case .success(let model):
+                    self.reportMonthModel.accept(model.data)
+                case .failure(let error):
+                    ErrorLog("\(error.status), \(error.msg)")
+                    self.reportMonthModel.accept(nil)
+//                    ErrorLog(error.defaultError.localizedDescription)
+                }
+            })
+        }
+    }
+    
+    public func getWeeklyReportData() {
+        if let selectedWeek = selectedWeek {
+            // year-month-day: ex 2022-02-22
+            let lastDateString = "\(selectedWeek.1.get(.year))-\(selectedWeek.1.get(.month))-\(selectedWeek.1.get(.day))"
+            ReportAPIRequest.weeklyReport(lastDate: lastDateString, completion: { [weak self] result in
+                guard let `self` = self else { return }
+                switch result {
+                case .success(let model):
+                    self.reportWeekModel.accept(model.data)
+                case .failure(let error):
+                    ErrorLog("\(error.status), \(error.msg)")
+                    self.reportWeekModel.accept(nil)
+//                    ErrorLog(error.defaultError.localizedDescription)
+                }
+            })
+        }
     }
 }

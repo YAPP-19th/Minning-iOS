@@ -251,9 +251,18 @@ public struct RoutinePercentModel: Codable {
     
 }
 
-public struct ReportResponseModel: Codable {
-    public let monthRoutineReportList: [ReportModel]
-    public let weakRateList: [String]
+public struct ReportMonthModel: Codable {
+    public let resultByCategory: [ReportMonthDataModel]
+    public let weakRateList: [Int]
+}
+
+public struct ReportMonthDataModel: Codable {
+    public let rate: Int
+    public let routineReportList: [ReportModel]
+}
+
+public struct ReportMonthResponseModel: Codable {
+    public let data: ReportMonthModel
     public let message: CommonAPIResponse
 }
 

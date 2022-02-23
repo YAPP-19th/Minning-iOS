@@ -95,10 +95,18 @@ extension MinningAPIRequestable {
                 case .success(let response):
                     completion(.success(response))
                 case .failure(let error):
-                    if isCustomError {
-                        completion(.failure(.custom(error: error, customValue: responseData)))
-                    } else {
-                        completion(.failure(.normal(error: error)))
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
+                            completion(.failure(.defaultData(error: error, status: json["status"] as? String ?? "nil", msg: json["msg"] as? String ?? "nil")))
+                        } else {
+                            completion(.failure(.normal(error: error)))
+                        }
+                    } catch {
+                        if isCustomError {
+                            completion(.failure(.custom(error: error, customValue: responseData)))
+                        } else {
+                            completion(.failure(.normal(error: error)))
+                        }
                     }
                 }
             }

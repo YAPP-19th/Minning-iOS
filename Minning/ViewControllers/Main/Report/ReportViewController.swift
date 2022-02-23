@@ -92,6 +92,8 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     private let monthChooserAlert = UIAlertController(title: "월 선택", message: nil, preferredStyle: .actionSheet)
     private let reportArriveVC = ReportArriveViewController()
     
+    private let emptyView: ReportEmptyView = ReportEmptyView()
+    
     // MARK: Report Content View
     private let myRoutineView: MyRoutineView = MyRoutineView()
     private let monthGraphView: MonthGraphView = MonthGraphView()
@@ -123,6 +125,12 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if viewModel.tabType.value == .week {
+            viewModel.getWeeklyReportData()
+        } else {
+            viewModel.getMonthlyReportData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,6 +164,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         
         weekChooserAlert.addAction(UIAlertAction(title: "선택 완료", style: .default, handler: { _ in
             self.dataComboButton.comboContent = "\(self.viewModel.selectedWeek?.0.dateTypeToKoreanString() ?? "") - \(self.viewModel.selectedWeek?.1.dateTypeToKoreanString() ?? "")"
+            self.viewModel.getWeeklyReportData()
         }))
         
         monthChooserAlert.view.addSubview(monthPickerView)
@@ -171,6 +180,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         
         monthChooserAlert.addAction(UIAlertAction(title: "선택 완료", style: .default, handler: { _ in
             self.dataComboButton.comboContent = "\(self.viewModel.selectedMonth ?? 0)월"
+            self.viewModel.getMonthlyReportData()
         }))
         
         weekTabButton.snp.makeConstraints { make in
@@ -208,11 +218,16 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.addSubview(contentView)
         contentView.addSubview(contentStackView)
+        contentView.addSubview(emptyView)
         
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.equalToSuperview().priority(250)
             make.width.equalToSuperview()
+        }
+        
+        emptyView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         
         contentStackView.snp.makeConstraints { make in
@@ -246,6 +261,31 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     }
     
     override func bindViewModel() {
+        viewModel.reportWeekModel.bind { [weak self] weekModel in
+            guard let `self` = self else { return }
+            
+            if let model = weekModel {
+                self.emptyView.isHidden = true
+                self.contentStackView.isHidden = false
+            } else {
+                self.emptyView.isHidden = false
+                self.contentStackView.isHidden = true
+            }
+        }
+        
+        viewModel.reportMonthModel.bind { [weak self] monthModel in
+            guard let `self` = self else { return }
+            
+            if let model = monthModel {
+                self.emptyView.isHidden = true
+                self.contentStackView.isHidden = false
+                self.monthGraphView.valueList = model.weakRateList
+            } else {
+                self.emptyView.isHidden = false
+                self.contentStackView.isHidden = true
+            }
+        }
+        
         viewModel.tabType.bindAndFire { [weak self] type in
             guard let `self` = self else { return }
             self.weekTabButton.setTitleColor(type == .week ? .primaryBlack : .minningGray100, for: .normal)
@@ -262,6 +302,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
                 } else {
                     self.viewModel.datePickerList = Date().weeklySEDateList() ?? []
                     if let weeklyDateTuple = Date().weeklySEDateList()?.first {
+                        self.viewModel.selectedWeek = weeklyDateTuple
                         self.dataComboButton.comboContent = "\(weeklyDateTuple.0.dateTypeToKoreanString()) - \(weeklyDateTuple.1.dateTypeToKoreanString())"
                     }
                 }

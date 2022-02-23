@@ -27,6 +27,17 @@ final class MonthGraphView: UIView {
         return $0
     }(UILabel())
     
+    public var valueList: [Int] = [] {
+        didSet {
+            var result: [PointEntry] = []
+            valueList.enumerated().forEach { (index, value) in
+                result.append(PointEntry(value: value, label: "\(index+1)주차"))
+            }
+            
+            curvedLineChart.dataEntries = result
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -64,19 +75,8 @@ final class MonthGraphView: UIView {
             make.leading.trailing.equalToSuperview()
         }
         
-        curvedLineChart.dataEntries = generateRandomEntries()
+//        curvedLineChart.dataEntries = generateRandomEntries()
         curvedLineChart.showDots = true
         curvedLineChart.isCurved = true
-    }
-    
-    private func generateRandomEntries() -> [PointEntry] {
-        var result: [PointEntry] = []
-        result.append(PointEntry(value: 70, label: "1주차"))
-        result.append(PointEntry(value: 20, label: "2주차"))
-        result.append(PointEntry(value: 80, label: "3주차"))
-        result.append(PointEntry(value: 30, label: "4주차"))
-        result.append(PointEntry(value: 60, label: "5주차"))
-//        result.append(PointEntry(value: 10, label: "6주차"))
-        return result
     }
 }
