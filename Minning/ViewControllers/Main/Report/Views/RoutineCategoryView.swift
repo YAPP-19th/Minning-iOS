@@ -13,6 +13,13 @@ final class FilterButton: UIButton {
     public var isAll: Bool = false
     public var category: RoutineCategory = .miracle
     
+    public var itemSelected: Bool = false {
+        didSet {
+            backgroundColor = itemSelected ? .blue67A4FF : .minningLightGray100
+            setTitleColor(itemSelected ? .primaryWhite : .gray787C84, for: .normal)
+        }
+    }
+    
     public override var isSelected: Bool {
         didSet {
             backgroundColor = isSelected ? .blue67A4FF : .minningLightGray100
@@ -54,6 +61,10 @@ final class RoutineCategoryView: UIView {
             currentCategory = currentRoutine?.category ?? .miracle
             updateFilterView()
             updateDetailRoutineStackView()
+            
+            if let routine = currentRoutine {
+                updateSelectedCategoryLabel(with: routine)
+            }
         }
     }
     
@@ -146,7 +157,7 @@ final class RoutineCategoryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupPieData()
+//        setupPieData()
         setupView()
     }
     
@@ -247,18 +258,18 @@ final class RoutineCategoryView: UIView {
         }
     }
     
-    private func setupPieData() {
-        let sampleRoutineReportData: [ReportRoutine] = [
-            ReportRoutine(category: .miracle, percent: 33, routines: [.init(title: "확언하기", donePercent: 90, triedPercent: 5, failurePercent: 5),
-                                                                        .init(title: "기상하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
-            ReportRoutine(category: .selfDev, percent: 20, routines: [.init(title: "자기개발하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
-            ReportRoutine(category: .health, percent: 10, routines: [.init(title: "건강하기", donePercent: 80, triedPercent: 5, failurePercent: 15)]),
-            ReportRoutine(category: .life, percent: 26, routines: [.init(title: "생활하기", donePercent: 80, triedPercent: 15, failurePercent: 5)]),
-            ReportRoutine(category: .other, percent: 11, routines: [.init(title: "코딩하기", donePercent: 10, triedPercent: 5, failurePercent: 85)])
-        ]
-        
-        routineData = sampleRoutineReportData
-    }
+//    private func setupPieData() {
+//        let sampleRoutineReportData: [ReportRoutine] = [
+//            ReportRoutine(category: .miracle, percent: 33, routines: [.init(title: "확언하기", donePercent: 90, triedPercent: 5, failurePercent: 5),
+//                                                                        .init(title: "기상하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
+//            ReportRoutine(category: .selfDev, percent: 20, routines: [.init(title: "자기개발하기", donePercent: 50, triedPercent: 45, failurePercent: 5)]),
+//            ReportRoutine(category: .health, percent: 10, routines: [.init(title: "건강하기", donePercent: 80, triedPercent: 5, failurePercent: 15)]),
+//            ReportRoutine(category: .life, percent: 26, routines: [.init(title: "생활하기", donePercent: 80, triedPercent: 15, failurePercent: 5)]),
+//            ReportRoutine(category: .other, percent: 11, routines: [.init(title: "코딩하기", donePercent: 10, triedPercent: 5, failurePercent: 85)])
+//        ]
+//
+//        routineData = sampleRoutineReportData
+//    }
     
     private func setupFilterview() {
         let leadingSpacer = UIView()
@@ -278,7 +289,7 @@ final class RoutineCategoryView: UIView {
             categoryLegendStackView.addArrangedSubview(legendView)
             
             let filterButton = FilterButton()
-            filterButton.isSelected = currentCategory == category
+            filterButton.itemSelected = currentCategory == category
             filterButton.category = category
             filterButton.setTitle(category.title, for: .normal)
             filterButton.addTarget(self, action: #selector(onClickFilterButton(_:)), for: .touchUpInside)
@@ -304,7 +315,7 @@ final class RoutineCategoryView: UIView {
     private func updateFilterView() {
         tableFilterStackView.arrangedSubviews.enumerated().forEach { index, subView in
             if let filterButton = subView as? FilterButton {
-                filterButton.isSelected = (currentCategory == routineData[index - 1].category)
+                filterButton.itemSelected = (currentCategory == routineData[index - 1].category)
             }
         }
     }
@@ -334,5 +345,6 @@ final class RoutineCategoryView: UIView {
         currentRoutine = routineData.first { $0.category == sender.category }
         updateFilterView()
         updateSelectedCategoryLabel(with: routineData[currentCategory.rawValue])
+        updateDetailRoutineStackView()
     }
 }

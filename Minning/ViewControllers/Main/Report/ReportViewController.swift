@@ -285,6 +285,28 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
                 self.monthGraphView.valueList = model.weekRateList
+                
+//                public struct ReportRoutine {
+//                    let category: RoutineCategory
+//                    let percent: CGFloat
+//                    let routines: [MonthlyRoutine]
+//                }
+                
+                
+                var reportRoutines: [ReportRoutine] = []
+                for (index, result) in model.resultByCategory.enumerated() {
+                    let rate: Int = result.rate
+                    let routines = result.routineReportList.map {
+                        MonthlyRoutine(title: $0.title, donePercent: CGFloat($0.fullyDoneRate), triedPercent: CGFloat($0.partiallyDoneRate), failurePercent: CGFloat($0.notDoneRate))
+                    }
+                    let category = result.routineReportList.first?.category
+                    
+                    let reportRoutine = ReportRoutine(category: category ?? (RoutineCategory(rawValue: index) ?? .other), percent: CGFloat(rate), routines: routines)
+                    DebugLog("\(reportRoutine.percent)")
+                    DebugLog("\(reportRoutine.routines.debugDescription)")
+                    reportRoutines.append(reportRoutine)
+                }
+                self.routineCategoryView.routineData = reportRoutines
             } else {
                 self.view.backgroundColor = .minningLightGray100
                 self.emptyView.isHidden = false
