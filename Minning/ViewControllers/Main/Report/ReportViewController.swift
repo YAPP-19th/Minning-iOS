@@ -125,17 +125,17 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
         if viewModel.tabType.value == .week {
             viewModel.getWeeklyReportData()
         } else {
             viewModel.getMonthlyReportData()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func setupViewLayout() {
