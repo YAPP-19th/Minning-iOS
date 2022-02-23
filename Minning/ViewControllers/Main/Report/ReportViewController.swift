@@ -80,7 +80,16 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         return pickerView
     }()
     
+    private lazy var monthPickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 220)
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        return pickerView
+    }()
+    
     private let weekChooserAlert = UIAlertController(title: "주 선택", message: nil, preferredStyle: .actionSheet)
+    private let monthChooserAlert = UIAlertController(title: "월 선택", message: nil, preferredStyle: .actionSheet)
     private let reportArriveVC = ReportArriveViewController()
     
     // MARK: Report Content View
@@ -114,11 +123,6 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.datePickerList = Date().weeklySEDateList() ?? []
-        if let weeklyDateTuple = Date().weeklySEDateList()?.first {
-            dataComboButton.comboContent = "\(weeklyDateTuple.0.dateTypeToKoreanString()) - \(weeklyDateTuple.1.dateTypeToKoreanString())"
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,6 +156,21 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         
         weekChooserAlert.addAction(UIAlertAction(title: "선택 완료", style: .default, handler: { _ in
             self.dataComboButton.comboContent = "\(self.viewModel.selectedWeek?.0.dateTypeToKoreanString() ?? "") - \(self.viewModel.selectedWeek?.1.dateTypeToKoreanString() ?? "")"
+        }))
+        
+        monthChooserAlert.view.addSubview(monthPickerView)
+        monthChooserAlert.view.snp.makeConstraints { make in
+            make.height.equalTo(300)
+        }
+        
+        monthPickerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-30)
+            make.top.equalToSuperview()
+        }
+        
+        monthChooserAlert.addAction(UIAlertAction(title: "선택 완료", style: .default, handler: { _ in
+            self.dataComboButton.comboContent = "\(self.viewModel.selectedMonth ?? 0)월"
         }))
         
         weekTabButton.snp.makeConstraints { make in
@@ -237,14 +256,34 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
             self.weeklyPercentView.isHidden = !(type == .week)
             self.routineCategoryView.isHidden = !(type == .month)
             
+            if type == .week {
+                if let selectedWeek = self.viewModel.selectedWeek {
+                    self.dataComboButton.comboContent = "\(selectedWeek.0.dateTypeToKoreanString()) - \(selectedWeek.1.dateTypeToKoreanString())"
+                } else {
+                    self.viewModel.datePickerList = Date().weeklySEDateList() ?? []
+                    if let weeklyDateTuple = Date().weeklySEDateList()?.first {
+                        self.dataComboButton.comboContent = "\(weeklyDateTuple.0.dateTypeToKoreanString()) - \(weeklyDateTuple.1.dateTypeToKoreanString())"
+                    }
+                }
+            } else {
+                if let selectedMonth = self.viewModel.selectedMonth {
+                    self.dataComboButton.comboContent = "\(selectedMonth)월"
+                } else {
+                    self.dataComboButton.comboContent = "\(self.viewModel.monthList.first ?? 0)월"
+                }
+            }
+            
             self.updateBubbleLabel()
         }
     }
     
     @objc
     private func onClickComboButton(_ sender: UIButton) {
-        DebugLog("Did Click Combo Button")
-        present(weekChooserAlert, animated: true, completion: nil)
+        if viewModel.tabType.value == .week {
+            present(weekChooserAlert, animated: true, completion: nil)
+        } else {
+            present(monthChooserAlert, animated: true, completion: nil)
+        }
     }
     
     @objc
@@ -266,7 +305,11 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow: Int) {
-        DebugLog("Selected Week : \(viewModel.datePickerList[titleForRow].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[titleForRow].1.dateTypeToKoreanString())")
+        if viewModel.tabType.value == .week {
+            DebugLog("Selected Week : \(viewModel.datePickerList[titleForRow].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[titleForRow].1.dateTypeToKoreanString())")
+        } else {
+            DebugLog("Selected Month : \(viewModel.selectedMonth ?? 0)월")
+        }
     }
 }
 
@@ -276,16 +319,27 @@ extension ReportViewController: UIScrollViewDelegate, UIPickerViewDelegate, UIPi
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return viewModel.datePickerList.count
+        if viewModel.tabType.value == .week {
+            return viewModel.datePickerList.count
+        } else {
+            return viewModel.monthList.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(viewModel.datePickerList[row].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[row].1.dateTypeToKoreanString())"
+        if viewModel.tabType.value == .week {
+            return "\(viewModel.datePickerList[row].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[row].1.dateTypeToKoreanString())"
+        } else {
+            return "\(viewModel.monthList[row])월"
+        }
         
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        DebugLog("Selected Week : \(viewModel.datePickerList[row].0.dateTypeToKoreanString()) - \(viewModel.datePickerList[row].1.dateTypeToKoreanString())")
-        viewModel.selectedWeek = viewModel.datePickerList[row]
+        if viewModel.tabType.value == .week {
+            viewModel.selectedWeek = viewModel.datePickerList[row]
+        } else {
+            viewModel.selectedMonth = viewModel.monthList[row]
+        }
     }
 }
