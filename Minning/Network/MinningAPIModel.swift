@@ -276,7 +276,7 @@ public struct ReportWeekModel: Codable {
     public let lastDate: String
     public let notDoneCount: Int
     public let partiallyDoneCount: Int
-    public let rate: String
+    public let rate: Int
     public let responseWeekRoutine: [ReportWeekRoutineModel]
 }
 
