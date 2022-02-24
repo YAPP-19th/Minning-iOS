@@ -211,7 +211,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
         
         emptyView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(63)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(102)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }

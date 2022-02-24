@@ -82,6 +82,9 @@ public extension Date {
                     DebugLog("nextWeekStartday: \(nextWeekStartDay)")
                     
                     weekEndDay = Calendar.current.date(byAdding: .day, value: 6 - (Calendar.current.component(.weekday, from: nextWeekStartDay) + 5) % 7, to: nextWeekStartDay)!
+                    if weekEndDay > endOfMonth {
+                        weekEndDay = endOfMonth
+                    }
                     result.append((nextWeekStartDay, weekEndDay))
                 }
             }
