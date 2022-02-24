@@ -35,11 +35,26 @@ final class ReportEmptyView: UIView {
     }(UILabel())
     
     private let subcontentLabel: UILabel = {
-        $0.text = "주 리포트는 매주 수요일,\n월 리포트는 매월 첫째주에 확인할 수 있어요"
         $0.numberOfLines = 2
         $0.textAlignment = .center
         $0.font = .font16P
         $0.textColor = .gray787C84
+        
+        let boldText1 = "매주 수요일"
+        let boldText2 = "매월 첫째주"
+        let fullText = "주 리포트는 매주 수요일,\n월 리포트는 매월 첫째주에 확인할 수 있어요"
+        
+        let range1 = (fullText as NSString).range(of: boldText1)
+        let range2 = (fullText as NSString).range(of: boldText2)
+        
+        let valueAttrString = NSMutableAttributedString(string: fullText)
+        valueAttrString.addAttributes([.font: UIFont.font16PBold,
+                                       .foregroundColor: UIColor.gray787C84,
+                                       .baselineOffset: 0], range: range1)
+        valueAttrString.addAttributes([.font: UIFont.font16PBold,
+                                       .foregroundColor: UIColor.gray787C84,
+                                       .baselineOffset: 0], range: range2)
+        $0.attributedText = valueAttrString
         return $0
     }(UILabel())
     

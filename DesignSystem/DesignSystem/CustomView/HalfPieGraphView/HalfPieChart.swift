@@ -13,7 +13,6 @@ public class HalfPieChart: UIView {
     
     public var dataSet: [PieChartData] = [] {
         didSet {
-//            layoutIfNeeded()
             setNeedsDisplay()
         }
     }
@@ -28,7 +27,6 @@ public class HalfPieChart: UIView {
         
         var prevValue: CGFloat = 0
         for (index, data) in dataSet.enumerated() {
-            DebugLog("HalfPieChart Data : \(data.value)")
             if index < 1 {
                 prevValue = data.value
                 drawSlice(rect, startPercent: 0, endPercent: data.value, color: dataSet[index].color)
