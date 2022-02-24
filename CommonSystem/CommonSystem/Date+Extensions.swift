@@ -51,46 +51,43 @@ public extension Date {
         return formatter.date(from: "\(year)-\(month)-\(day)")
     }
     
-    func weeklySEDateList() -> [(Date, Date)]? {
+    func weeklyDateList() -> [(Date, Date)] {
         var result: [(Date, Date)] = []
-        var startOfWeekDay: Int = 0
-        let calendar = Calendar.current
         
-        let components = calendar.dateComponents([.year, .month], from: self)
-
-        if let startOfMonth = calendar.date(from: components)?.dateTypeToKoreanDate(),
-           let nextMonth = calendar.date(byAdding: .month, value: +1, to: startOfMonth),
-           let endOfMonth = calendar.date(byAdding: .day, value: -1, to: nextMonth)?.dateTypeToKoreanDate() {
-            let comp1 = calendar.dateComponents([.day, .weekday], from: startOfMonth)
-            let comp2 = calendar.dateComponents([.day, .weekday], from: endOfMonth)
+        let components = Calendar.current.dateComponents([.year, .month], from: self)
+        if let startDayOfMonth = Calendar.current.date(from: components),
+           let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: startDayOfMonth),
+           let endOfMonth = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) {
+            let startDayIndex = Calendar.current.component(.weekday, from: startDayOfMonth)
+            let firstWeekStartDay = Date(timeInterval: -(Double(86400 * ((startDayIndex + 5) % 7))), since: startDayOfMonth)
             
-            let yearValue = calendar.dateComponents([.year, .month], from: startOfMonth).year
-            let monthValue = calendar.dateComponents([.year, .month], from: startOfMonth).month
+            var weekStartDay: Date
+            var weekEndDay: Date
             
-            startOfWeekDay = comp1.weekday ?? 0
-            var tempList: [Date] = []
+            // MARK: Week 1
+            if !(startDayOfMonth == firstWeekStartDay) {
+                weekStartDay = startDayOfMonth
+            } else {
+                weekStartDay = firstWeekStartDay
+            }
             
-            for day in comp1.day!...comp2.day! {
-                let dayDate = Date.createDate(year: yearValue ?? 0, month: monthValue ?? 0, day: day)?.dateTypeToKoreanDate() ?? Date()
-                let dayWeekDay = dayDate.get(.weekday)
-                if dayWeekDay == startOfWeekDay || day == comp2.day ?? 0 {
-                    if day == comp2.day ?? 0 {
-                        tempList.append(dayDate)
-                    }
+            weekEndDay = Calendar.current.date(byAdding: .day, value: 6 - (Calendar.current.component(.weekday, from: weekStartDay) + 5) % 7, to: weekStartDay)!
+            result.append((weekStartDay, weekEndDay))
+            
+            var nextWeekStartDay: Date = firstWeekStartDay
+            for _ in 0..<6 {
+                nextWeekStartDay = Date(timeInterval: 86400 * 7, since: nextWeekStartDay)
+                if nextWeekStartDay <= endOfMonth {
+                    DebugLog("nextWeek WeekOfMonth: \(Calendar.current.component(.weekOfMonth, from: nextWeekStartDay))")
+                    DebugLog("nextWeekStartday: \(nextWeekStartDay)")
                     
-                    if !tempList.isEmpty, let first = tempList.first, let last = tempList.last {
-                        result.append((first, last))
-                        tempList.removeAll()
-                        tempList.append(dayDate)
-                    } else {
-                        tempList.append(dayDate)
-                    }
-                } else {
-                    tempList.append(dayDate)
+                    weekEndDay = Calendar.current.date(byAdding: .day, value: 6 - (Calendar.current.component(.weekday, from: nextWeekStartDay) + 5) % 7, to: nextWeekStartDay)!
+                    result.append((nextWeekStartDay, weekEndDay))
                 }
             }
         }
         
+        DebugLog("Result: \(result.debugDescription)")
         return result
     }
     

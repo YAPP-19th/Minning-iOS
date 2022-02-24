@@ -125,6 +125,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Date().weeklyDateList() // TODO
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -328,8 +329,8 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
                 if let selectedWeek = self.viewModel.selectedWeek {
                     self.dataComboButton.comboContent = "\(selectedWeek.0.dateTypeToKoreanString()) - \(selectedWeek.1.dateTypeToKoreanString())"
                 } else {
-                    self.viewModel.datePickerList = Date().weeklySEDateList() ?? []
-                    if let weeklyDateTuple = Date().weeklySEDateList()?.first {
+                    self.viewModel.datePickerList = Date().weeklyDateList()
+                    if let weeklyDateTuple = Date().weeklyDateList().first {
                         self.viewModel.selectedWeek = weeklyDateTuple
                         self.dataComboButton.comboContent = "\(weeklyDateTuple.0.dateTypeToKoreanString()) - \(weeklyDateTuple.1.dateTypeToKoreanString())"
                     }
