@@ -14,6 +14,23 @@ import SnapKit
 import UIKit
 
 final class WeeklyPercentView: UIView {
+    public var weekModel: ReportWeekModel? {
+        didSet {
+            percentValueLabel.text = "\(weekModel?.rate ?? 0)"
+            
+            resultStackView.subviews.forEach { view in
+                view.removeFromSuperview()
+            }
+            
+            let completeView = WeeklyResultView(resultType: .complete, count: weekModel?.fullyDoneCount ?? 0)
+            let halfView = WeeklyResultView(resultType: .half, count: weekModel?.partiallyDoneCount ?? 0)
+            let incompleteView = WeeklyResultView(resultType: .incomplete, count: weekModel?.notDoneCount ?? 0)
+            [completeView, halfView, incompleteView].forEach {
+                resultStackView.addArrangedSubview($0)
+            }
+        }
+    }
+    
     private let titleLabel: UILabel = {
         $0.text = "이번주 내 달성률"
         $0.font = .font16P
@@ -28,7 +45,7 @@ final class WeeklyPercentView: UIView {
     }(UIButton())
 
     private let percentValueLabel: UILabel = {
-        $0.text = "90"
+        $0.text = "0"
         $0.font = .font50PHeavy
         $0.textColor = .primaryBlack
         return $0

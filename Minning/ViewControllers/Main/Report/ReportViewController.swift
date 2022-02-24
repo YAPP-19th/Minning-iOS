@@ -271,6 +271,7 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
                 self.view.backgroundColor = .primaryWhite
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
+                self.weeklyPercentView.weekModel = model
             } else {
                 self.view.backgroundColor = .minningLightGray100
                 self.emptyView.isHidden = false
@@ -286,13 +287,6 @@ final class ReportViewController: BaseViewController, CRPickerButtonDelegate {
                 self.emptyView.isHidden = true
                 self.contentStackView.isHidden = false
                 self.monthGraphView.valueList = model.weekRateList
-                
-//                public struct ReportRoutine {
-//                    let category: RoutineCategory
-//                    let percent: CGFloat
-//                    let routines: [MonthlyRoutine]
-//                }
-                
                 
                 var reportRoutines: [ReportRoutine] = []
                 for (index, result) in model.resultByCategory.enumerated() {
