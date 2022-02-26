@@ -152,7 +152,9 @@ extension HomeViewController: RoutineViewDelegate {
             viewModel.goToMyGroup()
         case .routine:
             if viewModel.checkTodaySaying.value {
-                // show modify routine view
+                if let index = index {
+                    viewModel.goToModifyRoutine(with: index)
+                }
             } else {
                 showAlert(title: routineAlertTitle, message: routineAlertText) { _ in
                     self.viewModel.showPhraseModally()

@@ -295,72 +295,21 @@ final class AddViewController: BaseViewController {
         return $0
     }(AddDayView(day: .sun))
     
-    private let routineLabelStackView: UIStackView = {
-        $0.axis = .vertical
-        return $0
-    }(UIStackView())
-    
-    private let routineAlarmTimeStackView: UIStackView = {
-        $0.axis = .vertical
-        $0.spacing = 1
-        return $0
-    }(UIStackView())
-    
-    private let routineAlarmLabel: UILabel = {
-        $0.text = "루틴 시간 및 알림"
-        $0.textColor = .primaryBlack
-        $0.font = .font20PBold
-        return $0
-    }(UILabel())
-    
-    private let routineTimeView: UIView = {
-        $0.backgroundColor = .primaryWhite
+    private let deleteContainer: UIView = {
+        $0.backgroundColor = .minningLightGray100
         return $0
     }(UIView())
     
-    private let routineTimeLabel: UILabel = {
-        $0.text = "시간"
-        $0.font = .font16P
+    private let deleteLabel: UILabel = {
+        let string = "루틴 삭제하기"
+        let attString = NSMutableAttributedString(string: string)
+        attString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: .init(location: 0, length: attString.length))
+        $0.attributedText = attString
+        $0.isUserInteractionEnabled = true
         $0.textColor = .primaryBlack
+        $0.font = .systemFont(ofSize: 16, weight: .medium)
         return $0
     }(UILabel())
-    
-    private let routineAlarmView: UIView = {
-        $0.backgroundColor = .primaryWhite
-        return $0
-    }(UIView())
-    
-    private let routineAlarmOnOffLabel: UILabel = {
-        $0.text = "알림 보내기"
-        $0.font = .font16P
-        $0.textColor = .primaryBlack
-        return $0
-    }(UILabel())
-    
-    private let timePickerView: UIView = {
-        $0.backgroundColor = .gray767680
-        $0.layer.cornerRadius = 6
-        return $0
-    }(UIView())
-    
-    private let timeLabel: UILabel = {
-        $0.text = "12 : 34"
-        $0.font = .font22P
-        return $0
-    }(UILabel())
-    
-    private let timePicker: UIDatePicker = {
-        $0.datePickerMode = .time
-        if #available(iOS 13.4, *) {
-            $0.preferredDatePickerStyle = .wheels
-        }
-        return $0
-    }(UIDatePicker())
-    
-    private let alarmSwitch: UISwitch = {
-        $0.isOn = false
-        return $0
-    }(UISwitch())
     
     init(viewModel: AddViewModel) {
         self.viewModel = viewModel
@@ -656,79 +605,8 @@ final class AddViewController: BaseViewController {
         
         stackView.setCustomSpacing(40.0, after: routineStackView)
         
-        // MARK: - 루틴 시간 및 알림
-        stackView.addArrangedSubview(routineAlarmLabel)
-        routineAlarmLabel.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(24)
-        }
-        
-        stackView.setCustomSpacing(19.0, after: routineAlarmLabel)
-        
-        // MARK: - 시간, 알림 보내기
-        [routineTimeView, routineAlarmView].forEach {
-            routineAlarmTimeStackView.addArrangedSubview($0)
-        }
-        
-        stackView.addArrangedSubview(routineAlarmTimeStackView)
-        
-        routineAlarmTimeStackView.snp.makeConstraints { make in
-            make.height.equalTo(97)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.top.equalTo(routineAlarmLabel.snp.bottom).offset(19)
-        }
-        
-        [routineTimeLabel, timePickerView].forEach {
-            routineTimeView.addSubview($0)
-        }
-        
-        stackView.setCustomSpacing(1.0, after: routineTimeView)
-        
-        timePickerView.addSubview(timeLabel)
-        timeLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(timePressed(_:))))
-        
-        [routineAlarmOnOffLabel, alarmSwitch].forEach {
-            routineAlarmView.addSubview($0)
-        }
-        
-        timePickerView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-16)
-            make.centerY.equalToSuperview()
-            make.width.equalTo(86)
-            make.height.equalTo(36)
-        }
-        
-        timeLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        
-        alarmSwitch.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-16)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(31)
-            make.width.equalTo(51)
-        }
-        
-        routineTimeView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-        }
-        
-        routineAlarmView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-            make.leading.equalToSuperview()
-        }
-        
-        routineTimeLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.centerY.equalToSuperview()
-        }
-        
-        routineAlarmOnOffLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.centerY.equalToSuperview()
+        if viewModel.routineId != nil {
+            setModifyView()
         }
     }
     
@@ -741,7 +619,7 @@ final class AddViewController: BaseViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         
         if let navBar = navigationController?.navigationBar as? PlainUINavigationBar {
-            navBar.titleContent = "루틴 추가하기"
+            navBar.titleContent = viewModel.routineId != nil ? "루틴 추가하기" : "루틴 수정하기"
             navBar.removeDefaultShadowImage()
         }
         
@@ -756,6 +634,56 @@ final class AddViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    private func setModifyView() {
+        writeRoutineNameTextField.text = viewModel.title
+        writeGoalNameTextField.text = viewModel.goal
+        if let category = viewModel.selectedCategoryIndex {
+            switch category {
+            case 0:
+                morningSelectedView.isHidden = false
+            case 1:
+                selfImproveSelectedView.isHidden = false
+            case 2:
+                healthSelectedView.isHidden = false
+            case 3:
+                lifeSelectedView.isHidden = false
+            case 4:
+                etcSelectedView.isHidden = false
+            default:
+                break
+            }
+        }
+        viewModel.selectedDays.forEach { day in
+            switch day {
+            case .mon:
+                monView.isSelected = true
+            case .tue:
+                tueView.isSelected = true
+            case .wed:
+                wedView.isSelected = true
+            case .thu:
+                thuView.isSelected = true
+            case .fri:
+                friView.isSelected = true
+            case .sat:
+                satView.isSelected = true
+            case .sun:
+                sunView.isSelected = true
+            }
+        }
+        stackView.addArrangedSubview(deleteContainer)
+        deleteContainer.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        deleteContainer.addSubview(deleteLabel)
+        deleteLabel.snp.makeConstraints { make in
+            make.top.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.bottom.equalTo(-60)
+        }
+        deleteLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickDeleteLabel)))
+    }
+    
     @objc
     private func onClickBackButton(_ sender: Any?) {
         viewModel.goToBack()
@@ -764,14 +692,19 @@ final class AddViewController: BaseViewController {
     @objc
     private func onClickCompleteButton(_ sender: Any) {
         let selectedDays = getSelectedDays()
-        let selectedCategory = RoutineCategory.selfDev
+        guard let selectedCategory = RoutineCategory(rawValue: viewModel.selectedCategoryIndex ?? 0) else { return }
         guard let title = writeRoutineNameTextField.text,
-              let goal = writeGoalNameTextField.text,
-              let time = timeLabel.text?.replacingOccurrences(of: " ", with: "") else { return }
+              let goal = writeGoalNameTextField.text else { return }
         if selectedDays.isEmpty { return }
-        
-        viewModel.postAddRoutine(title: title, goal: goal, category: selectedCategory, days: selectedDays, time: time) {
-            self.navigationController?.popViewController(animated: true)
+
+        if viewModel.routineId != nil {
+            viewModel.patchModifyRoutine(title: title, goal: goal, category: selectedCategory, days: selectedDays) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            viewModel.postAddRoutine(title: title, goal: goal, category: selectedCategory, days: selectedDays) {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -781,12 +714,18 @@ final class AddViewController: BaseViewController {
     }
     
     @objc
+    private func onClickDeleteLabel(_ sender: Any?) {
+        viewModel.deleteRoutine()
+    }
+    
+    @objc
     private func miracleButtonSelected(_ sender: Any) {
         morningSelectedView.isHidden = false
         selfImproveSelectedView.isHidden = true
         healthSelectedView.isHidden = true
         lifeSelectedView.isHidden = true
         etcSelectedView.isHidden = true
+        viewModel.selectedCategoryIndex = 0
     }
     
     @objc
@@ -796,6 +735,7 @@ final class AddViewController: BaseViewController {
         healthSelectedView.isHidden = true
         lifeSelectedView.isHidden = true
         etcSelectedView.isHidden = true
+        viewModel.selectedCategoryIndex = 1
     }
     
     @objc
@@ -805,6 +745,7 @@ final class AddViewController: BaseViewController {
         healthSelectedView.isHidden = false
         lifeSelectedView.isHidden = true
         etcSelectedView.isHidden = true
+        viewModel.selectedCategoryIndex = 2
     }
     
     @objc
@@ -814,6 +755,7 @@ final class AddViewController: BaseViewController {
         healthSelectedView.isHidden = true
         lifeSelectedView.isHidden = false
         etcSelectedView.isHidden = true
+        viewModel.selectedCategoryIndex = 3
     }
     
     @objc
@@ -823,40 +765,7 @@ final class AddViewController: BaseViewController {
         healthSelectedView.isHidden = true
         lifeSelectedView.isHidden = true
         etcSelectedView.isHidden = false
-    }
-    
-    @objc
-    private func timePressed(_ sender: Any) {
-        let alert = UIAlertController(title: "시간 선택", message: "알림 받을 시간을 선택해주세요", preferredStyle: .actionSheet)
-        alert.view.addSubview(timePicker)
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        
-        alert.addAction(UIAlertAction(title: "선택완료", style: .default, handler: { _ in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH : mm"
-            self.timeLabel.text = formatter.string(from: self.timePicker.date)
-        }))
-        
-        alert.view.tintColor = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.00)
-        
-        alert.view.snp.makeConstraints { make in
-            make.height.equalTo(350)
-        }
-        timePicker.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(180)
-        }
-        present(alert, animated: true, completion: nil)
-    }
-    
-    @objc
-    private func datePickerPressed() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-        let time = dateFormatter.string(from: timePicker.date)
-        print(time)
+        viewModel.selectedCategoryIndex = 4
     }
     
     private func getSelectedDays() -> [Day] {

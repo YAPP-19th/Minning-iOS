@@ -77,7 +77,7 @@ public struct RoutineAPIRequest: MinningAPIRequestable {
                 parameters["title"] = request.title
                 return parameters
             case let .modifyRoutine(_, request):
-                parameters["category"] = request.category.title
+                parameters["category"] = request.category.rawValue
                 parameters["days"] = request.days.map { $0.rawValue }
                 parameters["goal"] = request.goal
                 parameters["startTime"] = request.startTime
