@@ -45,6 +45,18 @@ final class AddViewModel {
         }
     }
     
+    public func deleteRoutine() {
+        guard let id = routineId else { return }
+        RoutineAPIRequest.deleteRoutine(routineId: id) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.goToBack()
+            case .failure(let error):
+                DebugLog(error.localizedDescription)
+            }
+        }
+    }
+    
     public func goToBack() {
         coordinator.goToBack()
     }

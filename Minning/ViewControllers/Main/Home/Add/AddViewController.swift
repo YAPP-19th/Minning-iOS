@@ -295,6 +295,22 @@ final class AddViewController: BaseViewController {
         return $0
     }(AddDayView(day: .sun))
     
+    private let deleteContainer: UIView = {
+        $0.backgroundColor = .minningLightGray100
+        return $0
+    }(UIView())
+    
+    private let deleteLabel: UILabel = {
+        let string = "루틴 삭제하기"
+        let attString = NSMutableAttributedString(string: string)
+        attString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: .init(location: 0, length: attString.length))
+        $0.attributedText = attString
+        $0.isUserInteractionEnabled = true
+        $0.textColor = .primaryBlack
+        $0.font = .systemFont(ofSize: 16, weight: .medium)
+        return $0
+    }(UILabel())
+    
     init(viewModel: AddViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -655,6 +671,17 @@ final class AddViewController: BaseViewController {
                 sunView.isSelected = true
             }
         }
+        stackView.addArrangedSubview(deleteContainer)
+        deleteContainer.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        deleteContainer.addSubview(deleteLabel)
+        deleteLabel.snp.makeConstraints { make in
+            make.top.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.bottom.equalTo(-60)
+        }
+        deleteLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickDeleteLabel)))
     }
     
     @objc
@@ -684,6 +711,11 @@ final class AddViewController: BaseViewController {
     @objc
     private func isRecommendButtonPressed() {
         viewModel.coordinator.goToRecommend()
+    }
+    
+    @objc
+    private func onClickDeleteLabel(_ sender: Any?) {
+        viewModel.deleteRoutine()
     }
     
     @objc
